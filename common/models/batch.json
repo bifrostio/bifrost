@@ -1,0 +1,31 @@
+{
+  "name": "batch",
+  "plural": "batches",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "createdDate": {
+      "type": "date",
+      "required": true
+    },
+    "trackingNumber": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "project",
+      "foreignKey": "projectId"
+    },
+    "donatedProvisions": {
+      "type": "hasMany",
+      "model": "donatedProvision",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

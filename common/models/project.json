@@ -1,0 +1,50 @@
+{
+  "name": "project",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "zipcode": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "district": {
+      "type": "string",
+      "required": true
+    },
+    "detailAddress": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "ownerId"
+    },
+    "provisions": {
+      "type": "hasMany",
+      "model": "provision",
+      "foreignKey": ""
+    },
+    "batches": {
+      "type": "hasMany",
+      "model": "batch",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

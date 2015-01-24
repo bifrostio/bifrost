@@ -1,0 +1,29 @@
+{
+  "name": "donatedProvision",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "shippedQuantity": {
+      "type": "number",
+      "required": true
+    },
+    "promisedQuantity": {
+      "type": "number",
+      "required": true
+    },
+    "estimate": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "batch": {
+      "type": "belongsTo",
+      "model": "batch",
+      "foreignKey": "batchId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
