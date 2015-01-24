@@ -1,0 +1,31 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": true,
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "projects": {
+      "type": "hasMany",
+      "model": "project",
+      "foreignKey": ""
+    },
+    "batches": {
+      "type": "hasMany",
+      "model": "batch",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

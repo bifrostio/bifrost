@@ -25,5 +25,25 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "user": {
+    "dataSource": "db",
+    "public": true
+  },
+  "project": {
+    "dataSource": "db",
+    "public": true
+  },
+  "provision": {
+    "dataSource": "db",
+    "public": true
+  },
+  "batch": {
+    "dataSource": "db",
+    "public": true
+  },
+  "donatedProvision": {
+    "dataSource": "db",
+    "public": true
   }
 }

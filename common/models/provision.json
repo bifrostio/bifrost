@@ -1,0 +1,41 @@
+{
+  "name": "provision",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "photos": {
+      "type": [
+        "string"
+      ]
+    },
+    "shippedQuantity": {
+      "type": "number",
+      "required": true
+    },
+    "promisedQuantity": {
+      "type": "number",
+      "required": true
+    },
+    "totalQuantity": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "project",
+      "foreignKey": "projectId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
