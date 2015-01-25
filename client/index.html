@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Bifrost 必達物資</title>
+
   <script src="vendor/angular/angular.min.js" defer></script>
   <script src="vendor/angular-resource/angular-resource.min.js" defer></script>
   <script src="vendor/angular-ui-router/release/angular-ui-router.min.js" defer></script>
@@ -11,12 +12,16 @@
   <script src="vendor/angular-material/angular-material.js" defer></script>
   <script src="vendor/loopback-services.js" defer></script>
   <script src="scripts/app.js" defer></script>
+  <script src="scripts/controllers/login.js" defer></script>
+  <link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body ng-app="bifrost">
 Hi there
 
 <a ui-sref="projects">Go to projects view</a>
 <a ui-sref="main">Go to main view</a>
+<a ui-sref="login">login</a>
 
 <div ui-view=""></div>
 
