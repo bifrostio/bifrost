@@ -3,6 +3,7 @@
 <head>
   <title>Bifrost 必達物資</title>
   <script src="vendor/angular/angular.min.js" defer></script>
+  <script src="vendor/angular-resource/angular-resource.min.js" defer></script>
   <script src="vendor/angular-ui-router/release/angular-ui-router.min.js" defer></script>
   <script src="vendor/angular-aria/angular-aria.js" defer></script>
   <script src="vendor/angular-animate/angular-animate.js" defer></script>
@@ -13,5 +14,11 @@
 </head>
 <body ng-app="bifrost">
 Hi there
+
+<a ui-sref="projects">Go to projects view</a>
+<a ui-sref="main">Go to main view</a>
+
+<div ui-view=""></div>
+
 </body>
 </html>
