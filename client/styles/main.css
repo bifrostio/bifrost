@@ -1,0 +1,36 @@
+html, body, .map, .angular-leaflet-map {
+  height: 100%;
+}
+
+.map {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.main-panel {
+  z-index: 1;
+  position: relative;
+}
+
+.get-started {
+  background-color: white;
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+@media (max-width: 600px) {
+  .get-started {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.get-started button {
+  min-width: 8em;
+  margin: 0.5em;
+}

@@ -4,6 +4,7 @@
   angular.module('bifrost',[
     'ui.router',
     'lbServices',
+    'leaflet-directive',
     'ngMaterial'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
@@ -29,6 +30,6 @@
         templateUrl: 'views/login.html'
       });
 
-    $urlRouterProvider.otherwise('main');
+    $urlRouterProvider.otherwise('/');
   });
 })();
