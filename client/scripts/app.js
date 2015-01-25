@@ -13,9 +13,6 @@
         url: '/',
         templateUrl: 'views/main.html'
       })
-      .state('login', {
-        url: '/login'
-      })
       .state('project', {
         url: '/projects/:id'
       })
