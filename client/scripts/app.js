@@ -11,6 +11,15 @@
         url: '/',
         templateUrl: 'views/main.html'
       })
+      .state('login', {
+        url: '/login'
+      })
+      .state('project', {
+        url: '/projects/:id'
+      })
+      .state('create', {
+        url: '/create'
+      })
       .state('projects', {
         url: '/projects',
         templateUrl: 'views/projects.html'
