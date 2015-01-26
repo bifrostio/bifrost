@@ -1,1 +1,35 @@
-Project view
+<div ng-controller="ProjectsController">
+  <md-whiteframe class="md-whiteframe-z1">
+    <md-content class="projects-panel">
+      <md-toolbar>
+        <h2 class="md-toolbar-tools">
+          <span>物資需求</span>
+        </h2>
+      </md-toolbar>
+      <md-content class="projects-panel-content">
+        <md-content class="no-projects"
+          layout layout-align="center center"
+          ng-show="!projects || projects.length === 0">
+          目前沒有捐贈需求
+        </md-content>
+        <md-list ng-show="projects">
+          <md-item ng-repeat="project in projects">
+            <md-item-content>
+              <div class="md-tile-content">
+                <h3>{{project.name}}</h3>
+                <h4>
+                  聯絡人：
+                  {{project.user.lastName}}
+                  {{project.user.firstName}}
+                </h4>
+              </div>
+            </md-item-content>
+          </md-item>
+        </md-list>
+        <section layout layout-padding layout-align="center center">
+          <md-button class="medium-button md-primary">請求物資</md-button>
+        </section>
+      </md-content>
+    </md-content>
+  </md-whiteframe>
+</div>

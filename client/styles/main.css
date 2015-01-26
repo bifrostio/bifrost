@@ -23,14 +23,41 @@ html, body, .map, .angular-leaflet-map {
   margin-top: 50px;
 }
 
+.get-started button {
+  min-width: 8em;
+  margin: 0.5em;
+}
+
+.medium-button {
+  min-width: 8em;
+}
+
+.no-projects {
+  height: 200px;
+}
+
+.projects-panel-content {
+  min-height: 200px;
+}
+
+.projects-panel {
+  position: absolute;
+  width: 500px;
+  top: 50px;
+  left: 50px;
+}
+
 @media (max-width: 600px) {
   .get-started {
     width: 100%;
     margin-top: 0;
   }
+
+  .projects-panel {
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
 }
 
-.get-started button {
-  min-width: 8em;
-  margin: 0.5em;
-}
+

@@ -14,7 +14,8 @@
         templateUrl: 'views/main.html'
       })
       .state('project', {
-        url: '/projects/:id'
+        url: '/projects/:id',
+        templateUrl: 'views/projects.html',
       })
       .state('create', {
         url: '/create'
