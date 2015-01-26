@@ -9,7 +9,7 @@
     $scope.createUser = function() {
       User.create($scope.user).$promise.then(function() {
         User.login($scope.user).$promise.then(function() {
-          $state.go('project');
+          $state.go('projects');
         });
       });
     };
