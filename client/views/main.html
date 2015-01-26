@@ -6,7 +6,7 @@
         <span>註冊</span>
       </h2>
     </md-toolbar>
-    <form name="userForm">
+    <form ng-controller="SignupController" name="userForm">
       <md-content layout-margin>
         <div layout layout-sm="column">
           <md-input-container flex>
@@ -27,7 +27,7 @@
           <input ng-model="user.password">
         </md-input-container>
         <section layout="row" layout-sm="column" layout-align="end center">
-          <md-button class="md-raised md-primary">註冊帳號</md-button>
+          <md-button ng-click="createUser()" class="md-raised md-primary">註冊帳號</md-button>
           <md-button ui-sref="login">或 登入</md-button>
         </section>
       </md-content>
