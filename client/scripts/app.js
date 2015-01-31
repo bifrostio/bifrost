@@ -2,10 +2,12 @@
 
 (function() {
   angular.module('bifrost',[
+    'lumx',
     'ui.router',
     'lbServices',
     'leaflet-directive',
-    'ngMaterial'
+    'ngMaterial',
+    'angularFileUpload'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -17,11 +19,13 @@
         url: '/projects/:id'
       })
       .state('create', {
-        url: '/create'
+        url: '/create',
+        templateUrl: 'views/create.html',
+        controller: 'ProjectController'
       })
       .state('projects', {
         url: '/projects',
-        templateUrl: 'views/projects.html'
+        templateUrl: 'views/projects.html',
       }).state('login', {
         url: '/login',
         templateUrl: 'views/login.html'
