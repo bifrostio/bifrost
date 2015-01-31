@@ -3,7 +3,7 @@
 (function() {
   var app = angular.module('bifrost');
 
-  app.controller('LoginController', function($scope, $state, User) {
+  app.controller('LoginController', function($scope, $state, Supporter) {
     $scope.user = {};
 
     this.login = function() {
@@ -11,7 +11,7 @@
         return;
       }
 
-      User.login($scope.user).$promise.then(function() {
+      Supporter.login($scope.user).$promise.then(function() {
         $state.go('projects');
       });
     };

@@ -41,9 +41,9 @@
   },
   "validations": [],
   "relations": {
-    "user": {
+    "supporter": {
       "type": "belongsTo",
-      "model": "user",
+      "model": "supporter",
       "foreignKey": "ownerId"
     },
     "provisions": {

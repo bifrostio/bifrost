@@ -3,12 +3,12 @@
 (function() {
   var app = angular.module('bifrost');
 
-  app.controller('SignupController', function($scope, $state, User) {
+  app.controller('SignupController', function($scope, $state, Supporter) {
     $scope.user = {};
 
     $scope.createUser = function() {
-      User.create($scope.user).$promise.then(function() {
-        User.login($scope.user).$promise.then(function() {
+      Supporter.create($scope.user).$promise.then(function() {
+        Supporter.login($scope.user).$promise.then(function() {
           $state.go('projects');
         });
       });

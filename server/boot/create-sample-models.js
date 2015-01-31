@@ -1,10 +1,11 @@
 var async = require('async');
+var colors = require('colors');
 
 module.exports = function(app, done) {
 
   var tasks = [
     function(callback) {
-      app.models.user.create([
+      app.models.supporter.create([
         {
           email: 'chialin.shr@gmail.com',
           password: '1234',
@@ -15,9 +16,9 @@ module.exports = function(app, done) {
           password: '1234',
           lastName: 'Ju',firstName: 'yuren'
         }
-      ], function(err, users) {
+      ], function(err) {
         if (err) throw err;
-        console.log('Models created: \n', users);
+        console.log('Default users created.'.green);
         callback();
       });
     },
@@ -47,10 +48,10 @@ module.exports = function(app, done) {
           'contactPhone':'0911111111',
           'ownerId': 2,'userId': 2
         }
-      ], function(err, Projects) {
+      ], function(err) {
         if (err) throw err;
 
-        console.log('Models created: \n', Projects);
+        console.log('Default projects created.'.green);
         callback();
       });
     }
