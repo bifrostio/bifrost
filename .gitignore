@@ -1,2 +1,4 @@
 node_modules
 client/vendor/
+upload/photos
+npm-debug.log

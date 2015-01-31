@@ -1,0 +1,95 @@
+<div>
+  <md-whiteframe class="md-whiteframe-z1">
+    <md-content class="create-panel">
+      <md-toolbar>
+        <h2 class="md-toolbar-tools">
+          <span>請求物資</span>
+        </h2>
+      </md-toolbar>
+      <form name="userForm">
+        <md-content layout-padding layout-margin>
+          <ng-switch on="selectedPage">
+            <md-content ng-switch-when="basic">
+              <div layout layout-sm="column">
+                <md-input-container flex>
+                  <label>縣/市</label>
+                  <input ng-model="project.city">
+                </md-input-container>
+                <md-input-container flex>
+                  <label>鄉鎮區域</label>
+                  <input ng-model="project.district">
+                </md-input-container>
+              </div>
+              <md-input-container flex>
+                <label>街道/門牌號碼</label>
+                <input ng-model="project.detailAddress">
+              </md-input-container>
+              <md-input-container flex>
+                  <label>聯絡人姓名</label>
+                  <input ng-model="project.contactName">
+                </md-input-container>
+              <div layout layout-sm="column">
+                <md-input-container flex>
+                  <label>聯絡電話</label>
+                  <input ng-model="project.contactPhone">
+                </md-input-container>
+                <md-input-container flex>
+                  <label>聯絡用電子郵件</label>
+                  <input ng-model="project.contactEmail">
+                </md-input-container>
+              </div>
+
+            </md-content>
+            <md-content ng-switch-when="provisions">
+              <md-list>
+                <md-item ng-repeat="item in provisions">
+                  <md-item-content>
+                    <div class="md-tile-left">
+                      <label>
+                        <i class="mdi mdi--insert-photo"></i>
+                        <input class="upload-photo" type="file" nv-file-select="" uploader="uploader" single  />
+                      </label>
+                    </div>
+                    <div class="md-tile-content">
+                      <div flex layout="row">
+                        <md-input-container flex>
+                          <label>物資名稱</label>
+                          <input ng-model="item.name">
+                        </md-input-container>
+                        <md-input-container flex>
+                          <label>所需數量</label>
+                          <input ng-model="item.totalQuantity">
+                        </md-input-container>
+                      </div>
+                      <md-input-container flex>
+                        <label>敘述</label>
+                        <input ng-model="item.description">
+                      </md-input-container>
+                    </div>
+                  </md-item-content>
+                </md-item>
+              </md-list>
+              <button ng-click="addProvision()" class="btn btn--m btn--blue btn--fab" lx-ripple><i class="mdi mdi--add"></i></button>
+              Provision
+            </md-content>
+            <md-content ng-switch-when="detail">
+              <div flex>
+                <md-input-container flex>
+                  <label>專案名稱></label>
+                  <input ng-model="project.name">
+                </md-input-container>
+                <md-input-container flex>
+                  <label>專案敘述</label>
+                  <textarea ng-model="project.description" columns="1" md-maxlength="150"></textarea>
+              </div>
+            </md-content>
+          </ng-switch>
+          <section layout="row" layout-sm="column" layout-align="end center">
+            <md-button ng-hide="pos === 2" ng-click="pos = pos + 1" class="medium-button md-raised md-primary">下一步</md-button>
+            <md-button ng-show="pos === 2" ng-click="create()" class="medium-button md-raised md-primary">建立專案</md-button>
+          </section>
+          </md-content>
+      </form>
+    </md-content>
+  </md-whiteframe>
+</div>
