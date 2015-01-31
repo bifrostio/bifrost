@@ -5,7 +5,7 @@
   "scripts": {
     "pretest": "jshint .",
     "postinstall": "node_modules/bower/bin/bower install",
-    "prestart": "node_modules/loopback-angular-cli/bin/lb-ng  server/server.js client/vendor/loopback-services.js",
+    "prestart": "node_modules/loopback-sdk-angular-cli/bin/lb-ng  server/server.js client/vendor/loopback-services.js",
     "start": "node server/server.js"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "loopback-boot": "^2.4.0",
     "loopback-component-storage": "^1.2.0",
     "loopback-datasource-juggler": "^2.7.0",
+    "loopback-sdk-angular-cli": "^1.1.4",
     "serve-favicon": "^2.0.1"
   },
   "optionalDependencies": {
@@ -24,8 +25,7 @@
   },
   "devDependencies": {
     "bower": "^1.3.12",
-    "jshint": "^2.5.6",
-    "loopback-angular-cli": "^1.1.1"
+    "jshint": "^2.5.6"
   },
   "repository": {
     "type": "",

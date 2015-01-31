@@ -3,7 +3,8 @@
 (function() {
   var app = angular.module('bifrost');
 
-  var controller = function($scope, async, FileUploader, Project, Provision) {
+  var controller = function($scope, async, FileUploader, Project, Provision,
+                            Supporter) {
     $scope.project = {};
     $scope.provisions = [];
     $scope.pos = 0;
@@ -33,19 +34,35 @@
     };
 
     $scope.create = function() {
-      Project.create($scope.project).$promise.then(function(project) {
-        console.log(project);
-        var tasks = $scope.provisions.map(function(p) {
-          return function(callback) {
-            Project.provisions.create({id: project.id}, p)
-            .$promise.then(function() {
-              callback();
-            });
-          };
-        });
-        async.series(tasks, function() {
-          console.log('done');
-        });
+      async.series([
+        function(callback) {
+          Supporter.getCurrent().$promise.then(function(user) {
+            $scope.user = user;
+            callback();
+          });
+        },
+        function(callback) {
+          Supporter.projects.create({id: $scope.user.id}, $scope.project)
+          .$promise.then(function(project) {
+            $scope.project = project;
+            callback();
+          });
+        },
+        function(callback) {
+          var tasks = $scope.provisions.map(function(p) {
+            return function(callback) {
+              Project.provisions.create({id: $scope.project.id}, p)
+              .$promise.then(function() {
+                callback();
+              });
+            };
+          });
+          async.series(tasks, function() {
+            callback();
+          });
+        }
+      ], function() {
+        console.log('done');
       });
     };
   };
