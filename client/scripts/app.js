@@ -16,12 +16,13 @@
         templateUrl: 'views/main.html'
       })
       .state('project', {
-        url: '/projects/:id'
+        url: '/projects/:id',
+        controller: 'ProjectController'
       })
       .state('create', {
         url: '/create',
         templateUrl: 'views/create.html',
-        controller: 'ProjectController'
+        controller: 'CreateController'
       })
       .state('projects', {
         url: '/projects',

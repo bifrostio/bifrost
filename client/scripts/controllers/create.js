@@ -67,5 +67,5 @@
     };
   };
 
-  app.controller('ProjectController', controller);
+  app.controller('CreateController', controller);
 })();
