@@ -3,10 +3,19 @@
     <md-content class="project-panel-content" layout-margin layout-padding>
       <div layout="row">
         <div flex>
-          <div layout="column" layout-padding>
-            <h2 flex>
-              聯絡人資訊
+          <md-toolbar class="project-toolbar">
+            <h2 class="md-toolbar-tools">
+              <span flex>聯絡人資訊</span>
+              <md-button ui-sref="projects">
+                <md-tooltip>
+                  Cancel
+                </md-tooltip>
+                <i class="mdi mdi--close"></i>
+              </md-button>
             </h2>
+          </md-toolbar>
+
+          <div layout="column" layout-padding>
             <div layout="row" flex>
               <div flex ng-show="project.contactName">
                 <i class="mdi mdi--person"></i> {{project.contactName}}
