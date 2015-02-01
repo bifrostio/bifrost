@@ -30,6 +30,7 @@ html, body, .map, .angular-leaflet-map {
 
 .medium-button {
   min-width: 8em;
+  margin: 0.5em;
 }
 
 .no-projects {

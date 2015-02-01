@@ -57,6 +57,10 @@
                           <input ng-model="item.name">
                         </md-input-container>
                         <md-input-container flex>
+                          <label>單位</label>
+                          <input ng-model="item.unit" placeholder="如：箱、支">
+                        </md-input-container>
+                        <md-input-container flex>
                           <label>所需數量</label>
                           <input ng-model="item.totalQuantity">
                         </md-input-container>
@@ -69,13 +73,17 @@
                   </md-item-content>
                 </md-item>
               </md-list>
-              <button ng-click="addProvision()" class="btn btn--m btn--blue btn--fab" lx-ripple><i class="mdi mdi--add"></i></button>
-              Provision
+              <div layout>
+                <button ng-click="addProvision()" class="btn btn--m btn--blue btn--flat" lx-ripple>
+                  <i class="mdi mdi--add"></i>
+                  新增物資種類
+                </button>
+              </div>
             </md-content>
             <md-content ng-switch-when="detail">
               <div flex>
                 <md-input-container flex>
-                  <label>專案名稱></label>
+                  <label>專案名稱</label>
                   <input ng-model="project.name">
                 </md-input-container>
                 <md-input-container flex>
@@ -84,7 +92,8 @@
               </div>
             </md-content>
           </ng-switch>
-          <section layout="row" layout-sm="column" layout-align="end center">
+          <section layout="row" layout-sm="column" layout-align="center center">
+            <md-button ng-hide="pos === 0" ng-click="pos = pos - 1" class="medium-button md-raised md-primary">上一步</md-button>
             <md-button ng-hide="pos === 2" ng-click="pos = pos + 1" class="medium-button md-raised md-primary">下一步</md-button>
             <md-button ng-show="pos === 2" ng-click="create()" class="medium-button md-raised md-primary">建立專案</md-button>
           </section>
