@@ -3,7 +3,7 @@
 (function() {
   var app = angular.module('bifrost');
 
-  var controller = function($scope, async, FileUploader, Project, Provision,
+  var controller = function($scope, $state, async, FileUploader, Project, Provision,
                             Supporter) {
     $scope.project = {};
     $scope.provisions = [];
@@ -62,7 +62,7 @@
           });
         }
       ], function() {
-        console.log('done');
+        $state.go('project', {id: $scope.project.id});
       });
     };
   };

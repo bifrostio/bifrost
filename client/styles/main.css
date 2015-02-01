@@ -75,3 +75,13 @@ input.upload-photo {
 .explained {
   width: 800px;
 }
+
+md-toolbar.project-toolbar {
+  color: black;
+  background: none;
+  box-shadow: none;
+}
+
+md-toolbar.project-toolbar .md-button {
+  color: black;
+}
