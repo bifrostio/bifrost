@@ -44,7 +44,7 @@
                   <h3>{{provision.name}}</h3>
                   <md-progress-linear class="md-warn" md-mode="buffer"
                     value="{{provision.shippedQuantity/provision.totalQuantity*100}}"
-                    md-buffer-value="{{provision.promisedQuantity/provision.totalQuantity*100}}">
+                    md-buffer-value="{{(provision.promisedQuantity+donatedProvisions[$index].promisedQuantity)/provision.totalQuantity*100}}">
                   </md-progress-linear>
                 </div>
               </md-item-content>
@@ -74,7 +74,7 @@
                   {{project.provisions[$index].name}}
                   <span ng-show="project.provisions[$index].unit">({{project.provisions[$index].unit}})</span>
                 </label>
-                <input ng-model="p.promisedQuantity">
+                <input type="number" ng-model="p.promisedQuantity">
               </md-input-container>
             </form>
           </div>

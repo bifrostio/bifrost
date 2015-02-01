@@ -3,7 +3,7 @@
 (function() {
   var app = angular.module('bifrost');
 
-  var controller = function($scope, $state, Project, Batch, async) {
+  var controller = function($scope, $state, Project, Provision, Batch, async) {
     $scope.explained = false;
     $scope.estimations = ['一週內', '一個月內', '超過一個月'];
     $scope.batch = {
@@ -17,12 +17,23 @@
     Project.findOne({filter: filter}).$promise.then(function(project) {
       $scope.project = project;
       $scope.donatedProvisions = [];
-      angular.forEach($scope.project.provisions, function(p) {
+      angular.forEach($scope.project.provisions, function(p, index) {
         $scope.donatedProvisions.push({
-          shippedQuantity: 0
+          promisedQuantity: 0,
+          shippedQuantity: 0,
+          provisionId: project.provisions[index].id
         });
       });
     });
+
+    function updateQuantity(dp, callback) {
+      Provision.findById({id: dp.provisionId}).$promise.then(function(p) {
+        p.promisedQuantity += dp.promisedQuantity;
+        Provision.update({where: {id: p.id}}, p).$promise.then(function() {
+          callback();
+        });
+      });
+    }
 
     $scope.donate = function() {
       $scope.batch.createdDate = Date.now();
@@ -32,17 +43,22 @@
         trackingNumber.push(digist.toString());
       }
       $scope.batch.trackingNumber = trackingNumber.join('');
-      Batch.create($scope.batch).$promise.then(function(batch) {
-        var tasks = $scope.donatedProvisions.map(function(p) {
+      Project.batches.create({id: $scope.project.id}, $scope.batch)
+      .$promise.then(function(batch) {
+        var tasks = $scope.donatedProvisions.map(function(p, index) {
           return function(callback) {
             Batch.donatedProvisions.create({id: batch.id}, p)
-            .$promise.then(function() {
-              callback();
+            .$promise.then(function(dp) {
+              updateQuantity(dp, callback);
             });
           };
         });
         async.series(tasks, function() {
           console.log('done');
+          $state.go(
+            'address',
+            { projectId: $scope.project.id, batchId: batch.id }
+          );
         });
       });
     };

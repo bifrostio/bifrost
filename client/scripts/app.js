@@ -20,6 +20,11 @@
         templateUrl: 'views/project.html',
         controller: 'ProjectController'
       })
+      .state('address', {
+        url: '/projects/:projectId/batch/:batchId',
+        templateUrl: 'views/address.html',
+        controller: 'AddressController'
+      })
       .state('create', {
         url: '/create',
         templateUrl: 'views/create.html',
