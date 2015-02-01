@@ -10,6 +10,9 @@
     "description": {
       "type": "string"
     },
+    "unit": {
+      "type": "string"
+    },
     "photos": {
       "type": [
         "string"
