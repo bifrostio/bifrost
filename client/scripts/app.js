@@ -35,5 +35,18 @@
       });
 
     $urlRouterProvider.otherwise('/');
+  })
+  .run(function($rootScope, $location, Supporter) {
+    $rootScope.$on('$stateChangeStart', function(event, next) {
+      Supporter.getCurrent().$promise
+      .then(function(user) {
+        if (!user) {
+          $location.url('/login');
+        }
+      })
+      .catch(function() {
+        $location.url('/login');
+      });
+    });
   });
 })();
