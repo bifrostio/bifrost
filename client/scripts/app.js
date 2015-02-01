@@ -17,6 +17,7 @@
       })
       .state('project', {
         url: '/projects/:id',
+        templateUrl: 'views/project.html',
         controller: 'ProjectController'
       })
       .state('create', {
@@ -27,6 +28,7 @@
       .state('projects', {
         url: '/projects',
         templateUrl: 'views/projects.html',
+        controller: 'ProjectsController'
       }).state('login', {
         url: '/login',
         templateUrl: 'views/login.html'
