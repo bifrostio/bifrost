@@ -10,10 +10,6 @@
     "promisedQuantity": {
       "type": "number",
       "required": true
-    },
-    "estimate": {
-      "type": "string",
-      "required": true
     }
   },
   "validations": [],

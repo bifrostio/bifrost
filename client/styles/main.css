@@ -40,7 +40,7 @@ html, body, .map, .angular-leaflet-map {
   min-height: 200px;
 }
 
-.projects-panel, .create-panel {
+.half-panel {
   position: absolute;
   width: 500px;
   top: 50px;
@@ -63,4 +63,14 @@ html, body, .map, .angular-leaflet-map {
 input.upload-photo {
   width: 1px;
   height: 1px;
+}
+
+.float {
+  float: right;
+  margin-top: -18px;
+  margin-right: 20px;
+}
+
+.explained {
+  width: 800px;
 }
