@@ -33,4 +33,27 @@
       </md-content>
     </md-content>
   </md-whiteframe>
+
+  <section class="projects-panel-content" layout="column" ng-controller="MyProjectsController">
+    <div class="toolbar__right" layout-margin layout-padding>
+      <button class="btn btn--l btn--black btn--icon" lx-ripple lx-tooltip="我的物資" tooltip-position="bottom" ng-click="toggleRight()">
+        <i class="mdi mdi--apps"></i>
+      </button>
+    </div>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+      <ul>
+        <md-item ng-repeat="project in projects">
+          <div class="list-row list-row--has-primary">
+            <div class="list-primary-tile">
+              <i class="icon icon--l icon--grey icon--flat mdi mdi--bookmark-outline"></i>
+            </div>
+            <div class="list-content-tile list-content-tile--one-line">
+              <strong><a ui-sref="project({id: project.id})">{{project.name}}</a></strong>
+            </div>
+          </div>
+        </md-item>
+      </ul>
+    </md-sidenav>
+  </section>
 </div>
