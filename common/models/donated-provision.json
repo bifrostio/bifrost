@@ -10,6 +10,9 @@
     "promisedQuantity": {
       "type": "number",
       "required": true
+    },
+    "provisionId": {
+      "type": "number"
     }
   },
   "validations": [],

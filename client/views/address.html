@@ -1,0 +1,37 @@
+
+<md-whiteframe class="address md-whiteframe-z1" layout>
+  <md-content layout-fill>
+    <md-toolbar>
+      <h2 class="md-toolbar-tools">
+        <span>寄送資訊</span>
+      </h2>
+    </md-toolbar>
+    <md-content class="address-content">
+      <div>請將物資寄送到以下地址，收件者請務必包含序號：</div>
+      <div layout>
+        <div>
+          <!-- Lets create a CSS3 stamp -->
+          <div class="stamp">
+            <!-- the image -->
+            <img src="images/postage-stamp.jpg" />
+          </div>
+        </div>
+        <div layout="column" layout-padding class="address-lines" layout-align="center start">
+          <div>
+            <i class="mdi mdi--home"></i>
+            地址：{{address}}
+          </div>
+          <div>
+            <i class="mdi mdi--person"></i>
+            收件人：{{contactName}} (序號：{{trackingNumber}})
+          </div>
+        </div>
+      </div>
+      <div flex layout layout-align="end center">
+        <button class="btn btn--m btn--blue btn--raised" lx-ripple ui-sref="projects">確認</button>
+      </div>
+    </md-content>
+  </md-content>
+
+</md-whiteframe>
+
