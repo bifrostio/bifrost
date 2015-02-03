@@ -4,8 +4,8 @@
   "main": "server/server.js",
   "scripts": {
     "pretest": "jshint .",
-    "postinstall": "node_modules/bower/bin/bower install",
-    "prestart": "node_modules/loopback-sdk-angular-cli/bin/lb-ng  server/server.js client/vendor/loopback-services.js",
+    "postinstall": "node node_modules/bower/bin/bower install",
+    "prestart": "node node_modules/loopback-sdk-angular-cli/bin/lb-ng  server/server.js client/vendor/loopback-services.js",
     "start": "node server/server.js"
   },
   "dependencies": {
