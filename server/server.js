@@ -1,13 +1,20 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var path = require('path');
 
 var app = module.exports = loopback();
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
+app.dataSource('storage', {
+  connector: require('loopback-component-storage'),
+  provider: 'filesystem',
+  root: path.join(__dirname, '..', 'upload')
+});
+
 boot(app, __dirname);
 
-var path = require('path');
+
 app.use(loopback.static(path.resolve(__dirname, '../client')));
 
 app.start = function() {
