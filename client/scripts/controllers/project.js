@@ -3,8 +3,7 @@
 (function() {
   var app = angular.module('bifrost');
 
-  var controller = function($scope, $state, Project, Provision, Batch,
-                            DonatedProvision, async) {
+  var controller = function($scope, $state, Project, Provision, Batch, async) {
     $scope.explained = false;
     $scope.estimations = ['一週內', '一個月內', '超過一個月'];
     $scope.batch = {
@@ -48,8 +47,7 @@
       .$promise.then(function(batch) {
         var tasks = $scope.donatedProvisions.map(function(p, index) {
           return function(callback) {
-            p.batchId = batch.id;
-            DonatedProvision.create(p)
+            Batch.donatedProvisions.create({id: batch.id}, p)
             .$promise.then(function(dp) {
               updateQuantity(dp, callback);
             });

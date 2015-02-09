@@ -37,12 +37,6 @@
       "type": "belongsTo",
       "model": "project",
       "foreignKey": "projectId"
-    },
-    "batches": {
-      "type": "hasMany",
-      "model": "batch",
-      "foreignKey": "",
-      "through": "donatedProvision"
     }
   },
   "acls": [],
