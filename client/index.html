@@ -22,6 +22,7 @@
 
   <script src="scripts/app.js" defer></script>
   <script src="scripts/services/wrapper.js" defer></script>
+  <script src="scripts/services/address-resolver.js" defer></script>
   <script src="scripts/controllers/login.js" defer></script>
   <script src="scripts/controllers/map.js" defer></script>
   <script src="scripts/controllers/signup.js" defer></script>
@@ -38,7 +39,7 @@
 <body ng-app="bifrost">
   <div class="main-panel" ui-view=""></div>
   <div class="map" ng-controller="MapController">
-    <leaflet class="leaflet-map" defaults="defaults" center="center"></leaflet>
+    <leaflet class="leaflet-map" defaults="defaults" markers="markers" maxbounds="maxbounds"></leaflet>
   </div>
 </body>
 </html>

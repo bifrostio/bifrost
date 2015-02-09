@@ -19,16 +19,16 @@
               <div layout layout-sm="column">
                 <md-input-container flex>
                   <label>縣/市</label>
-                  <input ng-model="project.city">
+                  <input ng-model="project.city" ng-blur="checkMap()">
                 </md-input-container>
                 <md-input-container flex>
                   <label>鄉鎮區域</label>
-                  <input ng-model="project.district">
+                  <input ng-model="project.district" ng-blur="checkMap()">
                 </md-input-container>
               </div>
               <md-input-container flex>
                 <label>街道/門牌號碼</label>
-                <input ng-model="project.detailAddress">
+                <input ng-model="project.detailAddress" ng-blur="checkMap()">
               </md-input-container>
               <md-input-container flex>
                   <label>聯絡人姓名</label>

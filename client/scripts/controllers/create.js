@@ -3,8 +3,8 @@
 (function() {
   var app = angular.module('bifrost');
 
-  var controller = function($scope, $state, async, FileUploader, Project, Provision,
-                            Supporter) {
+  var controller = function($scope, $state, $http, async, FileUploader, Project,
+                            Provision, Supporter, addressResolver) {
     $scope.project = {};
     $scope.provisions = [];
     $scope.pos = 0;
@@ -30,6 +30,15 @@
       $scope.provisions.push({
         shippedQuantity: 0,
         promisedQuantity: 0
+      });
+    };
+
+    $scope.checkMap = function() {
+      var address = [$scope.project.city, $scope.project.district,
+        $scope.project.detailAddress];
+      addressResolver(address.join('')).then(function(data) {
+        // console.log(data);
+        $scope.$emit('address', data);
       });
     };
 
