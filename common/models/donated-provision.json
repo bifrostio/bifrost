@@ -10,9 +10,6 @@
     "promisedQuantity": {
       "type": "number",
       "required": true
-    },
-    "provisionId": {
-      "type": "number"
     }
   },
   "validations": [],
@@ -21,6 +18,11 @@
       "type": "belongsTo",
       "model": "batch",
       "foreignKey": "batchId"
+    },
+    "provision": {
+      "type": "belongsTo",
+      "model": "provision",
+      "foreignKey": "provisionId"
     }
   },
   "acls": [],

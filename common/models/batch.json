@@ -24,10 +24,11 @@
       "model": "project",
       "foreignKey": "projectId"
     },
-    "donatedProvisions": {
+    "provisions": {
       "type": "hasMany",
-      "model": "donatedProvision",
-      "foreignKey": ""
+      "model": "provision",
+      "foreignKey": "",
+      "through": "donatedProvision"
     }
   },
   "acls": [],
