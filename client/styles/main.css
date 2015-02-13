@@ -151,3 +151,8 @@ md-toolbar.project-toolbar .md-button {
 section.projects-panel-content {
   float: right;
 }
+
+.md-sidenav-right {
+  margin-top: 80px;
+  height: 300px;
+}
