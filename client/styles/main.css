@@ -147,3 +147,7 @@ md-toolbar.project-toolbar .md-button {
 .stamp img {
 
 }
+
+section.projects-panel-content {
+  float: right;
+}
