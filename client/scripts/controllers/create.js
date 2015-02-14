@@ -5,8 +5,13 @@
 
   var controller = function($scope, $state, $http, async, FileUploader, Project,
                             Provision, Supporter, addressResolver) {
-    $scope.project = {};
-    $scope.provisions = [];
+    $scope.project = {
+      name: '未命名專案'
+    };
+    $scope.provisions = [{
+      shippedQuantity: 0,
+      promisedQuantity: 0
+    }];
     $scope.pos = 0;
     $scope.pages = ['basic', 'provisions', 'detail'];
     $scope.selectedPage = $scope.pages[0];
@@ -35,13 +40,15 @@
 
     $scope.checkMap = function() {
       var address = [$scope.project.city, $scope.project.district,
-        $scope.project.detailAddress];
-      addressResolver(address.join('')).then(function(data) {
-        var location = data.results[0].geometry.location;
-        $scope.project.latitude = location.lat;
-        $scope.project.longitude = location.lng;
-        $scope.$emit('address', data);
-      });
+        $scope.project.detailAddress].join('');
+      if (address.length !== 0) {
+        addressResolver(address).then(function(data) {
+          var location = data.results[0].geometry.location;
+          $scope.project.latitude = location.lat;
+          $scope.project.longitude = location.lng;
+          $scope.$emit('address', data);
+        });
+      }
     };
 
     $scope.create = function() {

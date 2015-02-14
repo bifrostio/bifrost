@@ -12,39 +12,39 @@
           </md-button>
         </h2>
       </md-toolbar>
-      <form name="userForm">
+      <form name="projectForm">
         <md-content layout-padding layout-margin>
           <ng-switch on="selectedPage">
             <md-content ng-switch-when="basic">
               <div layout layout-sm="column">
                 <md-input-container flex>
                   <label>縣/市</label>
-                  <input ng-model="project.city" ng-blur="checkMap()">
+                  <input ng-model="project.city" required name="city" ng-blur="checkMap()">
                 </md-input-container>
                 <md-input-container flex>
                   <label>鄉鎮區域</label>
-                  <input ng-model="project.district" ng-blur="checkMap()">
+                  <input name="district" ng-model="project.district" ng-blur="checkMap()">
                 </md-input-container>
               </div>
               <md-input-container flex>
                 <label>街道/門牌號碼</label>
-                <input ng-model="project.detailAddress" ng-blur="checkMap()">
+                <input name="detailAddress" required ng-model="project.detailAddress" ng-blur="checkMap()">
               </md-input-container>
               <md-input-container flex>
                   <label>聯絡人姓名</label>
-                  <input ng-model="project.contactName">
+                  <input required name="contactName" ng-model="project.contactName">
                 </md-input-container>
               <div layout layout-sm="column">
                 <md-input-container flex>
                   <label>聯絡電話</label>
-                  <input ng-model="project.contactPhone">
+                  <input required name="contactPhone" ng-model="project.contactPhone">
                 </md-input-container>
                 <md-input-container flex>
                   <label>聯絡用電子郵件</label>
-                  <input ng-model="project.contactEmail">
+                  <input required name="contactEmail" ng-model="project.contactEmail">
                 </md-input-container>
               </div>
-
+              <div flex layout class="required">* 除鄉鎮區域以外其他均為必填欄位</div>
             </md-content>
             <md-content ng-switch-when="provisions">
               <md-list>
@@ -56,11 +56,11 @@
                         <input class="upload-photo" type="file" nv-file-select="" uploader="uploader" single  />
                       </label>
                     </div>
-                    <div class="md-tile-content">
+                    <div ng-form="provisionForm" class="md-tile-content">
                       <div flex layout="row">
                         <md-input-container flex>
                           <label>物資名稱</label>
-                          <input ng-model="item.name">
+                          <input required ng-model="item.name">
                         </md-input-container>
                         <md-input-container flex>
                           <label>單位</label>
@@ -68,7 +68,7 @@
                         </md-input-container>
                         <md-input-container flex>
                           <label>所需數量</label>
-                          <input ng-model="item.totalQuantity">
+                          <input required ng-model="item.totalQuantity">
                         </md-input-container>
                       </div>
                       <md-input-container flex>
@@ -79,18 +79,21 @@
                   </md-item-content>
                 </md-item>
               </md-list>
-              <div layout>
-                <button ng-click="addProvision()" class="btn btn--m btn--blue btn--flat" lx-ripple>
-                  <i class="mdi mdi--add"></i>
-                  新增物資種類
-                </button>
+              <div layout="column">
+                <div flex>
+                  <button ng-click="addProvision()" class="btn btn--m btn--blue btn--flat" lx-ripple>
+                    <i class="mdi mdi--add"></i>
+                    新增物資種類
+                  </button>
+                </div>
+                <div flex class="required">* 物資名稱與所需數量為必填</div>
               </div>
             </md-content>
             <md-content ng-switch-when="detail">
               <div flex>
                 <md-input-container flex>
                   <label>專案名稱</label>
-                  <input ng-model="project.name">
+                  <input required ng-model="project.name">
                 </md-input-container>
                 <md-input-container flex>
                   <label>專案敘述</label>
@@ -100,8 +103,9 @@
           </ng-switch>
           <section layout="row" layout-sm="column" layout-align="center center">
             <md-button ng-hide="pos === 0" ng-click="pos = pos - 1" class="medium-button md-raised md-primary">上一步</md-button>
-            <md-button ng-hide="pos === 2" ng-click="pos = pos + 1" class="medium-button md-raised md-primary">下一步</md-button>
-            <md-button ng-show="pos === 2" ng-click="create()" class="medium-button md-raised md-primary">建立專案</md-button>
+            <md-button ng-disabled="(pos === 0 && projectForm.$invalid) || (pos === 1 && projectForm.$invalid)"
+              ng-hide="pos === 2" ng-click="pos = pos + 1" class="medium-button md-raised md-primary">下一步</md-button>
+            <md-button ng-disabled="pos === 2 && projectForm.$invalid" ng-show="pos === 2" ng-click="create()" class="medium-button md-raised md-primary">建立專案</md-button>
           </section>
           </md-content>
       </form>

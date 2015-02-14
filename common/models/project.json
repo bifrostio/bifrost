@@ -30,8 +30,7 @@
       "required": true
     },
     "district": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "detailAddress": {
       "type": "string",
