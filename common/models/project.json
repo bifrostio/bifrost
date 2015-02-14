@@ -36,6 +36,12 @@
     "detailAddress": {
       "type": "string",
       "required": true
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
     }
   },
   "validations": [],
