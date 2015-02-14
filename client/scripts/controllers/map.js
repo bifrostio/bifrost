@@ -1,10 +1,12 @@
 'use strict';
 
+/* global L */
+
 (function() {
   var app = angular.module('bifrost');
 
   app.controller('MapController', function($scope, $rootScope, $timeout,
-                                           addressResolver) {
+                                           addressResolver, leafletData) {
     $scope.defaults = {
       tileLayer: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoomControlPosition: 'bottomright',
@@ -36,9 +38,42 @@
     addressResolver('台灣').then(function(data) {
       setupMaxBounds(data);
     });
+
+    $rootScope.$on('projects', function(type, projects) {
+      var markers = {};
+      var latitudeArray = [];
+      var minLng = {longitude: 180};
+      var maxLng = {longitude: -180};
+      angular.forEach(projects, function(p, index) {
+        if (p.longitude > maxLng.longitude) {
+          maxLng = p;
+        }
+        if (p.longitude < minLng.longitude) {
+          minLng = p;
+        }
+        markers[index] = {
+          lat: p.latitude,
+          lng: p.longitude,
+          title: p.name,
+          label: {
+            message: p.description ?  p.name + ' - ' + p.description : p.name,
+          }
+        };
+        var point = L.latLng(p.latitude, p.longitude);
+        latitudeArray.push(point);
+      });
+      var additionPoint = L.latLng(minLng.latitude,
+        (minLng.longitude - (maxLng.longitude - minLng.longitude)));
+      latitudeArray.push(additionPoint);
+      $scope.markers = markers;
+      leafletData.getMap().then(function(map) {
+        var bounds = new L.LatLngBounds(latitudeArray);
+        map.fitBounds(bounds);
+      });
+    });
+
     $rootScope.$on('address', function(event, data) {
       $scope.center = {};
-      console.log(data);
       setupMaxBounds(data);
       $scope.markers.mainMaker = {
         lat: data.results[0].geometry.location.lat,

@@ -34,6 +34,8 @@ module.exports = function(app, done) {
           'contactName': '徐肇瑄',
           'contactEmail': 'shih@example.com',
           'contactPhone':'0911111111',
+          'latitude': 25.042185,
+          'longitude': 121.614548,
           'ownerId': 1
         },
         {'name': '地牛大翻身物資需求',
@@ -42,6 +44,8 @@ module.exports = function(app, done) {
           'city': 'Taipei',
           'district': 'tet',
           'detailAddress': 'Taipei',
+          'latitude': 25.033718,
+          'longitude': 121.56481,
           'contactName': '張俊傑',
           'contactEmail': 'change@example.com',
           'contactPhone':'0921234567',

@@ -5,6 +5,7 @@
 
   var controller = function($scope, $state, $http, async, FileUploader, Project,
                             Provision, Supporter, addressResolver) {
+    $scope.$emit('projects', []);
     $scope.project = {
       name: '未命名專案'
     };
