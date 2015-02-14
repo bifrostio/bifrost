@@ -34,9 +34,15 @@
         url: '/projects',
         templateUrl: 'views/projects.html',
         controller: 'ProjectsController'
-      }).state('login', {
+      })
+      .state('login', {
         url: '/login',
         templateUrl: 'views/login.html'
+      })
+      .state('update', {
+        url: '/update/:projectId',
+        templateUrl: 'views/update.html',
+        controller: 'UpdateController'
       });
 
     $urlRouterProvider.otherwise('/');

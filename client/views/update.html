@@ -1,0 +1,54 @@
+<div ng-controller="UpdateController as update">
+<md-whiteframe class="md-whiteframe-z1">
+  <md-content class="half-panel">
+    <md-toolbar>
+      <h2 class="md-toolbar-tools">
+        <span>更新物資狀況</span>
+      </h2>
+    </md-toolbar>
+    <md-content class="projects-panel-content" layout-margin layout-padding>
+      <md-item ng-repeat="batch in project.batches">
+        <md-item-content>
+          <md-input-container>
+            <label>追蹤碼</label>
+            <input required ng-model="batch.trackingNumber">
+          </md-input-container>
+          <button class="btn btn--m btn--blue btn--raised" ng-click="update.opendDialog('confirm', batch.id)" lx-ripple>更新狀況</button>
+        </md-item-content>
+      </md-item>
+    </md-content>
+  </md-content>
+</md-whiteframe>
+
+<lx-dialog class="dialog dialog--l" id="confirm">
+  <div class="dialog__header">
+    <div class="toolbar bgc-light-blue-500 pl++">
+      <span class="toolbar__label tc-white fs-title">
+        預計寄送物資資訊
+      </span>
+
+      <div class="toolbar__right">
+        <button class="btn btn--l btn--white btn--icon" lx-ripple lx-dialog-close>
+          <i class="mdi mdi--close"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <form>
+  <div class="dialog__content">
+    <div class="p++" ng-repeat="dp in batch.donatedProvisions">
+      <lx-text-field label="{{dp.provision.name}}({{dp.provision.unit}})">
+        <input type="number" ng-model="dp.shippedQuantity">
+      </lx-text-field>
+      <button class="btn btn--m btn--blue btn--raised" ng-click="update.gotAll(dp.id)" lx-ripple>全部送達</button>
+    </div>
+  </div>
+  <div class="dialog__actions">
+    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-dialog-close>取消</button>
+    <button class="btn btn--m btn--black btn--flat" ng-click="update.save()" lx-ripple lx-dialog-close>儲存</button>
+  </div>
+  </form>
+
+</lx-dialog>
+</div>
