@@ -7,8 +7,11 @@
 
     Project.find({include: ['supporter']}).$promise.then(function(projects) {
       $scope.projects = projects;
+      $scope.$emit('projects', projects);
     });
-  }).controller('MyProjectsController', function($scope, $mdSidenav, async, Supporter, Project) {
+  })
+  .controller('MyProjectsController',
+  function($scope, $mdSidenav, async, Supporter, Project) {
     async.series([
       function(callback) {
         Supporter.getCurrent().$promise.then(function(user) {

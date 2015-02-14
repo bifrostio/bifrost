@@ -39,6 +39,7 @@ html, body, .map, .angular-leaflet-map {
 
 .projects-panel-content {
   min-height: 200px;
+  max-height: 500px;
 }
 
 .half-panel {
