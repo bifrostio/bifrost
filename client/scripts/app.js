@@ -7,7 +7,8 @@
     'lbServices',
     'leaflet-directive',
     'ngMaterial',
-    'angularFileUpload'
+    'angularFileUpload',
+    'ngMessages'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider

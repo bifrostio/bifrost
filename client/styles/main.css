@@ -156,3 +156,9 @@ section.projects-panel-content {
   margin-top: 80px;
   height: 300px;
 }
+
+.required {
+  font-size: 12px;
+  color: red;
+  margin-left: 18px;
+}
