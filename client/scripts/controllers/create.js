@@ -37,7 +37,9 @@
       var address = [$scope.project.city, $scope.project.district,
         $scope.project.detailAddress];
       addressResolver(address.join('')).then(function(data) {
-        // console.log(data);
+        var location = data.results[0].geometry.location;
+        $scope.project.latitude = location.lat;
+        $scope.project.longitude = location.lng;
         $scope.$emit('address', data);
       });
     };
