@@ -22,7 +22,7 @@
 
 <lx-dialog class="dialog dialog--l" id="confirm">
   <div class="dialog__header">
-    <div class="toolbar bgc-light-blue-500 pl++">
+    <div class="toolbar bgc-indigo-400 pl++">
       <span class="toolbar__label tc-white fs-title">
         預計寄送物資資訊
       </span>
@@ -41,6 +41,7 @@
       <lx-text-field label="{{dp.provision.name}}({{dp.provision.unit}})">
         <input type="number" ng-model="dp.shippedQuantity">
       </lx-text-field>
+      <div class="prompt-message">預設送達的物資數量: {{dp.promisedQuantity}}</div>
       <button class="btn btn--m btn--blue btn--raised" ng-click="update.gotAll(dp.id)" lx-ripple>全部送達</button>
     </div>
   </div>
