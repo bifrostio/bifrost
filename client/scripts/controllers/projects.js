@@ -4,6 +4,13 @@
   var app = angular.module('bifrost');
 
   app.controller('ProjectsController', function($scope, Supporter, Project) {
+    $scope.userLoaded = false;
+    Supporter.getCurrent().$promise.then(function(user) {
+      $scope.userLoaded = true;
+      $scope.user = user;
+    }).catch(function() {
+      $scope.userLoaded = true;
+    });
 
     Project.find({include: ['supporter']}).$promise.then(function(projects) {
       $scope.projects = projects;
@@ -11,7 +18,7 @@
     });
   })
   .controller('MyProjectsController',
-  function($scope, $mdSidenav, async, Supporter, Project) {
+  function($scope, $state, $mdSidenav, async, Supporter, Project) {
     async.series([
       function(callback) {
         Supporter.getCurrent().$promise.then(function(user) {
@@ -32,6 +39,12 @@
       $mdSidenav('right')
       .toggle()
       .then(function(){});
+    };
+
+    $scope.logout = function() {
+      Supporter.logout().$promise.then(function() {
+        $state.go('login');
+      });
     };
   });
 

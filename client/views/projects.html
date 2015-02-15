@@ -27,8 +27,11 @@
             <md-divider ng-if="!$last"></md-divider>
           </md-item>
         </md-list>
-        <section layout layout-padding layout-align="center center">
-          <md-button ui-sref="create" class="medium-button md-primary">請求物資</md-button>
+        <section layout="column" layout-padding layout-align="center center">
+          <md-button ng-disabled="!user" ui-sref="create" class="medium-button md-primary">
+            請求物資
+          </md-button>
+          <p ng-show="!user && userLoaded" class="warning">此功能需要<a ui-sref="login">登入</a>後才能使用</p>
         </section>
       </md-content>
     </md-content>
@@ -59,6 +62,7 @@
           </div>
         </md-item>
       </ul>
+      <md-button ng-click="logout()">Logout</md-button>
     </md-sidenav>
   </section>
 </div>

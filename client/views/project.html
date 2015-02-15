@@ -79,8 +79,8 @@
             </form>
           </div>
           <div flex>
-            <button ng-click="donate()" class="btn btn--m btn--blue btn--raised" lx-ripple>捐贈</button>
-
+            <button ng-disabled="!user" ng-click="donate()" class="btn btn--m btn--blue btn--raised" lx-ripple>捐贈</button>
+            <p ng-show="!user && userLoaded" class="warning">此功能需要<a ui-sref="login">登入</a>後才能使用</p>
           </div>
         </div>
       </div>

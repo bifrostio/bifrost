@@ -164,6 +164,11 @@ section.projects-panel-content {
   margin-left: 18px;
 }
 
+.warning {
+  color: red;
+  font-size: 12px;
+}
+
 .prompt-message {
   font-size: 12px;
   color: green;
@@ -183,4 +188,8 @@ md-progress-linear.md-default-theme.yellow .md-bar1 {
 
 md-progress-linear.md-default-theme.yellow .md-dashed:before {
   background: radial-gradient(rgb(245, 245, 160) 0%, rgb(245, 245, 160) 16%, transparent 42%);
+}
+
+a {
+  cursor: pointer;
 }
