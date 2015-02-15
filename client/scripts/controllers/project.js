@@ -3,12 +3,23 @@
 (function() {
   var app = angular.module('bifrost');
 
-  var controller = function($scope, $state, Project, Provision, Batch, async) {
+  var controller = function($scope, $state, Project, Provision, Batch, async,
+                            Supporter) {
     $scope.explained = false;
     $scope.estimations = ['一週內', '一個月內', '超過一個月'];
     $scope.batch = {
       estimate: $scope.estimations[0]
     };
+
+    $scope.userLoaded = false;
+    Supporter.getCurrent().$promise
+    .then(function(user) {
+      $scope.user = user;
+      $scope.userLoaded = true;
+    })
+    .catch(function() {
+      $scope.userLoaded = true;
+    });
 
     var filter = {
       where: {id: $state.params.id},

@@ -12,8 +12,8 @@
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('main', {
-        url: '/',
+      .state('signup', {
+        url: '/signup',
         templateUrl: 'views/main.html'
       })
       .state('project', {
@@ -46,19 +46,6 @@
         controller: 'UpdateController'
       });
 
-    $urlRouterProvider.otherwise('/');
-  })
-  .run(function($rootScope, $location, Supporter) {
-    $rootScope.$on('$stateChangeStart', function(event, next) {
-      Supporter.getCurrent().$promise
-      .then(function(user) {
-        if (!user) {
-          $location.url('/login');
-        }
-      })
-      .catch(function() {
-        $location.url('/login');
-      });
-    });
+    $urlRouterProvider.otherwise('/projects');
   });
 })();
