@@ -33,16 +33,16 @@
           <div class="float">
             <button ng-click="explained = !explained" class="btn btn--m btn--blue btn--fab" lx-ripple><i class="mdi mdi--healing"></i></button>
           </div>
-          <md-divider></md-divider>
+          <md-divider layout-padding layout-margin></md-divider>
           <md-list>
-            <md-item ng-repeat="provision in project.provisions">
+            <md-item ng-repeat="provision in project.provisions" ng-init="percent = provision.promisedQuantity/provision.totalQuantity*100">
               <md-item-content>
                 <div class="md-tile-left">
                     <img ng-src="{{provision.photos[0]}}">
                 </div>
                 <div class="md-tile-content">
                   <h3>{{provision.name}}</h3>
-                  <md-progress-linear class="md-warn" md-mode="buffer"
+                  <md-progress-linear ng-class="{'md-accent': percent < 50, yellow: percent >= 50 && percent < 100, green: percent == 100}" md-mode="buffer"
                     value="{{provision.shippedQuantity/provision.totalQuantity*100}}"
                     md-buffer-value="{{(provision.promisedQuantity+donatedProvisions[$index].promisedQuantity)/provision.totalQuantity*100}}">
                   </md-progress-linear>

@@ -169,3 +169,18 @@ section.projects-panel-content {
   color: green;
   padding-bottom: 10px;
 }
+
+md-progress-linear.md-default-theme.green .md-bar {
+  background-color: rgb(58, 179, 58);
+}
+md-progress-linear.md-default-theme.yellow .md-bar {
+  background-color: rgb(242, 242, 35);
+}
+
+md-progress-linear.md-default-theme.yellow .md-bar1 {
+  background-color: rgb(245, 245, 160);
+}
+
+md-progress-linear.md-default-theme.yellow .md-dashed:before {
+  background: radial-gradient(rgb(245, 245, 160) 0%, rgb(245, 245, 160) 16%, transparent 42%);
+}
