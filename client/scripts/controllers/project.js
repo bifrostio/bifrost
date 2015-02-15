@@ -16,6 +16,7 @@
     };
     Project.findOne({filter: filter}).$promise.then(function(project) {
       $scope.project = project;
+      $scope.$emit('projects', [project]);
       $scope.donatedProvisions = [];
       angular.forEach($scope.project.provisions, function(p, index) {
         $scope.donatedProvisions.push({

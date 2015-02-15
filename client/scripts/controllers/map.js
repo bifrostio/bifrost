@@ -62,9 +62,12 @@
         var point = L.latLng(p.latitude, p.longitude);
         latitudeArray.push(point);
       });
-      var additionPoint = L.latLng(minLng.latitude,
-        (minLng.longitude - (maxLng.longitude - minLng.longitude)));
-      latitudeArray.push(additionPoint);
+      if (projects.length > 1) {
+        var additionPoint = L.latLng(minLng.latitude,
+          (minLng.longitude - (maxLng.longitude - minLng.longitude)));
+        latitudeArray.push(additionPoint);
+      }
+
       $scope.markers = markers;
       leafletData.getMap().then(function(map) {
         var bounds = new L.LatLngBounds(latitudeArray);
