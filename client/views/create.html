@@ -51,10 +51,11 @@
                 <md-item ng-repeat="item in provisions">
                   <md-item-content>
                     <div class="md-tile-left">
-                      <label>
+                      <label ng-show="!item.photos">
                         <i class="mdi mdi--insert-photo"></i>
-                        <input class="upload-photo" type="file" nv-file-select="" uploader="uploader" single  />
+                        <input class="upload-photo" type="file" nv-file-select="" uploader="item.uploader" single  />
                       </label>
+                      <img class="face" ng-show="item.photos" ng-src="{{item.photos[0]}}" alt="" />
                     </div>
                     <div ng-form="provisionForm" class="md-tile-content">
                       <div flex layout="row">

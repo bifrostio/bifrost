@@ -55,7 +55,7 @@
             <md-item ng-repeat="provision in project.provisions" ng-init="percent = provision.promisedQuantity/provision.totalQuantity*100">
               <md-item-content>
                 <div class="md-tile-left">
-                    <img ng-src="{{provision.photos[0]}}">
+                    <img class="face" ng-src="{{provision.photos[0]}}">
                 </div>
                 <div class="md-tile-content">
                   <div layout="row">

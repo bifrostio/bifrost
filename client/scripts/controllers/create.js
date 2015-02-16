@@ -9,34 +9,43 @@
     $scope.project = {
       name: '未命名專案'
     };
-    $scope.provisions = [{
-      shippedQuantity: 0,
-      promisedQuantity: 0
-    }];
+    $scope.provisions = [];
     $scope.pos = 0;
     $scope.pages = ['basic', 'provisions', 'detail'];
     $scope.selectedPage = $scope.pages[0];
-
-    var uploader = $scope.uploader = new FileUploader({
-      scope: $scope,
-      url: '/api/containers/photos/upload',
-      formData: {key: 'value'}
-    });
-
-    uploader.onAfterAddingFile = function (item) {
-      console.info('After adding a file', item);
-      item.upload();
-    };
 
     $scope.$watch('pos', function() {
       $scope.selectedPage = $scope.pages[$scope.pos];
     });
 
     $scope.addProvision = function() {
-      $scope.provisions.push({
+      var provision = {
         shippedQuantity: 0,
         promisedQuantity: 0
+      };
+
+      var uploader = new FileUploader({
+        scope: provision,
+        url: '/api/containers/photos/upload',
+        formData: {
+          key: 'value'
+        }
       });
+
+      uploader.onAfterAddingFile = function (item) {
+        console.info('After adding a file', item);
+        item.upload();
+      };
+
+      uploader.onCompleteItem = function(item, response) {
+        var file = response.result.files.file[0];
+        var photo = '/api/containers/' + file.container + '/download/' +
+          file.name;
+        this.scope.photos = [photo];
+      };
+
+      provision.uploader = uploader;
+      $scope.provisions.push(provision);
     };
 
     $scope.checkMap = function() {
@@ -69,6 +78,7 @@
         },
         function(callback) {
           var tasks = $scope.provisions.map(function(p) {
+            delete p.uploader;
             return function(callback) {
               Project.provisions.create({id: $scope.project.id}, p)
               .$promise.then(function() {
@@ -84,6 +94,8 @@
         $state.go('project', {id: $scope.project.id});
       });
     };
+
+    $scope.addProvision();
   };
 
   app.controller('CreateController', controller);
