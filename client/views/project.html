@@ -15,21 +15,38 @@
             </h2>
           </md-toolbar>
 
-          <div layout="column" layout-padding>
-            <div layout="row" flex>
-              <div flex ng-show="project.contactName">
-                <i class="mdi mdi--person"></i> {{project.contactName}}
+          <div flex layout="row">
+            <div flex layout="column" layout-padding>
+              <div layout="row" flex>
+                <div flex ng-show="project.contactName">
+                  <i class="mdi mdi--person"></i> {{project.contactName}}
+                </div>
+                <div flex ng-show="project.contactPhone">
+                  <i class="mdi mdi--phone"></i>
+                  <a ng-href="tel:{{project.contactPhone}}">{{project.contactPhone}}</a>
+                </div>
               </div>
-              <div flex ng-show="project.contactPhone">
-                <i class="mdi mdi--phone"></i>
-                <a ng-href="tel:{{project.contactPhone}}">{{project.contactPhone}}</a>
+              <div flex ng-show="project.contactEmail">
+                  <i class="mdi mdi--email"></i>
+                  <a ng-href="mailto:{{project.contactEmail}}">{{project.contactEmail}}</a>
               </div>
             </div>
-            <div flex ng-show="project.contactEmail">
-                <i class="mdi mdi--email"></i>
-                <a ng-href="mailto:{{project.contactEmail}}">{{project.contactEmail}}</a>
+            <div flex="50" ng-show="explained">
+              這些物資預計
+              <lx-dropdown>
+                  <button class="btn btn--s btn--blue btn--raised" lx-ripple lx-dropdown-toggle>
+                      {{batch.estimate}}
+                  </button>
+                  <lx-dropdown-menu>
+                      <ul>
+                          <li ng-repeat="est in estimations" ng-click="batch.estimate = estimations[$index]"><a class="dropdown-link">{{est}}</a></li>
+                      </ul>
+                  </lx-dropdown-menu>
+              </lx-dropdown>
+              可以寄出完畢，請在下面填寫您所要捐贈的物資。
             </div>
           </div>
+
           <div class="float">
             <button ng-click="explained = !explained" class="btn btn--m btn--blue btn--fab" lx-ripple><i class="mdi mdi--healing"></i></button>
           </div>
@@ -41,46 +58,38 @@
                     <img ng-src="{{provision.photos[0]}}">
                 </div>
                 <div class="md-tile-content">
-                  <h3>{{provision.name}}</h3>
-                  <md-progress-linear ng-class="{'md-accent': percent < 50, yellow: percent >= 50 && percent < 100, green: percent == 100}" md-mode="buffer"
-                    value="{{provision.shippedQuantity/provision.totalQuantity*100}}"
-                    md-buffer-value="{{(provision.promisedQuantity+donatedProvisions[$index].promisedQuantity)/provision.totalQuantity*100}}">
-                  </md-progress-linear>
+                  <div layout="row">
+                    <div flex>
+                      <h3>
+                        {{provision.name}}
+                        <span class="quantity">
+                          (總需：{{provision.totalQuantity}}、
+                          已收到：{{provision.shippedQuantity}}、
+                          已認領：{{provision.promisedQuantity}})
+                        </span>
+                      </h3>
+                      <md-progress-linear ng-class="{'md-accent': percent < 50, yellow: percent >= 50 && percent < 100, green: percent == 100}" md-mode="buffer"
+                        value="{{provision.shippedQuantity/provision.totalQuantity*100}}"
+                        md-buffer-value="{{(provision.promisedQuantity+donatedProvisions[$index].promisedQuantity)/provision.totalQuantity*100}}">
+                      </md-progress-linear>
+                    </div>
+                    <div class="donationQuantity" flex="10" ng-show="explained">
+                      <md-input-container>
+                        <label>
+                          {{provision.name}}
+                          <span ng-show="provision.unit">({{provision.unit}})</span>
+                        </label>
+                        <input type="number" ng-model="donatedProvisions[$index].promisedQuantity">
+                      </md-input-container>
+                    </div>
+                  </div>
                 </div>
               </md-item-content>
             </md-item>
           </md-list>
-        </div>
-        <div flex ng-show="explained">
-          <div flex>
-            這些物資預計
-            <lx-dropdown>
-                <button class="btn btn--s btn--blue btn--raised" lx-ripple lx-dropdown-toggle>
-                    {{batch.estimate}}
-                </button>
-                <lx-dropdown-menu>
-                    <ul>
-                        <li ng-repeat="est in estimations" ng-click="batch.estimate = estimations[$index]"><a class="dropdown-link">{{est}}</a></li>
-                    </ul>
-                </lx-dropdown-menu>
-            </lx-dropdown>
-            可以寄出完畢
-          </div>
-          <div flex>
-            我想要捐⋯
-            <form>
-              <md-input-container ng-repeat="p in donatedProvisions">
-                <label>
-                  {{project.provisions[$index].name}}
-                  <span ng-show="project.provisions[$index].unit">({{project.provisions[$index].unit}})</span>
-                </label>
-                <input type="number" ng-model="p.promisedQuantity">
-              </md-input-container>
-            </form>
-          </div>
-          <div flex>
-            <button ng-disabled="!user" ng-click="donate()" class="btn btn--m btn--blue btn--raised" lx-ripple>捐贈</button>
-            <p ng-show="!user && userLoaded" class="warning">此功能需要<a ui-sref="login">登入</a>後才能使用</p>
+          <div layout layout-align="end center">
+            <button ng-show="explained" ng-disabled="!user" ng-click="donate()" class="btn btn--m btn--blue btn--raised" lx-ripple>捐贈</button>
+              <p ng-show="!user && userLoaded" class="warning">此功能需要<a ui-sref="login">登入</a>後才能使用</p>
           </div>
         </div>
       </div>

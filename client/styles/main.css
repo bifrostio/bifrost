@@ -47,6 +47,8 @@ html, body, .map, .angular-leaflet-map {
   width: 500px;
   top: 50px;
   left: 50px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
 @media (max-width: 600px) {
@@ -69,7 +71,7 @@ input.upload-photo {
 
 .float {
   float: right;
-  margin-top: -18px;
+  margin-top: -10px;
   margin-right: 20px;
 }
 
@@ -192,4 +194,12 @@ md-progress-linear.md-default-theme.yellow .md-dashed:before {
 
 a {
   cursor: pointer;
+}
+
+.quantity {
+  font-size: 12px;
+}
+
+.donationQuantity {
+  margin-top: -6px;
 }
