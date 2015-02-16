@@ -181,11 +181,11 @@ md-progress-linear.md-default-theme.green .md-bar {
   background-color: rgb(58, 179, 58);
 }
 md-progress-linear.md-default-theme.yellow .md-bar {
-  background-color: rgb(242, 242, 35);
+  background-color: #FADC10;
 }
 
 md-progress-linear.md-default-theme.yellow .md-bar1 {
-  background-color: rgb(245, 245, 160);
+  background-color: #FBF098;
 }
 
 md-progress-linear.md-default-theme.yellow .md-dashed:before {
@@ -202,4 +202,12 @@ a {
 
 .donationQuantity {
   margin-top: -6px;
+}
+
+.panel-footer {
+  min-height: 36px;
+}
+
+.progress-panel {
+  margin-right: 15px;
 }

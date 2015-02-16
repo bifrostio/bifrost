@@ -59,7 +59,7 @@
                 </div>
                 <div class="md-tile-content">
                   <div layout="row">
-                    <div flex>
+                    <div flex class="progress-panel">
                       <h3>
                         {{provision.name}}
                         <span class="quantity">
@@ -73,7 +73,7 @@
                         md-buffer-value="{{(provision.promisedQuantity+donatedProvisions[$index].promisedQuantity)/provision.totalQuantity*100}}">
                       </md-progress-linear>
                     </div>
-                    <div class="donationQuantity" flex="10" ng-show="explained">
+                    <div class="donationQuantity" flex="50" ng-show="explained">
                       <md-input-container>
                         <label>
                           {{provision.name}}
@@ -87,7 +87,7 @@
               </md-item-content>
             </md-item>
           </md-list>
-          <div layout layout-align="end center">
+          <div layout layout-align="end center" class="panel-footer">
             <button ng-show="explained" ng-disabled="!user" ng-click="donate()" class="btn btn--m btn--blue btn--raised" lx-ripple>捐贈</button>
               <p ng-show="!user && userLoaded" class="warning">此功能需要<a ui-sref="login">登入</a>後才能使用</p>
           </div>
