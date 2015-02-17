@@ -2,10 +2,17 @@ var async = require('async');
 var colors = require('colors');
 
 module.exports = function(app, done) {
+  console.log('starting build sample data'.red);
 
   var tasks = [
     function(callback) {
-      app.models.supporter.create([
+      console.log('trying create tables'.red);
+      app.dataSources.db.automigrate(function() {
+        callback();
+      });
+    },
+    function(callback) {
+      app.models.Supporter.create([
         {
           email: 'chialin.shr@gmail.com',
           password: '1234',
