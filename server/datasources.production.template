@@ -1,0 +1,18 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "mssql",
+    "host": "<DBHOST>",
+    "port": 1433,
+    "database": "<DBNAME>",
+    "username": "<DBUSER>",
+    "password": "<DBPASSWORD>"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "azure",
+    "storageAccount": "<STORAGEACCOUNT>",
+    "storageAccessKey": "<STORAGEKEY>"
+  }
+}
