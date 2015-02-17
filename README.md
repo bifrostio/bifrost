@@ -17,8 +17,8 @@ $ npm start
 
 第一行指令將會安裝 node 以及 bower 所需相依套件，第二行指令則用於執行本地 web server，啟動後開啟瀏覽器至 http://0.0.0.0:3000/ 即可看到專案列表
 
-# Deployment & Azure environment
-本專案的 DEMO 網站架設於 Microsoft Azure，採用以下服務：
+# Deployment & Azure
+本專案的 DEMO 網站採用 Docker 架設於 Microsoft Azure，採用以下服務：
 
 * Azure Virtual Machine (CoreOS)
 * Azure Storage
