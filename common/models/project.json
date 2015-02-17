@@ -37,10 +37,16 @@
       "required": true
     },
     "latitude": {
-      "type": "number"
+      "type": "number",
+      "mssql": {
+        "dataType": "float"
+      }
     },
     "longitude": {
-      "type": "number"
+      "type": "number",
+      "mssql": {
+        "dataType": "float"
+      }
     }
   },
   "validations": [],
