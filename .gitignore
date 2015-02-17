@@ -3,3 +3,4 @@ client/vendor/
 upload/photos
 npm-debug.log
 server/datasources.production.json
+mssql*
