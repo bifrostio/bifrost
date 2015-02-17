@@ -6,7 +6,10 @@
     "port": 1433,
     "database": "<DBNAME>",
     "username": "<DBUSER>",
-    "password": "<DBPASSWORD>"
+    "password": "<DBPASSWORD>",
+    "options": {
+      "encrypt": true
+    }
   },
   "storage": {
     "name": "storage",
