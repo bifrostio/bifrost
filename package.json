@@ -5,7 +5,7 @@
   "scripts": {
     "pretest": "jshint .",
     "postinstall": "node node_modules/bower/bin/bower install",
-    "prestart": "node node_modules/loopback-sdk-angular-cli/bin/lb-ng  server/server.js client/vendor/loopback-services.js",
+    "prestart": "node node_modules/loopback-sdk-angular-cli/bin/lb-ng  server/server.js client/vendor/loopback-services.js && node utils/setup.js",
     "start": "node server/server.js"
   },
   "dependencies": {
@@ -20,7 +20,8 @@
     "loopback-connector-mssql": "^1.4.0",
     "loopback-datasource-juggler": "^2.7.0",
     "loopback-sdk-angular-cli": "^1.1.4",
-    "serve-favicon": "^2.0.1"
+    "serve-favicon": "^2.0.1",
+    "shelljs": "^0.3.0"
   },
   "optionalDependencies": {
     "loopback-explorer": "^1.1.0"
