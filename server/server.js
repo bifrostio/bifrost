@@ -8,9 +8,7 @@ var app = module.exports = loopback();
 // Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname);
 
-
-app.use(loopback.static(path.resolve(__dirname, '../landing')));
-app.use('/app', loopback.static(path.resolve(__dirname, '../client')));
+app.use(loopback.static(path.resolve(__dirname, '../client')));
 
 
 app.start = function() {
