@@ -37,7 +37,11 @@ $ docker pull yurenju/bifrost
 $ docker run -p 3000:3000 -d yurenju/bifrost
 ```
 
-在開發環境中 Bifrost  並不會連結到 Azure SQL Databases 與 Azure Storage，若要切換至 production 請參考以下環境變數，在 docker 執行時使用 `-e foo=bar` 指定環境變數：
+在開發環境中 Bifrost  並不會連結到 Azure SQL Databases 與 Azure Storage，Production 與 Development 環境差異如下：
+
+<div style="text-align: center;"><img src="http://bifrostio.github.io/img/bifrost.png" alt="Bifrost architecture" width="80%"></div>
+
+若要切換至 production 請參考以下環境變數，在 docker 執行時使用 `-e foo=bar` 指定環境變數：
 
 * **NODE_ENV**: 若要採用 production 請設定成 `production`
 * **DBHOST**: 設定 SQL Server 的 URL
