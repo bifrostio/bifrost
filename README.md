@@ -57,4 +57,4 @@ $ docker run -p 3000:3000 -d yurenju/bifrost
 
 ## LICENSE
 
-本專案採用 MIT 授權，Landing Page 授權為 Apache 授權，部分圖片取自 Flickr，授權請見 [圖片授權](https://github.com/bifrostio/bifrost/blob/master/landing/PHOTOS_LICENSE)。
+本專案採用 MIT 授權，Landing Page 授權為 Apache 授權，部分圖片取自 Flickr，授權請見 [圖片授權](https://github.com/bifrostio/bifrostio.github.io/blob/master/PHOTOS_LICENSE)。
