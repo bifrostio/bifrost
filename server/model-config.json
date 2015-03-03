@@ -49,5 +49,9 @@
   "container": {
     "dataSource": "storage",
     "public": true
+  },
+  "alert": {
+    "dataSource": null,
+    "public": true
   }
 }

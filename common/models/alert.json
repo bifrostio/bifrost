@@ -1,0 +1,10 @@
+{
+  "name": "alert",
+  "base": "Model",
+  "idInjection": true,
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
