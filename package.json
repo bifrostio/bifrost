@@ -20,6 +20,7 @@
     "loopback-connector-mssql": "^1.4.0",
     "loopback-datasource-juggler": "^2.7.0",
     "loopback-sdk-angular-cli": "^1.1.4",
+    "request": "^2.53.0",
     "serve-favicon": "^2.0.1",
     "shelljs": "^0.3.0"
   },
