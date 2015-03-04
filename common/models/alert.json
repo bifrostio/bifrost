@@ -1,6 +1,6 @@
 {
   "name": "alert",
-  "description": "Alert 用於避開 CORS (Cross-origin resource sharing) 取得 NCDR 災害示警公開資料平台用的物件。",
+  "description": "取得 NCDR 災害示警公開資料平台用的 API。",
   "base": "Model",
   "idInjection": true,
   "properties": {},

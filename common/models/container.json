@@ -1,5 +1,6 @@
 {
   "name": "container",
+  "description": "上傳圖片用的空間",
   "base": "Model",
   "idInjection": true,
   "properties": {},

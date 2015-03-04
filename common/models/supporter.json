@@ -1,5 +1,6 @@
 {
   "name": "supporter",
+  "description": "捐贈者資訊",
   "base": "User",
   "idInjection": true,
   "properties": {

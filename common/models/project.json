@@ -1,5 +1,6 @@
 {
   "name": "project",
+  "description": "物資捐贈專案",
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {

@@ -1,5 +1,6 @@
 {
   "name": "provision",
+  "description": "專案底下的物資資訊，包含所有數量、預估到達數量以及已到達數量",
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {

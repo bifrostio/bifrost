@@ -1,5 +1,6 @@
 {
   "name": "batch",
+  "description": "捐贈者一次捐贈行為所要送出去的物資資訊",
   "plural": "batches",
   "base": "PersistedModel",
   "idInjection": true,
