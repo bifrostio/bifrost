@@ -18,8 +18,15 @@ module.exports = function(Alert) {
   };
 
   Alert.remoteMethod('get', {
-    accepts: { arg: 'url', type: 'string' },
-    returns: { arg: 'cap', type: 'object', root: true},
+    description: '避開 CORS 取得 NCDR 災害示警公開資料平台的 CAP 檔案',
+    accepts: {
+      arg: 'url', type: 'string',
+      description: 'Common Alerting Protocol (CAP) 檔案的網址'
+    },
+    returns: {
+      arg: 'cap', type: 'object', root: true,
+      description: '已經轉換成 javascript object 的 cap 檔案內容'
+    },
     http: {path: '/get', verb: 'get'}
   });
 };
