@@ -1,5 +1,5 @@
 # Bifrost
-網站： http://bifrostio.cloudapp.net
+Hackpad: https://g0v.hackpad.com/Bifrost--C8AgQKHhreC
 
 在台灣的災害物資運送通常都是透過媒體登高一呼，而物資捐贈常因為沒有適當的溝通管道，導致物資過多、捐贈不需要的物資甚至部分地區根本接收不到任何物資。
 
