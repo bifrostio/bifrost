@@ -1,10 +1,10 @@
 'use strict';
 
 (function() {
-  var app = angular.module('bifrost');
+  let app = angular.module('bifrost');
 
-  var controller = function($scope, $state, Batch) {
-    var params = {
+  let controller = ($scope, $state, Batch) => {
+    let params = {
       filter: {
         where: {
           id: $state.params.batchId
@@ -12,12 +12,13 @@
         include: ['project']
       }
     };
-    Batch.findOne(params).$promise.then(function(batch) {
-      var project = batch.project;
-      $scope.address = [project.zipcode, project.city, project.district,
-        project.detailAddress].join(' ');
-      $scope.contactName = project.contactName;
-      $scope.trackingNumber = batch.trackingNumber;
+    Batch.findOne(params).$promise.then(batch => {
+      let project = batch.project;
+      $scope.address = `${project.zipcode} ${project.city} ` +
+                        `${project.district} ${project.detailAddress}`;
+
+      [$scope.contactName, $scope.trackingNumber] =
+        [project.contactName, $scope.trackingNumber = batch.trackingNumber];
     });
   };
 
