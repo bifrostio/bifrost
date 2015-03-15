@@ -1,19 +1,17 @@
 'use strict';
 
-(function() {
-  var app = angular.module('bifrost');
+(() => {
+  let app = angular.module('bifrost');
 
-  app.controller('LoginController', function($scope, $state, Supporter) {
+  app.controller('LoginController', ($scope, $state, Supporter) => {
     $scope.user = {};
 
-    this.login = function() {
+    this.login = () => {
       if (!$scope.user.email || !$scope.user.password) {
         return;
       }
 
-      Supporter.login($scope.user).$promise.then(function() {
-        $state.go('projects');
-      });
+      Supporter.login($scope.user).$promise.then(() => $state.go('projects'));
     };
   });
 })();
