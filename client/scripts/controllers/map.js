@@ -33,6 +33,9 @@
     ], function() {
       entries.forEach(f => {
         Alert.get({url: f.link}).$promise.then(cap => {
+          if (!cap.alert.info[0].area[0].circle) {
+            return;
+          }
           let [info, description, location] =
             [cap.alert.info[0], info.description[0], info.area[0].circle[0]];
           let circle = /(.*,.*) .*/g.exec(location)[1].split(',');
