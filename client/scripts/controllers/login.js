@@ -6,11 +6,10 @@
   app.controller('LoginController', ($scope, $state, Supporter) => {
     $scope.user = {};
 
-    this.login = () => {
+    $scope.login = () => {
       if (!$scope.user.email || !$scope.user.password) {
         return;
       }
-
       Supporter.login($scope.user).$promise.then(() => $state.go('projects'));
     };
   });
