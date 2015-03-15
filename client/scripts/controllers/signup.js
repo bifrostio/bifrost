@@ -1,14 +1,14 @@
 'use strict';
 
-(function() {
-  var app = angular.module('bifrost');
+(() => {
+  let app = angular.module('bifrost');
 
-  app.controller('SignupController', function($scope, $state, Supporter) {
+  app.controller('SignupController', ($scope, $state, Supporter) => {
     $scope.user = {};
 
-    $scope.createUser = function() {
-      Supporter.create($scope.user).$promise.then(function() {
-        Supporter.login($scope.user).$promise.then(function() {
+    $scope.createUser = () => {
+      Supporter.create($scope.user).$promise.then(() => {
+        Supporter.login($scope.user).$promise.then(() => {
           $state.go('projects');
         });
       });
