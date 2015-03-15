@@ -1,10 +1,10 @@
 'use strict';
 
-(function() {
-  var app = angular.module('bifrost');
+(() => {
+  let app = angular.module('bifrost');
 
-  var controller = function($scope, $state, Project, Provision, Batch, async,
-                            Supporter) {
+  let controller = ($scope, $state, Project, Provision, Batch, async,
+                            Supporter) => {
     $scope.explained = false;
     $scope.estimations = ['一週內', '一個月內', '超過一個月'];
     $scope.batch = {
@@ -13,23 +13,24 @@
 
     $scope.userLoaded = false;
     Supporter.getCurrent().$promise
-    .then(function(user) {
+    .then(user => {
       $scope.user = user;
       $scope.userLoaded = true;
     })
-    .catch(function() {
+    .catch(() => {
       $scope.userLoaded = true;
     });
 
-    var filter = {
+    let filter = {
       where: {id: $state.params.id},
       include: ['provisions']
     };
-    Project.findOne({filter: filter}).$promise.then(function(project) {
+    Project.findOne({filter: filter}).$promise.then(project => {
       $scope.project = project;
       $scope.$emit('projects', [project]);
       $scope.donatedProvisions = [];
-      angular.forEach($scope.project.provisions, function(p, index) {
+
+      $scope.project.provisions.forEach((p, index) => {
         $scope.donatedProvisions.push({
           promisedQuantity: 0,
           shippedQuantity: 0,
@@ -39,33 +40,30 @@
     });
 
     function updateQuantity(dp, callback) {
-      Provision.findById({id: dp.provisionId}).$promise.then(function(p) {
+      Provision.findById({id: dp.provisionId}).$promise.then(p => {
         p.promisedQuantity += dp.promisedQuantity;
-        Provision.update({where: {id: p.id}}, p).$promise.then(function() {
-          callback();
-        });
+        Provision.update({where: {id: p.id}}, p)
+          .$promise.then(() => callback());
       });
     }
 
-    $scope.donate = function() {
+    $scope.donate = () => {
       $scope.batch.createdDate = Date.now();
-      var trackingNumber = [];
-      for (var i = 0; i < 4; i++) {
-        var digist = parseInt(Math.random() * 10);
+      let trackingNumber = [];
+      for (let i = 0; i < 4; i++) {
+        let digist = parseInt(Math.random() * 10);
         trackingNumber.push(digist.toString());
       }
       $scope.batch.trackingNumber = trackingNumber.join('');
       Project.batches.create({id: $scope.project.id}, $scope.batch)
-      .$promise.then(function(batch) {
-        var tasks = $scope.donatedProvisions.map(function(p, index) {
-          return function(callback) {
+      .$promise.then(batch => {
+        let tasks = $scope.donatedProvisions.map((p, index) => {
+          return callback => {
             Batch.donatedProvisions.create({id: batch.id}, p)
-            .$promise.then(function(dp) {
-              updateQuantity(dp, callback);
-            });
+            .$promise.then(dp => updateQuantity(dp, callback));
           };
         });
-        async.series(tasks, function() {
+        async.series(tasks, () => {
           console.log('done');
           $state.go(
             'address',
