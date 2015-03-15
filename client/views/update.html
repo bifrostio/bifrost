@@ -1,4 +1,4 @@
-<div ng-controller="UpdateController as update">
+<div ng-controller="UpdateController">
 <md-whiteframe class="md-whiteframe-z1">
   <md-content class="half-panel">
     <md-toolbar layout="row">
@@ -19,7 +19,7 @@
             <label>追蹤碼</label>
             <input required ng-model="batch.trackingNumber">
           </md-input-container>
-          <button class="btn btn--m btn--blue btn--raised" ng-click="update.opendDialog('confirm', batch.id)" lx-ripple>更新狀況</button>
+          <button class="btn btn--m btn--blue btn--raised" ng-click="opendDialog('confirm', batch.id)" lx-ripple>更新狀況</button>
         </md-item-content>
       </md-item>
     </md-content>
@@ -48,12 +48,12 @@
         <input type="number" ng-model="dp.shippedQuantity">
       </lx-text-field>
       <div class="prompt-message">預設送達的物資數量: {{dp.promisedQuantity}}</div>
-      <button class="btn btn--m btn--blue btn--raised" ng-click="update.gotAll(dp.id)" lx-ripple>全部送達</button>
+      <button class="btn btn--m btn--blue btn--raised" ng-click="gotAll(dp.id)" lx-ripple>全部送達</button>
     </div>
   </div>
   <div class="dialog__actions">
     <button class="btn btn--m btn--black btn--flat" lx-ripple lx-dialog-close>取消</button>
-    <button class="btn btn--m btn--black btn--flat" ng-click="update.save()" lx-ripple lx-dialog-close>儲存</button>
+    <button class="btn btn--m btn--black btn--flat" ng-click="save()" lx-ripple lx-dialog-close>儲存</button>
   </div>
   </form>
 

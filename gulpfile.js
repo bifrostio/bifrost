@@ -7,7 +7,7 @@ gulp.task('dist:all', function() {
   return gulp.src('client/**').pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist:babel', function () {
+gulp.task('dist:babel', ['dist:all'], function () {
   return gulp.src(['client/**/*.js', '!client/vendor/**'])
     .pipe(babel())
     .pipe(gulp.dest('dist'));
@@ -25,7 +25,7 @@ gulp.task('server:env', shell.task([
 gulp.task('dist', ['dist:all', 'dist:babel', 'dist:lb-ng']);
 
 gulp.task('watch', function() {
-  return gulp.watch('client/**/*.js', ['dist:babel']);
+  return gulp.watch('client/**', ['dist']);
 });
 
 gulp.task('server', ['dist', 'server:env'], shell.task([
