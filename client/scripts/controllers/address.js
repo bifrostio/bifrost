@@ -18,7 +18,7 @@
                         `${project.district} ${project.detailAddress}`;
 
       [$scope.contactName, $scope.trackingNumber] =
-        [project.contactName, $scope.trackingNumber = batch.trackingNumber];
+        [project.contactName, batch.trackingNumber];
     });
   };
 
