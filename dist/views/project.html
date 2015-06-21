@@ -1,0 +1,98 @@
+<md-whiteframe class="md-whiteframe-z1">
+  <md-content class="half-panel" ng-class="{explained: explained}">
+    <md-content class="project-panel-content" layout-margin layout-padding>
+      <div layout="row">
+        <div flex>
+          <md-toolbar class="project-toolbar">
+            <h2 class="md-toolbar-tools">
+              <span flex>聯絡人資訊</span>
+              <md-button ui-sref="projects">
+                <md-tooltip>
+                  Cancel
+                </md-tooltip>
+                <i class="mdi mdi--close"></i>
+              </md-button>
+            </h2>
+          </md-toolbar>
+
+          <div flex layout="row">
+            <div flex layout="column" layout-padding>
+              <div layout="row" flex>
+                <div flex ng-show="project.contactName">
+                  <i class="mdi mdi--person"></i> {{project.contactName}}
+                </div>
+                <div flex ng-show="project.contactPhone">
+                  <i class="mdi mdi--phone"></i>
+                  <a ng-href="tel:{{project.contactPhone}}">{{project.contactPhone}}</a>
+                </div>
+              </div>
+              <div flex ng-show="project.contactEmail">
+                  <i class="mdi mdi--email"></i>
+                  <a ng-href="mailto:{{project.contactEmail}}">{{project.contactEmail}}</a>
+              </div>
+            </div>
+            <div flex="50" ng-show="explained">
+              這些物資預計
+              <lx-dropdown>
+                  <button class="btn btn--s btn--blue btn--raised" lx-ripple lx-dropdown-toggle>
+                      {{batch.estimate}}
+                  </button>
+                  <lx-dropdown-menu>
+                      <ul>
+                          <li ng-repeat="est in estimations" ng-click="batch.estimate = estimations[$index]"><a class="dropdown-link">{{est}}</a></li>
+                      </ul>
+                  </lx-dropdown-menu>
+              </lx-dropdown>
+              可以寄出完畢，請在下面填寫您所要捐贈的物資。
+            </div>
+          </div>
+
+          <div class="float">
+            <button ng-click="explained = !explained" class="btn btn--m btn--blue btn--fab" lx-ripple><i class="mdi mdi--healing"></i></button>
+          </div>
+          <md-divider layout-padding layout-margin></md-divider>
+          <md-list>
+            <md-item ng-repeat="provision in project.provisions" ng-init="percent = provision.promisedQuantity/provision.totalQuantity*100">
+              <md-item-content>
+                <div class="md-tile-left">
+                    <img class="face" ng-src="{{provision.photos[0]}}">
+                </div>
+                <div class="md-tile-content">
+                  <div layout="row">
+                    <div flex class="progress-panel">
+                      <h3>
+                        {{provision.name}}
+                        <span class="quantity">
+                          (總需：{{provision.totalQuantity}}、
+                          已收到：{{provision.shippedQuantity}}、
+                          已認領：{{provision.promisedQuantity}})
+                        </span>
+                      </h3>
+                      <md-progress-linear ng-class="{'md-accent': percent < 50, yellow: percent >= 50 && percent < 100, green: percent == 100}" md-mode="buffer"
+                        value="{{provision.shippedQuantity/provision.totalQuantity*100}}"
+                        md-buffer-value="{{(provision.promisedQuantity+donatedProvisions[$index].promisedQuantity)/provision.totalQuantity*100}}">
+                      </md-progress-linear>
+                    </div>
+                    <div class="donationQuantity" flex="50" ng-show="explained">
+                      <md-input-container>
+                        <label>
+                          {{provision.name}}
+                          <span ng-show="provision.unit">({{provision.unit}})</span>
+                        </label>
+                        <input type="number" ng-model="donatedProvisions[$index].promisedQuantity">
+                      </md-input-container>
+                    </div>
+                  </div>
+                </div>
+              </md-item-content>
+            </md-item>
+          </md-list>
+          <div layout layout-align="end center" class="panel-footer">
+            <button ng-show="explained" ng-disabled="!user" ng-click="donate()" class="btn btn--m btn--blue btn--raised" lx-ripple>捐贈</button>
+              <p ng-show="!user && userLoaded" class="warning">此功能需要<a ui-sref="login">登入</a>後才能使用</p>
+          </div>
+        </div>
+      </div>
+    </md-content>
+  </md-content>
+</md-whiteframe>

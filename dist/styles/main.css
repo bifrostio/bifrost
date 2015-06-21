@@ -1,0 +1,220 @@
+html, body, .map, .angular-leaflet-map {
+  height: 100%;
+}
+
+.map {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.main-panel {
+  z-index: 1;
+  position: relative;
+}
+
+.get-started, .address {
+  background-color: white;
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.get-started button {
+  min-width: 8em;
+  margin: 0.5em;
+}
+
+.medium-button {
+  min-width: 8em;
+  margin: 0.5em;
+}
+
+.no-projects {
+  height: 200px;
+}
+
+.projects-panel-content {
+  min-height: 200px;
+  max-height: 500px;
+}
+
+.half-panel {
+  position: absolute;
+  width: 500px;
+  top: 50px;
+  left: 50px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+@media (max-width: 600px) {
+  .get-started {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .projects-panel {
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
+input.upload-photo {
+  width: 1px;
+  height: 1px;
+}
+
+.float {
+  float: right;
+  margin-top: -10px;
+  margin-right: 20px;
+}
+
+.explained {
+  width: 800px;
+}
+
+md-toolbar.project-toolbar {
+  color: black;
+  background: none;
+  box-shadow: none;
+}
+
+md-toolbar.project-toolbar .md-button {
+  color: black;
+}
+
+.address-content {
+  margin: 25px;
+}
+
+.address-lines {
+  font-size: 20px;
+}
+
+.stamp {
+  transition: transform 0.3s;
+  margin: 20px;
+  width: 100px;
+  height: 140px;
+  display: inline-block;
+  padding: 10px;
+  background: white;
+  position: relative;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.5));
+  /*The stamp cutout will be created using crisp radial gradients*/
+  background: radial-gradient(
+    transparent 0px,
+    transparent 4px,
+    white 4px,
+    white
+  );
+
+  /*reducing the gradient size*/
+  background-size: 20px 20px;
+  /*Offset to move the holes to the edge*/
+  background-position: -10px -10px;
+}
+
+.stamp:hover {
+  transform: rotateZ(-5deg);
+}
+
+.stamp:after {
+  content: '';
+  position: absolute;
+  /*We can shrink the pseudo element here to hide the shadow edges*/
+  left: 5px; top: 5px; right: 5px; bottom: 5px;
+  /*Shadow - doesn't look good because of the stamp cutout. We can still move this into another pseudo element behind the .stamp main element*/
+
+  /*box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);*/
+  /*pushing it back*/
+  z-index: -1;
+}
+/*Some text*/
+.stamp:before {
+  content: 'Bifrost';
+  position: absolute;
+  bottom: 0; left: 0;
+  font: bold 14px arial;
+  color: white;
+  opacity: 0.90;
+  line-height: 100%;
+  padding: 20px;
+}
+.stamp img {
+
+}
+
+section.projects-panel-content {
+  float: right;
+}
+
+.md-sidenav-right {
+  margin-top: 80px;
+  height: 300px;
+}
+
+.required {
+  font-size: 12px;
+  color: red;
+  margin-left: 18px;
+}
+
+.warning {
+  color: red;
+  font-size: 12px;
+}
+
+.prompt-message {
+  font-size: 12px;
+  color: green;
+  padding-bottom: 10px;
+}
+
+md-progress-linear.md-default-theme.green .md-bar {
+  background-color: rgb(58, 179, 58);
+}
+md-progress-linear.md-default-theme.yellow .md-bar {
+  background-color: #FADC10;
+}
+
+md-progress-linear.md-default-theme.yellow .md-bar1 {
+  background-color: #FBF098;
+}
+
+md-progress-linear.md-default-theme.yellow .md-dashed:before {
+  background: radial-gradient(rgb(245, 245, 160) 0%, rgb(245, 245, 160) 16%, transparent 42%);
+}
+
+a {
+  cursor: pointer;
+}
+
+.quantity {
+  font-size: 12px;
+}
+
+.donationQuantity {
+  margin-top: -6px;
+}
+
+.panel-footer {
+  min-height: 36px;
+}
+
+.progress-panel {
+  margin-right: 15px;
+}
+
+.face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 48px;
+  margin: 16px;
+}
