@@ -1,0 +1,68 @@
+<div>
+  <md-whiteframe class="md-whiteframe-z1">
+    <md-content class="half-panel">
+      <md-toolbar>
+        <h2 class="md-toolbar-tools">
+          <span>物資需求</span>
+        </h2>
+      </md-toolbar>
+      <md-content class="projects-panel-content" layout-margin layout-padding>
+        <md-content class="no-projects"
+          layout layout-align="center center"
+          ng-show="!projects || projects.length === 0">
+          目前沒有捐贈需求
+        </md-content>
+        <md-list ng-show="projects">
+          <md-item ng-repeat="project in projects">
+            <md-item-content>
+              <div class="md-tile-left">
+                <i class="icon icon--l icon--blue icon--circled mdi mdi--event"></i>
+              </div>
+              <div class="md-tile-content">
+                <h3><a ui-sref="project({id: project.id})">{{project.name}}</a></h3>
+                <h4>聯絡人：{{project.contactName}}</h4>
+                <h4>email: {{project.contactEmail}}</h4>
+              </div>
+            </md-item-content>
+            <md-divider ng-if="!$last"></md-divider>
+          </md-item>
+        </md-list>
+        <section layout="column" layout-padding layout-align="center center">
+          <md-button ng-disabled="!user" ui-sref="create" class="medium-button md-primary">
+            請求物資
+          </md-button>
+          <p ng-show="!user && userLoaded" class="warning">此功能需要<a ui-sref="login">登入</a>後才能使用</p>
+        </section>
+      </md-content>
+    </md-content>
+  </md-whiteframe>
+
+  <section class="projects-panel-content" layout="column" ng-controller="MyProjectsController">
+    <div class="toolbar__right" layout-margin layout-padding>
+      <button class="btn btn--l btn--blue btn--fab" lx-ripple lx-tooltip="我的物資" tooltip-position="bottom" ng-click="toggleRight()">
+        <i class="mdi mdi--apps"></i>
+      </button>
+    </div>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+      <div flex-item>
+        <div class="card bgc-indigo-500 tc-white-1 p+">
+          我的物資
+        </div>
+      </div>
+      <ul>
+        <md-item ng-repeat="project in projects">
+          <div class="list-row list-row--has-primary">
+            <div class="list-primary-tile">
+              <i class="icon icon--l icon--grey icon--flat mdi mdi--bookmark-outline"></i>
+            </div>
+            <div class="list-content-tile list-content-tile--one-line">
+              <strong><a ui-sref="update({projectId: project.id})">{{project.name}}</a></strong>
+            </div>
+          </div>
+        </md-item>
+      </ul>
+      <md-button ng-click="logout()">Logout</md-button>
+    </md-sidenav>
+  </section>
+</div>
