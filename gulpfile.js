@@ -32,4 +32,8 @@ gulp.task('server', ['dist', 'server:env'], shell.task([
   'node server/server.js'
 ]));
 
+gulp.task('test', ['dist'], shell.task([
+  'node_modules/intern/bin/intern-runner.js config=tests/intern'
+]));
+
 gulp.task('default', ['watch', 'dist', 'server']);

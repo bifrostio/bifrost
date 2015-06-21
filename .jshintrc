@@ -18,5 +18,6 @@
   "trailing": true,
   "sub": true,
   "maxlen": 80,
-  "predef": ["angular"]
+  "expr": true,
+  "predef": ["angular", "define"]
 }
