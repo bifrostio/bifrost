@@ -32,7 +32,6 @@ define({
     */
   ],
 
-  // Uncomment to try this with Sauce Labs
   tunnel: 'SauceLabsTunnel',
 
   // Maximum number of simultaneous integration tests that should be executed on the remote WebDriver service

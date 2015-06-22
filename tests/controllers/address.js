@@ -15,8 +15,7 @@ define([
                      '/angular-leaflet-directive',
   'intern/order!vendor/angular-messages/angular-messages',
   'intern/order!vendor/lumx/dist/js/lumx',
-  'intern/order!bifrost/app',
-  'intern/order!bifrost/controllers/address'
+  'intern/order!bifrost/all'
 ], function (expect, bdd) {
 
   function inject (fn) {
