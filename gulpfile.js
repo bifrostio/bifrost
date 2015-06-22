@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 var shell = require('gulp-shell');
+var sourcemaps = require('gulp-sourcemaps');
+var concat = require('gulp-concat');
 
 
 gulp.task('dist:all', function() {
@@ -8,8 +10,11 @@ gulp.task('dist:all', function() {
 });
 
 gulp.task('dist:babel', ['dist:all'], function () {
-  return gulp.src(['client/**/*.js', '!client/vendor/**'])
+  return gulp.src(['client/**/*.js', '!client/vendor/**'], { base: '.' })
+    .pipe(sourcemaps.init())
     .pipe(babel())
+    .pipe(concat('scripts/all.js'))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist'));
 });
 

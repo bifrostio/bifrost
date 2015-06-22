@@ -15,4 +15,4 @@ branches:
   only:
     - master
 
-after_script: cat lcov.info | ./node_modules/coveralls/bin/coveralls.js
+after_script: ./utils/transform-coverage.js dist/scripts/all.js.map lcov.info | ./node_modules/coveralls/bin/coveralls.js
