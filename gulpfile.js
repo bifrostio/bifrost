@@ -3,9 +3,10 @@ var babel = require('gulp-babel');
 var shell = require('gulp-shell');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
+var usemin = require('gulp-usemin');
 
 
-gulp.task('dist:all', function() {
+gulp.task('dist:all', ['lb-ng'], function() {
   return gulp.src('client/**').pipe(gulp.dest('dist'));
 });
 
@@ -18,16 +19,22 @@ gulp.task('dist:babel', ['dist:all'], function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist:lb-ng', ['dist:all'], shell.task([
+gulp.task('dist:vendor', ['dist:all'], function() {
+  return gulp.src('client/index.html')
+    .pipe(usemin({js: ['concat']}))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('lb-ng', [], shell.task([
   'node node_modules/loopback-sdk-angular-cli/bin/lb-ng server/server.js ' +
-  'dist/vendor/loopback-services.js'
+  'client/vendor/loopback-services.js'
 ]));
 
 gulp.task('server:env', shell.task([
   'node utils/setup.js'
 ]));
 
-gulp.task('dist', ['dist:all', 'dist:babel', 'dist:lb-ng']);
+gulp.task('dist', ['dist:all', 'dist:babel', 'lb-ng', 'dist:vendor']);
 
 gulp.task('watch', function() {
   return gulp.watch('client/**', ['dist']);
