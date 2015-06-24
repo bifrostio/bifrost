@@ -12,7 +12,7 @@ define([
     };
   }
 
-  bdd.describe('Create Controller', function() {
+  bdd.describe('Login Controller', function() {
     var ctrl, scope;
 
     bdd.it('shoud have a empty user object',
