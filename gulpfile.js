@@ -7,15 +7,21 @@ var usemin = require('gulp-usemin');
 
 
 gulp.task('dist:all', ['lb-ng'], function() {
-  return gulp.src('client/**').pipe(gulp.dest('dist'));
+  return gulp.src(['client/**', '!client/scripts/*.js']).pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist:babel', ['dist:all'], function () {
+gulp.task('dist:babel:all', ['dist:all'], function () {
   return gulp.src(['client/**/*.js', '!client/vendor/**'], { base: '.' })
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat('scripts/all.js'))
     .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('dist:babel', ['dist:all'], function () {
+  return gulp.src(['client/**/*.js', '!client/vendor/**'])
+    .pipe(babel())
     .pipe(gulp.dest('dist'));
 });
 
@@ -44,7 +50,7 @@ gulp.task('server', ['dist', 'server:env'], shell.task([
   'node server/server.js'
 ]));
 
-gulp.task('test', ['dist'], shell.task([
+gulp.task('test', ['dist', 'dist:babel:all'], shell.task([
   'node_modules/intern/bin/intern-runner.js config=tests/intern'
 ]));
 
