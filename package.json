@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "postinstall": "node node_modules/bower/bin/bower install",
+    "postinstall": "bower install",
     "start": "gulp",
     "test": "gulp test",
     "coveralls": "gulp coveralls"
