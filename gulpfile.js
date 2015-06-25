@@ -19,7 +19,7 @@ gulp.task('dist:babel:all', ['dist:all'], function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist:babel', ['dist:all'], function () {
+gulp.task('dist:babel', ['dist:all', 'dist:vendor', 'lb-ng'], function () {
   return gulp.src(['client/**/*.js', '!client/vendor/**'])
     .pipe(babel())
     .pipe(gulp.dest('dist'));
@@ -40,7 +40,7 @@ gulp.task('server:env', shell.task([
   'node utils/setup.js'
 ]));
 
-gulp.task('dist', ['dist:all', 'dist:babel', 'lb-ng', 'dist:vendor']);
+gulp.task('dist', ['dist:all', 'lb-ng', 'dist:vendor', 'dist:babel']);
 
 gulp.task('watch', function() {
   return gulp.watch('client/**', ['dist']);
