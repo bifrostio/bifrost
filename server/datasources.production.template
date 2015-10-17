@@ -10,12 +10,5 @@
     "options": {
       "encrypt": true
     }
-  },
-  "storage": {
-    "name": "storage",
-    "connector": "loopback-component-storage",
-    "provider": "azure",
-    "storageAccount": "<STORAGEACCOUNT>",
-    "storageAccessKey": "<STORAGEKEY>"
   }
 }

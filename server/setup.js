@@ -9,8 +9,7 @@ module.exports = function() {
 
   var template = cat(templatePath);
 
-  var fields = ['DBHOST', 'DBNAME', 'DBUSER', 'DBPASSWORD', 'STORAGEACCOUNT',
-                'STORAGEKEY'];
+  var fields = ['DBHOST', 'DBNAME', 'DBUSER', 'DBPASSWORD'];
 
   fields.forEach(function(f) {
     if (process.env[f]) {
