@@ -14,11 +14,6 @@
     "unit": {
       "type": "string"
     },
-    "photos": {
-      "type": [
-        "string"
-      ]
-    },
     "shippedQuantity": {
       "type": "number",
       "required": true
@@ -41,5 +36,5 @@
     }
   },
   "acls": [],
-  "methods": []
+  "methods": {}
 }
