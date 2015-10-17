@@ -13,9 +13,16 @@
       "type": "string",
       "required": true
     },
-    "estimate": {
+    "contactName": {
       "type": "string",
       "required": true
+    },
+    "contactPhone": {
+      "type": "string",
+      "required": true
+    },
+    "contactEmail": {
+      "type": "string"
     }
   },
   "validations": [],

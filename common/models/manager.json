@@ -1,0 +1,14 @@
+{
+  "name": "manager",
+  "base": "User",
+  "description": "管理者帳號",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
