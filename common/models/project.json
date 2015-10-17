@@ -52,9 +52,9 @@
   },
   "validations": [],
   "relations": {
-    "supporter": {
+    "manager": {
       "type": "belongsTo",
-      "model": "supporter",
+      "model": "manager",
       "foreignKey": "ownerId"
     },
     "provisions": {
@@ -69,5 +69,5 @@
     }
   },
   "acls": [],
-  "methods": []
+  "methods": {}
 }

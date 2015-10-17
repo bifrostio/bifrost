@@ -32,10 +32,6 @@
     "dataSource": "db",
     "public": false
   },
-  "supporter": {
-    "dataSource": "db",
-    "public": true
-  },
   "project": {
     "dataSource": "db",
     "public": true
@@ -54,6 +50,10 @@
   },
   "alert": {
     "dataSource": null,
+    "public": true
+  },
+  "manager": {
+    "dataSource": "db",
     "public": true
   }
 }
