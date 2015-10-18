@@ -1,10 +1,23 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var path = require('path');
-
+var webpackMiddleware = require('webpack-dev-middleware');
 require('./setup')();
 
 var app = module.exports = loopback();
+var env = app.get('env');
+
+if (env != 'production') {
+  var webpack = require('webpack');
+  var webpackConfig = require('../webpack.config');
+  app.use(webpackMiddleware(webpack(webpackConfig), {                                                                        
+    stats: {                                                               
+     colors: true                                                         
+    }                                                                      
+  }));
+} else {
+  app.use(loopback.static(path.resolve(__dirname, '../dist')));
+}
 
 app.start = function() {
   // start the web server
