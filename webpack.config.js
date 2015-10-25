@@ -13,5 +13,8 @@ module.exports = {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel?stage=0'}
     ]
+  },
+  resolve: {
+    root: [path.resolve(__dirname, 'client/scripts/')]
   }
 };
