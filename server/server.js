@@ -7,14 +7,15 @@ require('./setup')();
 var app = module.exports = loopback();
 var env = app.get('env');
 
-if (env != 'production') {
+if (env !== 'production') {
   var webpack = require('webpack');
   var webpackConfig = require('../webpack.config');
-  app.use(webpackMiddleware(webpack(webpackConfig), {                                                                        
-    stats: {                                                               
-     colors: true                                                         
-    }                                                                      
+  app.use(webpackMiddleware(webpack(webpackConfig), {
+    stats: {
+     colors: true
+    }
   }));
+  app.use(loopback.static(path.resolve(__dirname, '../client')));
 } else {
   app.use(loopback.static(path.resolve(__dirname, '../dist')));
 }
