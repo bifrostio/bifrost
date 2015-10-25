@@ -1,3 +1,7 @@
+# New Bifrost
+
+我們正在撰寫新版的 Bifrost，請到[這個 wiki 頁面](https://github.com/bifrostio/bifrost/wiki/New-Bifrost)了解進度與計畫
+
 # Bifrost
 Hackpad: https://g0v.hackpad.com/Bifrost--C8AgQKHhreC
 
