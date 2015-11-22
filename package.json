@@ -17,6 +17,7 @@
     "loopback-component-explorer": "^2.1.0",
     "loopback-connector-mongodb": "^1.13.0",
     "loopback-datasource-juggler": "^2.39.0",
+    "react-bootstrap": "^0.28.1",
     "request": "^2.53.0",
     "serve-favicon": "^2.0.1",
     "shelljs": "^0.3.0",
