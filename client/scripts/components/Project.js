@@ -22,6 +22,6 @@ export default class Project extends Component {
 }
 
 Project.defaultProps = {
-  isEditable: true,
+  isEditable: false,
   isClose: false
 }
