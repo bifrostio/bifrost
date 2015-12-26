@@ -6,6 +6,7 @@ import Station from 'components/Station';
 import StationList from 'components/StationList';
 import ContactForm from 'components/ContactForm';
 import StationMap from 'components/StationMap';
+import Project from 'components/Project';
 
 export default class Bifrost extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ export default class Bifrost extends Component {
                    unit="隻" />
         <Station contact={{name: '姓名', phone: '192384728', email: 'asdk@gmail.com', address: '台北市信義區三段123號'}} />
         <StationList stations={[{id: 1, name: 'Station name', shippedPercentage: 50, promisedPercentage: 70}]} />
+        <Project projectName={'311大地震'} projectTime={'2015/01/03'} isClose={true} />
       </div>
     );
   }

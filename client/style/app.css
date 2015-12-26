@@ -6,3 +6,38 @@
   height: 400px;
   width: 80%;
   margin: 0 auto;
+}
+
+.project-wrap input[type="checkbox"] {
+  margin-right: 2em;
+}
+
+.project-checkbox {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.project-item {
+  width: 50%;
+  display: inline-block;
+  position: relative;
+  padding: 1em 1em;
+  vertical-align: middle;
+  border: #ddd 1px solid;
+  border-radius: 5px;
+
+  box-sizing: border-box;
+}
+
+.project-name {
+  font-size: 2em;
+  padding-bottom: .5em;
+}
+
+.project-close {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  transform: rotate(40deg);
+}
