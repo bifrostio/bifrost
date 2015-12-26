@@ -5,6 +5,7 @@ import Provision from 'components/Provision';
 import Station from 'components/Station';
 import StationList from 'components/StationList';
 import ContactForm from 'components/ContactForm';
+import StationMap from 'components/StationMap';
 
 export default class Bifrost extends Component {
   constructor(props) {
@@ -12,9 +13,14 @@ export default class Bifrost extends Component {
   }
 
   render() {
+    const markers = [
+      {key: 'marker1', position: [25.105, 121.51], children: 'My first popup'},
+      {key: 'marker2', position: [25.1051, 121.52], children: 'My second popup'},
+      {key: 'marker3', position: [25.1049, 121.505], children: 'My third popup'}
+    ];
     return (
       <div>
-        <Header />
+        <StationMap markers={markers} />
         <ContactForm extra={['address']} />
         <Provision name="傘"
                    thumbnail="http://fakeimg.pl/100x100/"
