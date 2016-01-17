@@ -33,6 +33,7 @@
 .project-name {
   font-size: 2em;
   padding-bottom: .5em;
+  word-wrap: break-word;
 }
 
 .project-close {
