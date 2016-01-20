@@ -11,9 +11,7 @@ if (env !== 'production') {
   var webpack = require('webpack');
   var webpackConfig = require('../webpack.config');
   app.use(webpackMiddleware(webpack(webpackConfig), {
-    stats: {
-     colors: true
-    }
+    stats: { colors: true}
   }));
   app.use(loopback.static(path.resolve(__dirname, '../client')));
 } else {
