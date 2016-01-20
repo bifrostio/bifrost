@@ -5,7 +5,6 @@ import { Glyphicon } from 'react-bootstrap';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 export default class Station extends Component {
-
   render() {
     let createProvision = (provision, index) => {
       return (
