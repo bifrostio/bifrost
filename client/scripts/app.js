@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import Station from 'components/Station';
 import Gallery from 'components/Gallery';
 import { Router, Route, Link } from 'react-router';
+import { createHistory, useBasename } from 'history';
+
+const history = useBasename(createHistory)({
+  basename: '/'
+});
 
 export default class Bifrost extends Component {
   constructor(props) {
@@ -24,7 +29,7 @@ export default class Bifrost extends Component {
 }
 
 ReactDOM.render((
-  <Router>
+  <Router history={history}>
     <Route path='/' component={Bifrost}>
       <Route path='stations/:id' component={Station} />
       <Route path='gallery' component={Gallery} />
