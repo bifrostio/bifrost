@@ -1,0 +1,43 @@
+{
+  "name": "station",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "batches": {
+      "type": "hasMany",
+      "model": "batch"
+    },
+    "contacts": {
+      "type": "embedsMany",
+      "model": "contact",
+      "property": "contacts"
+    },
+    "project": {
+      "type": "belongsTo",
+      "model": "project"
+    },
+    "provisions": {
+      "type": "hasMany",
+      "model": "provision",
+      "through": "provisionQuantity"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

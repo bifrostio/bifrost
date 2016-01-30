@@ -1,14 +1,24 @@
 {
   "name": "manager",
-  "base": "User",
   "description": "管理者帳號",
+  "base": "User",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "contact": {
+      "type": "embedsOne",
+      "model": "contact",
+      "property": "contact"
+    },
+    "projects": {
+      "type": "hasAndBelongsToMany",
+      "model": "project"
+    }
+  },
   "acls": [],
   "methods": {}
 }

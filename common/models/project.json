@@ -10,62 +10,21 @@
     },
     "description": {
       "type": "string"
-    },
-    "contactName": {
-      "type": "string",
-      "required": true
-    },
-    "contactEmail": {
-      "type": "string",
-      "required": true
-    },
-    "contactPhone": {
-      "type": "string",
-      "required": true
-    },
-    "zipcode": {
-      "type": "string"
-    },
-    "city": {
-      "type": "string",
-      "required": true
-    },
-    "district": {
-      "type": "string"
-    },
-    "detailAddress": {
-      "type": "string",
-      "required": true
-    },
-    "latitude": {
-      "type": "number",
-      "mssql": {
-        "dataType": "float"
-      }
-    },
-    "longitude": {
-      "type": "number",
-      "mssql": {
-        "dataType": "float"
-      }
     }
   },
   "validations": [],
   "relations": {
-    "manager": {
-      "type": "belongsTo",
-      "model": "manager",
-      "foreignKey": "ownerId"
+    "managers": {
+      "type": "hasAndBelongsToMany",
+      "model": "manager"
     },
-    "provisions": {
+    "stations": {
       "type": "hasMany",
-      "model": "provision",
-      "foreignKey": ""
+      "model": "station"
     },
-    "batches": {
-      "type": "hasMany",
-      "model": "batch",
-      "foreignKey": ""
+    "contacts": {
+      "type": "embedsMany",
+      "model": "contact"
     }
   },
   "acls": [],

@@ -44,15 +44,27 @@
     "dataSource": "db",
     "public": true
   },
-  "donatedProvision": {
-    "dataSource": "db",
-    "public": true
-  },
   "alert": {
     "dataSource": null,
     "public": true
   },
   "manager": {
+    "dataSource": "db",
+    "public": true
+  },
+  "station": {
+    "dataSource": "db",
+    "public": true
+  },
+  "address": {
+    "dataSource": "db",
+    "public": true
+  },
+  "contact": {
+    "dataSource": "db",
+    "public": true
+  },
+  "provisionQuantity": {
     "dataSource": "db",
     "public": true
   }

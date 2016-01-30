@@ -13,26 +13,19 @@
     },
     "unit": {
       "type": "string"
-    },
-    "shippedQuantity": {
-      "type": "number",
-      "required": true
-    },
-    "promisedQuantity": {
-      "type": "number",
-      "required": true
-    },
-    "totalQuantity": {
-      "type": "number",
-      "required": true
     }
   },
   "validations": [],
   "relations": {
-    "project": {
-      "type": "belongsTo",
-      "model": "project",
-      "foreignKey": "projectId"
+    "stations": {
+      "type": "hasMany",
+      "model": "station",
+      "through": "provisionQuantity"
+    },
+    "batches": {
+      "type": "hasMany",
+      "model": "batch",
+      "through": "provisionQuantity"
     }
   },
   "acls": [],
