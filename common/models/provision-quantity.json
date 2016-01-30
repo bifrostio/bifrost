@@ -1,0 +1,37 @@
+{
+  "name": "provisionQuantity",
+  "plural": "provisionQuantities",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "total": {
+      "type": "number"
+    },
+    "shipped": {
+      "type": "number"
+    },
+    "promised": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "station": {
+      "type": "belongsTo",
+      "model": "station"
+    },
+    "provision": {
+      "type": "belongsTo",
+      "model": "provision"
+    },
+    "batch": {
+      "type": "belongsTo",
+      "model": "batch"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

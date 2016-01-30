@@ -9,33 +9,29 @@
       "type": "date",
       "required": true
     },
+    "updatedDate": {
+      "type": "date"
+    },
     "trackingNumber": {
       "type": "string",
       "required": true
     },
-    "contactName": {
-      "type": "string",
-      "required": true
-    },
-    "contactPhone": {
-      "type": "string",
-      "required": true
-    },
-    "contactEmail": {
-      "type": "string"
+    "contact": {
+      "type": "embedsOne",
+      "model": "contact",
+      "property": "contact"
     }
   },
   "validations": [],
   "relations": {
-    "project": {
+    "station": {
       "type": "belongsTo",
-      "model": "project",
-      "foreignKey": "projectId"
+      "model": "station"
     },
-    "donatedProvisions": {
+    "provisions": {
       "type": "hasMany",
-      "model": "donatedProvision",
-      "foreignKey": ""
+      "model": "provision",
+      "through": "provisionQuantity"
     }
   },
   "acls": [],

@@ -1,0 +1,31 @@
+{
+  "name": "address",
+  "plural": "addresses",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "zipCode": {
+      "type": "string",
+      "description": "郵遞區號"
+    },
+    "city": {
+      "type": "string",
+      "description": "縣市"
+    },
+    "district": {
+      "type": "string",
+      "description": "鄉鎮區域"
+    },
+    "detail": {
+      "type": "string",
+      "description": "道路、巷弄與門牌號碼"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

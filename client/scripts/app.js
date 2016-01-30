@@ -18,8 +18,7 @@ export default class Bifrost extends Component {
     return (
       <div>
         <h1>Hello</h1>
-        <Link to="/gallery">gallery</Link>
-        <Link to='/stations/123'>stations 123</Link>
+        <Link to="/gallery">gallery</Link> | <Link to='/stations/123'>stations 123</Link>
         <div>
           {this.props.children || 'Welcome to your Inbox'}
         </div>

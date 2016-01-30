@@ -7,3 +7,4 @@ mssql*
 html-report
 lcov.info
 dist
+.vscode
