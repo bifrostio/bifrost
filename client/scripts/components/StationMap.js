@@ -12,9 +12,13 @@ const StationMarker = ({ map, position, children }) => (
 );
 
 const StationMarkerList = ({ map, markers }) => {
-  const items = markers.map(({ key, ...props }) => (
+  let items;
+  if (markers.length > 0) {
+    items = markers.map(({ key, ...props }) => (
       <StationMarker key={key} map={map} {...props} />
-  ));
+    ));
+  }
+
   return <div style={{display: 'none'}}>{items}</div>;
 };
 
@@ -24,7 +28,10 @@ export default class StationMap extends Component {
   }
 
   render() {
-    let bounds = new LatLngBounds(this.props.markers.map(m => m.position));
+    let bounds;
+    if (this.props.markers.length > 0) {
+      bounds = new LatLngBounds(this.props.markers.map(m => m.position));
+    }
 
     return (
       <Map bounds={bounds}>

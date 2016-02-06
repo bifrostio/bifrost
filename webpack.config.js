@@ -9,6 +9,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  externals: {
+    'jquery': 'jQuery'
+  },
   module: {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel?stage=0'}
