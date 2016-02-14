@@ -10,14 +10,14 @@ export default class StationList extends Component {
           <div className="progress">
             <ProgressBar>
               <ProgressBar bsStyle="success"
-                           now={station.shippedPercentage} />
+                           now={station.shippedPercentage*100} />
               <ProgressBar bsStyle="warning" active
-                           now={station.promisedPercentage-station.shippedPercentage} />
+                           now={station.promisedPercentage * 100} />
             </ProgressBar>
           </div>
         </div>
       );
     });
-    return <div>{ stations }</div>;
+    return <div className="station-list">{ stations }</div>;
   }
 }

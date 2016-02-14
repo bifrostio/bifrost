@@ -2,10 +2,25 @@
   list-style: none;
 }
 
+/* Layers */
+
+.station-list {
+  position: absolute;
+  z-index: 2;
+  background: white;
+  width: 400px;
+  left: 50px;
+  top: 10px;
+  padding: 10px;
+}
+
 .leaflet-container {
-  height: 400px;
-  width: 80%;
-  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
 }
 
 .project-wrap input[type="checkbox"] {
