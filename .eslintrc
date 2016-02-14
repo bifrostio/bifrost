@@ -16,7 +16,8 @@
         "semi": [
             2,
             "always"
-        ]
+        ],
+        "no-unused-vars": [2, {"vars": "all", "varsIgnorePattern": "React"}]
     },
     "env": {
         "es6": true,

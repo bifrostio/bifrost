@@ -34,7 +34,7 @@ export default class StationMap extends Component {
     }
 
     return (
-      <Map bounds={bounds}>
+      <Map bounds={bounds} boundsOptions={{paddingTopLeft: [500, 0]}}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
