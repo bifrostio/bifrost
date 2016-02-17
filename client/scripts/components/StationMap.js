@@ -1,26 +1,41 @@
 import React, {Component} from 'react';
-import { render } from 'react-dom';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map, Marker, TileLayer } from 'react-leaflet';
+import { icon } from 'leaflet';
 import { LatLngBounds } from 'leaflet';
 
-const StationMarker = ({ map, position, children }) => (
-  <Marker map={map} position={position}>
-    <Popup>
-      <span>{children}</span>
-    </Popup>
-  </Marker>
-);
+class StationMarker extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      highlighted: false
+    };
 
-const StationMarkerList = ({ map, markers }) => {
-  let items;
-  if (markers.length > 0) {
-    items = markers.map(({ key, ...props }) => (
-      <StationMarker key={key} map={map} {...props} />
-    ));
+    this.normalIcon = icon({
+      iconUrl: '/images/markers-blue.svg',
+      iconSize: [40, 40],
+      iconAnchor: [20, 40]
+    });
+
+    this.highlightedIcon = icon({
+      iconUrl: '/images/markers-orange.svg',
+      iconSize: [40, 40],
+      iconAnchor: [20, 40]
+    });
   }
 
-  return <div style={{display: 'none'}}>{items}</div>;
-};
+  highlight(bool) {
+    this.setState({highlighted: bool});
+  }
+
+  render() {
+    return (
+      <Marker
+        icon={this.state.highlighted ? this.highlightedIcon : this.normalIcon}
+        map={this.props.map}
+        position={this.props.position} />
+    );
+  }
+}
 
 export default class StationMap extends Component {
   constructor(props) {
@@ -33,6 +48,10 @@ export default class StationMap extends Component {
       bounds = new LatLngBounds(this.props.markers.map(m => m.position));
     }
 
+    let markers = this.props.markers.map(({ key, ...props }) => (
+      <StationMarker key={key} {...props} />
+    ));
+
     return (
       <Map bounds={bounds} boundsOptions={{paddingTopLeft: [500, 0]}}>
         <TileLayer
@@ -40,7 +59,8 @@ export default class StationMap extends Component {
           url='http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg'
           subdomains='1234'
         />
-        <StationMarkerList markers={this.props.markers} />
+
+        {markers}
       </Map>
     );
   }
