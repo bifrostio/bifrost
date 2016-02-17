@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Station from 'components/Station';
 import StationList from 'components/StationList';
 import Gallery from 'components/Gallery';
-import { Router, Route, Link } from 'react-router';
+import { Router, Route } from 'react-router';
 import { createHistory, useBasename } from 'history';
 import $ from 'jquery';
 import async from 'async';
