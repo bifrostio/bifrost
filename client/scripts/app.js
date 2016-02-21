@@ -17,8 +17,11 @@ export default class Bifrost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stations: []
+      stations: [],
+      selected: null
     };
+
+    this.handleHover = this.handleHover.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +61,10 @@ export default class Bifrost extends Component {
     });
   }
 
+  handleHover(stationId) {
+    this.setState({selected: stationId});
+  }
+
   render() {
     let markers = [];
     let stations = [];
@@ -82,8 +89,8 @@ export default class Bifrost extends Component {
 
     return (
       <div>
-        <StationList stations={stations} />
-        <StationMap markers={markers} />
+        <StationList stations={stations} onHover={this.handleHover}/>
+        <StationMap markers={markers} selected={this.state.selected} />
       </div>
     );
   }
