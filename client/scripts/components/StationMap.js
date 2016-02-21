@@ -6,9 +6,6 @@ import { LatLngBounds } from 'leaflet';
 class StationMarker extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      highlighted: false
-    };
 
     this.normalIcon = icon({
       iconUrl: '/images/markers-blue.svg',
@@ -23,14 +20,10 @@ class StationMarker extends Component {
     });
   }
 
-  highlight(bool) {
-    this.setState({highlighted: bool});
-  }
-
   render() {
     return (
       <Marker
-        icon={this.state.highlighted ? this.highlightedIcon : this.normalIcon}
+        icon={this.props.selected ? this.highlightedIcon : this.normalIcon}
         map={this.props.map}
         position={this.props.position} />
     );
@@ -44,13 +37,21 @@ export default class StationMap extends Component {
 
   render() {
     let bounds;
+    const selectedId = this.props.selected;
+
     if (this.props.markers.length > 0) {
       bounds = new LatLngBounds(this.props.markers.map(m => m.position));
     }
 
-    let markers = this.props.markers.map(({ key, ...props }) => (
-      <StationMarker key={key} {...props} />
-    ));
+    let markers = this.props.markers.map(({ key, ...props }) => {
+      let selected = false;
+
+      if (key === selectedId) {
+        selected = true;
+      }
+
+      return <StationMarker key={key} {...props} selected={selected} />
+    });
 
     return (
       <Map bounds={bounds} boundsOptions={{paddingTopLeft: [500, 0]}}>
