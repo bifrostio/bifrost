@@ -3,6 +3,8 @@ import StationMap from 'components/StationMap';
 import ReactDOM from 'react-dom';
 import StationList from 'components/StationList';
 import StationApi from 'utils/StationApi';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router'
 
 export default class MapView extends Component {
   constructor(props) {
@@ -51,6 +53,9 @@ export default class MapView extends Component {
       <div>
         <StationList stations={stations} onHover={this.handleHover} />
         <StationMap markers={markers} selected={this.state.selected} />
+        <Button className="login-btn" bsStyle="primary" href="#/login">
+          Login
+        </Button>
       </div>
     );
   }
