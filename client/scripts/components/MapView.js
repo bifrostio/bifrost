@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import StationMap from 'components/StationMap';
 import ReactDOM from 'react-dom';
 import StationList from 'components/StationList';
-import StationApi from 'utils/station-api';
+import StationApi from 'utils/StationApi';
 
 export default class MapView extends Component {
   constructor(props) {

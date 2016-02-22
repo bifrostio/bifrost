@@ -5,7 +5,7 @@ export default class StationContact extends Component {
   render() {
     return (
       <ul className="contact">
-        <li><Glyphicon glyph="user" /> {this.props.contact.contactName}</li>
+        <li><Glyphicon glyph="user" /> {this.props.contact.name}</li>
         {
           this.props.contact.phone ?
           <li><Glyphicon glyph="earphone" /> {this.props.contact.phone}</li> :
