@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import StationContact from 'components/StationContact';
 import Provision from 'components/Provision';
 import $ from 'jquery';
-import { Glyphicon } from 'react-bootstrap';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { Map, Marker, TileLayer } from 'react-leaflet';
+import StationApi from 'utils/StationApi';
 
 export default class Station extends Component {
   constructor(props) {
@@ -15,34 +16,59 @@ export default class Station extends Component {
 
   componentDidMount() {
     let self = this;
-    $.get(`/api/stations/${this.props.params.id}`).done(data => {
-      self.setState({station: data});
+    StationApi.findById(this.props.params.id, (err, station) => {
+      self.setState({station: station});
     });
   }
 
   render() {
-    // let createProvision = (provision, index) => {
-    //   return (
-    //     <Provision key={index}
-    //       name={provision.name}
-    //       thumbnail={provision.thumbnail}
-    //       total={provision.total}
-    //       shipped={provision.shipped}
-    //       promised={provision.promised}
-    //       unit={provision.unit}
-    //     />
-    //   );
-    // };
+    let createProvision = (provision, index) => {
+      return (
+        <Col key={index} xs={6} md={3}>
+          <Provision
+            name={provision.name}
+            thumbnail={provision.thumbnail}
+            total={provision.total}
+            shipped={provision.shipped}
+            promised={provision.promised}
+            unit={provision.unit}
+          />
+        </Col>
+      );
+    };
+
+    let contacts = this.state.station._contacts || [];
+    let provisions = this.state.station.provisions || [];
+    let position = this.state.station.latitude ?
+                   [this.state.station.latitude, this.state.station.longitude] :
+                   [0, 0];
 
     return (
-      <Grid>
+      <Grid className="station-page">
         <Row>
-          <Col xs={12} md={9}>
+          <Col xs={12} md={6}>
             <h1>{this.state.station.name}</h1>
+            {contacts.map((c, index) => {
+              return (<StationContact key={index} contact={c} />);
+            })}
           </Col>
-          <Col xs={12} md={3}>
-            Map
+          <Col xs={12} md={6} className="minimap">
+            <Map center={position} zoom={13}>
+              <TileLayer
+                attribution='Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                url='http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg'
+                subdomains='1234'
+              />
+              <Marker position={position}>
+              </Marker>
+            </Map>
           </Col>
+        </Row>
+        <Row>
+          {provisions.map(createProvision)}
+        </Row>
+        <Row className="text-right">
+          <Button bsSize="large" bsStyle="primary">Donate</Button>
         </Row>
       </Grid>
     );

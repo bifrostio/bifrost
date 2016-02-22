@@ -66,3 +66,11 @@
   top: 10px;
   transform: rotate(40deg);
 }
+
+.minimap {
+  height: 200px;
+}
+
+.station-page {
+  margin-top: 30px;
+}

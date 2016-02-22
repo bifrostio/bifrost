@@ -4,15 +4,19 @@ import async from 'async';
 export default class Station {
   static findById(id, done) {
     let station;
+    let provisions = {};
 
     async.series([
       callback => {
         let filter = { include: 'provisions'};
         filter = encodeURIComponent(JSON.stringify(filter));
-        $.get(`/api/stations/${id}`)
+        $.get(`/api/stations/${id}?filter=${filter}`)
         .done(function(result) {
           station = result;
-          station.provisionQuantity = [];
+          console.log(station)
+          station.provisions.forEach(p => {
+            provisions[p.id] = p;
+          });
           callback();
         })
         .fail(callback);
@@ -22,7 +26,11 @@ export default class Station {
         filter = encodeURIComponent(JSON.stringify(filter));
         $.get(`/api/provisionQuantities?filter=${filter}`)
         .done(function(result) {
-          result.forEach(q => station.provisionQuantity.push(q));
+          result.forEach(q => {
+            provisions[q.provisionId].shipped = q.shipped;
+            provisions[q.provisionId].promised = q.promised;
+            provisions[q.provisionId].total = q.total;
+          });
           callback();
         })
         .fail(callback);
