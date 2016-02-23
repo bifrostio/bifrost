@@ -54,7 +54,7 @@ export default class MapView extends Component {
         <StationList stations={stations} onHover={this.handleHover} />
         <StationMap markers={markers} selected={this.state.selected} />
         <Button className="login-btn" bsStyle="primary" href="#/login">
-          Login
+          登入
         </Button>
       </div>
     );
