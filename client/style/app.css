@@ -93,3 +93,17 @@
 .login-wrap .panel-heading {
   font-size: 30px;
 }
+
+.login-wrap .btn-wrap {
+  text-align: center;
+}
+
+.login-wrap button {
+  width: 100px;
+  margin: 10px 30px;
+}
+
+.login-warning,
+.help-block {
+  color: #d9534f;
+}
