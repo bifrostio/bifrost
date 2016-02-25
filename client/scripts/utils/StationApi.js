@@ -13,7 +13,6 @@ export default class Station {
         $.get(`/api/stations/${id}?filter=${filter}`)
         .done(function(result) {
           station = result;
-          console.log(station)
           station.provisions.forEach(p => {
             provisions[p.id] = p;
           });

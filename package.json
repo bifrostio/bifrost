@@ -20,6 +20,7 @@
     "loopback-datasource-juggler": "^2.39.0",
     "react-bootstrap": "^0.28.1",
     "react-leaflet": "^0.10.0",
+    "react-range": "0.0.6",
     "request": "^2.53.0",
     "serve-favicon": "^2.0.1",
     "shelljs": "^0.3.0",
