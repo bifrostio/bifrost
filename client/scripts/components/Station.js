@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import StationContact from 'components/StationContact';
 import Provision from 'components/Provision';
-import $ from 'jquery';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import StationApi from 'utils/StationApi';
@@ -10,7 +9,8 @@ export default class Station extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      station: {}
+      station: {},
+      edit: false
     };
   }
 
@@ -21,11 +21,17 @@ export default class Station extends Component {
     });
   }
 
+  donate() {
+    this.setState({edit: !this.state.edit});
+  }
+
   render() {
+    let self = this;
     let createProvision = (provision, index) => {
       return (
-        <Col key={index} xs={6} md={3}>
+        <Col key={index} xs={6} md={4}>
           <Provision
+            edit={self.state.edit}
             name={provision.name}
             thumbnail={provision.thumbnail}
             total={provision.total}
@@ -68,22 +74,9 @@ export default class Station extends Component {
           {provisions.map(createProvision)}
         </Row>
         <Row className="text-right">
-          <Button bsSize="large" bsStyle="primary">Donate</Button>
+          <Button bsStyle="primary" bsSize="large" onClick={this.donate.bind(this)}>Donate</Button>
         </Row>
       </Grid>
     );
-    /*
-    return (
-      <div>
-        <h1>{this.state.station.contact.stationName}</h1>
-        <StationContact contact={this.state.station.contact} />
-        <Grid>
-          <Row>
-            {this.state.station.provisions.map(createProvision)}
-          </Row>
-        </Grid>
-      </div>
-    );
-    */
   }
 }
