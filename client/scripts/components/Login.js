@@ -11,6 +11,7 @@ export default class Login extends Component {
         emailError: '',
         passwordError: ''
     };
+
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLoginSuccess = this.handleLoginSuccess.bind(this);
     this.handleLoginFail = this.handleLoginFail.bind(this);
@@ -45,6 +46,8 @@ export default class Login extends Component {
   }
 
   handleLoginSuccess(id) {
+    sessionStorage.setItem("token", id);
+    window.location.hash = 'projects';
   }
 
   handleLoginFail(statusCode) {
