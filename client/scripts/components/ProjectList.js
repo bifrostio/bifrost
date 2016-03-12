@@ -63,7 +63,7 @@ export default class ProjectList extends Component {
       projectList = this.state.projects.map(project => {
         return (
           <div key={project.id}>
-            <Project projectName={project.name} projectTime="2015/03/23" />
+            <Project projectName={project.name} projectId={project.id} projectTime="2015/03/23" />
           </div>
         );
       });

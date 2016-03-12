@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router';
 
 export default class Project extends Component {
   render () {
@@ -10,7 +11,7 @@ export default class Project extends Component {
         <div className="project-item">
           {isClose && <div className="project-close">已結案</div>}
           <div className="project-name">
-            {projectName}
+            <Link to={`/projects/${this.props.projectId}`}>{projectName}</Link>
           </div>
           <div className="project-time">
             開設時間：{projectTime}
