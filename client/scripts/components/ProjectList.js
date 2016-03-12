@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Jumbotron, Button, Input} from 'react-bootstrap';
 import Project from 'components/Project';
 import ProjectApi from 'utils/ProjectApi';
 
@@ -6,11 +7,16 @@ export default class ProjectList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: []
+      projects: [],
+      createErrorMsg: '',
+      openCreateProject: false
     };
 
     this.handleSuccess = this.handleSuccess.bind(this);
     this.handleFail = this.handleFail.bind(this);
+    this.handleCreateProject = this.handleCreateProject.bind(this);
+    this.handleCreateSuccess = this.handleCreateSuccess.bind(this);
+    this.handleCreateFail = this.handleCreateFail.bind(this);
   }
   componentWillMount() {
     ProjectApi.getProjects(this.handleSuccess, this.handleFail);
@@ -23,6 +29,29 @@ export default class ProjectList extends Component {
   }
 
   handleFail() {
+  }
+
+  handleCreateProject() {
+    const name = this.refs.projectName.getValue();
+    const project = {name: name};
+
+    ProjectApi.createProject(project, this.handleCreateSuccess, this.handleCreateFail);
+  }
+
+  handleCreateSuccess(data) {
+    let projects = this.state.projects;
+    projects.unshift(data);
+
+    this.setState({
+      projects: projects,
+      createErrorMsg: ''
+    });
+  }
+
+  handleCreateFail() {
+    this.setState({
+      createErrorMsg: 'Opps! Try again!'
+    });
   }
 
   render() {
@@ -41,7 +70,20 @@ export default class ProjectList extends Component {
     }
 
     return (
-        <div className="project-list">
+        <div className="container project-list">
+          <h1>專案列表</h1>
+          <Jumbotron>
+            <p>由此開始建立新專案</p>
+            <div>
+              <Input type="text"
+                ref="projectName"
+                className="input-project-name"
+                help={this.state.createErrorMsg}
+                placeholder="請輸入專案名稱" />
+              <Button bsStyle="primary" className="start-create-project" onClick={this.handleCreateProject}>建立</Button>
+            </div>
+
+          </Jumbotron>
           {projectList}
         </div>
     );
