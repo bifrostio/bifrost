@@ -4,6 +4,7 @@ import Station from 'components/Station';
 import Gallery from 'components/Gallery';
 import MapView from 'components/MapView';
 import Login from 'components/Login';
+import ProjectList from 'components/ProjectList';
 import { Router, Route, IndexRoute } from 'react-router';
 import { createHistory, useBasename } from 'history';
 
@@ -28,6 +29,7 @@ ReactDOM.render((
       <Route path='stations/:id' component={Station} />
       <Route path='gallery' component={Gallery} />
       <Route path='login' component={Login} />
+      <Route path='projects' component={ProjectList} />
     </Route>
   </Router>
 ), document.getElementById('bifrost'));
