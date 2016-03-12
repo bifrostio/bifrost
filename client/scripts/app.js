@@ -5,6 +5,7 @@ import Gallery from 'components/Gallery';
 import MapView from 'components/MapView';
 import Login from 'components/Login';
 import ProjectList from 'components/ProjectList';
+import ProjectContent from 'components/ProjectContent';
 import { Router, Route, IndexRoute } from 'react-router';
 import { createHistory, useBasename } from 'history';
 
@@ -30,6 +31,7 @@ ReactDOM.render((
       <Route path='gallery' component={Gallery} />
       <Route path='login' component={Login} />
       <Route path='projects' component={ProjectList} />
+      <Route path='projects/:id' component={ProjectContent} />
     </Route>
   </Router>
 ), document.getElementById('bifrost'));

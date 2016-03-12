@@ -88,6 +88,27 @@
   transform: rotate(40deg);
 }
 
+.project-content {
+  margin-top: 60px;
+}
+
+.project-content .contact-info {
+  width: 40%;
+  margin-bottom: 16px;
+  float: right;
+  border: #eee 1px solid;
+  border-radius: 6px;
+}
+
+.project-content .station-list {
+  position: relative;
+}
+
+.contact-header {
+  padding: 16px 16px;
+  border-bottom: #eee 2px solid;
+}
+
 .minimap {
   height: 200px;
 }
