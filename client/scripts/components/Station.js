@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import StationContact from 'components/StationContact';
 import ContactForm from 'components/ContactForm';
 import Provision from 'components/Provision';
-import { Modal, ButtonGroup, Alert, Grid, Row, Col, Button } from 'react-bootstrap';
+import Confirmation from 'components/Confirmation';
+import { ButtonGroup, Alert, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import StationApi from 'utils/StationApi';
 
@@ -36,12 +37,17 @@ export default class Station extends Component {
     this.setState({donor: donor});
   }
 
+  updateVolume(index, volume) {
+    this.state.station.provisions[index].volume = volume;
+  }
+
   render() {
     let self = this;
     let createProvision = (provision, index) => {
       return (
         <Col key={index} xs={6} md={4}>
           <Provision
+            index={index}
             edit={self.state.edit}
             name={provision.name}
             thumbnail={provision.thumbnail}
@@ -49,6 +55,7 @@ export default class Station extends Component {
             shipped={provision.shipped}
             promised={provision.promised}
             unit={provision.unit}
+            updateVolume={this.updateVolume.bind(this)}
           />
         </Col>
       );
@@ -111,24 +118,12 @@ export default class Station extends Component {
           </Row>
         </Grid>
 
-        <Modal show={this.state.showConfirmation} onHide={this.toggleConfirmation.bind(this)}>
-          <Modal.Header closeButton>
-            <Modal.Title>捐贈資訊</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>請確認以下的資訊無誤，按下送出後將會記錄此筆捐贈資訊，並且發送 email 到您的信箱。</p>
+        <Confirmation
+          contact={this.state.donor}
+          provisions={this.state.station.provisions}
+          hide={this.toggleConfirmation.bind(this)}
+          show={this.state.showConfirmation} />
 
-            <hr />
-
-            <h4>捐贈物資資訊</h4>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <h4>您的聯絡資訊</h4>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.toggleConfirmation.bind(this)}>Close</Button>
-          </Modal.Footer>
-        </Modal>
       </div>
     );
   }

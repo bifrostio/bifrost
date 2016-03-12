@@ -57,6 +57,7 @@ export default class Provision extends Component {
 
   updateVolume(vol) {
     this.setState({volume: vol});
+    this.props.updateVolume(this.props.index, vol);
   }
 
   render() {
