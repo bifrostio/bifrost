@@ -38,10 +38,18 @@
 }
 
 .project-list {
-  width: 50%;
-  margin: 32px;
-  left: 50%;
-  transform: translateX(50%);
+}
+
+.project-list .jumbotron {
+  margin-top: 60px;
+}
+
+.start-create-project {
+  width: 100px;
+}
+
+.input-project-name {
+  width: 35%
 }
 
 .project-wrap input[type="checkbox"] {
