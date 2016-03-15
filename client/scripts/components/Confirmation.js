@@ -3,12 +3,15 @@ import { Modal, Button, FormControls } from 'react-bootstrap';
 
 export default class Confirmation extends Component {
   render() {
+    let labelCol = 'col-xs-4';
+    let inputCol = 'col-xs-8';
+
     let createProvisionFormIten = (p, index) => {
       return (
         <FormControls.Static
           key={index}
-          labelClassName="col-xs-4"
-          wrapperClassName="col-xs-8"
+          labelClassName={labelCol}
+          wrapperClassName={inputCol}
           label={p.name}
           value={p.volume} />
       );
@@ -34,23 +37,23 @@ export default class Confirmation extends Component {
           <h4>您的聯絡資訊</h4>
             <FormControls.Static
               label="姓名"
-              labelClassName="col-xs-4"
-              wrapperClassName="col-xs-8"
+              labelClassName={labelCol}
+              wrapperClassName={inputCol}
               value={this.props.contact.name} />
             <FormControls.Static
               label="電子郵件"
-              labelClassName="col-xs-4"
-              wrapperClassName="col-xs-8"
+              labelClassName={labelCol}
+              wrapperClassName={inputCol}
               value={this.props.contact.email} />
             <FormControls.Static
               label="電話"
-              labelClassName="col-xs-4"
-              wrapperClassName="col-xs-8"
+              labelClassName={labelCol}
+              wrapperClassName={inputCol}
               value={this.props.contact.phone} />
             <FormControls.Static
               label="註記"
-              labelClassName="col-xs-4"
-              wrapperClassName="col-xs-8"
+              labelClassName={labelCol}
+              wrapperClassName={inputCol}
               value={this.props.contact.note} />
           </form>
         </Modal.Body>
