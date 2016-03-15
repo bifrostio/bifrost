@@ -36,7 +36,7 @@
     "dataSource": "db",
     "public": true
   },
-  "provision": {
+  "provisionRequirement": {
     "dataSource": "db",
     "public": true
   },
@@ -64,7 +64,7 @@
     "dataSource": "db",
     "public": true
   },
-  "provisionQuantity": {
+  "provisionActivity": {
     "dataSource": "db",
     "public": true
   }

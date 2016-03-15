@@ -4,37 +4,45 @@ import async from 'async';
 export default class Station {
   static findById(id, done) {
     let station;
-    let provisions = {};
+    let provisionRequirements;
 
     async.series([
       callback => {
-        let filter = { include: 'provisions'};
-        filter = encodeURIComponent(JSON.stringify(filter));
-        $.get(`/api/stations/${id}?filter=${filter}`)
+        $.get(`/api/stations/${id}`)
         .done(function(result) {
           station = result;
-          station.provisions.forEach(p => {
-            provisions[p.id] = p;
-          });
           callback();
         })
         .fail(callback);
       },
       callback => {
-        let filter = { where: {stationId: id} };
+        let filter = { where: {stationId: id}, include: 'provisionActivities' };
         filter = encodeURIComponent(JSON.stringify(filter));
-        $.get(`/api/provisionQuantities?filter=${filter}`)
+        $.get(`/api/provisionRequirements?filter=${filter}`)
         .done(function(result) {
-          result.forEach(q => {
-            provisions[q.provisionId].shipped = q.shipped;
-            provisions[q.provisionId].promised = q.promised;
-            provisions[q.provisionId].total = q.total;
-          });
+          provisionRequirements = result;
           callback();
         })
         .fail(callback);
       }
     ], function(err) {
+      if (station && provisionRequirements) {
+        provisionRequirements.forEach(requirement => {
+          let shipped = 0;
+          let promised = 0;
+          requirement.provisionActivities.forEach(activity => {
+            if (activity.shipped !== undefined) {
+              shipped += activity.shipped;
+            }
+            if (activity.promised !== undefined) {
+              promised += activity.promised;
+            }
+          });
+          requirement.shipped = shipped;
+          requirement.promised = promised;
+        });
+        station.provisionRequirements = provisionRequirements;
+      }
       done(err, station);
     });
   }
@@ -45,35 +53,43 @@ export default class Station {
       filter = {};
     }
 
-    let stations = {};
+    filter = filter || {};
+
+    let stations;
 
     async.series([
       callback => {
-        let filter = { include: 'provisions'};
+        filter.include = ['provisionRequirements', 'provisionActivities'];
         filter = encodeURIComponent(JSON.stringify(filter));
         $.get(`/api/stations?filter=${filter}`)
         .done(function(result) {
-          result.forEach(station => {
-            stations[station.id] = station;
-            station.provisionQuantity = [];
-          });
+          stations = result;
           callback();
         })
         .fail(callback);
       },
       callback => {
-        let filter = {
-          where: { or: Object.keys(stations).map(id => {
-            return {stationId: id};
-          })}
-        };
-        filter = encodeURIComponent(JSON.stringify(filter));
-        $.get(`/api/provisionQuantities?filter=${filter}`)
-        .done(function(result) {
-          result.forEach(q => stations[q.stationId].provisionQuantity.push(q));
-          callback();
-        })
-        .fail(callback);
+        if (stations) {
+          stations.forEach(station => {
+            station.provisionRequirements.forEach(requirement => {
+              let promised = 0;
+              let shipped = 0;
+              station.provisionActivities.forEach(activity => {
+                if (activity.provisionRequirementId === requirement.id) {
+                  if (activity.promised !== undefined) {
+                    promised += activity.promised;
+                  }
+                  if (activity.shipped !== undefined) {
+                    shipped += activity.shipped;
+                  }
+                }
+              });
+              requirement.promised = promised;
+              requirement.shipped = shipped;
+            });
+          });
+        }
+        callback();
       }
     ], function(err) {
       done(err, Object.keys(stations).map(id => stations[id]));
