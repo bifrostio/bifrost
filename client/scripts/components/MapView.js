@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import StationList from 'components/StationList';
 import StationApi from 'utils/StationApi';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router'
 
 export default class MapView extends Component {
   constructor(props) {
@@ -17,7 +16,7 @@ export default class MapView extends Component {
 
   componentDidMount() {
     let self = this;
-    StationApi.find({ include: 'provisions'}, (err, stations) => {
+    StationApi.find((err, stations) => {
       self.setState({ stations: stations});
     });
     this.handleHover = this.handleHover.bind(this);
@@ -40,12 +39,12 @@ export default class MapView extends Component {
 
       let promised = 0;
       let shipped = 0;
-      station.provisionQuantity.forEach(q => {
-        shipped += q.shipped / q.total;
-        promised += q.promised / q.total;
+      station.provisionRequirements.forEach(req => {
+        shipped += req.shipped / req.total;
+        promised += req.promised / req.total;
       });
-      station.shippedPercentage = shipped / station.provisionQuantity.length;
-      station.promisedPercentage = promised / station.provisionQuantity.length;
+      station.shippedPercentage = shipped / station.provisionRequirements.length;
+      station.promisedPercentage = promised / station.provisionRequirements.length;
       stations.push(station);
     });
 

@@ -62,7 +62,7 @@ export default class Station extends Component {
     };
 
     let contacts = this.state.station._contacts || [];
-    let provisions = this.state.station.provisions || [];
+    let provisions = this.state.station.provisionRequirements || [];
     let position = this.state.station.latitude ?
                    [this.state.station.latitude, this.state.station.longitude] :
                    [0, 0];

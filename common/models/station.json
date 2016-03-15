@@ -32,10 +32,13 @@
       "type": "belongsTo",
       "model": "project"
     },
-    "provisions": {
+    "provisionRequirements": {
       "type": "hasMany",
-      "model": "provision",
-      "through": "provisionQuantity"
+      "model": "provisionRequirement"
+    },
+    "provisionActivities": {
+      "type": "hasMany",
+      "model": "provisionActivity"
     }
   },
   "acls": [],
