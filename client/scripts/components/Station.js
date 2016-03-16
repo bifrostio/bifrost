@@ -6,6 +6,7 @@ import Confirmation from 'components/Confirmation';
 import { ButtonGroup, Alert, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import StationApi from 'utils/StationApi';
+import BatchApi from 'utils/BatchApi';
 
 export default class Station extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class Station extends Component {
   componentDidMount() {
     let self = this;
     StationApi.findById(this.props.params.id, (err, station) => {
+      station.provisionRequirements.forEach(req => req.volume = 0);
       self.setState({station: station});
     });
   }
@@ -38,7 +40,31 @@ export default class Station extends Component {
   }
 
   updateVolume(index, volume) {
-    this.state.station.provisions[index].volume = volume;
+    this.state.station.provisionRequirements[index].volume = volume;
+  }
+
+  createBatch() {
+    this.toggleConfirmation();
+    let batch = {
+      createdDate: Date(),
+      updatedDate: Date(),
+      stationId: this.state.station.id,
+      note: this.state.donor.note,
+      _contact: this.state.donor
+    };
+    let activities = this.state.station.provisionRequirements.map(req => {
+      let promised = req.volume;
+      return {
+        stationId: this.state.station.id,
+        provisionRequirementId: req.id,
+        promised: promised
+      };
+    });
+    BatchApi.create(batch, activities, (err, data) => {
+      if (!err) {
+        window.location = `/#/batches/${data.id}`;
+      }
+    });
   }
 
   render() {
@@ -120,7 +146,8 @@ export default class Station extends Component {
 
         <Confirmation
           contact={this.state.donor}
-          provisions={this.state.station.provisions}
+          provisions={this.state.station.provisionRequirements}
+          submit={this.createBatch.bind(this)}
           hide={this.toggleConfirmation.bind(this)}
           show={this.state.showConfirmation} />
 

@@ -58,7 +58,8 @@ export default class Confirmation extends Component {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.hide.bind(this)}>Close</Button>
+          <Button  bsStyle="primary" onClick={this.props.submit}>送出</Button>
+          <Button onClick={this.props.hide.bind(this)}>關閉</Button>
         </Modal.Footer>
       </Modal>
     );
