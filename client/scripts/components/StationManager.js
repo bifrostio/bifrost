@@ -42,14 +42,19 @@ export default class StationManager extends Component {
         </Grid>
 
         <ul className="nav nav-tabs">
-          <li className="active">
-            <Link to={`/manager/station/${this.state.station.id}/requirement`}>需求物資清單</Link>
+          <li>
+            <Link to={`/manager/station/${this.state.station.id}/requirement`} activeClassName="active">需求物資清單</Link>
           </li>
           <li>
-            <Link to={`/manager/station/${this.state.station.id}/activity`}>捐贈物資清單</Link>
+            <Link to={`/manager/station/${this.state.station.id}/activity`} activeClassName="active">捐贈物資清單</Link>
           </li>
         </ul>
-        {this.props.children}
+        {
+          this.props.children &&
+          React.cloneElement(this.props.children, {
+            provisions: provisions
+          })
+        }
       </div>
     );
   }
