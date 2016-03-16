@@ -4,6 +4,7 @@ import Station from 'components/Station';
 import StationManager from 'components/StationManager';
 import Gallery from 'components/Gallery';
 import MapView from 'components/MapView';
+import BatchView from 'components/BatchView';
 import Login from 'components/Login';
 import ProjectList from 'components/ProjectList';
 import ProjectContent from 'components/ProjectContent';
@@ -35,6 +36,7 @@ ReactDOM.render((
       <Route path='login' component={Login} />
       <Route path='projects' component={ProjectList} />
       <Route path='projects/:id' component={ProjectContent} />
+      <Route path='batches/:id' component={BatchView} />
     </Route>
   </Router>
 ), document.getElementById('bifrost'));

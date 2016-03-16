@@ -15,6 +15,9 @@
     "trackingNumber": {
       "type": "string",
       "required": true
+    },
+    "note": {
+      "type": "string"
     }
   },
   "validations": [],
