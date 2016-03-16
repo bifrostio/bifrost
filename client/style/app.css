@@ -170,11 +170,13 @@
 }
 
 .nav-tabs>li>a.active {
+  color: #fff;
+  background-color: #337ab7;
   border: solid 1px #337ab7;
 }
 
 .nav-tabs>li>a:hover {
- color: #fff;
- background-color: #337ab7;
+  color: #fff;
+  background-color: #337ab7;
 }
 
