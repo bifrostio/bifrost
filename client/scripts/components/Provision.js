@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { ProgressBar } from 'react-bootstrap';
+import { Glyphicon, ProgressBar } from 'react-bootstrap';
 import { Input } from 'react-bootstrap';
 import Range from 'react-range';
 
@@ -79,9 +79,8 @@ export default class Provision extends Component {
 
     return (
       <div className="row">
-        <div className="thumbnail col-xs-2">
-          <img alt={this.props.name}
-               src={this.props.thumbnail} />
+        <div className="col-xs-2">
+          <Glyphicon className="icon" glyph="briefcase" />
         </div>
         <div className="progress-status col-xs-7">
           <div className="status">
