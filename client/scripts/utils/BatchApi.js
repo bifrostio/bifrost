@@ -45,7 +45,12 @@ export default class Batch {
   }
 
   static findById(id, cb) {
-    let filter = {include: ['provisionActivities', 'station']};
+    let filter = {
+      include: [
+        { provisionActivities: 'provisionRequirement' },
+        'station'
+      ]
+    };
     filter = encodeURIComponent(JSON.stringify(filter));
     $.get(`/api/batches/${id}?filter=${filter}`)
     .done(data => cb(null, data))
