@@ -109,7 +109,12 @@ export default class Station extends Component {
       );
     }
     else {
-      buttons = <Button bsStyle="primary" bsSize="large" onClick={this.toggleEditMode.bind(this)}>捐贈</Button>;
+      buttons = (
+        <ButtonGroup bsSize="large">
+          <Button href='#/'>返回物資地圖</Button>
+          <Button bsStyle="primary" onClick={this.toggleEditMode.bind(this)}>捐贈</Button>
+        </ButtonGroup>
+      );
     }
 
     return (
