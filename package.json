@@ -16,7 +16,7 @@
     "loopback": "^2.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.1.0",
-    "loopback-connector-mongodb": "^1.13.0",
+    "loopback-connector-mongodb": "^1.13.3",
     "loopback-datasource-juggler": "^2.39.0",
     "react-bootstrap": "^0.28.1",
     "react-leaflet": "^0.10.0",
@@ -50,5 +50,8 @@
     "redux": "^3.0.2",
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.2.0"
+  },
+  "engines": {
+    "node": "4.2.6"
   }
 }
