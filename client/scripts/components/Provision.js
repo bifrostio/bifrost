@@ -11,7 +11,7 @@ class Progress extends Component {
           <ProgressBar bsStyle="success"
                        now={this.props.shipped/this.props.total*100} />
           <ProgressBar bsStyle="warning" active
-                       now={(this.props.promised-this.props.shipped)/this.props.total*100} />
+                       now={(this.props.promised)/this.props.total*100} />
         </ProgressBar>
       </div>
     );

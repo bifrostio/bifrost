@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom';
 import StationList from 'components/StationList';
 import StationApi from 'utils/StationApi';
 import { Button } from 'react-bootstrap';
+import debug from 'debug';
+
+let log = debug('bifrost:MapView');
 
 export default class MapView extends Component {
   constructor(props) {
@@ -40,6 +43,7 @@ export default class MapView extends Component {
       let promised = 0;
       let shipped = 0;
       station.provisionRequirements.forEach(req => {
+        log(req.name, `shipped: ${req.shipped}, promised: ${req.promised}`);
         shipped += req.shipped / req.total;
         promised += req.promised / req.total;
       });
