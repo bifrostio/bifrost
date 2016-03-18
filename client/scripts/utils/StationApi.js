@@ -1,5 +1,8 @@
 import $ from 'jquery';
 import async from 'async';
+import debug from 'debug';
+
+let log = debug('bifrost:StationApi');
 
 export default class Station {
   static findById(id, done) {
@@ -16,7 +19,10 @@ export default class Station {
         .fail(callback);
       },
       callback => {
-        let filter = { where: {stationId: id}, include: 'provisionActivities' };
+        let filter = {
+          where: {stationId: id},
+          include: 'provisionActivities'
+        };
         filter = encodeURIComponent(JSON.stringify(filter));
         $.get(`/api/provisionRequirements?filter=${filter}`)
         .done(function(result) {
@@ -31,6 +37,7 @@ export default class Station {
           let shipped = 0;
           let promised = 0;
           requirement.provisionActivities.forEach(activity => {
+            log('activity', activity);
             if (activity.shipped !== undefined) {
               shipped += activity.shipped;
             }
@@ -59,7 +66,7 @@ export default class Station {
 
     async.series([
       callback => {
-        filter.include = ['provisionRequirements', 'provisionActivities'];
+        filter.include = {'provisionRequirements': 'provisionActivities'};
         filter = encodeURIComponent(JSON.stringify(filter));
         $.get(`/api/stations?filter=${filter}`)
         .done(function(result) {
@@ -71,21 +78,19 @@ export default class Station {
       callback => {
         if (stations) {
           stations.forEach(station => {
-            station.provisionRequirements.forEach(requirement => {
+            station.provisionRequirements.forEach(req => {
               let promised = 0;
               let shipped = 0;
-              station.provisionActivities.forEach(activity => {
-                if (activity.provisionRequirementId === requirement.id) {
-                  if (activity.promised !== undefined) {
-                    promised += activity.promised;
-                  }
-                  if (activity.shipped !== undefined) {
-                    shipped += activity.shipped;
-                  }
+              req.provisionActivities.forEach(activity => {
+                if (activity.promised !== undefined) {
+                  promised += activity.promised;
+                }
+                if (activity.shipped !== undefined) {
+                  shipped += activity.shipped;
                 }
               });
-              requirement.promised = promised;
-              requirement.shipped = shipped;
+              req.promised = promised;
+              req.shipped = shipped;
             });
           });
         }
