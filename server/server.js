@@ -2,7 +2,6 @@ var loopback = require('loopback');
 var boot = require('loopback-boot');
 var path = require('path');
 var webpackMiddleware = require('webpack-dev-middleware');
-require('./setup')();
 
 var app = module.exports = loopback();
 var env = app.get('env');
