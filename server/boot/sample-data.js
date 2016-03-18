@@ -41,13 +41,17 @@ module.exports = function(app, done) {
     { name: '睡袋', unit: '個', total: 400}
   ];
 
-  var tasks = [
-    callback => app.models.Contact.create(contacts, callback),
-    callback => app.models.Manager.create(managers, callback),
-    callback => app.models.Project.create(projects, callback),
-    callback => app.models.Batch.create(batches, callback),
-    callback => app.models.ProvisionRequirement.create(provisions, callback)
-  ];
+  app.dataSources.db.automigrate(function() {
+    var tasks = [
+      callback => app.models.Contact.create(contacts, callback),
+      callback => app.models.Manager.create(managers, callback),
+      callback => app.models.Project.create(projects, callback),
+      callback => app.models.Batch.create(batches, callback),
+      callback => app.models.ProvisionRequirement.create(provisions, callback)
+    ];
 
-  async.series(tasks, done);
+    async.series(tasks, done);
+  });
+
+
 };

@@ -4,18 +4,13 @@ var path = require('path');
 var webpackMiddleware = require('webpack-dev-middleware');
 
 var app = module.exports = loopback();
-var env = app.get('env');
 
-if (env !== 'production') {
-  var webpack = require('webpack');
-  var webpackConfig = require('../webpack.config');
-  app.use(webpackMiddleware(webpack(webpackConfig), {
-    stats: { colors: true}
-  }));
-  app.use(loopback.static(path.resolve(__dirname, '../client')));
-} else {
-  app.use(loopback.static(path.resolve(__dirname, '../dist')));
-}
+var webpack = require('webpack');
+var webpackConfig = require('../webpack.config');
+app.use(webpackMiddleware(webpack(webpackConfig), {
+  stats: { colors: true}
+}));
+app.use(loopback.static(path.resolve(__dirname, '../client')));
 
 app.start = function() {
   // start the web server

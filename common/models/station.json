@@ -26,7 +26,12 @@
     "contacts": {
       "type": "embedsMany",
       "model": "contact",
-      "property": "contacts"
+      "property": "contacts",
+      "options": {
+        "validate": true,
+        "forceId": false,
+        "persistent": true
+      }
     },
     "project": {
       "type": "belongsTo",
