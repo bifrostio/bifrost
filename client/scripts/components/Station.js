@@ -7,6 +7,7 @@ import { ButtonGroup, Alert, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import StationApi from 'utils/StationApi';
 import BatchApi from 'utils/BatchApi';
+import validator from 'validator';
 
 export default class Station extends Component {
   constructor(props) {
@@ -33,6 +34,23 @@ export default class Station extends Component {
 
   toggleConfirmation() {
     this.setState({showConfirmation: !this.state.showConfirmation});
+  }
+
+  disableNext() {
+    let donor = this.state.donor;
+    if (!donor.name || !donor.phone || !donor.email) {
+      return true;
+    }
+
+    if (!validator.isEmail(donor.email)) {
+      return true;
+    }
+
+    if (!validator.isNumeric(donor.phone)) {
+      return true;
+    }
+
+    return false;
   }
 
   updateDonor(donor) {
@@ -94,11 +112,11 @@ export default class Station extends Component {
                    [0, 0];
     let buttons, editDescription, contactForm;
     if (this.state.edit) {
-      editDescription = <Alert bsStyle="info">請填寫您所要捐贈的物資數量與您的聯絡資訊並按下一步 </Alert>;
+      editDescription = <Alert className="station-edit-desc" bsStyle="info">請填寫您所要捐贈的物資數量與您的聯絡資訊並按下一步 </Alert>;
       buttons = (
         <ButtonGroup bsSize="large">
           <Button bsStyle="default" onClick={this.toggleEditMode.bind(this)}>取消</Button>
-          <Button bsStyle="primary" onClick={this.toggleConfirmation.bind(this)}>下一步</Button>
+          <Button disabled={this.disableNext()} bsStyle="primary" onClick={this.toggleConfirmation.bind(this)}>下一步</Button>
         </ButtonGroup>
       );
       contactForm = (
