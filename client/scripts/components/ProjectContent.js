@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {FormControls, Button, Input} from 'react-bootstrap';
+import {FormControls, Button, Input, Panel} from 'react-bootstrap';
+import { Link } from 'react-router';
 import ProjectApi from 'utils/ProjectApi';
 import StationList from 'components/StationList';
 
@@ -17,7 +18,6 @@ export default class ProjectContent extends Component {
     this.handleGetStationsFail = this.handleGetStationsFail.bind(this);
   }
   componentWillMount() {
-    debugger;
     const id = this.props.params.id;
     ProjectApi.getProjectInfo(id, this.handleSuccess, this.handleFail);
     ProjectApi.getStationsOfProject(id, this.handleGetStationsSuccess, this.handleGetStationsFail);
@@ -42,24 +42,41 @@ export default class ProjectContent extends Component {
   }
 
   renderContacts() {
-    const contacts = this.state.project && this.state.project._contacts;
-
-    if (!contacts) {
-      return;
-    }
+    const contacts = this.state.project && this.state.project._contacts || [];
 
     return (
       contacts.map((contact, index) => {
+        const {id, name, email, phone} = contact;
+
         return (
-          <form className="form-horizontal contact-info" key={contact.id}>
-            <div className="contact-header">{`聯絡人${index+1}`}</div>
-            <FormControls.Static label="名字" labelClassName="col-xs-2" wrapperClassName="col-xs-10" value={contact.name} />
-            <FormControls.Static label="信箱" labelClassName="col-xs-2" wrapperClassName="col-xs-10" value={contact.email} />
-            <FormControls.Static label="電話" labelClassName="col-xs-2" wrapperClassName="col-xs-10" value={contact.phone} />
+          <form className="form-horizontal contact-info" key={id}>
+            <div className="contact-header">{`聯絡人 ${index+1}`}</div>
+            <FormControls.Static label="名字" labelClassName="col-xs-2" wrapperClassName="col-xs-10" value={name} />
+            <FormControls.Static label="信箱" labelClassName="col-xs-2" wrapperClassName="col-xs-10" value={email} />
+            <FormControls.Static label="電話" labelClassName="col-xs-2" wrapperClassName="col-xs-10" value={phone} />
             <FormControls.Static label="地址" labelClassName="col-xs-2" wrapperClassName="col-xs-10" value={''} />
           </form>
         );
       })
+    );
+  }
+
+  renderStationList() {
+    if (!this.state.stations.length) {
+      return (<div className="empty-stations-list">目前尚無任何收容所據點！</div>);
+    }
+
+    const prefixPath = '/manager/station';
+    const stations = this.state.stations.map( station => {
+      return (
+        <li className="list-group-item" key={station.id}>
+          <Link to={`${prefixPath}/${station.id}`}>{station.name}</Link>
+        </li>
+      );
+    });
+
+    return (
+      <ul className="list-group">{stations}</ul>
     );
   }
 
@@ -70,17 +87,13 @@ export default class ProjectContent extends Component {
     const email = contacts && contacts.email;
     const phone = contacts && contacts.phone;
 
-    if (!this.state.stations.length) {
-        stationList = (<div className="empty-stations-list">目前尚無任何收容所據點！</div>);
-    } else {
-      stationList = <StationList stations={this.state.stations} onHover={ () => {}} />
-    }
-
     return (
         <div className="container project-content">
-          <h1>{projectName}</h1>
+          <div className="page-header">
+            <h1>{projectName}</h1>
+          </div>
+          {this.renderStationList()}
           {this.renderContacts()}
-          {stationList}
         </div>
     );
   }

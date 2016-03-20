@@ -95,9 +95,15 @@
 .project-content .contact-info {
   width: 40%;
   margin-bottom: 16px;
+  display: inline-block;
   float: right;
   border: #eee 1px solid;
   border-radius: 6px;
+}
+
+.project-content .list-group {
+  width: 55%;
+  display: inline-block;
 }
 
 .project-content .station-list {
