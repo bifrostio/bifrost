@@ -39,7 +39,16 @@ export default class StationManager extends Component {
         ManagerApi.getStationInfo(this.props.params.id,
           this.handleReqSuccess, this.handleReqFail);
       }
-    })
+    });
+  }
+
+  saveProvision(p) {
+    RequirementApi.update(p, err => {
+      if (!err) {
+        ManagerApi.getStationInfo(this.props.params.id,
+          this.handleReqSuccess, this.handleReqFail);
+      }
+    });
   }
 
   handleReqSuccess(data) {
@@ -105,7 +114,8 @@ export default class StationManager extends Component {
             provisionRequirements: this.state.provisionRequirements,
             batches: this.state.batches,
             addProvision: this.addProvision.bind(this),
-            removeProvision: this.removeProvision.bind(this)
+            removeProvision: this.removeProvision.bind(this),
+            saveProvision: this.saveProvision.bind(this)
           })
         }
       </div>

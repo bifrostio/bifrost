@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button} from 'react-bootstrap';
+import {Button, Modal} from 'react-bootstrap';
 import ProvisionForm from 'components/ProvisionForm';
 import ManagementButtons from 'components/ManagementButtons';
 
@@ -8,6 +8,8 @@ export default class ProvisionRequirement extends Component {
     super(props);
     this.state = {
       showAddProvisionPanel: false,
+      showEditModal: false,
+      editingProvision: null,
       newProvision: {total: 0}
     };
   }
@@ -16,8 +18,28 @@ export default class ProvisionRequirement extends Component {
     this.setState({showAddProvisionPanel: !this.state.showAddProvisionPanel});
   }
 
-  remove(id) {
-    this.props.removeProvision(id);
+  remove(provision) {
+    this.props.removeProvision(provision.id);
+  }
+
+  showEditModal(provision) {
+    this.setState({
+      showEditModal: true,
+      editingProvision: provision
+    });
+  }
+
+  hideEditModal() {
+    this.setState({
+      showEditModal: false
+    });
+  }
+
+  saveEditingProvision() {
+    this.props.saveProvision(this.state.editingProvision);
+    this.setState({
+      showEditModal: false
+    });
   }
 
   renderProvisions() {
@@ -37,7 +59,11 @@ export default class ProvisionRequirement extends Component {
           <td>{item.shipped}</td>
           <td>{item.promised}</td>
           <td>{item.unit}</td>
-          <td><ManagementButtons provisionId={item.id} confirm={this.remove.bind(this)}/></td>
+          <td>
+            <ManagementButtons provision={item}
+              edit={this.showEditModal.bind(this)}
+              confirmDeletion={this.remove.bind(this)} />
+          </td>
         </tr>
       );
     });
@@ -45,8 +71,12 @@ export default class ProvisionRequirement extends Component {
     return provisions;
   }
 
-  updateProvision(p) {
+  updateAddingProvision(p) {
     this.setState({newProvision: p});
+  }
+
+  updateEditingProvision(p) {
+    this.setState({editingProvision: p});
   }
 
   addProvision() {
@@ -61,7 +91,7 @@ export default class ProvisionRequirement extends Component {
       addProvisionPanel = (
         <div className="provision-form">
           <ProvisionForm
-            updateProvision={this.updateProvision.bind(this)}
+            updateProvision={this.updateAddingProvision.bind(this)}
             provision={this.state.newProvision} />
             <Button onClick={this.addProvision.bind(this)} bsStyle="primary">確認</Button>&nbsp;
             <Button onClick={this.toggleAddProvisionPanel.bind(this)}>取消</Button>
@@ -94,6 +124,18 @@ export default class ProvisionRequirement extends Component {
            {this.renderProvisions()}
          </tbody>
         </table>
+        <Modal show={this.state.showEditModal} onHide={this.hideEditModal.bind(this)}>
+          <Modal.Header closeButton>
+            <Modal.Title>編輯物資</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ProvisionForm
+              updateProvision={this.updateEditingProvision.bind(this)}
+              provision={this.state.editingProvision} />
+              <Button onClick={this.saveEditingProvision.bind(this)} bsStyle="primary">確認</Button>&nbsp;
+              <Button onClick={this.hideEditModal.bind(this)}>取消</Button>
+          </Modal.Body>
+        </Modal>
       </div>
     );
   }
