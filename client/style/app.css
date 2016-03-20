@@ -217,3 +217,7 @@ cursor: pointer;
 .form-horizontal .control-label {
   text-align: left;
 }
+
+.manager-button {
+  cursor: pointer;
+}
