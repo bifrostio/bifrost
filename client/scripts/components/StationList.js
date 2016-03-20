@@ -8,11 +8,12 @@ export default class StationList extends Component {
   }
 
   render() {
+    const prefixPath = this.props.managerMode ? '/manager/station' : '/stations';
     var stations = this.props.stations.map(station => {
       return (
         <div className="station" key={station.id} onMouseEnter={this.handleMouseEnter.bind(this, station.id)}>
           <div className="name">
-            <Link to={`/stations/${station.id}`}>{station.name}</Link>
+            <Link to={`${prefixPath}/${station.id}`}>{station.name}</Link>
           </div>
           <div className="progress">
             <ProgressBar>
