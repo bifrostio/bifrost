@@ -33,9 +33,9 @@ export default class ContactForm extends Component {
   render() {
     return (
       <form>
-        <Input bsStyle={this.validationState('name')} hasFeedback value={this.props.contact.name} onChange={this.handleChange.bind(this)} id="name" type="text" label="姓名" />
-        <Input bsStyle={this.validationState('email')} hasFeedback value={this.props.contact.email} onChange={this.handleChange.bind(this)} id="email" type="email" label="電子郵件" />
-        <Input bsStyle={this.validationState('phone')} hasFeedback value={this.props.contact.phone} onChange={this.handleChange.bind(this)} id="phone" type="text" label="電話" />
+        <Input bsStyle={this.validationState('name')} hasFeedback value={this.props.contact.name} onChange={this.handleChange.bind(this)} id="name" type="text" label="姓名 (必填)" />
+        <Input bsStyle={this.validationState('email')} hasFeedback value={this.props.contact.email} onChange={this.handleChange.bind(this)} id="email" type="email" label="電子郵件 (必填)" />
+        <Input bsStyle={this.validationState('phone')} hasFeedback value={this.props.contact.phone} onChange={this.handleChange.bind(this)} id="phone" type="text" label="電話 (必填，請勿輸入除了數字以外的其他字元如 +、- 或空白)" />
         <Input hasFeedback value={this.props.contact.note} onChange={this.handleChange.bind(this)} id="note" type="textarea" label="備註" />
       </form>
     );
