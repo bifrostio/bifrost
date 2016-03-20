@@ -4,6 +4,7 @@ import StationContact from 'components/StationContact';
 import Provision from 'components/Provision';
 import { ButtonGroup, Alert, Grid, Row, Col, Button} from 'react-bootstrap';
 import ManagerApi from 'utils/ManagerApi';
+import RequirementApi from 'utils/ProvisionRequirementApi';
 
 export default class StationManager extends Component {
   constructor(props) {
@@ -22,6 +23,16 @@ export default class StationManager extends Component {
     ManagerApi.getStationInfo(this.props.params.id, this.handleReqSuccess, this.handleReqFail);
   }
 
+  addProvision(req) {
+    req.stationId = this.state.station.id;
+    RequirementApi.create(req, (err) => {
+      if (!err) {
+        ManagerApi.getStationInfo(this.props.params.id,
+          this.handleReqSuccess, this.handleReqFail);
+      }
+    });
+  }
+
   handleReqSuccess(data) {
     const provisionRequirements = {};
     const batches = {};
@@ -33,7 +44,7 @@ export default class StationManager extends Component {
       item.provisionActivities.forEach(activity => {
         ['shipped', 'promised'].forEach(key => {
           if (typeof(activity[key]) === 'number') {
-            item[key] = activity[key];
+            item[key] += activity[key];
           }
         });
       });
@@ -83,7 +94,8 @@ export default class StationManager extends Component {
           this.props.children &&
           React.cloneElement(this.props.children, {
             provisionRequirements: this.state.provisionRequirements,
-            batches: this.state.batches
+            batches: this.state.batches,
+            addProvision: this.addProvision.bind(this)
           })
         }
       </div>

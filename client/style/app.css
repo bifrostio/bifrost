@@ -191,3 +191,11 @@
 .station-edit-desc {
   margin-top: 10px;
 }
+
+.provision-form .container {
+  max-width: 860px;
+}
+
+.provision-form {
+  max-width: 860px;
+}

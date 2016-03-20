@@ -4,7 +4,7 @@ import validator from 'validator';
 
 export default class ContactForm extends Component {
   validationState(key) {
-    var prop = this.props.contact[key];
+    let prop = this.props.contact[key];
     if (typeof(prop) === 'undefined') {
       return;
     }
