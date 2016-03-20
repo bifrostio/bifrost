@@ -21,7 +21,12 @@ export default class ManagerApi {
       return;
     }
 
-    let filter = {"include": ["provisionRequirements", {"batches": "provisionActivities"}]};
+    let filter = {
+      'include': [
+        {'provisionRequirements': 'provisionActivities'},
+        {'batches': 'provisionActivities'}
+      ]
+    };
     filter = encodeURIComponent(JSON.stringify(filter));
 
     const path = `/api/stations/${id}?filter=${filter}&access_token=${token}`;
