@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button} from 'react-bootstrap';
 import ProvisionForm from 'components/ProvisionForm';
-
+import ManagementButtons from 'components/ManagementButtons';
 
 export default class ProvisionRequirement extends Component {
   constructor(props) {
@@ -14,6 +14,10 @@ export default class ProvisionRequirement extends Component {
 
   toggleAddProvisionPanel() {
     this.setState({showAddProvisionPanel: !this.state.showAddProvisionPanel});
+  }
+
+  remove(id) {
+    this.props.removeProvision(id);
   }
 
   renderProvisions() {
@@ -33,6 +37,7 @@ export default class ProvisionRequirement extends Component {
           <td>{item.shipped}</td>
           <td>{item.promised}</td>
           <td>{item.unit}</td>
+          <td><ManagementButtons provisionId={item.id} confirm={this.remove.bind(this)}/></td>
         </tr>
       );
     });
@@ -82,6 +87,7 @@ export default class ProvisionRequirement extends Component {
              <th>已收到</th>
              <th>已認領</th>
              <th>單位</th>
+             <th>管理</th>
            </tr>
          </thead>
          <tbody>

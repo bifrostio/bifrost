@@ -33,6 +33,15 @@ export default class StationManager extends Component {
     });
   }
 
+  removeProvision(id) {
+    RequirementApi.remove(id, (err) => {
+      if (!err) {
+        ManagerApi.getStationInfo(this.props.params.id,
+          this.handleReqSuccess, this.handleReqFail);
+      }
+    })
+  }
+
   handleReqSuccess(data) {
     const provisionRequirements = {};
     const batches = {};
@@ -95,7 +104,8 @@ export default class StationManager extends Component {
           React.cloneElement(this.props.children, {
             provisionRequirements: this.state.provisionRequirements,
             batches: this.state.batches,
-            addProvision: this.addProvision.bind(this)
+            addProvision: this.addProvision.bind(this),
+            removeProvision: this.removeProvision.bind(this)
           })
         }
       </div>
