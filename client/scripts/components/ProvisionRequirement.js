@@ -4,7 +4,15 @@ import {Button} from 'react-bootstrap';
 export default class ProvisionRequirement extends Component {
 
   renderProvisions() {
-    let provisions = this.props.provisions.map(item => {
+    const provisionRequirements = this.props.provisionRequirements;
+
+    if (!provisionRequirements && Object.keys(provisionRequirements).length === 0) {
+      return;
+    }
+
+    let provisions = Object.keys(provisionRequirements).map(key => {
+      const item = provisionRequirements[key];
+
       return (
         <tr key={item.id}>
           <td>{item.name}</td>
