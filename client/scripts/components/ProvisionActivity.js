@@ -65,7 +65,7 @@ export default class ProvisionActivity extends Component {
       const shipped = parseInt(this.refs[`act${key}`].getValue());
       const obj = {
         shipped: shipped,
-        provisionRequirementId: parseInt(key),
+        provisionRequirementId: key,
         batchId: this.state.batchId,
         stationId: this.state.stationId
       };
