@@ -23,12 +23,20 @@ export default class StationManager extends Component {
   }
 
   handleReqSuccess(data) {
-    debugger;
     const provisionRequirements = {};
     const batches = {};
 
     data.provisionRequirements.forEach( item => {
       provisionRequirements[item.id] = item;
+      item.shipped = 0;
+      item.promised = 0;
+      item.provisionActivities.forEach(activity => {
+        ['shipped', 'promised'].forEach(key => {
+          if (typeof(activity[key]) === 'number') {
+            item[key] = activity[key];
+          }
+        });
+      });
     });
 
     data.batches.forEach( item => {
