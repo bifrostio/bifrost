@@ -92,6 +92,9 @@ export default class ProjectContent extends Component {
           <div className="page-header">
             <h1>{projectName}</h1>
           </div>
+          <div className="btn-wrap">
+            <Button bsStyle="primary">新增收容所</Button>
+          </div>
           {this.renderStationList()}
           {this.renderContacts()}
         </div>

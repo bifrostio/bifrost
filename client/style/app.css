@@ -24,6 +24,10 @@
 
 /* Layers end */
 
+.btn {
+  margin-right: 8px;
+}
+
 .station {
   padding: 10px;
 }
@@ -106,6 +110,11 @@
   display: inline-block;
 }
 
+.project-content .btn-wrap {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
 .project-content .station-list {
   position: relative;
 }
@@ -173,6 +182,7 @@
 }
 
 .nav-tabs {
+  margin-top: 32px;
   border-bottom: 1px solid #337ab7;
 }
 
@@ -181,12 +191,6 @@
   background-color: #337ab7;
   border: solid 1px #337ab7;
 }
-
-.nav-tabs>li>a:hover {
-  color: #fff;
-  background-color: #337ab7;
-}
-
 
 /* details */
 .icon {
