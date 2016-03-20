@@ -156,7 +156,8 @@
   color: #d9534f;
 }
 
-.pro-requirement {
+.pro-requirement,
+.pro-activity {
   margin: 32px 16px;
 }
 
@@ -193,9 +194,26 @@
 }
 
 .provision-form .container {
-  max-width: 860px;
+max-width: 860px;
 }
 
 .provision-form {
-  max-width: 860px;
+max-width: 860px;
+}
+
+.batches-item {
+cursor: pointer;
+}
+
+.batches-item:hover {
+  background-color: #eee;
+}
+
+.form-horizontal .form-group {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.form-horizontal .control-label {
+  text-align: left;
 }

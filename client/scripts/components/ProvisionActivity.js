@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Alert, Button} from 'react-bootstrap';
+import {Alert, Button, Modal, FormControls, Input, Label} from 'react-bootstrap';
 import ManagerApi from 'utils/ManagerApi';
 
 export default class ProvisionActivity extends Component {
@@ -7,12 +7,22 @@ export default class ProvisionActivity extends Component {
     super(props);
 
     this.state = {
+      stationId: parseInt(this.props.params.id),
+      batchId: 0,
       batches: [],
-      showAlert: false
+      curBatchActivities: [],
+      showAlert: false,
+      showSuccessAlert: false,
+      showModal: false
     };
 
     this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
+    this.handleSuccessAlertDismiss = this.handleSuccessAlertDismiss.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleClickBatch = this.handleClickBatch.bind(this);
+    this.handleUpdateCount = this.handleUpdateCount.bind(this);
+    this.handleUpdateSuccess = this.handleUpdateSuccess.bind(this);
+    this.handleUpdateFail = this.handleUpdateFail.bind(this);
   }
 
   handleAlertDismiss() {
@@ -21,7 +31,63 @@ export default class ProvisionActivity extends Component {
     });
   }
 
-  handleClickBatch() {
+  handleSuccessAlertDismiss() {
+    this.setState({
+      showSuccessAlert: false
+    });
+  }
+
+  handleCloseModal() {
+    this.setState({
+      showModal: false
+    });
+  }
+
+  handleClickBatch(id) {
+    const batch = this.props.batches[id];
+
+    if (!batch || !batch.provisionActivities) {
+      return;
+    }
+
+
+    this.setState({
+      showModal: true,
+      batchId: id,
+      curBatchActivities: batch.provisionActivities
+    });
+  }
+
+  handleUpdateCount() {
+    let body = [];
+
+    Object.keys(this.props.provisionRequirements).forEach( key => {
+      const shipped = parseInt(this.refs[`act${key}`].getValue());
+      const obj = {
+        shipped: shipped,
+        provisionRequirementId: parseInt(key),
+        batchId: this.state.batchId,
+        stationId: this.state.stationId
+      };
+
+      body.push(obj);
+    });
+
+    ManagerApi.updateProvisionAvtivity(body, this.handleUpdateSuccess, this.handleUpdateFail);
+
+    this.handleCloseModal();
+  }
+
+  handleUpdateSuccess() {
+    this.setState({
+      showSuccessAlert: true
+    });
+  }
+
+  handleUpdateFail() {
+    this.setState({
+      showAlert: true
+    });
   }
 
   renderBatches() {
@@ -31,7 +97,7 @@ export default class ProvisionActivity extends Component {
       const contact = item._contact;
 
       return (
-        <tr key={item.id} className="batches-item" onClick={this.handleClickBatch.bind(item.id)}>
+        <tr key={item.id} className="batches-item" onClick={this.handleClickBatch.bind(this, item.id)}>
           <td>{item.trackingNumber}</td>
           <td>{contact.name}</td>
           <td>{contact.email}</td>
@@ -57,10 +123,103 @@ export default class ProvisionActivity extends Component {
     );
   }
 
+  renderSuccessAlert() {
+    if (!this.state.showSuccessAlert) {
+      return;
+    }
+
+    return (
+      <Alert bsStyle="success" onDismiss={this.handleSuccessAlertDismiss}>
+        <h4>Update Success!</h4>
+      </Alert>
+    );
+  }
+
+  renderActivity() {
+    if (!this.state.showModal) {
+      return;
+    }
+
+    const labelCol = 'col-xs-4';
+    const inputCol = 'col-xs-8';
+    const curActivities = this.state.curBatchActivities;
+    const requirements = this.props.provisionRequirements;
+    let reqCount = {};
+
+    curActivities.forEach( item => {
+      const pId = item.provisionRequirementId;
+      const shipped = item.shipped || 0;
+      const promised = item.promised || 0;
+
+      if (reqCount[pId]) {
+        reqCount[pId] = {
+            shipped: reqCount[pId].shipped + shipped,
+            promised: reqCount[pId].promised + promised
+        };
+      } else {
+        reqCount[pId] = {shipped: shipped, promised: promised};
+      }
+    });
+
+    const activities = Object.keys(requirements).map( key => {
+      const requirement = requirements[key];
+      const promised = reqCount[key] && reqCount[key].promised || 0;
+      const shipped = reqCount[key] && reqCount[key].shipped || 0;
+
+      return (
+        <FormControls.Static
+          key={key}
+          labelClassName={labelCol}
+          wrapperClassName={inputCol}
+          label={requirement && requirement.name}
+          value={`${promised} / (已收到：${shipped})`} />
+      );
+    });
+
+    const comfirmForm = Object.keys(requirements).map( key => {
+      const requirement = requirements[key];
+
+      return (
+        <Input
+          key={key}
+          type="text"
+          ref={`act${key}`}
+          labelClassName={labelCol}
+          wrapperClassName={inputCol}
+          label={requirement && requirement.name} />
+      );
+    });
+
+    return (
+      <div>
+        <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>物資確認</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4><Label bsStyle="info">預計收到物資數量</Label></h4>
+            {activities}
+            <hr />
+
+            <h4><Label bsStyle="success">實際收到物資數量</Label></h4>
+            <form className="form-horizontal">
+              {comfirmForm}
+            </form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.handleCloseModal}>取消</Button>
+            <Button bsStyle="primary" onClick={this.handleUpdateCount}>確認</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="pro-activity">
         {this.renderAlert()}
+        {this.renderSuccessAlert()}
         <table className="table">
          <thead>
            <tr>
@@ -75,6 +234,7 @@ export default class ProvisionActivity extends Component {
            {this.renderBatches()}
          </tbody>
         </table>
+        {this.renderActivity()}
       </div>
     );
   }

@@ -13,6 +13,29 @@ export default class ManagerApi {
     });
   }
 
+  static updateProvisionAvtivity(body, doneCallback, failCallback) {
+    const token = sessionStorage.getItem('token');
+
+    if (!token) {
+      failCallback(401);
+      return;
+    }
+
+    $.ajax({
+      url: '/api/provisionActivities?access_token=${token}',
+      type: 'POST',
+      data: JSON.stringify(body),
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json'
+    })
+    .done(function(result) {
+      doneCallback(result);
+    })
+    .fail(function(e) {
+      failCallback(e.status);
+    });
+  }
+
   static getStationInfo(id, doneCallback, failCallback) {
     const token = sessionStorage.getItem('token');
 
