@@ -44,7 +44,7 @@ export default class AidSyncApi {
           let year = 1911 + parseInt(d.substr(0, 3));
           let month = parseInt(d.substr(3, 2));
           let day = parseInt(d.substr(5, 2));
-          provision.expired = new Date(year, month, day);
+          provision.expired = new Date(year, month, day).toString();
         }
 
         stations[stationName].provisionRequirements =
