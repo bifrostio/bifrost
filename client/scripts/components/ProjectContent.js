@@ -1,21 +1,35 @@
 import React, {Component} from 'react';
-import {FormControls, Button, Input, Panel} from 'react-bootstrap';
+import {FormControls, Button, Input, Panel, Modal, Alert} from 'react-bootstrap';
 import { Link } from 'react-router';
+import validator from 'validator';
 import ProjectApi from 'utils/ProjectApi';
 import StationList from 'components/StationList';
+import StationForm from 'components/StationForm';
+import ManagerApi from 'utils/ManagerApi';
 
 export default class ProjectContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       project: {},
-      stations: []
+      stations: [],
+      latestStation: {},
+      showStationForm: false,
+      showAlert: false,
+      showSuccessAlert: false,
+      isFormValidate: false
     };
 
     this.handleSuccess = this.handleSuccess.bind(this);
     this.handleFail = this.handleFail.bind(this);
     this.handleGetStationsSuccess = this.handleGetStationsSuccess.bind(this);
     this.handleGetStationsFail = this.handleGetStationsFail.bind(this);
+    this.handleAddStation = this.handleAddStation.bind(this);
+    this.showStationForm = this.showStationForm.bind(this);
+    this.hideStationForm = this.hideStationForm.bind(this);
+    this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
+    this.handleSuccessAlertDismiss = this.handleSuccessAlertDismiss.bind(this);
+    this.checkValidate = this.checkValidate.bind(this);
   }
   componentWillMount() {
     const id = this.props.params.id;
@@ -39,6 +53,103 @@ export default class ProjectContent extends Component {
   }
 
   handleGetStationsFail() {
+  }
+
+  handleAddStation() {
+    let station = this.refs.stationForm.getFormValue();
+    const body = {
+      name: station.stationName,
+      latitude: 0,
+      longitude: 0,
+      projectId: this.props.params.id
+    };
+
+    const contacts = {
+      name: station.name,
+      email: station.email,
+      phone: station.phone,
+      _address: {
+        zipCode: station.zipCode,
+        city: station.city,
+        district: station.district,
+        detail: station.detail
+      }
+    };
+
+    ManagerApi.addStation(body, contacts, (err, station) => {
+      if (err) {
+        this.setState({
+          showAlert: true,
+          showStationForm: false
+        });
+        return;
+      }
+
+      const stations = this.state.stations;
+      stations.push(station);
+
+      this.setState({
+        stations: stations,
+        latestStation: {name: station.name, link: `manager/station/${station.id}`},
+        showSuccessAlert: true,
+        showStationForm: false
+      });
+    });
+  }
+
+  showStationForm() {
+    this.setState({
+      showStationForm: true
+    });
+  }
+
+  hideStationForm() {
+    this.setState({
+      showStationForm: false
+    });
+  }
+
+  handleAlertDismiss() {
+    this.setState({
+      showAlert: false
+    });
+  }
+
+  handleSuccessAlertDismiss() {
+    this.setState({
+      showSuccessAlert: false
+    });
+  }
+
+  checkValidate(data) {
+    if (!this.refs.stationForm) {
+      return false;
+    }
+
+    const station = data;
+    let ret = true;
+    Object.keys(station).forEach(key => {
+      let value = station[key];
+
+      if (typeof(value) === 'undefined') {
+        ret = false;
+        return;
+      } else if ((key === 'stationName' || key === 'name') && value.length < 0) {
+        ret = false;
+        return;
+      } else if (key === 'email' && !validator.isEmail(value)) {
+        ret = false;
+        return;
+      } else if ((key === 'phone' || key === 'zipCode') && !validator.isNumeric(value)) {
+        ret = false;
+        return;
+      } else if ((typeof(value) === 'string') && value.length < 0) {
+        ret = false;
+        return;
+      }
+    });
+
+    this.setState({isFormValidate: ret});
   }
 
   renderContacts() {
@@ -80,6 +191,66 @@ export default class ProjectContent extends Component {
     );
   }
 
+  renderAddStationBtn() {
+    if (this.state.showStationForm) {
+      return;
+    }
+
+    return (
+      <Button bsStyle="primary" onClick={this.showStationForm}>
+        新增收容所
+      </Button>
+    );
+  }
+
+  renderStationForm() {
+    if (!this.state.showStationForm) {
+      return;
+    }
+
+    return (
+      <Modal bsSize="large" show={this.state.showStationForm}>
+      <Modal.Header>
+        <Modal.Title>新增收容所</Modal.Title>
+      </Modal.Header>
+        <Modal.Body>
+          <StationForm ref="stationForm" onChange={this.checkValidate} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button bsStyle="default" onClick={this.hideStationForm}>取消</Button>
+          <Button bsStyle="primary" disabled={!this.state.isFormValidate} onClick={this.handleAddStation}>新增</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  renderAlert() {
+    if (!this.state.showAlert) {
+      return;
+    }
+
+    return (
+      <Alert bsStyle="danger" onDismiss={this.handleAlertDismiss}>
+        <h4>Oh snap! You got an error!</h4>
+        <p>Please wait a moment, and try again!</p>
+      </Alert>
+    );
+  }
+
+  renderSuccessAlert() {
+    if (!this.state.showSuccessAlert) {
+      return;
+    }
+
+    const latestStation = this.state.latestStation || {};
+
+    return (
+      <Alert bsStyle="success" onDismiss={this.handleSuccessAlertDismiss}>
+        <h4>新增 <Link to={latestStation.link}>{latestStation.name}</Link> 成功!</h4>
+      </Alert>
+    );
+  }
+
   render() {
     let stationList;
     const { name: projectName, _contacts: contacts } = this.state.project;
@@ -92,9 +263,12 @@ export default class ProjectContent extends Component {
           <div className="page-header">
             <h1>{projectName}</h1>
           </div>
+          {this.renderAlert()}
+          {this.renderSuccessAlert()}
           <div className="btn-wrap">
-            <Button bsStyle="primary">新增收容所</Button>
+            {this.renderAddStationBtn()}
           </div>
+          {this.renderStationForm()}
           {this.renderStationList()}
           {this.renderContacts()}
         </div>
