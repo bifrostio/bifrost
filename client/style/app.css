@@ -231,3 +231,27 @@ cursor: pointer;
 .manager-button {
   cursor: pointer;
 }
+
+.official-stations {
+  max-height: 400px;
+  overflow: scroll;
+}
+
+.official-total {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.provision-item {
+  border-bottom: 1px solid #DDD;
+  min-height: 130px;
+}
+
+.expired-warning {
+  color: red;
+  font-weight: bold;
+}
+
+.official-list {
+  padding: 10px;
+}

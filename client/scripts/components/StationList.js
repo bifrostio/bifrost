@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBar, Input } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 export default class StationList extends Component {
   handleMouseEnter(id) {
     this.props.onHover(id);
+  }
+
+  handleCheckbox() {
+    this.props.handleOfficialStations(this.refs.checkbox.getChecked());
   }
 
   render() {
@@ -27,6 +31,36 @@ export default class StationList extends Component {
       );
     });
 
-    return <div className="station-list">{ stations }</div>;
+    let officialStations;
+
+    if (this.props.showOfficialStations) {
+      officialStations = this.props.officialStations.map((station, i) => {
+        return (
+          <div className="station" key={i}
+            onMouseEnter={this.handleMouseEnter.bind(this, `official-${i}`)}>
+            <div className="name">
+              <Link to={`/officialStations/${station.key}`}>{station.key}</Link>
+            </div>
+          </div>
+        );
+      });
+
+    }
+
+    return (
+      <div className="station-list">
+        { stations }
+        <div className="official-list">
+          <form>
+            <Input type="checkbox" label="顯示庫存物資站" ref="checkbox"
+              value={this.props.showOfficialStations}
+              onChange={this.handleCheckbox.bind(this)}/>
+          </form>
+          <div className="official-stations">
+            {officialStations}
+          </div>
+        </div>
+      </div>
+    );
   }
 }
