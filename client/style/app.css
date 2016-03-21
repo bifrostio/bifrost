@@ -96,6 +96,11 @@
   margin-top: 60px;
 }
 
+.project-content .row {
+  margin-top: 30px;
+  margin-left: 0;
+}
+
 .project-content .contact-info {
   width: 40%;
   margin-bottom: 16px;

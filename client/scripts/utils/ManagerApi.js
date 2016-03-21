@@ -22,7 +22,7 @@ export default class ManagerApi {
     }
 
     $.ajax({
-      url: '/api/provisionActivities?access_token=${token}',
+      url: `/api/provisionActivities?access_token=${token}`,
       type: 'POST',
       data: JSON.stringify(body),
       contentType: 'application/json; charset=utf-8',
@@ -33,6 +33,43 @@ export default class ManagerApi {
     })
     .fail(function(e) {
       failCallback(e.status);
+    });
+  }
+
+  static addStation(station, contact, cb) {
+    const token = sessionStorage.getItem('token');
+
+    if (!token) {
+      failCallback(401);
+      return;
+    }
+
+    async.series([
+      callback => {
+        $.post(`/api/stations?access_token=${token}`, station)
+        .done(data => {
+          station = data;
+          callback();
+        })
+        .fail(callback);
+      },
+      callback => {
+        contact.id = station.id;
+        $.ajax({
+          url: `/api/stations/${station.id}/contacts?access_token=${token}`,
+          type: 'POST',
+          data: JSON.stringify(contact),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json'
+        })
+        .done(data => {
+          station._contacts.push(data);
+          callback();
+        })
+        .fail(callback);
+      }
+    ], err => {
+      cb(err, station);
     });
   }
 
