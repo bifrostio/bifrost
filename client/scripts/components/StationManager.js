@@ -105,7 +105,7 @@ export default class StationManager extends Component {
             <Link to={`/manager/station/${station.id}/requirement`} activeClassName="active">需求物資清單</Link>
           </li>
           <li>
-            <Link to={`/manager/station/${station.id}/activity`} activeClassName="active">捐贈物資清單</Link>
+            <Link to={`/manager/station/${station.id}/activity`} activeClassName="active">點收物資</Link>
           </li>
         </ul>
         {
