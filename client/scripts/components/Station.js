@@ -7,6 +7,7 @@ import { ButtonGroup, Alert, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import StationApi from 'utils/StationApi';
 import BatchApi from 'utils/BatchApi';
+import AidSyncApi from 'utils/AidSyncApi';
 import validator from 'validator';
 
 export default class Station extends Component {
@@ -16,16 +17,33 @@ export default class Station extends Component {
       station: {},
       edit: false,
       showConfirmation: false,
-      donor: {}
+      donor: {},
+      official: false
     };
   }
 
   componentDidMount() {
     let self = this;
-    StationApi.findById(this.props.params.id, (err, station) => {
-      station.provisionRequirements.forEach(req => req.volume = 0);
-      self.setState({station: station});
-    });
+    if (this.props.route.path.indexOf('officialStations') !== -1) {
+      AidSyncApi.findById(this.props.params.id, (err, station) => {
+        station.longitude = station.geometry.location.lng;
+        station.latitude = station.geometry.location.lat;
+        station.name = station.key;
+        station._contacts = [
+          {address: station.formatted_address}
+        ];
+        self.setState({
+          official: true,
+          station: station
+        });
+      });
+    }
+    else {
+      StationApi.findById(this.props.params.id, (err, station) => {
+        station.provisionRequirements.forEach(req => req.volume = 0);
+        self.setState({station: station});
+      });
+    }
   }
 
   toggleEditMode() {
@@ -92,8 +110,11 @@ export default class Station extends Component {
         <Col key={index} xs={6} md={4}>
           <Provision
             index={index}
+            official={self.state.official}
             edit={self.state.edit}
             name={provision.name}
+            category={provision.category}
+            expired={provision.expired}
             thumbnail={provision.thumbnail}
             total={provision.total}
             shipped={provision.shipped}
@@ -107,10 +128,13 @@ export default class Station extends Component {
 
     let contacts = this.state.station._contacts || [];
     let provisions = this.state.station.provisionRequirements || [];
-    let position = this.state.station.latitude ?
-                   [this.state.station.latitude, this.state.station.longitude] :
-                   [0, 0];
+    let position;
+
+    position = this.state.station.latitude ?
+       [this.state.station.latitude, this.state.station.longitude] :
+       [0, 0];
     let buttons, editDescription, contactForm;
+
     if (this.state.edit) {
       editDescription = <Alert className="station-edit-desc" bsStyle="info">請填寫您所要捐贈的物資數量與您的聯絡資訊並按下一步 </Alert>;
       buttons = (
@@ -124,6 +148,11 @@ export default class Station extends Component {
           <ContactForm contact={this.state.donor}
                        updateContact={this.updateDonor.bind(this)}></ContactForm>
         </Row>
+      );
+    }
+    else if (this.state.official) {
+      buttons = (
+        <Button bsSize="large" href='#/'>返回物資地圖</Button>
       );
     }
     else {

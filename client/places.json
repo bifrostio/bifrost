@@ -1,0 +1,1503 @@
+{
+  "台北市信義區公所7F": {
+    "formatted_address": "110台灣臺北市信義區信義路五段15號6F",
+    "geometry": {
+      "location": {
+        "lat": 25.0333721,
+        "lng": 121.5668959
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+    "id": "d5a51d10f8ac0464d44e22152fb8c2975e05f57e",
+    "name": "信義區公所",
+    "place_id": "ChIJAX5zIrGrQjQR7Y7JWsdxIXE",
+    "reference": "CnRsAAAAU85cwVU0pAu1vCBu8tlEAGzUEdoZjgYZ-IEOaEUdwO6QOvxx8DS7i2QIpDDkIwONeBFFCSgDK8u3X1dBgkxKF_K5mrOd_tROeInEITyE-yASbuqWiBFOSbd44pV3d2zTwtfVHo02ogsw4PsLj8kQMRIQIa-76R9aUUQ8ZhwgnoWl5RoUy_Ck513OU9qlFEISsEllUrfGrSA",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市文山區公所": {
+    "formatted_address": "116台灣台北市文山區木柵路三段220號8、9樓",
+    "geometry": {
+      "location": {
+        "lat": 24.9895133,
+        "lng": 121.5701945
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "6109e7ed23aabaab31bc0f986183af1e97f9eb02",
+    "name": "台北市文山區公所",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 5312,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116933077841250579547/photos\">ying-chi liao</a>"
+        ],
+        "photo_reference": "CmRdAAAAc1m-nhUQA5HAXCNOvO8oFWdvW0B_lM1ehwLYz36linPtvnjsmYxenRZIS9pXJKDhvH_afi6p-v253rQLT_KAE8b8e9IrhekHm0qaPJcX_UyvFX16JDevEJnjZi1P1Z3MEhD4bvQ1bH5y-6oN6df8PI8rGhTILM0NcERS8xNzHPsv68DldjD40Q",
+        "width": 2988
+      }
+    ],
+    "place_id": "ChIJCTvvk3CqQjQRAm_zzp2EE0U",
+    "reference": "CnRrAAAAKtQOuK5TmPWTO0r2NNESkCPiDbDcDuRc4XxpSrQid_GIHrcRbizbqNtYfA4JzJMCwVEUWi-UTPZOq6nq3qGMb0XZgCQYGdUtgqIBOuI1JQKzY8phcqjhIGy4K8xtXCoX8w9ypUnhHG53r0VllqSqdBIQwPTVxZ4EKLJyfSaZ_EvH4RoUhy9ptyiGOYeP6SdhXoUsmvUrLao",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市安康平價住宅": {
+    "formatted_address": "116台灣文山區興隆路四段103號3樓",
+    "geometry": {
+      "location": {
+        "lat": 24.988007,
+        "lng": 121.560607
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+    "id": "f13d64df2f18219acb4f6ef9b2289af2479c2a2e",
+    "name": "台北市政府社會局木柵安康社區平價住宅社會工作員室",
+    "place_id": "ChIJuSeO2nSqQjQRvaGahAmVmOs",
+    "reference": "CqQBnQAAAL0i7AD4C_yRGy0B8DmVQPy_x1lxiDOb5iO-8dYbuvr0KfvyFbu2yYbH8Yi0qrYNGGmVI-QDwfUN0qEZesmoP7R4Hy9rEEV3SQhWjpq8dyI59Kwc2UAd0fFVTTtoL9GImRN-gD7_iYJ3OZUxlJG2rNCmpAFWwo8yl4982zs_ca2P7dUJMgumcdQPc_bcVnB6Q4ir0-p2p2vuZDQqH6-VZggSEFYpNjOoSrNM8IRDj14Jz5YaFEMkP4oaUF-sIC9I_ynD8UEVHPf1",
+    "types": [
+      "establishment"
+    ]
+  },
+  "台北市大同區公所": {
+    "formatted_address": "103台灣台北市大同區昌吉街57號4F",
+    "geometry": {
+      "location": {
+        "lat": 25.066061,
+        "lng": 121.5151215
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "0b4a8712a2c44a383c366447b41094ec09e50818",
+    "name": "大同區公所",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "place_id": "ChIJ_879bEepQjQRPsT3bmSXd_A",
+    "rating": 4.2,
+    "reference": "CnRjAAAAFg8pJPXPWwyu9J87Hn-SiOwLKmBbPepxuHOO2GHKdnDSeTvB_dPcnSudVH-r7NuzzJTM_Np0ablPHjURI90mniZYqCuY2XPe86XuUkv2g1xPSulx32FvwcJA5kUNtnnUldkrd0kFro3pvHTXHbXephIQw1dTO_hoYeMm-IifldzvcxoUTAO1ZH5OFb6OqDcPwCULIjiUeXk",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市中山區公所": {
+    "formatted_address": "104台灣台北市中山區松江路367號",
+    "geometry": {
+      "location": {
+        "lat": 25.064366,
+        "lng": 121.533576
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "ca65c589718c47a15a1629a309d92e78541aacaa",
+    "name": "台北市中山區行政中心",
+    "photos": [
+      {
+        "height": 800,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/106153795933921164299/photos\">平果</a>"
+        ],
+        "photo_reference": "CmRdAAAAM9Oe0zNgeVsmV4ROjX-oJcxHP_Y5y6jK5dG72JI3VxWacR_3qVWO1rmggz0w27HJkOMcYn9v7INwvUVr6MpuqDt5hvRsS6Y2PUTcuIUN_z3o9a1sH7eNZs8ogfM-lXo8EhD8ld4JVVCrpY8HsSfKcwzmGhQATLrh0N2eLSfuEX3zhBnsLOv5MA",
+        "width": 800
+      }
+    ],
+    "place_id": "ChIJGXfdyFmpQjQRug0g4nqMdc0",
+    "rating": 4.5,
+    "reference": "CoQBcgAAAJ9RtO-dvJeWhBEEDIe_fl_AN07fWRtRLygCjDga1YOSVPOOXmd4gPpm4uDThETLAbArqedrcM5yRhnt-_wt3cgSAumLIxj0pnhadpE5UKwI8LdXiPMly8XAHGR1f9Pe9rxkBK7kAJvcXgm0YFhILFkJX3OKdoCClTB29QusaPWeEhCam7d9QLzOeS8MOCBLc8mBGhT_1K3Kdjc0yDn5U6QpmJ93XvjKFA",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市大安區公所": {
+    "formatted_address": "106台灣台北市大安區新生南路2段86號8/9樓",
+    "geometry": {
+      "location": {
+        "lat": 25.0264206,
+        "lng": 121.5345078
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "9fbfc9f4fd6805141504a85f62870d1a835f164c",
+    "name": "大安區公所",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 640,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108108994897975237926/photos\">許志</a>"
+        ],
+        "photo_reference": "CmRdAAAAZSP6-fH0URxCIy9ELfoznFmcJTm24bCAMR1ck04sMfuRyvorFVIaAs5Kwnpvd1o4IJl9jORz277Pexr1HjoinrJRnduGjC-oJp7K_UqMdl-5ZeFYUIyKFDB3Jd8KmfEnEhAX6-PedhtjfD-VhRr6LF27GhSNQuB2cosVPEjIkP2In51aayV5rA",
+        "width": 480
+      }
+    ],
+    "place_id": "ChIJS6mkHoepQjQR_v09jV5KQ3s",
+    "rating": 4.2,
+    "reference": "CnRiAAAAibtZniYJi4T_VS_J79ZVQQQNDAkXTZIjzTZW0J3xRYh_X6huzJqQE5AE6mhYNULlGd6-XbA9ME-aVesod937z3y24w82kbQ305C_Z6QpRPgKsJ1v7KaxFJ6p_39hvoyUG35Jkemc2h53SqGeBRC10RIQcj8EYhf14Jxu5sr3Mdx4WBoUNzj3rjPN3K9SwvqyqHWdNQILMX8",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市士林區公所": {
+    "formatted_address": "111台灣台北市士林區中正路439號8F",
+    "geometry": {
+      "location": {
+        "lat": 25.092762,
+        "lng": 121.5195618
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "059d144d4203c7bebb9c93467d5a11cd6bb6f9e5",
+    "name": "士林區公所",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "place_id": "ChIJF8JLfrmuQjQRd3CPMtEnnJY",
+    "rating": 4.4,
+    "reference": "CnRjAAAAdRMsvAgV6RfT71pI7mIrB58OtsBWH7QIzyjKCbEHQq_0mWh2lEyn1f8AWDGr6vTzr5tMF0Xk0IptXayrWiphOEqGlTZVv6DfepWcLXVk0W1cgQEbrWtCe8USRTFwQDL86POUk0KzczwcYiWsftjE8hIQ6_3wtL3sJhsleZ4sgHUwrxoULZ5ifjFZVPwGU6_M_Wjy8sXNrMw",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市松山區公所": {
+    "formatted_address": "10566台灣台北市松山區八德路四段692號7-11樓",
+    "geometry": {
+      "location": {
+        "lat": 25.049801,
+        "lng": 121.57719
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "1ed9d26fc1557861ee694c701c750d8b69bd151b",
+    "name": "松山區公所",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "place_id": "ChIJGWNOqp6rQjQRTcRO5r1xypA",
+    "rating": 4,
+    "reference": "CnRjAAAA21XcswoDCnSEViMcf3TCHElrZhIIFExYks43RqfE2-4wH0sH5k2K4oQrC0Tm23tYqHtBvtxfFE_BYNPjl-vBWf6gYWQCWztQ2pvR4GRnPYnZxkS72XuffLl6KyChWWgzBebk78lhVfPpiMN9dRr6vxIQh4PXedVsLHsS6k69ufJ5TBoUquMzkd5Z4J9IbRmWbh00WaDwMis",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市中正區公所": {
+    "formatted_address": "100台灣台北市中正區羅斯福路1段8號6樓",
+    "geometry": {
+      "location": {
+        "lat": 25.032265,
+        "lng": 121.518272
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "8bb43ffbf8503cca63ce716a9fc9309aa512b9d2",
+    "name": "中正區公所",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2448,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116256373238264333932/photos\">Angela Chang</a>"
+        ],
+        "photo_reference": "CmRdAAAAYfOC3ijm4XgbaFJHlazFPFAl0lmGaBSXmhcaj88ALDve_G7EzmiKouo46mruURc8_2mRH0z5n3d573JTYgdXroUaVjdhsC5_MUlvO6PhwrIv2vYh6nOVqW0eyhLGEcAtEhDd9woJjTLyDVLQbbhnnCVtGhR_Lq2_1ZX7Ps-RmlB1caKpAvBaQg",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJkY5SyZ6pQjQRJnTfCdN63t8",
+    "reference": "CnRjAAAAbAfB5RaS-0P4mnzSx3ETpwzqdwv7J7joAgGNA6fTRIkFuPYVbWMBmcw2kOEF7cS194esGr1gcP1f-p_m3TBkBzFRARaGL-sbYH68U-tLYgogTAxsH-R_zAqreHqligDsa16_IEP4LnFGiVqqNuqJhxIQ-kQBaP_zS7WSTzMxzT03iBoU3L9cxr0ZO2bPzQCUKv3rfnvF4KQ",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市內湖區公所": {
+    "formatted_address": "114台灣台北市內湖區民權東路6段99號4, 5樓",
+    "geometry": {
+      "location": {
+        "lat": 25.06929,
+        "lng": 121.588949
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "a90b688522785e8f188efcf6c7b7e3917ff9bef2",
+    "name": "台北市內湖區公所",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "place_id": "ChIJBwQoGoSsQjQRYkeJuscJbL4",
+    "rating": 3.9,
+    "reference": "CnRsAAAAGS_MwRWn1yYsAQCmgA9V7jjBJuo1Lxb1aJQgKiOHAu3K2Dr7WBzl0JaeNMuoGOeEzpOsEYgZFpM2mWFuESBPuufbmmJsiNjwIG0u7mVuYJePqc8uKDsVgr4efmje1q6AWVKZXg_RqxUFq3vpZt-VfBIQ1VycjGjPqnwUxIkRK6wSuRoUxgoOZebmk-FX68fWll2FsAXKYHw",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市北投區公所": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.132671,
+        "lng": 121.502693
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "7bff8643afab83200a9d932302d8c38a65941bce",
+    "name": "北投區公所",
+    "photos": [
+      {
+        "height": 2448,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/106872204395246350817/photos\">林建華</a>"
+        ],
+        "photo_reference": "CmRdAAAAW_m1cizICPJuDvvKPTSNpwq78qSib3JMF7AKVn1dLkg5smXXKqq0OG4Tt7F8yYA458eTxqi2wLNi2GWGQbnC_V0VlCUiNIBVsjrazIVW-2K_gGL2UYv5pT9k4eGnSErmEhDGVny-mIt0zItFjvJYYgysGhSf3jHCCWyEg14j4xYVklG9hs9v_A",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJbUm3ClquQjQRBgwKj8F2JHg",
+    "rating": 4.5,
+    "reference": "CnRiAAAAozSBdJCUnAZXsoD2HVDEE2UJ2SXgNKgV_C7tBP37pasooGHBqPusefjrl63z-vgsB7BmvE5oyybbiTEX5D2eTLq4oeP5ROO4LmJgAd0yDUj1n8hLTPNqLEcYWm4ZjyuWzpkN6f1oeLcIa9xVx_AIeRIQmKfPkMREjMQrFQdDmFw1lRoUVhOZdYZlhWZAPAPcDL-Ng_OoulE",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市萬華區公所": {
+    "formatted_address": "108台灣台北市萬華區和平西路3段120號10-13樓",
+    "geometry": {
+      "location": {
+        "lat": 25.034912,
+        "lng": 121.499824
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "e18bbfca6c5bcd7ba478303adc20590507205cfa",
+    "name": "萬華區公所",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2048,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/107453336052542391816/photos\">邱正雄</a>"
+        ],
+        "photo_reference": "CmRdAAAA9TTkj4apXV87p1TQgMWuLm3fhe87gYEPplRMe8opPCKcrDFsmc-4HrNP8rkZrf6RseUY0s81m7ZZap_TXR8tn2AwmlZoPOvpqhrQmX2RDi5-FXKooxzk1sxlCRJQl03EEhB2KcdStuUOSamXi1NZtkxtGhQshfhkiAnEKeHgcSMSs_XskXJhNQ",
+        "width": 1536
+      }
+    ],
+    "place_id": "ChIJddEV4K6pQjQRWHDgl1lZ0PA",
+    "rating": 4.2,
+    "reference": "CnRjAAAAj6KBZgE0ARP4oasK--77HrhqqYMlOjuoUoha_uXJd2imMzJAC4LRnZheHC0bSwNG0u37t30w_zvWVJJK-zVThqgs8P9Ted0RfB10KMAijbj9Tg0K6JVRk-S5aBKb1d_FDGrQB-CXuwCDtsvdjK_jWBIQ_eiJ8XO0TeqkqpnOCY8gShoUAZdGbLWRPE_11hydaWPZ78bPBOo",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市五常國中": {
+    "formatted_address": "104台灣台北市中山區復興北路430巷1號",
+    "geometry": {
+      "location": {
+        "lat": 25.0635289,
+        "lng": 121.543355
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "f6e5c10f4e68bf52f7d3e327c90ed850ac40f3d7",
+    "name": "五常國中",
+    "photos": [
+      {
+        "height": 1824,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/106784328443093080521/photos\">黃文科</a>"
+        ],
+        "photo_reference": "CmRdAAAA_lCw7CdRd0sBEzTkful3cgtJVktzOFmf6R4ubgdEmNA3MAJtD2F62tMqlVQzxH2YsZI4sOA6isBJ5UtO7Zs1IWtRhO5Is6G3H31w78V_5cgyO-CFHBxFdaDlQEhcJ3P8EhBI-2kE4a3ILaj04wpCZpFpGhTe0GwWpDtUXb9cA4mgzgFM-3hnBA",
+        "width": 1368
+      }
+    ],
+    "place_id": "ChIJDQPsUfurQjQRvcLRt7GxIys",
+    "rating": 4.4,
+    "reference": "CmRfAAAAN0qvUvdlv1jkB7A4YMDCN4zHZub5FxAMe8DG52Xh35nAO2rnFMMlBMf81P3zmsCET2g6M8M7FObI0r6sK6E8OK1Xdvh9gFVpwBmc_maxYH0XA5zLBH44KkMg3W04ajphEhC1dx4keQ1mzgSI74HLdtUjGhQpSZgb_7Bu4ixuULbtLaaCakK5kw",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市新興國中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.062054,
+        "lng": 121.525916
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "52cc2c293b22618885de9f4ae37eb0c17bf18159",
+    "name": "新興國中",
+    "photos": [
+      {
+        "height": 1365,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116532208690125192541/photos\">En-Chi Yang</a>"
+        ],
+        "photo_reference": "CmRdAAAA9ZiamVDk7LwYS4rDmmRCNlrfdcoVHSwG4JCbQ8U6lZSlldnpNpp-Z1fUNdX2wfaBGURWwjjpEQZCe2FB9rmCiw64aAUWRa2O0Ott9QNcMKv08VVACD59Nec4Zd42kfGNEhDqk47VCPTgQ_U6YehrJ381GhTOIMVW57s_Alp5totTP5gBHy0Y_Q",
+        "width": 2048
+      }
+    ],
+    "place_id": "ChIJCyraVVupQjQRSwahKKl1wQY",
+    "rating": 4.4,
+    "reference": "CmRfAAAAlTbqi3BNMVko8yw1W1L_SfkadsPRBK1yBvj-NuWWkqq3MJxQxxb36Ze-WGRt4TLaELvzowRo-ucVjLgIYl3Nuu5aFXGO40a1gKi3IGo2PqP8Z3XRYM88QPIc_UoMBvOpEhChieg5rTAjF6Nhl4RsYzG0GhQWE0CIPf5tsjsRGDWhQTXgpFErcQ",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市南港區公所": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.0547955,
+        "lng": 121.6065202
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+    "id": "8a6a9abde73120488f483baa8aa1c5ac2e0605c1",
+    "name": "南港區公所",
+    "place_id": "ChIJy8f_FF6rQjQRgvf3G_vNDZ4",
+    "rating": 4,
+    "reference": "CnRjAAAAJLaBbr30HzUYRtjLHSS8GUixy303fJTN4D55i48hgPDm7XRlUuzTQNrMvfr-bg7E6IjTbPNmUAODvd-Nrl3Jtt_tD4XRnDzBXmzn0emkvrt7hBAxvunTB4EKxlgGJTJYwzT-g0iznC4E731YWHTG5BIQakozRYsGn-P1_04EM7iULxoUCia36hnRyYMSoLDy-6epJbHkuus",
+    "types": [
+      "local_government_office",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市東湖國小": {
+    "formatted_address": "11487台灣台北市內湖區東湖路115號",
+    "geometry": {
+      "location": {
+        "lat": 25.068675,
+        "lng": 121.615663
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "58b9977806242e17e5c77a2a2a0181407e3db7e0",
+    "name": "東湖國小",
+    "photos": [
+      {
+        "height": 2048,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/111147851226373148327/photos\">小人物</a>"
+        ],
+        "photo_reference": "CmRdAAAA1RsF9xlw_NlFkG_RDVur8l-06xwNlu9xtvk-MBiJUlv_ntXhff1EAX26RRSx1Jvep46uRUs7C11pmsqHa308YJZNHEMY_23Z88Lfa84LQ08jn8hahVkoty63O_mbf546EhCbvXyYZqgMPVBFqd7nETJlGhQAbH_2AkkV_MNS8i55wzKGnNiXXw",
+        "width": 1536
+      }
+    ],
+    "place_id": "ChIJwcydlbqsQjQRu1Epq_K14E0",
+    "rating": 4,
+    "reference": "CmRfAAAAObFEBrN9V8i12dyUfwSbHT-EGvu1-JNElF7u1zQtUfvueisbUUdosWjtOodPksFysjmQGrxILjhR5bfzMwxI67pqzRo7cboJxdsFTWs_SF9_YLc8S1rJfkpskI78dJ3mEhC81jMwOSndytkAe9b7ahFJGhQH-lsQSFncbwMMJ2B_xSb0cR5J4A",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市福林國小": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.09764719999999,
+        "lng": 121.5293133
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "6b36d2268405406b73b06830783e5e7afceeeb24",
+    "name": "福林國小",
+    "place_id": "ChIJg7QjmZiuQjQR9YjxpE-mUe0",
+    "rating": 4.6,
+    "reference": "CmRgAAAAOqyd75wBcWXsw4GXgbMl3_8qGsZ3loqkrHuRJv97TrfL-V4L0TrFzr_iICUC9PFO7V-vVPi1TGjwruDRkVssY0a22sUpWLm4RRvOec3lRRmwypkcyqH1d_8LE1jlgVblEhBV5YOY2Z1ZEVcgIDpM5XV3GhRkhPxv1lR1bOhVqPrw3wITm649Qg",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市建成國中": {
+    "formatted_address": "103台灣台北市大同區長安西路37-1號",
+    "geometry": {
+      "location": {
+        "lat": 25.0518378,
+        "lng": 121.5186225
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "086451ab2d7a3e490172c0d0771f66e14612579b",
+    "name": "台北市立建成國民中學",
+    "photos": [
+      {
+        "height": 2448,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/111225326469705928637/photos\">Xia Z</a>"
+        ],
+        "photo_reference": "CmRdAAAAoQOQg0d_TDfFZRm8VAiJ62ZHVSjIastuDa8l_x48if8A1m9crKh3x_7QsQ_15ErEXiEfEDm_pOR5KLVibss9ssy8LATlwaoNw251tMWMKlGYHBDMdich9YyB4RO_D5VUEhCspdl74XuB-2K7pFMUpMqJGhQYQtbhuSRB8KTa7tcKpq4YkpL_1A",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJBZtHP2ypQjQR8hmZwJ1Y1iY",
+    "rating": 4.3,
+    "reference": "CoQBcQAAANFTtPdSmEoVRAMNWP3zFK7mppMpFrh4Yq0wSb99XdvtejyT291nR12Ts3JNlrZTJxNBt21RsFpZ8hAhG23YkL9bjIbxben0bkge2Gwlt3qJ3B_jC2igwgINMxDkz31oN1fVqhBORl8J26QA5Tzr_bpsu3LZlvBwakGQNPlPZPBJEhAM_k90WjT1QrMS7-_Dto95GhRjQ6P2-a4JRiKicOjtvdeZGylpww",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市至善國中": {
+    "formatted_address": "111台灣台北市士林區至善路二段360號",
+    "geometry": {
+      "location": {
+        "lat": 25.1034593,
+        "lng": 121.5549798
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "71108284e30c09d5621cae2d0498ac8bd7fb8b71",
+    "name": "市立至善國中",
+    "photos": [
+      {
+        "height": 2448,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/102173725261217552787/photos\">Zach Yang</a>"
+        ],
+        "photo_reference": "CmRdAAAAnR7Xei_EM5Xoy3w9Vu0j9aFfBho1SK800d1wkQjrTImp02k8TM4FRoYI9zkMIqhlZSoP4L8W56dxoJSDGZAF_AgkZ0WOuHzS5Qo9FNtH0NUI40yqYvHZQ9uAj29k8y0nEhBpMCM8i4ziHMHJXH8y79sQGhS3xpObJ27i8FfI-6E6kkeXz8PVcw",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJuZ69VDesQjQRQF_Q_4c_ayk",
+    "rating": 4.2,
+    "reference": "CnRlAAAA6aUCK2CcJH9_2FQU0waPWDd7vPSkGAxhT7XpC6Ia-bFKtxmPx6It81FmNyCaCug_cwqy9fKszfbKsdsKkDEdjJyLYAYo2a_2eIk5pqHO0gHQUm4UwsthXC5d5e8iKARhcVLKyga3y98nZyMUbzp02xIQnkNdWvPmWbpEqUSI5M1XvxoUHAb9Eaee4My_EltNahprtZdPHYc",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市景興國中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 24.996557,
+        "lng": 121.5436751
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "5859d6c84ab25a8948745d835f59ac4f7b0cfaf9",
+    "name": "景興國中",
+    "photos": [
+      {
+        "height": 2448,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/107777247082427637618/photos\">葉中如</a>"
+        ],
+        "photo_reference": "CmRdAAAAT-TqDM3AYVu1eZ0EOvK7MLBh-4nQ3BOMkERF4c2svZKxggjWL-h4MddsCAdC6SuQA6gVPIV0spgPufhvfl56JVUw1T24ULHReb7UG-vstAFTFweeLXEW0AYt5adNPKjWEhBX3dzmviOl2dnGk0hPzJweGhTiRyS93hFuJogLZTOGdFJhH5Q9xg",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJ6VcjXASqQjQRIGdAvDhZFXY",
+    "rating": 4.3,
+    "reference": "CmRfAAAA_h-jcieJcNS-LVm1yIgKwRl0DcejCwhmLrR8IAhk2Blig1NVW6fhozweo_REmyBI8QhNbQoWCORL08ThXRThjXhEcqRWEoHIxRWsnlRHAAPDdy-Nm4suoPpfg9VhrvQDEhDkrUosOBpmIccRHxExqVY1GhRO0H9dgLGd1Y67QHjrFQpd0AInng",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市景興國小": {
+    "formatted_address": "116台灣台北市文山區景華街150巷21號",
+    "geometry": {
+      "location": {
+        "lat": 24.9965296,
+        "lng": 121.5482445
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "8d1744481a535cac8e87cee3d85f3c6057e1fc04",
+    "name": "景興國小",
+    "photos": [
+      {
+        "height": 1536,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/105882838927585257452/photos\">CT C</a>"
+        ],
+        "photo_reference": "CmRdAAAA-wb7cTO-TAWJBRcfr7FuNHxEddMsJckt5E1uu-irr0XFPoPvJljXYEKrnirEGdao7_gAX-ghnGvJknf_CFnJsxFYI_HJiHIicsUBoH_mlOEzK8hOXoC8mUXzlnvAP3V_EhBObkXqAs3ozBdiYlfxrZhwGhSb6gvYIWxEygEzSYLgjEY9JazqYQ",
+        "width": 2048
+      }
+    ],
+    "place_id": "ChIJNbxRfAWqQjQRbWEklwsNy18",
+    "rating": 4.5,
+    "reference": "CmRfAAAA20aAbuwTRNs6VPuuVuHE8fXWiXUgGK8sIiBJORQxFWOrctGb9Bo_NyjCCvX3DJi6xU-XcrgeaoEF6PdXXkmzYtOiBFMRrekaftcbaCOqCZl2eN7Ubax_XGXtb_xvn2ghEhCdz_4Uz3JPOTKJbfrwT9YVGhT5uEz7Lxd-oW7s-ewNNRZKwen23g",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市信義國中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.0286019,
+        "lng": 121.5681209
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "5b5a7121a118cd93677e88867c9972f1ec69005b",
+    "name": "信義國中",
+    "photos": [
+      {
+        "height": 1140,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/104827062050535675615/photos\">北森泰男</a>"
+        ],
+        "photo_reference": "CmRdAAAAVSAXtEpmFH6J3Dgn21AAGT7awlI39bCH2fDMOIY6UqNbbF9weeP569oAvELJWJTSGEXtKf5M_diicGBIuOiq0PbPyLMy6gPL7lIcfdo0sLSo8L_E22sO1BnPs68asBMmEhCSt1jsMp4W7yMvv9bsWLBMGhSHf50hqDSx-ONis35LD7PqeyAMwQ",
+        "width": 1379
+      }
+    ],
+    "place_id": "ChIJG_agprOrQjQRRRYk4VBFrzY",
+    "rating": 3.6,
+    "reference": "CmRfAAAAWpKoiXVMm2Fdz6Nf7ACW0OyqvvMKL5JPumncqWtyfuRocGsv_f_HYfyYLon7E21Qc-0Z3XWxjex2Uye-_JSd4kZRCXnuiOY5b7gsgiY8_aBGJ5GgyQw07cDEqb4PB92OEhCv5qzeTwJyidU9BUNXS-WoGhSQovgrm_9GR4QgYiEiPueNSK-l4w",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市民權國小": {
+    "formatted_address": "105台灣台北市松山區民權東路四段200號",
+    "geometry": {
+      "location": {
+        "lat": 25.062421,
+        "lng": 121.562097
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "54e2f78abb7aa6a39860cf6bafcc7b2dcee91f18",
+    "name": "民權國小",
+    "photos": [
+      {
+        "height": 1500,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/103242317066817517121/photos\">柯得馨</a>"
+        ],
+        "photo_reference": "CmRdAAAAtAozxqqzNtNvKGRBHycsnZuJ_trJxeBfcPZJFZCQ6b4RAT2cuhqkOeGRNjxuIeGyEqFtHbhG9jMatVVr8k6O0aB30VsOOPozsTJNNQ-yl4M5Y9hI0-iP_PhxcXyx6SZ1EhCNY77n3ujyNgQDLJsMeYLSGhRhNvneLxJkIUWwsf5pkFDM2huKTg",
+        "width": 2000
+      }
+    ],
+    "place_id": "ChIJ96w78oyrQjQR07OUisHL3tk",
+    "rating": 4.3,
+    "reference": "CmRgAAAA-eHv57L4_gxlDEsTRygXJki5mQ-h_PZJt2xefXiiueNPGvZQ1eWtzrZ8OhM43ILkp33qidzfInAHpT8MzPGGTYeGIqLtkZ4HzBk2CPLctbKU4xU48SeUAYjohmnn0NB4EhDv3kFPzWVVgsp9yI7cmG2dGhTRl24eBxQwib7jS6aRvPESTbJm5w",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市士林國小": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.09258,
+        "lng": 121.525064
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "d7fe8b265c8daea1d8d8b11a11ebe8313be0b1c0",
+    "name": "士林國小",
+    "photos": [
+      {
+        "height": 2448,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/100284572724225594024/photos\">Wawa Chen</a>"
+        ],
+        "photo_reference": "CmRdAAAAgk296eyuglGsN6UcfHtIpx8_bMwd_jjfv2K3gWzYPlegiJ7mA29k451V4EO_cd38rPSDKwo6JVWAuNE097cz8vDZh1VRUtUX25iSM5iltgYLrm0ussoVRRhCq7yulPWTEhD1TCahs-tgfwldsyR42jKbGhQSY7h1m3gQKDGspuse7BUP2orvPw",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJ6_UzNruuQjQRQDYmyh0X4jM",
+    "rating": 4,
+    "reference": "CmRfAAAAl1l_H_PC2reKSd9IPyAssAejhx2ZUE21fODULmDrtlmjLufu8J9x1-s09hYSegLV4OCYmkGjZxs09lktfvaWLsgYQLDBaDKqGip1UAFHOwUeNaKxYNRfZnovseAa6308EhCNXsj7LlzbwhNdKnQwGKbsGhTnL2ZyRBpHv9VlT09WetxYvy_zww",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市幸安國小": {
+    "formatted_address": "106台灣台北市大安區仁愛路三段22號",
+    "geometry": {
+      "location": {
+        "lat": 25.03758,
+        "lng": 121.534866
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "114989d378eaa7b7ddf7714e1c4dfe741228a2fc",
+    "name": "臺北市市立幸安國民小學",
+    "photos": [
+      {
+        "height": 4032,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/117111128871670998964/photos\">huei feng lin</a>"
+        ],
+        "photo_reference": "CoQBcwAAAJdnJSjrQJCRrJcCEJfaPPBtQdGQEdx4W-CfGx0ylJAXPilg_ezLUIn66OgUi2EGft9Pb_22w3eJCmZXw61IVuCW2KscA8LpVO_EAOMEQeAyBiqnveN8z72oQ384i2-YVMHdcSxfviPmfeKwOCXp91EuXXnP5m3ffevbz6W78uWFEhASshnwOKKvh_NsQN6RyHhNGhTVRLXfeSSAy_1VRZEseVyu_NKeFA",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJ7W2oaH6pQjQR9KzKhuB_fps",
+    "rating": 4.2,
+    "reference": "CoQBdQAAAKcGs5fuctOe5p49SkhSmXFaWEIJhD40lX6HDBINLXJ_oFm-uNoaHntI1x5FSWgOZvAvwwzmznDkrVeqkTCeAQP5KTHgRUVgLIawrFTGrmpSDZCG3T2gvBLwHu50vGDHsMaWkYHnr1gLV4dxRqUBdLB7jnV6T-CzfSqYqp5jnaNBEhBbD8I0C48KM5P9xn6AR-v0GhTVKcp0l_6Rm958I4QTTmeANRl_Iw",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市南港國小": {
+    "formatted_address": "台灣台北市南港區惠民街67號",
+    "geometry": {
+      "location": {
+        "lat": 25.0571037,
+        "lng": 121.6105787
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "70e703491693311bfea60763c9e8611c26b5abcb",
+    "name": "南港國小",
+    "photos": [
+      {
+        "height": 3120,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/101546611009952986234/photos\">樂天羊</a>"
+        ],
+        "photo_reference": "CmRdAAAAJsqrPm-TuiV9XU3_PISAXtDgTHUc0cwk6HDTfBTx9n2CeLkURDutkQdSLxLsmXvVMyBDtmZ1_h0uIVdByc3HGki5OmnWA3974yTqtqT0AW-ONpXxZFJTA8wjjMpobG5gEhAYpWxNQhu7nQGAjzkmyBZ6GhRC-E1uJCKphQD2jCKVTYpPfb6irA",
+        "width": 4160
+      }
+    ],
+    "place_id": "ChIJL5VUFFirQjQRC8yy9HhDDmc",
+    "rating": 4.6,
+    "reference": "CmRfAAAA-wckfd0yGNHjMwgmxUg27vD8DQATfyB6rT0RwWKuqYyXNcw5OLeXXEHrb-Efn10yCIG5Y495pZPOAfRVUROmABXUlxEzEkDs-WUDKp9fSqfC0-VPGE7kxSI75S4ROWI9EhBv8CpcGQkGW7_rRwFA89GeGhT_aMc4NtljY56zQQQOJToCv0yPPg",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市民族國中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.0112217,
+        "lng": 121.53884
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "fc60ec5009d81d8f74f056a1742b42c6b83ef91f",
+    "name": "民族國中",
+    "photos": [
+      {
+        "height": 3120,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/106215045617951596687/photos\">Kenny Fang</a>"
+        ],
+        "photo_reference": "CmRdAAAAsCWxkw5xQvcaTnwI3QlUDsMKzH-NS6jMhQnAeEUx63IyT9vUDuh198bmi4XLHAfn0Vuf9qzt8c0i9Yf7q4IgXWVRH5TNAeFmDXOOOnPrNofti33DE39kjZ-T7saGUUOEEhA4QRpOExV_4wufr77n-_cUGhRhQhjoRjCg11qhqp_-IcAg9rh1Hg",
+        "width": 4160
+      }
+    ],
+    "place_id": "ChIJqxM4-h-qQjQRMOKOYksfN-k",
+    "rating": 4.3,
+    "reference": "CmRgAAAAQLipzPM_b11HRfsCrzWRWGIhiYnfqofems9LDsT3HxbzH9MQdoe6lba6IOOHGptw-7udBsfGaPd9cmcDzzmKZryBUJUX-aoUX3z02Su9uwMad1IFVqR3gKOn7Up_chIvEhBJEXmwf5hjVhD-Z_zW3YrqGhQSspbOr1uuuApGZZlnNm0wYeDgYg",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市中崙高中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.048714,
+        "lng": 121.561104
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "45e5c217d4a7a3da09dd3569f365ef543e470ee1",
+    "name": "中崙高中",
+    "photos": [
+      {
+        "height": 3202,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/105730260044631281217/photos\">Huang ZhiDa</a>"
+        ],
+        "photo_reference": "CmRdAAAAxDCdWFYpidrouVCWONdhBx-63FY7hztP4eQAfXAi99f52j4XC-YMePrMndYoMQgwU7sOy_AjyWJjLlbbgeetyFZQWrLWFdOmxAq5vghR8cCw9bfPs5KQziUBcnADJF4qEhAJMqkt4qIcWpKoSmjMtkVKGhSp0NvZq46xwBwq5prALFx5B0kBSw",
+        "width": 6092
+      }
+    ],
+    "place_id": "ChIJJYaPXpWrQjQRcRbpVqp_J9M",
+    "rating": 4.7,
+    "reference": "CmRgAAAAkmZ9yruaKIht2-YrADQU9TjJszx84Vc4uaGo7fsH95SL4Bza7HZI8wqhPzEhRo8FPLMXh5hPKrLMA2LfgroVWzkaAEuhYUZ9Bzp33ug-LpH6RQz2DlRXrRV-Hxn8rhmeEhDvOXgE8SJh7tQ69Jgc2gwsGhS9ZpkKVri4W3GQCdzgq3Kds7FGVA",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市北投國小": {
+    "formatted_address": "台灣台北市北投區中央北路一段73號",
+    "geometry": {
+      "location": {
+        "lat": 25.1341236,
+        "lng": 121.5002383
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "f12296537cc9c62c67ca933a21cf5b6b130a4eb1",
+    "name": "市立北投國小附設幼稚園",
+    "place_id": "ChIJEyMV8VCuQjQRvcypRAeJaJA",
+    "reference": "CoQBdQAAAAYAC8ecsHx5LEghTLN0DqQS17UFPKPrthw5F8MfNdT76assWYkjBqm2fSvklPb7GlM2DztFjkaTXhxgQuJnT-DDnclDm2e4LtZAiTPM92YAVMB535AGoRGoLhaDAmdaYoSw8b0h7LlVnJQkC-apXnkcXam8Rzfm6Y_96v6U9rRQEhCrDmUT6UomsmU2Io9PFVfpGhRwhPe5ZJ0SKIJw8WxQEc97yb_Y3A",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市大安國小": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.020005,
+        "lng": 121.549078
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "a7e6e4d49bd6ea083c586c19ea5adc4b5a600a6a",
+    "name": "台北市立大安國民小學圖書室",
+    "photos": [
+      {
+        "height": 768,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116641090898277422425/photos\">徐梵馨</a>"
+        ],
+        "photo_reference": "CmRdAAAAM7M76LMKD83Y2jhYGLdWsjNm38rg-3q5ezaJhaeln_wIajMpQ3K539YRLquxKl3VW2f5N9BMINv_pdvEIUluoy10qDE8SVZpFFfKna5XPKYZN9mBRMl_91ZD70aOZsVIEhCPGCyJqeQiM8QB0kbvt5AIGhQ2fzTLFFXzGCDQLSy1ti18CLthPw",
+        "width": 1024
+      }
+    ],
+    "place_id": "ChIJk19-DjCqQjQRHuWfYsTVWjQ",
+    "rating": 4.5,
+    "reference": "CoQBegAAALbm6Ws6x1it28uPhmhG7ccY5xaHx0dXsUeAh8-j0xDB3A_xUBp_3Aob216F94bgBs_Ue7JuQLS1Z2OpMJnzCDfR_8MK7Q_fDESmSypi6UsrGZZy3Hsh-ujcYKIZsbtp65nxoTh64m8tZdNnr-Lw7IsNJn6WT6fHncVZdeNr9ibbEhCWfWWVZ5tpOIDkCe1m8iFoGhQ5uVROMsGI9ET02oKPINwvMPX8qg",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市桃源國中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.134767,
+        "lng": 121.477391
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "994554e0beadb878e65958bc7f5f189cc5631edf",
+    "name": "台北市立桃源國民中學圖書館",
+    "place_id": "ChIJg16zVqavQjQR1PJNtu2AQgA",
+    "rating": 4.3,
+    "reference": "CoQBeQAAAEqMUeQjB8f3-_oRktfr37sPzqpsgQOCH6rvztmMlmIc25QX1IDyQeQLnNb3bOeJpfVXp27dbztRxsDUrgLkU4nNgGZe7dtfufNqk3fMYmEGgawyIyymzxvNm6BV6ODpGAPL7vKO0zmVceo0wmPe8Goq89KxQGg4wElA9xcDBVJEEhACS_Ie_j5pipFod8-jSzMIGhRTZgqSadLcqxikXa5tUCw-1IHs4w",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市麗山國小": {
+    "formatted_address": "114台灣台北市內湖區港華街100號",
+    "geometry": {
+      "location": {
+        "lat": 25.0835175,
+        "lng": 121.572405
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "96dfb919d0dda4f383f83ec5a3f93ab85bde7c53",
+    "name": "麗山國小",
+    "photos": [
+      {
+        "height": 4160,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/100163249436195889487/photos\">Jeff Wu</a>"
+        ],
+        "photo_reference": "CmRdAAAAy6ZuVd1jsGIA3fd2802kChT03FbtOBJV-tL54dpme3sKRXBc9sAVbSwCibmwrOzyanm0RKNQeN8blPRdhJIVP-9Xunjy2K3hxCXAKwGii6s08OfnUgDLZPxlGmei5Ey5EhDAxEKZxreJI-ABXp-qvUXtGhT_tAgtWCSgYD9ZZrJ5g_KoU3P_Zg",
+        "width": 2340
+      }
+    ],
+    "place_id": "ChIJBwxyuGCsQjQRaTXyofX2SIM",
+    "rating": 4.4,
+    "reference": "CmRgAAAAW6kGjPelEnReTdtI7fKq011O-UNBy19vIMzs7ySv6cuWeTCFgj6Z3pqidK-UNExgAbzSkod8Z0MLLRBnTDxeZbT1hdB0fB-BXIOqEQz98iSgwhLjcKuIx8fLsXh18EDeEhBM7TDwLN8_CA-oeuruSZxVGhSGhBAe081yc5g19UwwE8TWavmTMQ",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市信義區公所B1": {
+    "formatted_address": "110台灣台北市信義區市府路45號B1",
+    "geometry": {
+      "location": {
+        "lat": 25.0334929,
+        "lng": 121.564101
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+    "id": "f3861c6d1cc5b2da7551201123e7f196163454d6",
+    "name": "興葉蚵仔煎",
+    "place_id": "ChIJSTLZ6barQjQRdQxfzNED2bM",
+    "reference": "CnRjAAAAU0ddXcdMcW20mCLU7wxM83yYvDcrycjvkUo_byTfs3rRRYrnD3lTG7k9tHz84YUCErJrUNDwMvUC9PEfgybhscIK-nAv13lH_f9Shw722vZLYXzlbxt2OEtvrMXaP70oFHrfEr5OHFwCbdgMyRmhRBIQdSlWnQXOOjATeZocWaX0NxoUZPgnCJtaocTrRrmf6PFegnoACUg",
+    "types": [
+      "establishment"
+    ]
+  },
+  "台北市萬興國小": {
+    "formatted_address": "116台灣台北市文山區秀明路二段114號",
+    "geometry": {
+      "location": {
+        "lat": 24.9898899,
+        "lng": 121.576716
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "95ab10cb7c5539683ec6a0fa8649be63cda96650",
+    "name": "萬興國小",
+    "place_id": "ChIJ2bi4Y3uqQjQRfIoJ1iVSpH8",
+    "rating": 3.8,
+    "reference": "CmRfAAAALc5_3mK-Hdnk1CTfme19szTHo2gnJmiTmB7wl2gViV5Vid0x0cm6ldO8HT6HnVcVCxJqq5REzW5tDJGA804xikg6v4aGvryVcHsRKmwXAqmF-23IhgmrmV3AE1p6YIy9EhC8AXB9z3g9Ep3LM2rVHXf5GhQvJy05NnxqsRc6nY-ubBvlGKJtMg",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市龍門國中": {
+    "formatted_address": "106台灣台北市大安區台北市大安區建國南路二段25巷七號269號",
+    "geometry": {
+      "location": {
+        "lat": 25.0236413,
+        "lng": 121.5385563
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "4d189fb3a7bf18f7f2fc2e93730b05158c6d5f67",
+    "name": "龍門國中",
+    "photos": [
+      {
+        "height": 481,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/113833590150009528858/photos\">Chen Ho-Chien</a>"
+        ],
+        "photo_reference": "CmRdAAAAdQ2uMGDgYyq2NUbZdHeKT9RmEYyz_Iy68Aev3bDeDCKpkUlusm3FECBlexARYkgo-oMtMz8bVzzhQYvWgWnYSHxhEjW6bfnZm0Bx3TIXmcR9UnAQ0UD5OBMmbvwrWhJgEhBMQ2qFFvJBFxWhFgzzSJ_bGhRKRUIkjnSWfQfZ-S3OJlPOnIz5wQ",
+        "width": 720
+      }
+    ],
+    "place_id": "ChIJZU9WMSiqQjQRTB70EgHZJ40",
+    "rating": 4.6,
+    "reference": "CmRgAAAAfjBqc9_KUbXxtW-3jMY42gbiujLH-xTvZbRbxwi5C6-T1qBNVveScewnhcaoyimU1tKDmtdvb1KLPyAQW4YG0IjOUxfu8Rba_NkMpIGMaYrQEx5yQ1TdvATqYASmUZFuEhAN7Ms2GO2aM6GZ5BvIc7XoGhTdyRRDE6QxIpvYPh_1wBvROOj4tw",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市博愛國小": {
+    "formatted_address": "110台灣台北市信義區松仁路95巷20號",
+    "geometry": {
+      "location": {
+        "lat": 25.036362,
+        "lng": 121.570445
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "ff276871a7324d8f9bb79e0ec985dc7952df93e8",
+    "name": "博愛國小",
+    "photos": [
+      {
+        "height": 493,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/104827062050535675615/photos\">北森泰男</a>"
+        ],
+        "photo_reference": "CmRdAAAAH_VN70K2cXsbBuwsZFsx5tBHafrpEoS_ElnCSNnkkaqw-xwNoMKNh5DE0x76IOGZv5YaEOQeav2PSRxRoKYXxX0-YhB-CVs-M8eIAbwOoKCvisdu5mNcElaQDKQ7Yi9XEhA3ulmzQkeEDx7MOCsD7IEQGhRvK4OYkQP2RKAfDvRO2ywvhpreAQ",
+        "width": 746
+      }
+    ],
+    "place_id": "ChIJ7zD1urqrQjQRUzrcu8eVnsM",
+    "rating": 3.9,
+    "reference": "CmRgAAAA-tAwIncHMpHfr2EOg39ugfUJvg97pbPVd4mQAA4MHqn4C-v4SxI5MxsKXHIAfTw5V1XNv9bdxRLnjE7hoNsP8_inz93bpXsBuaC2V29ARRO87JCkJ1efKgdvdogvVxi5EhDYaXi9cP103J0lYxGT9NpXGhRxUNnIg5KFoe3bwjbBSYinKs2LYQ",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市立弘道國中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.03850770000001,
+        "lng": 121.5153834
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "05ed7d24e2a75417590aabab2b8eb8347fda64fc",
+    "name": "弘道國中",
+    "photos": [
+      {
+        "height": 4000,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/111525249119078830957/photos\">Karl Rin</a>"
+        ],
+        "photo_reference": "CmRdAAAAABBNqmHXgK-D528DbXmrpEbzKaZ2emqKNqG-ToYWUOV9J5_S07HBrGmSZ6rZpGc-qVYQMp6dCuHP412kfJFOBIN7aMi1xp0l5m2qOpI4e7XWysUuevtp1KueVa2TBfD1EhDM4n69XGSG0OR5dK2HUXQKGhQhUuuNJIFpyiXztbNWp2RZVvXvoA",
+        "width": 2250
+      }
+    ],
+    "place_id": "ChIJzQBGQ3WpQjQRYBxfpb2jQIQ",
+    "rating": 4.6,
+    "reference": "CmRgAAAAGLU1e9F0bhBlLw9f-eFqoeLMj5GkD7fWDR3dawSU4YOw1uUHSaHiFV5CJfiJoawjh5UwDNl-6jk8TBRine_axMKFJ3ZNIp56Z0287FsuGBDQrVP_SCOHvRDNnuYSGY9HEhAow83lu7ACM99mPCg_9KztGhTcZKWGPE4hKbmDOalV45tuq5dRmg",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市碧湖國小": {
+    "formatted_address": "114台灣台北市內湖區金龍路100號",
+    "geometry": {
+      "location": {
+        "lat": 25.084627,
+        "lng": 121.591423
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "c6430559f4f5efe14113e5a2dc4e7623648b9e35",
+    "name": "碧湖國小",
+    "photos": [
+      {
+        "height": 3052,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/110311783320396442312/photos\">張文宇</a>"
+        ],
+        "photo_reference": "CmRdAAAAAqLoCriszXF6eh8hHRBV3t1onRkBeL8zaQr1ojVZSQ0rxV0g2hshPuNLfgaUaxBjSt2DRzeaBho4qSxeMxL8fPsVtx4WsnKY2IILI6sjGef_PTJomD5T0Y8erbmi3hEOEhAn0_SNnaBKSorZNgyTiNYhGhTGosGY1ySmoAlo41T89EiiOvxBSA",
+        "width": 5240
+      }
+    ],
+    "place_id": "ChIJQ2XvH_OsQjQRZ0P1b4oPxqY",
+    "rating": 4.1,
+    "reference": "CmRgAAAA42WVWKnmNbzGBA0w3g5f4VJBCikHdiZWXMvSiKuzjA-sit-_TL7NWeg6Evf32IdMrINGJ8imSCx4fPbwAQDUR4Vbx8aBXB6uqxossDsy_KEjUDRsUIw-UrR190VoiKDNEhAxqD2Bkljm_CO9Q7kgZKSOGhRdRwD76a5SoZJBurdbwFI9pTX8LA",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市吳興國小": {
+    "formatted_address": "110台灣台北市信義區松仁路226號",
+    "geometry": {
+      "location": {
+        "lat": 25.025762,
+        "lng": 121.568607
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "396c8b4e2b2e51485c59a40d8f86a4781ab09a5e",
+    "name": "吳興國小",
+    "photos": [
+      {
+        "height": 1224,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116510184239348367550/photos\">周韻華</a>"
+        ],
+        "photo_reference": "CmRdAAAA9ccRqBlwRW9eM7oukEbgTP7X5Z0jURrARqgohF81uRat0J47-6FdKIpzFoKvGyE-OBW2scJY68SS8OXBOWyFzCywjYl_hFeGty8K408he_Tpb3guPpgL5uwzgiigZCpnEhD1VK8Tw4020vPCBHuIsEZCGhQcFUYwjYLMNmYj1bTCE249QfbGtw",
+        "width": 1632
+      }
+    ],
+    "place_id": "ChIJky2M1rKrQjQRCV8qwPPLd_c",
+    "rating": 4.3,
+    "reference": "CmRgAAAASmXK0tszzumNm8RiBIP30ZLXwAvJAdsIrRqOcQOjaXgI0LGR1qaLWHAePsRmjJJRsMg1YQ1NB41bz9OijnEjPasWmK0acu238nwcmhq9t1GmbnAGPk-9EzaYQ5ihHWdGEhAxFwmFPYJYOZrm-aJn8ewoGhQYJQ9WnSE-Ul2SYCx43ssLj29VlQ",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市立市大附小": {
+    "formatted_address": "100台灣台北市中正區公園路29號",
+    "geometry": {
+      "location": {
+        "lat": 25.0357834,
+        "lng": 121.5157331
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "6b10609400bb209386d3e43816488b40dbbb6a0e",
+    "name": "臺北市立大學附設實驗國民小學",
+    "photos": [
+      {
+        "height": 2368,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/113240396546555263447/photos\">Alan Lau</a>"
+        ],
+        "photo_reference": "CmRdAAAAXE7qdUN6vKCcnUItFcWli_2Nl8YLtXZt56T_ZD4T9o8xoG2UFjKPdU0OxSoEGNyVDB6wQJCTviTNPm9FrB2rs5sw0h3qWnpDPbu45QNnMB42tBzjSMO9RFWKTlAdPvwCEhBhkO1atxSRE6ZKHqc01REWGhR0vgoF3EWGQjBwnf7XwZ0C5f8ZOQ",
+        "width": 3200
+      }
+    ],
+    "place_id": "ChIJN5XwnJ-pQjQREKkYM1Dq2Cg",
+    "rating": 4.7,
+    "reference": "CoQBfQAAADTKG4gwuhh2CjvJscjApRpJjZbARHCVryn3-7f97glQh2e7Sef2VGua1_gzZl1-uCwlKN-m7-OSxdhMXuWSFSI5hcLAEsX9I97_YMks9qynrWFTerf4cYTO404ebFs80WWcmoYk_xZo3P1XoJZ7HY9YkNahdDe9RqXhyD6SRA6cEhB64_8mYdHhSXr_o1EeipoIGhSrwEkCn77Q9XNn2JaxzI9Wt2Q60g",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市逸仙國小": {
+    "formatted_address": "112台灣台北市北投區新民路2號",
+    "geometry": {
+      "location": {
+        "lat": 25.1383709,
+        "lng": 121.5051619
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "f003441f3410d8416ba885581a2dce9b574a4af4",
+    "name": "台北市立逸仙國民小學",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "place_id": "ChIJb-X1VESuQjQRPqW4wq4V0QY",
+    "rating": 4.3,
+    "reference": "CoQBcQAAALSIsWHDdRXaX_KJmgq5cE5RDrX2abfCEeUn9sT-x84IoZUMThJCqVCn5juaI8TZqWtUMmr2v4pqW7ZmElPt87b9iaT39GDh9zi-XeTXsWcoFzsBJo0mQqQSVdaTJKKgP-gBpnX8bVyxSvQRQ-kvuN5pc2mR1JIiuHK9pg2neVRcEhBBbgMBrZ_OaJNrAkQJbba6GhRBi1ho3BBqJF4hhAj1T3SQEdYJLg",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市新民國中": {
+    "formatted_address": "112台灣台北市北投區新民路10號",
+    "geometry": {
+      "location": {
+        "lat": 25.1382545,
+        "lng": 121.5064295
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "e4b83273d96d2f491ae0d48200c697cc7ebc2571",
+    "name": "新民國中",
+    "place_id": "ChIJcZbcQ0SuQjQRkWFwGw0nxKY",
+    "reference": "CmRgAAAAtC7sU_IogkGounvEi1eyvdZLg7Ru9uN-DcqhbIEhai5pCDCoxHkC7vvNzbwxWyx1rLfrV5JYywmxCYh1mR9F4i4tsqQG5MbkejWSRMsVD7nrTSYyCn64gJNQJw9I-RwUEhBmKsnNrvJsBI4FRw7wKwWQGhSMWkA-vg99gJ7UgFNH-8rfl6gPRw",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市興雅國中": {
+    "formatted_address": "110台灣台北市信義區松德路168巷15號",
+    "geometry": {
+      "location": {
+        "lat": 25.03632,
+        "lng": 121.57237
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "6397fb2af27cba047d4dfb369b9d7c6a32b62cdc",
+    "name": "興雅國中",
+    "photos": [
+      {
+        "height": 438,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/104827062050535675615/photos\">北森泰男</a>"
+        ],
+        "photo_reference": "CmRdAAAArIIoWErP9CcAgeJIUxqeCoTAQ1BVGybLeaD9qTm75TcTfgYNblkjsVvWoH6CopDpMwY7_KPFOVPunwGJs8jvSx__9WLvRU6YKCpcwUNy4PIQB3s1lZAqZWZf3O2A3WhaEhCRqWVjRuzOSjIKFSFhizuKGhTTd6UCJ0PTWC_6g1pf0AIw4ScQbA",
+        "width": 649
+      }
+    ],
+    "place_id": "ChIJZcrHQKWrQjQRgMujQzNrMIE",
+    "rating": 4.4,
+    "reference": "CmRgAAAAo7bQo3qr1Ih6zLXM5q8OX-qti0bSAqn6zgTYpsyS8wGsYRG2WwTIOJGl_p_GbN4bqqNLQZIST0nS3tZzxq50d9CgRvKZcroopV6TG-j33K8Q-eZYVLSUt8MWhGxKASdQEhBh6xKUYzs--RORVKhRb0OpGhShdjyRggeXVlHrtxpiKmqyjvih2g",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市成德國中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.045021,
+        "lng": 121.587729
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "f227dbf831f8baaacae03ab30f85002c5dc96e2f",
+    "name": "成德國中",
+    "photos": [
+      {
+        "height": 1024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/114830038900821967097/photos\">何佩蘭</a>"
+        ],
+        "photo_reference": "CmRdAAAAoxjQCQrrNJrHvDDEW18-R2JMNHYUHRNeEVD7dyHm3j3TTvRqkGDDF34b_rNq7AX3e6qYv_lpCUsk7-2ty9FdrNcqC_3V-vwzBDMHmPdS72i-m1qyQpXIUnFhlXww-zymEhC2ZLrXKJ3GFqz_dmWAdnY4GhQBDgQFn4GwqG8p0W11jf-27NVxzw",
+        "width": 576
+      }
+    ],
+    "place_id": "ChIJwW2jfHSrQjQRsjnb_m41tL8",
+    "rating": 4.5,
+    "reference": "CmRgAAAAtJ2phzuNmdV8UmRxMjiCWL9_xWS7U8n59YZw2OA4FALwKzZkJ5Mfg_MTAoI7VWCqg9TYOSd6atNq4JUICDmdC3Mf5LvSmld30beHie903skIaLW1Zzb3iXLEBACXhBM1EhBSaRTUUjtFtEODKwRNIXrlGhQ3hYCk_UXDtsUIaVxvn20bM-VkKg",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市舊莊國小": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.0402906,
+        "lng": 121.6194992
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "9aba9ee1d66782c7be74b1721cc9ce92e0261e6e",
+    "name": "舊莊國小",
+    "photos": [
+      {
+        "height": 1824,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/112337187283919533243/photos\">Jackie Shih</a>"
+        ],
+        "photo_reference": "CmRdAAAARb7zbKTU15aL478kF7UefphrrypxvYhU7h9u_e-slc9VcKVnU9TyviBFLF78uzlurrjtpOC1k9kjqXqEEfMBZVQIgsOyJ-Qs2Cbq0zLEVdeE-qobL7Ro753ZOkw9jaxhEhCZTZaJoaGUGoLstBALcl0XGhTEr1lB8frkB-O-jk2uzKrLGg9Wbw",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJ3zFrKU-rQjQReYx5oIIws_Q",
+    "rating": 4.2,
+    "reference": "CmRgAAAAaDLCkWqBlqKo_LvEFm3u-DXGD_d0vjvV3JlB1cEiADbI2z_HDYDR1PgrdgdfDH-UdjbFg77aopOyP0PcED14V3pdZ39ANqDe4qgPAQiQRGUjk6XpTx8IXZNeGD-wggpQEhBRRd8gZ4xozmpIsj82_06aGhRqz_iYp1L7V_-aaTUNl728BbmzJA",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市忠孝國中": {
+    "formatted_address": "103台灣台北市大同區西寧北路32號",
+    "geometry": {
+      "location": {
+        "lat": 25.051247,
+        "lng": 121.5082165
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "358627692bbf2d62eac7abff8aa7d3e43be3937f",
+    "name": "臺北市立忠孝國中",
+    "photos": [
+      {
+        "height": 1728,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/102982760793709350355/photos\">Qi-Yu Zheng</a>"
+        ],
+        "photo_reference": "CmRdAAAA1194Rrd4jWmoQuQZ2lOAxn84fsUOsDNUaJsh5T5J67_d_sji2F6FlQCa07ww0RT_lD7-LOoM2_f6RDwlrESN2vr91kTBGkgIn5JXZQyosX7AdkjA01ACNnfZ34Kf76cDEhAsuaD_5coOCMaij-DCRBydGhRuH9kbIOJfjvoONyijtisb68PFJw",
+        "width": 2304
+      }
+    ],
+    "place_id": "ChIJi0XT5RGpQjQR-aB5FsgCMxs",
+    "rating": 4.7,
+    "reference": "CnRrAAAAcO7B3kHJTBnDIjGqfMnlLUL-7XOSIWK0oAxL0xFgWf7dft_y1oO6OrauspllW20VYNOY1wEDB_d9FBr_dkwi-6E-Aqp3WA2Ajri2FP3FrC56uwHfo4Ot2DbyXKcsQWiklMJyEMtFadqZmKDIvJ-uhhIQ6Y8BI0vIpjGyuW1MWdVLlRoUVnwt12__R9utBSonuZlT_hDRwtc",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市東園國小": {
+    "formatted_address": "108台灣台北市萬華區東園街195號號",
+    "geometry": {
+      "location": {
+        "lat": 25.02343699999999,
+        "lng": 121.497817
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "cbc74bd7bc2d004106e015bf8b3fee53ed72ba98",
+    "name": "臺北市萬華區東園國民小學",
+    "photos": [
+      {
+        "height": 1824,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/105008919588066317643/photos\">林祐鉅</a>"
+        ],
+        "photo_reference": "CmRdAAAANYSYJbTPyXGQnLxJiKMxSXUbMVgZXEF1jW_SK5CyFjt9JoHjC8LK4D--6dKoDwYQA7Cf1a3_FyvUuGJRT4G0TUhmYGcYpzyV3gxjOvKjlHOCY0Q61c31XkTultOjmzxvEhAmU3sp97TY00rP-qeIhUuCGhRL_SPlsJg3TtWTHrjCEQLiKiDs6A",
+        "width": 2736
+      }
+    ],
+    "place_id": "ChIJGx6hYrapQjQR_VNbQh75g7Y",
+    "rating": 4.7,
+    "reference": "CoQBeAAAADNsAHM0PHVLlXVI1unfmWKR5y78QpG-eDZUMYd5EGpYonxCgTk8liIln0MixHp-Mo6XUYw58PAIbcVbSnpD2xSDD6Q8f4BvAdscE6BrzxdDwHK7NwNnrcFbPOWVGwCxzl0DKxKC8L9VAK5I1ZRt0Eaciwv7efGfoMX9KgVAjzHuEhCr7s4e-3s_L-uCACTDl9ybGhSwvhL2ySbQx022MDeQk3_rdd3msA",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市泉源國小": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.149182,
+        "lng": 121.5242041
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "5f8c6931cb6edd17714c54959bb706c9b610efc7",
+    "name": "泉源國小",
+    "photos": [
+      {
+        "height": 3265,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/110311783320396442312/photos\">張文宇</a>"
+        ],
+        "photo_reference": "CmRdAAAAY8pIm0QlMQ-LiYQKEIDgXVtAlfJXG-NTAbREhWwOsIAETodMYutvooBX0ZB1SMkVyW0n1Vj19gjli0OothHLfuyRqKgFHwOOxUgwlqm5akClsV0jrf5pw5X-4W-zenAnEhDXOEoIKO5WSGWgBO0aTf_DGhQh8JT86eL46-ewUO8JI2MPDiLJiQ",
+        "width": 4898
+      }
+    ],
+    "place_id": "ChIJ3V_jxxGuQjQRea_yD2FkInM",
+    "reference": "CmRfAAAAyhZTblfXU8Cu42QKL_z-FlKbHARdhPa2cZb3rEF3pY9c504_iXP8eMQW8F1hIbks5SHvM8X2nEM9VWCcRq4nktgM-pJ9zHlyPbUf_xYxXncC4Qq_Z7PP06fVn9tQL2lsEhBAVyAk6fOsrWDCL3nQyjixGhQeRvUHo8yFQJizsirRCWq0lSBAHQ",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市湖山國小": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.150064,
+        "lng": 121.535792
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "c709b4edcf154d9de4f4b5d4d62400c7cfeb349b",
+    "name": "湖山國小",
+    "photos": [
+      {
+        "height": 2592,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/115893276208697117523/photos\">Frank Lee</a>"
+        ],
+        "photo_reference": "CmRdAAAAGxDlfcc-Uoi-gEcNHYFBK3Q7z0lJLBI5sgFV-UqJi6gjS2lNygweuNLjeIBBwcyKV9JNT6M1c8-NiqqyIiN1Xwzl0YtFjeLNzSeIQ9q9idpx12OpTIcMMUPuJIQcoU3hEhDjQNJ5NGpIurORgyaaq9iNGhS4mkctjIC6SasIbcDI5gaKJoMS4g",
+        "width": 3888
+      }
+    ],
+    "place_id": "ChIJhSQl4QeuQjQRaczC_XKoW2w",
+    "rating": 4.2,
+    "reference": "CmRfAAAAh0M55xgE7xH8OIUmxgy6GFLm-dUTzxAQb7W3Py3n9AdFr9CmYPiIZpGeYLNk5K0-BPq46zOCKzD4AE2uRmUH9244bRaMCtZrogD-lj9EjYeZd1zCVaL5fu37Hn86JuDXEhD3YwTVzLpg2CcL6XL-O27rGhTfZaddGZVq4BnG4AhrkfutAAcLAg",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市石牌國中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.115919,
+        "lng": 121.513675
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "660824581728323f571dcd136a2c28c290d919e0",
+    "name": "石牌國中",
+    "photos": [
+      {
+        "height": 1088,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/101458361697100005544/photos\">玄德謝</a>"
+        ],
+        "photo_reference": "CmRdAAAAC0EZM3G4kbVjO_WON8Gv3fUoJFzisH1nP9WbhDVCyl7AY8RfwDBbTa_1bdXipRLhKitb35lnC7juNYElPDZUsUo58CZ0oRnoQRzvoYSibrTCRs9_pJZGavz9ctw1J0ktEhCK12QAzFbhYeqKx2qzIxPiGhQlJkQofnOyoBXNGY4539E9UIs6kQ",
+        "width": 816
+      }
+    ],
+    "place_id": "ChIJaxrZMfOuQjQRQNiEJ6a7Qdg",
+    "rating": 4.3,
+    "reference": "CmRgAAAAKHCSt8oQham5T8GtF3HQYxW5y8-hcCi6wWlvV21jjQ1YB0OwyDhaYAJPCaDRhP9N7tgsg_kNV7bPnpLT0ExKI4PIXMfDnrW8XbSEW8DNxTGJzbE_LRxXGaljH6uFZSJtEhAQZur7PII5wpUT_iwDPs7sGhSM3dzl8r_7wZLaC8ByKdBPSz0JCA",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市新和國小": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.026533,
+        "lng": 121.503071
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "4584ec2dc16249fa065c356946d92ea2d57f0f17",
+    "name": "新和國小",
+    "place_id": "ChIJL5qpdrqpQjQRB4J4F1t0qzI",
+    "rating": 3.9,
+    "reference": "CmRfAAAAAfOVlgr_9QwDu4YgPYMhopgb8peRjR3v_Zhj6UPeKM1y-V4Z2Ozmk7oD4BLMvSsuDfEIFb4mt6GLjdbnmTVOS0w-23qkIYuCMvNgJb_6kIA8UQTjeKXUOerWNOHu8cKxEhCNWbdVCtLpt1ge_ybUafklGhTe2Z5cMUXLCpcSh8UGTLGdmkxY2A",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市格致國中": {
+    "formatted_address": "台灣",
+    "geometry": {
+      "location": {
+        "lat": 25.1308499,
+        "lng": 121.546354
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "d64547ae474f454dd40b0b1dcf911cfe7def1e1c",
+    "name": "格致國中",
+    "place_id": "ChIJKwEjZdutQjQR-HV6IjFnSYc",
+    "reference": "CmRgAAAAkfS26gLDHKHvdKrVZ4yNAaJcWwKRQ7927lO0pKmjUnYcjH5I46iODrpZSe6b9uDXGDiDLfAxDg2Ki8QiXVYJ16GnV9hY2_gSMl0wzTCbsdwRAROZ-ETu493vP1sh6vmTEhBbLwAYCTRUkzve9qYksw-sGhSCtXx3istxjfksBPiM7NEUduEipw",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "黎和里辦公處": {
+    "formatted_address": "110台灣和平東路三段391巷24號",
+    "geometry": {
+      "location": {
+        "lat": 25.020417,
+        "lng": 121.558422
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+    "id": "017b40340ecfe202e1dc1ea4a53f9f98f7972562",
+    "name": "台北市信義區公所黎忠里辦公處",
+    "place_id": "ChIJM6XjNzaqQjQRWVtvDDsxFI4",
+    "reference": "CoQBfgAAAB0gkhdrGYawqBUgMB5yB_vTApHPgX8_9Hmm5WlL8MXpz2zJhKC-l5GxF1_mJnz9sPxDksssdPBbn3dqieYu4K5d1hyY4eK98o-7GUPCwAqSm1uN207Hbf9paRvHb3U1FeoAxCOAl0CZ6mGvM9BvulFa-ids7oePGuD1TxFhVHoyEhBtxYRW4K5oEEOkmx1YyGJZGhTww-LxVUVJTZTQVIecC_tFlJQCtQ",
+    "types": [
+      "establishment"
+    ]
+  },
+  "台北市柳鄉區民活動中心": {
+    "formatted_address": "106台灣台北市大安區和平東路二段24號",
+    "geometry": {
+      "location": {
+        "lat": 25.0255632,
+        "lng": 121.5365004
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/worship_general-71.png",
+    "id": "6dffeba7617ba278f38fa5d33fc6daaa22350d94",
+    "name": "台北靈糧堂",
+    "photos": [
+      {
+        "height": 4032,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/103444035894770176366/photos\">Robert Chou</a>"
+        ],
+        "photo_reference": "CmRdAAAAuw2khbYTy7Jdz46wh9DGHITsB7exEP9mOzeAmaJW4J6BpRCpeZMrkU7Nt8AKsyPT9wUtsuAGSGqu612xIpBsTsl18o6ofsBOypcikA4EmpxAg7XcLZUQqKx2bcN-2dolEhALKS6QkHyMz4Rz0cEGDnPWGhQcGp6IKMcAchSNCatheUXALivTiw",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJC9SOrsFabDQRWJkqwNPJInQ",
+    "rating": 4.7,
+    "reference": "CnRiAAAAg0alDlErDR9qFbktsqjggW0lVsFWvFsXoPGP-lfWOStVoSuHe6LmmpIGx_1dKPY2YQlg53KZhFIdVKVkqVnz24s_6cffMIMZF7eWOpMWp2_IVieG0heVnjjRI4kJN4BLgCJRxKMfjCvQfQJOyamA3xIQbxvgiwUo50icr743xNEatBoUCtr5qWnVrbaCxqzZO6DR4mo048E",
+    "types": [
+      "church",
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  "台北市文湖國小": {
+    "formatted_address": "114台灣台北市內湖區文湖街15號",
+    "geometry": {
+      "location": {
+        "lat": 25.08599999999999,
+        "lng": 121.56021
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png",
+    "id": "8b2f556b6b1b1e0fdfe2291d84548da9cd5ce1e7",
+    "name": "文湖國小",
+    "photos": [
+      {
+        "height": 5312,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108780615122923365127/photos\">Chenghua Yang</a>"
+        ],
+        "photo_reference": "CoQBcwAAAIWj-3vQbarCI-JekF12zxjf9jzABg-kGCn6GrC6UWb2hev4dUlHmood-5OLNttw2fw4ElodrSsZ2xUGPxT-MDllBfkrSwH8PPfo1SJOzoDtz8cHgXdOxq3sH1GNWuLYuTAt4728C28wWo68pxcjrdesebdpWNR-ZZPjfpzAKTYJEhD4UVmoBIHRj85R78QchjQaGhRXgOOddaCt_UDXXGIk1FMZFEB5YA",
+        "width": 2988
+      }
+    ],
+    "place_id": "ChIJsZOrVmusQjQRDsqoUU4D5JI",
+    "rating": 4.2,
+    "reference": "CmRgAAAAxzUOY9D5AEa73GNgKKCsjH4ysGrJwcyUA_xQvjXHKmnnWPUDh6uLdtogdx1u6-YjnwbVjjlnC_gw6K2_K_MX73A2UrBafnsp-yO_3bJuuRWtVSjCAVEG1tHWLoybP2yrEhDca3ZJs4VrPrEVYMly1p5WGhTw4NlWiyB0--eu3_jaFgMQNONsdA",
+    "types": [
+      "school",
+      "point_of_interest",
+      "establishment"
+    ]
+  }
+}

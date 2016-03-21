@@ -61,7 +61,7 @@ export default class Provision extends Component {
   }
 
   render() {
-    let secondPane, editPane;
+    let secondPane, editPane, status;
 
     if (this.props.edit) {
       secondPane = <Volume
@@ -77,19 +77,53 @@ export default class Provision extends Component {
       secondPane = <Progress {...this.props} />;
     }
 
+    if (!this.props.official) {
+      status = (
+        <div className="status">
+          <div className="total">總需：{this.props.total}</div>
+          <div className="shipped">已收到：{this.props.shipped}</div>
+          <div className="promised">已認領：{this.props.promised}</div>
+        </div>
+      );
+    }
+    else {
+      let date;
+
+      let closeExpired;
+
+      if (this.props.expired) {
+        let d = new Date(this.props.expired);
+        let today = new Date();
+        date = `${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
+
+        today.setDate(1);
+        today.setMonth(today.getMonth() + 6);
+        closeExpired = today > d ? 'expired-warning' : '';
+      }
+
+      status = (
+        <div className="status">
+          數量： <span className="official-total">{this.props.total}</span>
+          {
+            date ?
+            <div className="expired">期限：<span className={closeExpired}>{date}</span></div> :
+            null
+          }
+          <div className="category">分類：{this.props.category}</div>
+        </div>
+      );
+      secondPane = null;
+    }
+
     return (
-      <div className="row">
+      <div className="row provision-item">
         <div className="col-xs-2">
           <Glyphicon className="icon" glyph="briefcase" />
         </div>
         <div className="progress-status col-xs-7">
           <div className="status">
             <span className="name">{this.props.name}</span>
-            <div className="status">
-              <div className="total">總需：{this.props.total}</div>
-              <div className="shipped">已收到：{this.props.shipped}</div>
-              <div className="promised">已認領：{this.props.promised}</div>
-            </div>
+            { status }
             { secondPane }
           </div>
         </div>

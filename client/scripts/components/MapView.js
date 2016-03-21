@@ -3,6 +3,7 @@ import StationMap from 'components/StationMap';
 import ReactDOM from 'react-dom';
 import StationList from 'components/StationList';
 import StationApi from 'utils/StationApi';
+import AidSyncApi from 'utils/AidSyncApi';
 import { Button } from 'react-bootstrap';
 import debug from 'debug';
 
@@ -13,7 +14,9 @@ export default class MapView extends Component {
     super(props);
     this.state = {
       stations: [],
-      selected: null
+      officialStations: [],
+      selected: null,
+      showOfficialStations: false
     };
   }
 
@@ -22,11 +25,21 @@ export default class MapView extends Component {
     StationApi.find((err, stations) => {
       self.setState({ stations: stations});
     });
+    AidSyncApi.getOfficialStations((err, officialStations) => {
+      let stationsList = Object.keys(officialStations).map(name => {
+        return officialStations[name];
+      });
+      self.setState({officialStations: stationsList});
+    });
     this.handleHover = this.handleHover.bind(this);
   }
 
   handleHover(stationId) {
     this.setState({selected: stationId});
+  }
+
+  handleOfficialStations(bool) {
+    this.setState({showOfficialStations: bool});
   }
 
   render() {
@@ -52,9 +65,24 @@ export default class MapView extends Component {
       stations.push(station);
     });
 
+    if (this.state.showOfficialStations) {
+      this.state.officialStations.forEach((station, i) => {
+        let location = station.geometry.location;
+        markers.push({
+          key: 'official-' + i,
+          position: [location.lat, location.lng]
+        });
+      });
+    }
+
     return (
       <div>
-        <StationList stations={stations} onHover={this.handleHover} />
+        <StationList
+          showOfficialStations={this.state.showOfficialStations}
+          stations={stations}
+          handleOfficialStations={this.handleOfficialStations.bind(this)}
+          officialStations={this.state.officialStations}
+          onHover={this.handleHover} />
         <StationMap markers={markers} selected={this.state.selected} />
         <Button className="login-btn" bsStyle="primary" href="#/login">
           登入

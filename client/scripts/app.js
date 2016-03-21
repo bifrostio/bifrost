@@ -27,6 +27,7 @@ ReactDOM.render((
     <Route path='/' component={Bifrost}>
       <IndexRoute component={MapView}/>
       <Route path='stations/:id' component={Station} />
+      <Route path='officialStations/:id' component={Station} />
       <Route path='manager/station/:id' component={StationManager} >
         <IndexRedirect to='requirement' />
         <Route path='requirement' component={ProvisionRequirement} />
