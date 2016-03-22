@@ -59,8 +59,8 @@ export default class ProjectContent extends Component {
     let station = this.refs.stationForm.getFormValue();
     const body = {
       name: station.stationName,
-      latitude: 0,
-      longitude: 0,
+      latitude: station.latitude,
+      longitude: station.longitude,
       projectId: this.props.params.id
     };
 
