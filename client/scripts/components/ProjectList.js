@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Jumbotron, Button, Input} from 'react-bootstrap';
 import Project from 'components/Project';
 import ProjectApi from 'utils/ProjectApi';
+import Titlebar from 'components/Titlebar';
 
 export default class ProjectList extends Component {
   constructor(props) {
@@ -70,6 +71,8 @@ export default class ProjectList extends Component {
     }
 
     return (
+      <div>
+        <Titlebar />
         <div className="container project-list">
           <h1>專案列表</h1>
           <Jumbotron>
@@ -86,6 +89,7 @@ export default class ProjectList extends Component {
           </Jumbotron>
           {projectList}
         </div>
+      </div>
     );
   }
 }

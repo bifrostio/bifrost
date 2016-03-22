@@ -7,6 +7,7 @@ import StationList from 'components/StationList';
 import StationForm from 'components/StationForm';
 import ManagerApi from 'utils/ManagerApi';
 import GoogleMapsLoader from 'google-maps/lib/Google.min';
+import Titlebar from 'components/Titlebar';
 
 export default class ProjectContent extends Component {
   constructor(props) {
@@ -280,6 +281,8 @@ export default class ProjectContent extends Component {
     const phone = contacts && contacts.phone;
 
     return (
+      <div>
+        <Titlebar />
         <div className="container project-content">
           <div className="page-header">
             <h1>{projectName}</h1>
@@ -293,6 +296,7 @@ export default class ProjectContent extends Component {
           {this.renderStationList()}
           {this.renderContacts()}
         </div>
+      </div>
     );
   }
 }
