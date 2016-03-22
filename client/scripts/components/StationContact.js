@@ -3,6 +3,12 @@ import { Glyphicon } from 'react-bootstrap';
 
 export default class StationContact extends Component {
   render() {
+    let address = this.props.contact._address;
+
+    if (address) {
+      address = `${address.zipCode} ${address.city}${address.district}${address.detail}`;
+    }
+
     return (
       <ul className="contact">
         {
@@ -21,8 +27,8 @@ export default class StationContact extends Component {
           null
         }
         {
-          this.props.contact.address ?
-          <li><Glyphicon glyph="home" /> {this.props.contact.address}</li> :
+          address ?
+          <li><Glyphicon glyph="home" /> {address}</li> :
           null
         }
       </ul>
