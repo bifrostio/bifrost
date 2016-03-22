@@ -10,7 +10,7 @@ export default class Confirmation extends Component {
           <Modal.Title>捐贈資訊</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>請確認以下的資訊無誤，按下送出後將會記錄此筆捐贈資訊，並且發送 email 到您的信箱。</p>
+          <p>請確認以下的資訊無誤，按下送出後將會記錄此筆捐贈資訊。</p>
 
           <hr />
           <ProvisionInformation {...this.props} />
