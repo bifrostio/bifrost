@@ -24,7 +24,7 @@ export default class StationList extends Component {
               <ProgressBar bsStyle="success"
                            now={station.shippedPercentage*100} />
               <ProgressBar bsStyle="warning" active
-                           now={station.promisedPercentage * 100} />
+                           now={(station.promisedPercentage - station.shippedPercentage) * 100} />
             </ProgressBar>
           </div>
         </div>

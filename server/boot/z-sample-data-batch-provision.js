@@ -12,8 +12,8 @@ module.exports = function(app, done) {
 
     async.series(provisions.map((provision, i) => function(cb) {
       app.models.ProvisionActivity.create({
-        shipped: 50 * i,
-        promised: 20 * i,
+        shipped: 20 * (i+1),
+        promised: 50 * (i+1),
         batchId: batches[0].id,
         provisionRequirementId: provision.id,
         stationId: 1
