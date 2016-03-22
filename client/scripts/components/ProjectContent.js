@@ -196,7 +196,7 @@ export default class ProjectContent extends Component {
 
   renderStationList() {
     if (!this.state.stations.length) {
-      return (<div className="empty-stations-list">目前尚無任何收容所據點！</div>);
+      return (<div className="empty-stations-list">目前尚無任何物資站！</div>);
     }
 
     const prefixPath = '/manager/station';
@@ -220,7 +220,7 @@ export default class ProjectContent extends Component {
 
     return (
       <Button bsStyle="primary" onClick={this.showStationForm}>
-        新增收容所
+        新增物資站
       </Button>
     );
   }
@@ -233,7 +233,7 @@ export default class ProjectContent extends Component {
     return (
       <Modal bsSize="large" show={this.state.showStationForm}>
       <Modal.Header>
-        <Modal.Title>新增收容所</Modal.Title>
+        <Modal.Title>新增物資站</Modal.Title>
       </Modal.Header>
         <Modal.Body>
           <StationForm ref="stationForm" onChange={this.checkValidate} />
