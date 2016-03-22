@@ -120,14 +120,14 @@ export default class Provision extends Component {
         <div className="col-xs-2">
           <Glyphicon className="icon" glyph="briefcase" />
         </div>
-        <div className="progress-status col-xs-7">
+        <div className="progress-status col-xs-6">
           <div className="status">
             <span className="name">{this.props.name}</span>
             { status }
             { secondPane }
           </div>
         </div>
-        <div className="edit col-xs-3">
+        <div className="edit col-xs-4">
           { editPane }
         </div>
       </div>
