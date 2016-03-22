@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Label, Input, Row, Grid, Col} from 'react-bootstrap';
 import validator from 'validator';
-import GoogleMapsLoader from 'google-maps/lib/Google.min';
 
 export default class StationForm extends Component {
   constructor(props) {
@@ -9,9 +8,6 @@ export default class StationForm extends Component {
 
     this.state = {
       stationName: this.props.stationName,
-      location: this.props.location,
-      latitude: this.props.latitude,
-      longitude: this.props.longitude,
       name: this.props.name,
       email: this.props.email,
       phone: this.props.phone,
@@ -22,33 +18,6 @@ export default class StationForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  componentDidMount() {
-    GoogleMapsLoader.LIBRARIES = ['places'];
-    GoogleMapsLoader.LANGUAGE = 'zh-tw';
-    GoogleMapsLoader.load((google) => {
-      const location = document.getElementById('location');
-      const autocomplete = new google.maps.places.Autocomplete(location);
-
-      autocomplete.addListener('place_changed', () => {
-        let lat = 0;
-        let lng = 0;
-        const place = autocomplete.getPlace();
-
-        if (place.geometry) {
-            debugger;
-          lat = place.geometry.location.lat();
-          lng = place.geometry.location.lng();
-        }
-
-        this.setState({
-            location: location.value,
-            latitude: lat,
-            longitude: lng
-        });
-      });
-    });
   }
 
   getFormValue() {
@@ -89,7 +58,7 @@ export default class StationForm extends Component {
   }
 
   render() {
-    const {stationName, location, name, email, phone, zipCode, city, district, detail} = this.state;
+    const {stationName, name, email, phone, zipCode, city, district, detail} = this.state;
 
     return (
       <form>
@@ -99,12 +68,6 @@ export default class StationForm extends Component {
               bsStyle={this.validationState('stationName')}
               onChange={this.handleChange}
               value={stationName} />
-          </Col>
-          <Col xs={12} md={6}>
-            <Input type="text" label="位置" hasFeedback id="location"
-              bsStyle={this.validationState('location')}
-              onChange={this.handleChange}
-              value={location} />
           </Col>
         </Row>
         <h4><Label bsStyle="default">聯絡人資訊</Label></h4>
@@ -129,6 +92,7 @@ export default class StationForm extends Component {
           </Col>
         </Row>
         <hr/>
+        <h4><Label bsStyle="default">寄送資訊</Label></h4>
         <Row>
           <Col xs={12} md={3}>
             <Input type="text" label="郵遞區號" hasFeedback id="zipCode"
