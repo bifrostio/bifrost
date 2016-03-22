@@ -8,6 +8,7 @@ import StationForm from 'components/StationForm';
 import ManagerApi from 'utils/ManagerApi';
 import GoogleMapsLoader from 'google-maps/lib/Google.min';
 import Titlebar from 'components/Titlebar';
+import ManagementButtons from 'components/ManagementButtons';
 
 export default class ProjectContent extends Component {
   constructor(props) {
@@ -15,11 +16,13 @@ export default class ProjectContent extends Component {
     this.state = {
       project: {},
       stations: [],
+      editStationInfo: null,
       latestStation: {},
       showStationForm: false,
       showAlert: false,
       showSuccessAlert: false,
-      isFormValidate: false
+      isFormValidate: false,
+      isEdit: false
     };
 
     this.handleSuccess = this.handleSuccess.bind(this);
@@ -27,6 +30,7 @@ export default class ProjectContent extends Component {
     this.handleGetStationsSuccess = this.handleGetStationsSuccess.bind(this);
     this.handleGetStationsFail = this.handleGetStationsFail.bind(this);
     this.handleAddStation = this.handleAddStation.bind(this);
+    this.handleEditStation = this.handleEditStation.bind(this);
     this.showStationForm = this.showStationForm.bind(this);
     this.hideStationForm = this.hideStationForm.bind(this);
     this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
@@ -119,9 +123,13 @@ export default class ProjectContent extends Component {
 
   }
 
+  handleEditStation() {}
+
   showStationForm() {
     this.setState({
-      showStationForm: true
+      showStationForm: true,
+      editStationInfo: null,
+      isEdit: false
     });
   }
 
@@ -141,6 +149,17 @@ export default class ProjectContent extends Component {
     this.setState({
       showSuccessAlert: false
     });
+  }
+
+  showEditModal(station) {
+    this.setState({
+      showStationForm: true,
+      isEdit: true,
+      editStationInfo: station
+    });
+  }
+
+  deleteStation() {
   }
 
   checkValidate(data) {
@@ -204,6 +223,9 @@ export default class ProjectContent extends Component {
       return (
         <li className="list-group-item" key={station.id}>
           <Link to={`${prefixPath}/${station.id}`}>{station.name}</Link>
+          <ManagementButtons provision={station}
+            edit={this.showEditModal.bind(this)}
+            confirmDeletion={this.deleteStation.bind(this)} />
         </li>
       );
     });
@@ -229,18 +251,38 @@ export default class ProjectContent extends Component {
     if (!this.state.showStationForm) {
       return;
     }
+    const title = this.state.isEdit ? '編輯物資站' : '新增物資站';
+    const station = this.state.editStationInfo;
+    let props = {};
+
+    if (station) {
+      const contact = station && station._contacts[0];
+      const address = contact._address;
+
+      props = {
+        stationName: station.name,
+        name: contact.name,
+        email: contact.email,
+        phone: contact.phone,
+        zipCode: address && address.zipCode,
+        city: address && address.city,
+        district: address && address.district,
+        detail: address && address.detail
+      };
+    }
 
     return (
       <Modal bsSize="large" show={this.state.showStationForm}>
       <Modal.Header>
-        <Modal.Title>新增物資站</Modal.Title>
+        <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
         <Modal.Body>
-          <StationForm ref="stationForm" onChange={this.checkValidate} />
+          <StationForm ref="stationForm" onChange={this.checkValidate} {...props} />
         </Modal.Body>
         <Modal.Footer>
           <Button bsStyle="default" onClick={this.hideStationForm}>取消</Button>
-          <Button bsStyle="primary" disabled={!this.state.isFormValidate} onClick={this.handleAddStation}>新增</Button>
+          { !this.state.isEdit && <Button bsStyle="primary" disabled={!this.state.isFormValidate} onClick={this.handleAddStation}>新增</Button>}
+          { this.state.isEdit && <Button bsStyle="primary" disabled={!this.state.isFormValidate} onClick={this.handleEditStation}>編輯</Button>}
         </Modal.Footer>
       </Modal>
     );
