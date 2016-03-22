@@ -154,6 +154,7 @@ export default class ProjectContent extends Component {
   showEditModal(station) {
     this.setState({
       showStationForm: true,
+      isFormValidate: false,
       isEdit: true,
       editStationInfo: station
     });
