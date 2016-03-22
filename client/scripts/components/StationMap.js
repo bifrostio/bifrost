@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Map, Marker, TileLayer } from 'react-leaflet';
+import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
 import { icon } from 'leaflet';
 import { LatLngBounds } from 'leaflet';
 
@@ -7,25 +7,50 @@ class StationMarker extends Component {
   constructor(props) {
     super(props);
 
+    let popupAnchor = [0, -40];
+
     this.normalIcon = icon({
       iconUrl: '/images/markers-blue.svg',
       iconSize: [40, 40],
-      iconAnchor: [20, 40]
+      iconAnchor: [20, 40],
+      popupAnchor:  popupAnchor
     });
 
     this.highlightedIcon = icon({
       iconUrl: '/images/markers-orange.svg',
       iconSize: [40, 40],
-      iconAnchor: [20, 40]
+      iconAnchor: [20, 40],
+      popupAnchor:  popupAnchor
+    });
+
+    this.officialIcon = icon({
+      iconUrl: '/images/markers-green.svg',
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+      popupAnchor:  popupAnchor
     });
   }
 
   render() {
+    let ico;
+    if (this.props.selected) {
+      ico = this.highlightedIcon;
+    }
+    else if(this.props.official) {
+      ico = this.officialIcon;
+    }
+    else {
+      ico = this.normalIcon;
+    }
     return (
       <Marker
-        icon={this.props.selected ? this.highlightedIcon : this.normalIcon}
+        icon={ico}
         map={this.props.map}
-        position={this.props.position} />
+        position={this.props.position}>
+        <Popup>
+          <span>{this.props.children}</span>
+        </Popup>
+      </Marker>
     );
   }
 }
@@ -45,12 +70,17 @@ export default class StationMap extends Component {
 
     let markers = this.props.markers.map(({ key, ...props }) => {
       let selected = false;
+      let official = false;
 
       if (key === selectedId) {
         selected = true;
       }
 
-      return <StationMarker key={key} {...props} selected={selected} />
+      if (typeof(key) === 'string' && key.indexOf('official') !== -1) {
+        official = true;
+      }
+
+      return <StationMarker official={official} key={key} {...props} selected={selected} />;
     });
 
     return (
