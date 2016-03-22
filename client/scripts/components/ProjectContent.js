@@ -6,6 +6,7 @@ import ProjectApi from 'utils/ProjectApi';
 import StationList from 'components/StationList';
 import StationForm from 'components/StationForm';
 import ManagerApi from 'utils/ManagerApi';
+import GoogleMapsLoader from 'google-maps/lib/Google.min';
 
 export default class ProjectContent extends Component {
   constructor(props) {
@@ -37,6 +38,12 @@ export default class ProjectContent extends Component {
     ProjectApi.getStationsOfProject(id, this.handleGetStationsSuccess, this.handleGetStationsFail);
   }
 
+  componentDidMount() {
+    GoogleMapsLoader.LIBRARIES = ['places'];
+    GoogleMapsLoader.LANGUAGE = 'zh-tw';
+    GoogleMapsLoader.load();
+  };
+
   handleSuccess(project) {
     this.setState({
       project: project
@@ -57,44 +64,58 @@ export default class ProjectContent extends Component {
 
   handleAddStation() {
     let station = this.refs.stationForm.getFormValue();
-    const body = {
-      name: station.stationName,
-      latitude: station.latitude,
-      longitude: station.longitude,
-      projectId: this.props.params.id
-    };
+    let latitude = 0;
+    let longitude = 0;
 
-    const contacts = {
-      name: station.name,
-      email: station.email,
-      phone: station.phone,
-      _address: {
-        zipCode: station.zipCode,
-        city: station.city,
-        district: station.district,
-        detail: station.detail
+    const geocoder = new google.maps.Geocoder();
+    const address = `${station.city}${station.district}${station.detail}`;
+
+    geocoder.geocode({'address': address}, (results, status) => {
+      if (status == google.maps.GeocoderStatus.OK) {
+        latitude = results[0].geometry.location.lat();
+        longitude = results[0].geometry.location.lng();
       }
-    };
 
-    ManagerApi.addStation(body, contacts, (err, station) => {
-      if (err) {
+      const body = {
+        name: station.stationName,
+        latitude: latitude,
+        longitude: longitude,
+        projectId: this.props.params.id
+      };
+
+      const contacts = {
+        name: station.name,
+        email: station.email,
+        phone: station.phone,
+        _address: {
+          zipCode: station.zipCode,
+          city: station.city,
+          district: station.district,
+          detail: station.detail
+        }
+      };
+
+      ManagerApi.addStation(body, contacts, (err, station) => {
+        if (err) {
+          this.setState({
+            showAlert: true,
+            showStationForm: false
+          });
+          return;
+        }
+
+        const stations = this.state.stations;
+        stations.push(station);
+
         this.setState({
-          showAlert: true,
+          stations: stations,
+          latestStation: {name: station.name, link: `manager/station/${station.id}`},
+          showSuccessAlert: true,
           showStationForm: false
         });
-        return;
-      }
-
-      const stations = this.state.stations;
-      stations.push(station);
-
-      this.setState({
-        stations: stations,
-        latestStation: {name: station.name, link: `manager/station/${station.id}`},
-        showSuccessAlert: true,
-        showStationForm: false
       });
     });
+
   }
 
   showStationForm() {
