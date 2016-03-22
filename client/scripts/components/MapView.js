@@ -50,7 +50,7 @@ export default class MapView extends Component {
       markers.push({
         key: station.id,
         position: [station.latitude, station.longitude],
-        children: station.name
+        children: (<a href={`/#/stations/${station.id}`}>{station.name}</a>)
       });
 
       let promised = 0;
@@ -70,7 +70,8 @@ export default class MapView extends Component {
         let location = station.geometry.location;
         markers.push({
           key: 'official-' + i,
-          position: [location.lat, location.lng]
+          position: [location.lat, location.lng],
+          children: (<a href={`/#/officialStations/${station.key}`}>{station.name}</a>)
         });
       });
     }
