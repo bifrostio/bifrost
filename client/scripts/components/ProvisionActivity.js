@@ -61,7 +61,11 @@ export default class ProvisionActivity extends Component {
   handleUpdateCount() {
     let body = [];
 
-    Object.keys(this.props.provisionRequirements).forEach( key => {
+    Object.keys(this.props.provisionRequirements)
+    .filter(key => {
+      return !!this.refs[`act${key}`];
+    })
+    .forEach( key => {
       const shipped = parseInt(this.refs[`act${key}`].getValue());
       const obj = {
         shipped: shipped,
@@ -79,6 +83,7 @@ export default class ProvisionActivity extends Component {
   }
 
   handleUpdateSuccess() {
+    window.location.reload();
     this.setState({
       showSuccessAlert: true
     });
@@ -161,7 +166,12 @@ export default class ProvisionActivity extends Component {
       }
     });
 
-    const activities = Object.keys(requirements).map( key => {
+    const activities = Object.keys(requirements)
+    .filter(key => {
+      const promised = reqCount[key] && reqCount[key].promised || 0;
+      return promised > 0;
+    })
+    .map( key => {
       const requirement = requirements[key];
       const promised = reqCount[key] && reqCount[key].promised || 0;
       const shipped = reqCount[key] && reqCount[key].shipped || 0;
@@ -176,7 +186,12 @@ export default class ProvisionActivity extends Component {
       );
     });
 
-    const comfirmForm = Object.keys(requirements).map( key => {
+    const comfirmForm = Object.keys(requirements)
+    .filter(key => {
+      const promised = reqCount[key] && reqCount[key].promised || 0;
+      return promised > 0;
+    })
+    .map( key => {
       const requirement = requirements[key];
 
       return (
@@ -194,7 +209,7 @@ export default class ProvisionActivity extends Component {
       <div>
         <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
           <Modal.Header closeButton>
-            <Modal.Title>物資確認</Modal.Title>
+            <Modal.Title>點收物資</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <h4><Label bsStyle="info">預計收到物資數量</Label></h4>

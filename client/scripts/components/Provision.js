@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Glyphicon, ProgressBar } from 'react-bootstrap';
-import { Input } from 'react-bootstrap';
+import { Input, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import Range from 'react-range';
 
 class Progress extends Component {
@@ -115,6 +115,24 @@ export default class Provision extends Component {
       secondPane = null;
     }
 
+
+
+    let name;
+    if (this.props.description) {
+      let tip = (
+        <Tooltip id="description">{this.props.description}</Tooltip>
+      );
+      name = (
+        <OverlayTrigger placement="right" overlay={tip}>
+          <span className="name">{this.props.name}</span>
+        </OverlayTrigger>
+      );
+    }
+    else {
+      name = (<span className="name">{this.props.name}</span>);
+    }
+
+
     return (
       <div className="row provision-item">
         <div className="col-xs-2">
@@ -122,7 +140,7 @@ export default class Provision extends Component {
         </div>
         <div className="progress-status col-xs-6">
           <div className="status">
-            <span className="name">{this.props.name}</span>
+            { name }
             { status }
             { secondPane }
           </div>

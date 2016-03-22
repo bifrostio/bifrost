@@ -15,7 +15,10 @@ export default class ProvisionRequirement extends Component {
   }
 
   toggleAddProvisionPanel() {
-    this.setState({showAddProvisionPanel: !this.state.showAddProvisionPanel});
+    this.setState({
+      showAddProvisionPanel: !this.state.showAddProvisionPanel,
+      newProvision: {total: 0}
+    });
   }
 
   remove(provision) {

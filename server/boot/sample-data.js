@@ -35,7 +35,7 @@ module.exports = function(app, done) {
     { createdDate: new Date(2015, 2, 21), trackingNumber: '2837', stationId: 1 }
   ];
   var provisions = [
-    { name: '桌子', unit: '張', total: 50 },
+    { name: '桌子', unit: '張', total: 50, description: '類似國小課桌的桌子'},
     { name: '乾糧', unit: '包', total: 100},
     { name: '瓶裝礦泉水', unit: '瓶', total: 200},
     { name: '睡袋', unit: '個', total: 400}
