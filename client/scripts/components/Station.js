@@ -113,6 +113,7 @@ export default class Station extends Component {
             official={self.state.official}
             edit={self.state.edit}
             name={provision.name}
+            description={provision.description}
             category={provision.category}
             expired={provision.expired}
             thumbnail={provision.thumbnail}
