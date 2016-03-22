@@ -24,7 +24,7 @@ class Volume extends Component {
   }
 
   render() {
-    let max = this.props.total - this.props.shipped - this.props.promised;
+    let max = this.props.total - this.props.promised;
     return (
       <div className="volume">
         <Range value={this.props.volume} max={max}
