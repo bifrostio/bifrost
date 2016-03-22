@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Panel, Button, Input} from 'react-bootstrap';
 import ManagerApi from 'utils/ManagerApi';
+import Titlebar from 'components/Titlebar';
 
 export default class Login extends Component {
   constructor(props) {
@@ -64,24 +65,27 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Panel className="login-wrap" header="Login">
-          <Input type="email"
-            ref="email"
-            label="Email Address"
-            placeholder="test@gmail.com"
-            help={this.state.emailError} />
-          <Input type="password"
-            ref="password"
-            label="Password"
-            placeholder="Enter password"
-            help={this.state.passwordError} />
-          <div className="login-warning">{this.state.error}</div>
-          <div className="btn-wrap">
-            <a href="">忘記密碼?</a>
-            <Button bsStyle="primary" onClick={this.handleLogin}>登入</Button>
-          </div>
-        </Panel>
+      <div>
+        <Titlebar path={this.props.route.path} />
+        <div className="container">
+          <Panel className="login-wrap" header="Login">
+            <Input type="email"
+              ref="email"
+              label="Email Address"
+              placeholder="test@gmail.com"
+              help={this.state.emailError} />
+            <Input type="password"
+              ref="password"
+              label="Password"
+              placeholder="Enter password"
+              help={this.state.passwordError} />
+            <div className="login-warning">{this.state.error}</div>
+            <div className="btn-wrap">
+              <a href="">忘記密碼?</a>
+              <Button bsStyle="primary" onClick={this.handleLogin}>登入</Button>
+            </div>
+          </Panel>
+        </div>
       </div>
     );
   }

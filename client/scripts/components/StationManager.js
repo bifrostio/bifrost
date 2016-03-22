@@ -5,6 +5,7 @@ import Provision from 'components/Provision';
 import { ButtonGroup, Alert, Grid, Row, Col, Button} from 'react-bootstrap';
 import ManagerApi from 'utils/ManagerApi';
 import RequirementApi from 'utils/ProvisionRequirementApi';
+import Titlebar from 'components/Titlebar';
 
 export default class StationManager extends Component {
   constructor(props) {
@@ -88,36 +89,39 @@ export default class StationManager extends Component {
     let contacts = this.state.station._contacts || [];
 
     return (
-      <div className="container">
-        <Grid className="station-page">
-          <Row>
-            <Col xs={12} md={6}>
-              <h1>{station.name}</h1>
-              {contacts.map((c, index) => {
-                return (<StationContact key={index} contact={c} />);
-              })}
-            </Col>
-          </Row>
-        </Grid>
+      <div>
+        <Titlebar />
+        <div className="container">
+          <Grid className="station-page">
+            <Row>
+              <Col xs={12} md={6}>
+                <h1>{station.name}</h1>
+                {contacts.map((c, index) => {
+                  return (<StationContact key={index} contact={c} />);
+                })}
+              </Col>
+            </Row>
+          </Grid>
 
-        <ul className="nav nav-tabs">
-          <li>
-            <Link to={`/manager/station/${station.id}/requirement`} activeClassName="active">需求物資清單</Link>
-          </li>
-          <li>
-            <Link to={`/manager/station/${station.id}/activity`} activeClassName="active">點收物資</Link>
-          </li>
-        </ul>
-        {
-          this.props.children &&
-          React.cloneElement(this.props.children, {
-            provisionRequirements: this.state.provisionRequirements,
-            batches: this.state.batches,
-            addProvision: this.addProvision.bind(this),
-            removeProvision: this.removeProvision.bind(this),
-            saveProvision: this.saveProvision.bind(this)
-          })
-        }
+          <ul className="nav nav-tabs">
+            <li>
+              <Link to={`/manager/station/${station.id}/requirement`} activeClassName="active">需求物資清單</Link>
+            </li>
+            <li>
+              <Link to={`/manager/station/${station.id}/activity`} activeClassName="active">點收物資</Link>
+            </li>
+          </ul>
+          {
+            this.props.children &&
+            React.cloneElement(this.props.children, {
+              provisionRequirements: this.state.provisionRequirements,
+              batches: this.state.batches,
+              addProvision: this.addProvision.bind(this),
+              removeProvision: this.removeProvision.bind(this),
+              saveProvision: this.saveProvision.bind(this)
+            })
+          }
+        </div>
       </div>
     );
   }
