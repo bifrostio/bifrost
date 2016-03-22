@@ -260,3 +260,7 @@ cursor: pointer;
 .official-list {
   padding: 10px;
 }
+
+.modal-open .pac-container {
+    z-index: 2000;
+}
