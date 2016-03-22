@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Alert, Button, Modal, FormControls, Input, Label} from 'react-bootstrap';
+import {ProgressBar, Alert, Button, Modal, FormControls, Input, Label} from 'react-bootstrap';
 import ManagerApi from 'utils/ManagerApi';
 
 export default class ProvisionActivity extends Component {
@@ -100,6 +100,34 @@ export default class ProvisionActivity extends Component {
     let batchesTable = Object.keys(batches).map(key => {
       const item = batches[key];
       const contact = item._contact;
+      let requirements = {};
+
+      item.provisionActivities.forEach(activity => {
+        let rid = activity.provisionRequirementId;
+        if (!requirements[rid]) {
+          requirements[rid] = {
+            shipped: 0,
+            promised: 0
+          };
+        }
+        if (typeof(activity.shipped) === 'number') {
+          requirements[rid].shipped += activity.shipped;
+        }
+        if (typeof(activity.promised) === 'number') {
+          requirements[rid].promised += activity.promised;
+        }
+      });
+      let percent = 0;
+      let count = 0;
+
+      Object.keys(requirements).forEach(key => {
+        let req = requirements[key];
+        if (req.promised > 0) {
+          count++;
+          percent += (req.shipped / req.promised);
+        }
+      });
+      percent = percent / count * 100;
 
       return (
         <tr key={item.id} className="batches-item" onClick={this.handleClickBatch.bind(this, item.id)}>
@@ -108,6 +136,7 @@ export default class ProvisionActivity extends Component {
           <td>{contact.email}</td>
           <td>{contact.phone}</td>
           <td>{item.createdDate}</td>
+          <td><ProgressBar now={percent} /></td>
         </tr>
       );
     });
@@ -182,7 +211,7 @@ export default class ProvisionActivity extends Component {
           labelClassName={labelCol}
           wrapperClassName={inputCol}
           label={requirement && requirement.name}
-          value={`${promised} / (已收到：${shipped})`} />
+          value={`預計捐贈：${promised}，已收到：${shipped}，尚未收到：${promised-shipped}`} />
       );
     });
 
@@ -243,6 +272,7 @@ export default class ProvisionActivity extends Component {
              <th>信箱</th>
              <th>電話</th>
              <th>日期</th>
+             <th>寄送進度</th>
            </tr>
          </thead>
          <tbody>
