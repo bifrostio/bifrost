@@ -80,7 +80,7 @@ export default class Provision extends Component {
     if (!this.props.official) {
       status = (
         <div className="status">
-          <div className="total">總需：{this.props.total}</div>
+          <div className="total">總需：{this.props.total} {this.props.unit}</div>
           <div className="shipped">已收到：{this.props.shipped}</div>
           <div className="promised">已認領：{this.props.promised}</div>
         </div>
@@ -103,7 +103,7 @@ export default class Provision extends Component {
 
       status = (
         <div className="status">
-          數量： <span className="official-total">{this.props.total}</span>
+          數量： <span className="official-total">{this.props.total} {this.props.unit}</span>
           {
             date ?
             <div className="expired">期限：<span className={closeExpired}>{date}</span></div> :
