@@ -230,6 +230,7 @@ export default class ProvisionActivity extends Component {
       const requirement = requirements[key];
       const promised = reqCount[key] && reqCount[key].promised || 0;
       const shipped = reqCount[key] && reqCount[key].shipped || 0;
+      const remain = (promised - shipped) < 0 ? 0 : promised - shipped;
 
       return (
         <FormControls.Static
@@ -237,7 +238,7 @@ export default class ProvisionActivity extends Component {
           labelClassName={labelCol}
           wrapperClassName={inputCol}
           label={requirement && requirement.name}
-          value={`預計捐贈：${promised}，已收到：${shipped}，尚未收到：${promised-shipped}`} />
+          value={`預計捐贈：${promised}，已收到：${shipped}，尚未收到：${remain}`} />
       );
     });
 
