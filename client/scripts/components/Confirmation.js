@@ -4,6 +4,10 @@ import ProvisionInformation from 'components/ProvisionInformation';
 
 export default class Confirmation extends Component {
   render() {
+    let disabled;
+    if (this.props.provisions) {
+      disabled = this.props.provisions.every(p => p.volume === 0);
+    }
     return (
       <Modal show={this.props.show} onHide={this.props.hide.bind(this)}>
         <Modal.Header closeButton>
@@ -16,7 +20,8 @@ export default class Confirmation extends Component {
           <ProvisionInformation {...this.props} />
         </Modal.Body>
         <Modal.Footer>
-          <Button  bsStyle="primary" onClick={this.props.submit}>送出</Button>
+          <Button disabled={disabled}
+                  bsStyle="primary" onClick={this.props.submit}>送出</Button>
           <Button onClick={this.props.hide.bind(this)}>關閉</Button>
         </Modal.Footer>
       </Modal>

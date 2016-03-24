@@ -192,7 +192,7 @@ export default class Station extends Component {
             {provisions.map(createProvision)}
           </Row>
           {contactForm}
-          <Row className="text-right">
+          <Row className="text-right station-buttons">
             {buttons}
           </Row>
         </Grid>
