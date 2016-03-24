@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Input, Row, Grid, Col} from 'react-bootstrap';
+import {Input, Row, Col} from 'react-bootstrap';
 
 export default class ProvisionForm extends Component {
   validationState(key) {
@@ -24,6 +24,14 @@ export default class ProvisionForm extends Component {
       props.id = this.props.provision.id;
     }
     props[field] = e.target.value;
+
+    if (field === 'total') {
+      let total = parseInt(props[field]);
+      if (total < 0) {
+        props[field] = 0;
+      }
+    }
+
     this.props.updateProvision(props);
   }
 
