@@ -79,13 +79,13 @@ export default class StationForm extends Component {
               value={name} />
           </Col>
           <Col xs={12} md={4}>
-            <Input type="text" label="email" hasFeedback id="email"
+            <Input type="email" label="email" hasFeedback id="email"
               bsStyle={this.validationState('email')}
               onChange={this.handleChange}
               value={email} />
           </Col>
           <Col xs={12} md={4}>
-            <Input type="text" label="電話" hasFeedback id="phone"
+            <Input type="number" label="電話" hasFeedback id="phone"
               bsStyle={this.validationState('phone')}
               onChange={this.handleChange}
               value={phone} />
@@ -95,7 +95,7 @@ export default class StationForm extends Component {
         <h4><Label bsStyle="default">寄送資訊</Label></h4>
         <Row>
           <Col xs={12} md={3}>
-            <Input type="text" label="郵遞區號" hasFeedback id="zipCode"
+            <Input type="number" label="郵遞區號" hasFeedback id="zipCode"
               bsStyle={this.validationState('zipCode')}
               onChange={this.handleChange}
               value={zipCode} />
