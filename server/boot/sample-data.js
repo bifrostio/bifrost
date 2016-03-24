@@ -27,18 +27,18 @@ module.exports = function(app, done) {
     }
   ];
   var projects = [
-    { name: '八八風災' },
     { name: '大安森林公園重大災害演習' }
   ];
   var batches = [
-    { createdDate: new Date(2015, 1, 18), trackingNumber: '5743', stationId: 1 },
-    { createdDate: new Date(2015, 2, 21), trackingNumber: '2837', stationId: 1 }
+    { createdDate: new Date(2015, 1, 18), trackingNumber: '517243', stationId: 1 }
   ];
   var provisions = [
-    { name: '桌子', unit: '張', total: 50, description: '類似國小課桌的桌子'},
     { name: '乾糧', unit: '包', total: 100},
     { name: '瓶裝礦泉水', unit: '瓶', total: 200},
-    { name: '睡袋', unit: '個', total: 400}
+    { name: '睡袋', unit: '個', total: 400},
+    { name: '行動電源', unit: '個', total: 100 },
+    { name: '衣架', unit: '個', total: 500},
+    { name: '泡麵', unit: '箱', total: 50}
   ];
 
   app.dataSources.db.automigrate(function() {
