@@ -94,7 +94,7 @@ export default class StationManager extends Component {
         <div className="container">
           <Grid className="station-page">
             <Row>
-              <Col xs={12} md={6}>
+              <Col xs={12} md={12}>
                 <h1>{station.name}</h1>
                 {contacts.map((c, index) => {
                   return (<StationContact key={index} contact={c} />);
