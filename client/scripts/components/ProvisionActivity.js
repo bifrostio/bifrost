@@ -13,7 +13,8 @@ export default class ProvisionActivity extends Component {
       curBatchActivities: [],
       showAlert: false,
       showSuccessAlert: false,
-      showModal: false
+      showModal: false,
+      isFormValidate: false
     };
 
     this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
@@ -23,6 +24,8 @@ export default class ProvisionActivity extends Component {
     this.handleUpdateCount = this.handleUpdateCount.bind(this);
     this.handleUpdateSuccess = this.handleUpdateSuccess.bind(this);
     this.handleUpdateFail = this.handleUpdateFail.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.checkValidate = this.checkValidate.bind(this);
   }
 
   handleAlertDismiss() {
@@ -54,7 +57,8 @@ export default class ProvisionActivity extends Component {
     this.setState({
       showModal: true,
       batchId: id,
-      curBatchActivities: batch.provisionActivities
+      curBatchActivities: batch.provisionActivities,
+      isFormValidate: false
     });
   }
 
@@ -66,7 +70,7 @@ export default class ProvisionActivity extends Component {
       return !!this.refs[`act${key}`];
     })
     .forEach( key => {
-      const shipped = parseInt(this.refs[`act${key}`].getValue());
+      const shipped = parseInt(this.refs[`act${key}`].getValue()) || 0;
       const obj = {
         shipped: shipped,
         provisionRequirementId: key,
@@ -142,6 +146,28 @@ export default class ProvisionActivity extends Component {
     });
 
     return batchesTable;
+  }
+
+  handleKeyPress(e) {
+    const key = e.which;
+    if (key === 101 || key === 45) {
+      e.preventDefault();
+    }
+  }
+
+  checkValidate(e) {
+    const inputNum = Object.keys(this.props.provisionRequirements).length;
+    let isValid = false;
+
+    for (let i=1 ; i < inputNum ; i++) {
+      const value = parseInt(this.refs[`act${i}`].getValue());
+      if (value && value !== 0 && value > 0) {
+        isValid = true;
+        break;
+      }
+    }
+
+    this.setState({isFormValidate: isValid});
   }
 
   renderAlert() {
@@ -230,7 +256,9 @@ export default class ProvisionActivity extends Component {
           ref={`act${key}`}
           labelClassName={labelCol}
           wrapperClassName={inputCol}
-          label={requirement && requirement.name} />
+          label={requirement && requirement.name}
+          onChange={this.checkValidate}
+          onKeyPress={this.handleKeyPress}/>
       );
     });
 
@@ -252,7 +280,7 @@ export default class ProvisionActivity extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleCloseModal}>取消</Button>
-            <Button bsStyle="primary" onClick={this.handleUpdateCount}>確認</Button>
+            <Button bsStyle="primary" disabled={!this.state.isFormValidate} onClick={this.handleUpdateCount}>確認</Button>
           </Modal.Footer>
         </Modal>
       </div>
