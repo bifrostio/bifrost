@@ -226,7 +226,7 @@ export default class ProvisionActivity extends Component {
       return (
         <Input
           key={key}
-          type="text"
+          type="number"
           ref={`act${key}`}
           labelClassName={labelCol}
           wrapperClassName={inputCol}
