@@ -3,8 +3,8 @@ import { FormControls } from 'react-bootstrap';
 
 export default class ProvisionInformation extends Component {
   render() {
-    let labelCol = 'col-xs-4';
-    let inputCol = 'col-xs-8';
+    let labelCol = 'col-xs-2';
+    let inputCol = 'col-xs-10';
 
     let createProvisionFormItem = (p, index) => {
       return (
@@ -19,7 +19,16 @@ export default class ProvisionInformation extends Component {
 
     let provisions;
     if (this.props.provisions) {
-      provisions = this.props.provisions.map(createProvisionFormItem);
+      provisions = this.props.provisions
+                       .filter(p => p.volume !== 0)
+                       .map(createProvisionFormItem);
+      if (provisions.length === 0) {
+        provisions = (
+          <p className="provision-total-warning">
+            您尚未填寫捐贈物資的數量，請回上頁填寫捐贈數量
+          </p>
+        );
+      }
     }
 
     return (

@@ -275,3 +275,12 @@ cursor: pointer;
 .modal-open .pac-container {
     z-index: 2000;
 }
+
+.station-buttons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.provision-total-warning {
+  color: red;
+}
