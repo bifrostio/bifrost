@@ -281,7 +281,7 @@ export default class ProvisionActivity extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleCloseModal}>取消</Button>
-            <Button bsStyle="primary" disabled={!this.state.isFormValidate} onClick={this.handleUpdateCount}>確認</Button>
+            <Button bsStyle="primary" onClick={this.handleUpdateCount}>確認</Button>
           </Modal.Footer>
         </Modal>
       </div>
