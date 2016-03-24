@@ -188,7 +188,7 @@ export default class Station extends Component {
             </Col>
           </Row>
           {editDescription}
-          <Row>
+          <Row className="provision-items-row">
             {provisions.map(createProvision)}
           </Row>
           {contactForm}
