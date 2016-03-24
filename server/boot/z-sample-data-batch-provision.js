@@ -11,13 +11,21 @@ module.exports = function(app, done) {
     batches = results[1];
 
     async.series(provisions.map((provision, i) => function(cb) {
+      var promised = [100, 100, 100, 10, 0, 20];
+      var shipped = [80, 30, 50, 5, 0, 5];
       app.models.ProvisionActivity.create({
-        shipped: 20 * (i+1),
-        promised: 50 * (i+1),
+        promised: promised[i],
         batchId: batches[0].id,
         provisionRequirementId: provision.id,
         stationId: 1
-      }, cb);
+      }, function() {
+        app.models.ProvisionActivity.create({
+          shipped: shipped[i],
+          batchId: batches[0].id,
+          provisionRequirementId: provision.id,
+          stationId: 1
+        }, cb);
+      });
     }), done);
   });
 };

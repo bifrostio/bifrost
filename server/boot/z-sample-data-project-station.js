@@ -3,7 +3,7 @@ var async = require('async');
 module.exports = function(app, done) {
   var stations = [
     {
-      name: '大安森林公園災民收容所',
+      name: '緊急安置所（大安森林防災公園）',
       latitude: 25.030466,
       longitude: 121.535794
     }

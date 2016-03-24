@@ -6,11 +6,6 @@ module.exports = function(app, done) {
       name: '林雅晴',
       email: 'lin@example.com',
       phone: '029389384'
-    },
-    {
-      name: '黃信易',
-      email: 'huang@example.com',
-      phone: '029192837'
     }
   ];
 
