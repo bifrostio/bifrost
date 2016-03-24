@@ -1,3 +1,14 @@
+/* Remove controls from Firefox */
+input[type=number] {
+  appearance: textfield;
+}
+
+/* Remove controls from Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
 .contact {
   list-style: none;
 }
