@@ -14,7 +14,7 @@ export default class Project extends Component {
             <Link to={`/projects/${this.props.projectId}`}>{projectName}</Link>
           </div>
           <div className="project-time">
-            開設時間：{projectTime}
+            {/*開設時間：{projectTime}*/}
           </div>
         </div>
       </div>
