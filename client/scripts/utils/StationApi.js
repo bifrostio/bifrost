@@ -100,4 +100,48 @@ export default class Station {
       done(err, Object.keys(stations).map(id => stations[id]));
     });
   }
+
+  static remove(id, cb) {
+    $.ajax({
+      url: `/api/stations/${id}`,
+      type: 'DELETE'
+    })
+    .done(data => cb(null, data))
+    .fail(cb);
+  }
+
+  static update(station, cb) {
+    let id = station.id;
+    let contact = station.contact;
+    let contactId = contact.id;
+
+    delete station.id;
+    delete station.contact;
+
+    async.parallel([
+      callback => {
+        $.ajax({
+          url: `/api/stations/${id}`,
+          type: 'PUT',
+          data: JSON.stringify(station),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json'
+        })
+        .done(data => callback(null, data))
+        .fail(callback);
+      },
+      callback => {
+        $.ajax({
+          url: `/api/stations/${id}/contacts/${contactId}`,
+          type: 'PUT',
+          data: JSON.stringify(contact),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json'
+        })
+        .done(data => callback(null, data))
+        .fail(callback);
+      }
+    ], cb);
+
+  }
 }
