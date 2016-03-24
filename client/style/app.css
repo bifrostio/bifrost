@@ -39,10 +39,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Layers end */
 
-.btn {
-  margin-right: 8px;
-}
-
 .station {
   padding: 10px;
 }
