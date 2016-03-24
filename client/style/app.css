@@ -244,6 +244,12 @@ cursor: pointer;
   text-align: left;
 }
 
+.manager-button-wrap {
+  float: right;
+  vertical-align: top;
+  display: inline-block;
+}
+
 .manager-button {
   cursor: pointer;
 }

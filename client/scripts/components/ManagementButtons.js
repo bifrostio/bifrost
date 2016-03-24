@@ -24,7 +24,7 @@ export default class ManagementButtons extends Component {
 
   render() {
     return (
-      <div style={{position: 'relative'}}>
+      <div className="manager-button-wrap" style={{position: 'relative'}}>
         <a className="manager-button" onClick={this.edit.bind(this)}>編輯</a>&nbsp;
         <a className="manager-button" ref="target"
            onClick={this.toggleRemovePopover.bind(this)}>刪除</a>
