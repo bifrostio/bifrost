@@ -3,6 +3,7 @@ import {FormControls, Button, Input, Panel, Modal, Alert} from 'react-bootstrap'
 import { Link } from 'react-router';
 import validator from 'validator';
 import ProjectApi from 'utils/ProjectApi';
+import StationApi from 'utils/StationApi';
 import StationList from 'components/StationList';
 import StationForm from 'components/StationForm';
 import ManagerApi from 'utils/ManagerApi';
@@ -123,7 +124,32 @@ export default class ProjectContent extends Component {
 
   }
 
-  handleEditStation() {}
+  handleEditStation() {
+    let self = this;
+    let input = this.refs.stationForm.getFormValue();
+    let station = {
+      id: this.state.editStationInfo.id,
+      name: input.stationName,
+      contact: {
+        id: this.state.editStationInfo._contacts[0].id,
+        name: input.name,
+        email: input.email,
+        phone: input.phone,
+        _address: {
+          zipCode: input.zipCode,
+          city: input.city,
+          district: input.district,
+          detail: input.detail
+        }
+      }
+    };
+    StationApi.update(station, () => {
+      self.hideStationForm();
+      let id = this.state.editStationInfo.projectId;
+      ProjectApi.getStationsOfProject(id,
+        self.handleGetStationsSuccess, self.handleGetStationsFail);
+    });
+  }
 
   showStationForm() {
     this.setState({
@@ -160,7 +186,12 @@ export default class ProjectContent extends Component {
     });
   }
 
-  deleteStation() {
+  deleteStation(station) {
+    let self = this;
+    StationApi.remove(station.id, function() {
+      ProjectApi.getStationsOfProject(self.props.params.id,
+        self.handleGetStationsSuccess, self.handleGetStationsFail);
+    });
   }
 
   checkValidate(data) {
