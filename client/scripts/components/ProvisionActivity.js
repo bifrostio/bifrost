@@ -258,7 +258,6 @@ export default class ProvisionActivity extends Component {
           labelClassName={labelCol}
           wrapperClassName={inputCol}
           label={requirement && requirement.name}
-          onChange={this.checkValidate}
           onKeyPress={this.handleKeyPress}/>
       );
     });

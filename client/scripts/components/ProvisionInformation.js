@@ -20,7 +20,7 @@ export default class ProvisionInformation extends Component {
     let provisions;
     if (this.props.provisions) {
       provisions = this.props.provisions
-                       .filter(p => p.volume !== 0)
+                       .filter(p => parseInt(p.volume) !== 0)
                        .map(createProvisionFormItem);
       if (provisions.length === 0) {
         provisions = (
