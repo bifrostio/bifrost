@@ -82,6 +82,11 @@ export default class ProvisionRequirement extends Component {
     this.setState({editingProvision: p});
   }
 
+  disableCreateButton() {
+    let p = this.state.newProvision;
+    return !p || !p.name || !p.total || !p.unit;
+  }
+
   addProvision() {
     this.props.addProvision(this.state.newProvision);
     this.toggleAddProvisionPanel();
@@ -96,7 +101,10 @@ export default class ProvisionRequirement extends Component {
           <ProvisionForm
             updateProvision={this.updateAddingProvision.bind(this)}
             provision={this.state.newProvision} />
-            <Button onClick={this.addProvision.bind(this)} bsStyle="primary">確認</Button>&nbsp;
+            <p>名稱、數量與單位為必填欄位，所需數量需要大於 0</p>
+            <Button disabled={this.disableCreateButton()}
+                    onClick={this.addProvision.bind(this)}
+                    bsStyle="primary">確認</Button>&nbsp;
             <Button onClick={this.toggleAddProvisionPanel.bind(this)}>取消</Button>
         </div>
       );
