@@ -4,8 +4,8 @@ import ManagerApi from 'utils/ManagerApi';
 import Titlebar from 'components/Titlebar';
 
 export default class Login extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
         error: '',
@@ -48,7 +48,7 @@ export default class Login extends Component {
 
   handleLoginSuccess(id) {
     sessionStorage.setItem("token", id);
-    window.location.hash = 'projects';
+    this.context.router.push('projects');
   }
 
   handleLoginFail(statusCode) {
@@ -90,3 +90,7 @@ export default class Login extends Component {
     );
   }
 }
+
+Login.contextTypes = {
+  router: React.PropTypes.object
+};
