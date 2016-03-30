@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 import StationMap from 'components/StationMap';
 import ReactDOM from 'react-dom';
 import StationList from 'components/StationList';
@@ -85,9 +86,7 @@ export default class MapView extends Component {
           officialStations={this.state.officialStations}
           onHover={this.handleHover} />
         <StationMap markers={markers} selected={this.state.selected} />
-        <Button className="login-btn" bsStyle="primary" href="#/login">
-          登入
-        </Button>
+        <Link to="login" className="btn btn-primary login-btn">登入</Link>
       </div>
     );
   }
