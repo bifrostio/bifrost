@@ -1,17 +1,17 @@
 var async = require('async');
 
 module.exports = function(app, done) {
-  var projects, managers;
+  var projects, users;
 
   async.series([
-    callback => app.models.Manager.find(callback),
+    callback => app.models.User.find(callback),
     callback => app.models.Project.find(callback)
   ], (err, results) => {
-    managers = results[0];
+    users = results[0];
     projects = results[1];
 
-    async.series(managers.map((manager, i) => function(cb) {
-      manager.projects.add(projects[i], cb);
+    async.series(users.map((user, i) => function(cb) {
+      user.projects.add(projects[i], cb);
     }), done);
   });
 };

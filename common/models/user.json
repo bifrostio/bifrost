@@ -1,6 +1,6 @@
 {
-  "name": "manager",
-  "description": "管理者帳號",
+  "name": "user",
+  "description": "使用者帳號",
   "base": "User",
   "idInjection": true,
   "options": {

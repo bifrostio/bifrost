@@ -6,7 +6,7 @@ import ProjectApi from 'utils/ProjectApi';
 import StationApi from 'utils/StationApi';
 import StationList from 'components/StationList';
 import StationForm from 'components/StationForm';
-import ManagerApi from 'utils/ManagerApi';
+import UserApi from 'utils/UserApi';
 import GoogleMapsLoader from 'google-maps/lib/Google.min';
 import Titlebar from 'components/Titlebar';
 import ManagementButtons from 'components/ManagementButtons';
@@ -101,7 +101,7 @@ export default class ProjectContent extends Component {
         }
       };
 
-      ManagerApi.addStation(body, contacts, (err, station) => {
+      UserApi.addStation(body, contacts, (err, station) => {
         if (err) {
           this.setState({
             showAlert: true,

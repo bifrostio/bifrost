@@ -16,7 +16,7 @@ module.exports = function(app, done) {
     }
   ];
 
-  var managers = [
+  var users = [
     {
       email: 'chialin.shr@gmail.com',
       password: '1234'
@@ -44,7 +44,7 @@ module.exports = function(app, done) {
   app.dataSources.db.automigrate(function() {
     var tasks = [
       callback => app.models.Contact.create(contacts, callback),
-      callback => app.models.Manager.create(managers, callback),
+      callback => app.models.User.create(users, callback),
       callback => app.models.Project.create(projects, callback),
       callback => app.models.Batch.create(batches, callback),
       callback => app.models.ProvisionRequirement.create(provisions, callback)

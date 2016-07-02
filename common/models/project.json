@@ -16,7 +16,7 @@
   "relations": {
     "managers": {
       "type": "hasAndBelongsToMany",
-      "model": "manager"
+      "model": "user"
     },
     "stations": {
       "type": "hasMany",

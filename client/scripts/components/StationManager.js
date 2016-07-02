@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import StationContact from 'components/StationContact';
 import Provision from 'components/Provision';
 import { ButtonGroup, Alert, Grid, Row, Col, Button} from 'react-bootstrap';
-import ManagerApi from 'utils/ManagerApi';
+import UserApi from 'utils/UserApi';
 import RequirementApi from 'utils/ProvisionRequirementApi';
 import Titlebar from 'components/Titlebar';
 
@@ -21,14 +21,14 @@ export default class StationManager extends Component {
   }
 
   componentWillMount() {
-    ManagerApi.getStationInfo(this.props.params.id, this.handleReqSuccess, this.handleReqFail);
+    UserApi.getStationInfo(this.props.params.id, this.handleReqSuccess, this.handleReqFail);
   }
 
   addProvision(req) {
     req.stationId = this.state.station.id;
     RequirementApi.create(req, (err) => {
       if (!err) {
-        ManagerApi.getStationInfo(this.props.params.id,
+        UserApi.getStationInfo(this.props.params.id,
           this.handleReqSuccess, this.handleReqFail);
       }
     });
@@ -37,7 +37,7 @@ export default class StationManager extends Component {
   removeProvision(id) {
     RequirementApi.remove(id, (err) => {
       if (!err) {
-        ManagerApi.getStationInfo(this.props.params.id,
+        UserApi.getStationInfo(this.props.params.id,
           this.handleReqSuccess, this.handleReqFail);
       }
     });
@@ -46,7 +46,7 @@ export default class StationManager extends Component {
   saveProvision(p) {
     RequirementApi.update(p, err => {
       if (!err) {
-        ManagerApi.getStationInfo(this.props.params.id,
+        UserApi.getStationInfo(this.props.params.id,
           this.handleReqSuccess, this.handleReqFail);
       }
     });

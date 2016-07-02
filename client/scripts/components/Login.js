@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Panel, Button, Input} from 'react-bootstrap';
-import ManagerApi from 'utils/ManagerApi';
+import UserApi from 'utils/UserApi';
 import Titlebar from 'components/Titlebar';
 
 export default class Login extends Component {
@@ -43,7 +43,7 @@ export default class Login extends Component {
     }
 
     const body = {email: email, password: password};
-    ManagerApi.login(body, this.handleLoginSuccess, this.handleLoginFail);
+    UserApi.login(body, this.handleLoginSuccess, this.handleLoginFail);
   }
 
   handleLoginSuccess(id) {

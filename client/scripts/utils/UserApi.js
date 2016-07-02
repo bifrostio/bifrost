@@ -1,10 +1,10 @@
 import $ from 'jquery';
 import async from 'async';
 
-export default class ManagerApi {
+export default class UserApi {
   static login(body, doneCallback, failCallback) {
 
-    $.post('/api/managers/login', body)
+    $.post('/api/users/login', body)
     .done(function(result) {
       doneCallback(result.id);
     })
