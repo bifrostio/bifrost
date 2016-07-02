@@ -18,13 +18,13 @@ module.exports = function(app) {
         return reject();
       }
 
-      project.managers.findById((userId, function(err, user) {
+      project.managers.findById(userId, function(err, user) {
         if (err || !user) {
           return reject();
         }
 
         return cb(null, true);
-      }));
+      });
     });
   });
 };
