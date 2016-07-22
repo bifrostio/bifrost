@@ -47,10 +47,12 @@ export default class AidSyncApi {
           provision.expired = new Date(year, month, day).toString();
         }
 
-        stations[stationName].provisionRequirements =
-          stations[stationName].provisionRequirements || [];
-        stations[stationName].provisionRequirements.push(provision);
-        stations[stationName].key = stationName;
+        if (stations[stationName]) {
+          stations[stationName].provisionRequirements =
+            stations[stationName].provisionRequirements || [];
+          stations[stationName].provisionRequirements.push(provision);
+          stations[stationName].key = stationName;
+        }
       });
 
       if (window.localStorage) {
