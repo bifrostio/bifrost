@@ -178,9 +178,9 @@ export default class Station extends Component {
             <Col xs={12} md={6} className="minimap">
               <Map center={position} zoom={13}>
                 <TileLayer
-                  attribution='Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                  url='http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg'
-                  subdomains='1234'
+                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                  subdomains='abc'
                 />
                 <Marker position={position}>
                 </Marker>
