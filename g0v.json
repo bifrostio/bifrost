@@ -1,0 +1,20 @@
+{
+  "repo" :"bifrostio/bifrost",
+  "author" : "yurenju",
+  "status" : "",
+  "name": "",
+  "name_zh": "物資管理平台系統",
+  "description": "",
+  "description_zh": "物資管理平台系統",
+  "homepage" : "",
+  "thumbnail" : "",
+  "document": "",
+  "repository": "https://github.com/bifrostio/bifrost",
+  "licenses": [],
+  "keywords": [],
+  "audience": [],
+  "products" :[],
+  "partOf": "",
+  "contributors" :[],
+  "needs" : []
+}
