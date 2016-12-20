@@ -4,7 +4,7 @@ module.exports = function(Batch) {
     Batch.findById(batchId, filter, (err, instance) => {
       if (err) return cb(err);
 
-      let list = instance.toJSON().provisionActivities
+      const list = instance.toJSON().provisionActivities
         .filter(activity => activity.promised !== 0)
         .map(activity => '* ' + activity.provisionRequirement.name + '：' +
                          activity.promised + ' ' +
