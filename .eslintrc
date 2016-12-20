@@ -1,6 +1,7 @@
 {
     "parser": "babel-eslint",
     "rules": {
+        "no-console": [1],
         "indent": [
             2,
             2

@@ -68,5 +68,8 @@
   "provisionActivity": {
     "dataSource": "db",
     "public": true
+  },
+  "Email": {
+    "dataSource": "mailgun"
   }
 }

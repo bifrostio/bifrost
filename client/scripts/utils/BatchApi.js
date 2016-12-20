@@ -38,6 +38,11 @@ export default class Batch {
           callback();
         })
         .fail(callback);
+      },
+      callback => {
+        $.post('/api/batches/notify', { batchId: batch.id })
+        .done(() => callback())
+        .fail(callback);
       }
     ], err => {
       cb(err, batch);
