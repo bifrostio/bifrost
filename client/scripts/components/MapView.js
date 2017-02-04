@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import StationMap from 'components/StationMap';
+import StationMap from './StationMap';
 import ReactDOM from 'react-dom';
-import StationList from 'components/StationList';
-import StationApi from 'utils/StationApi';
-import AidSyncApi from 'utils/AidSyncApi';
+import StationList from './StationList';
+import StationApi from '../utils/StationApi';
+import AidSyncApi from '../utils/AidSyncApi';
 import { Button } from 'react-bootstrap';
 import debug from 'debug';
 

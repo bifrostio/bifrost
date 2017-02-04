@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import {FormControls, Button, Input, Panel, Modal, Alert} from 'react-bootstrap';
 import { Link } from 'react-router';
 import validator from 'validator';
-import ProjectApi from 'utils/ProjectApi';
-import StationApi from 'utils/StationApi';
-import StationList from 'components/StationList';
-import StationForm from 'components/StationForm';
-import UserApi from 'utils/UserApi';
+import ProjectApi from '../utils/ProjectApi';
+import StationApi from '../utils/StationApi';
+import StationList from './StationList';
+import StationForm from './StationForm';
+import UserApi from '../utils/UserApi';
 import GoogleMapsLoader from 'google-maps/lib/Google.min';
-import Titlebar from 'components/Titlebar';
-import ManagementButtons from 'components/ManagementButtons';
+import Titlebar from './Titlebar';
+import ManagementButtons from './ManagementButtons';
 
 export default class ProjectContent extends Component {
   constructor(props) {

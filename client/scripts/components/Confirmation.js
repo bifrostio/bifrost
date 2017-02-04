@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import ProvisionInformation from 'components/ProvisionInformation';
+import ProvisionInformation from './ProvisionInformation';
 
 export default class Confirmation extends Component {
   render() {

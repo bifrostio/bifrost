@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {ProgressBar, Alert, Button, Modal, FormControls, Input, Label} from 'react-bootstrap';
-import UserApi from 'utils/UserApi';
+import UserApi from '../utils/UserApi';
 
 export default class ProvisionActivity extends Component {
   constructor(props) {

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Jumbotron, Button, Input} from 'react-bootstrap';
-import Project from 'components/Project';
-import ProjectApi from 'utils/ProjectApi';
-import Titlebar from 'components/Titlebar';
+import Project from './Project';
+import ProjectApi from '../utils/ProjectApi';
+import Titlebar from './Titlebar';
 
 export default class ProjectList extends Component {
   constructor(props) {

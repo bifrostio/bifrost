@@ -1,23 +1,33 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: [
-    path.resolve(__dirname, 'client/scripts/app.js')
-  ],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+  entry: {
+    bundle: './client/scripts/app.js'
   },
-  externals: {
-    'jquery': 'jQuery'
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].[chunkhash].js'
   },
   module: {
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel?stage=0'}
+    rules: [
+      {
+        use: 'babel-loader',
+        test: /\.js$/,
+        exclude: /node_modules/
+      }
     ]
   },
-  resolve: {
-    root: [path.resolve(__dirname, 'client/scripts/')]
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
+    new HtmlWebpackPlugin({
+      template: 'client/index.html'
+    })
+  ],
+  externals: {
+    jquery: 'jQuery'
   }
 };

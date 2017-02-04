@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import BatchApi from 'utils/BatchApi';
+import BatchApi from '../utils/BatchApi';
 import { Button, Panel, FormControls } from 'react-bootstrap';
-import ProvisionInformation from 'components/ProvisionInformation';
+import ProvisionInformation from './ProvisionInformation';
 
 export default class BatchView extends Component {
   constructor(props) {

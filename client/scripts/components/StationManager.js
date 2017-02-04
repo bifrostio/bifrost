@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
-import StationContact from 'components/StationContact';
-import Provision from 'components/Provision';
 import { ButtonGroup, Alert, Grid, Row, Col, Button} from 'react-bootstrap';
-import UserApi from 'utils/UserApi';
-import RequirementApi from 'utils/ProvisionRequirementApi';
-import Titlebar from 'components/Titlebar';
+
+import StationContact from './StationContact';
+import Provision from './Provision';
+import Titlebar from './Titlebar';
+import UserApi from '../utils/UserApi';
+import RequirementApi from '../utils/ProvisionRequirementApi';
 
 export default class StationManager extends Component {
   constructor(props) {

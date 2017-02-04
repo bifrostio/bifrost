@@ -1,16 +1,22 @@
+require('dotenv').config();
+
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var path = require('path');
-var webpackMiddleware = require('webpack-dev-middleware');
 
 var app = module.exports = loopback();
 
-var webpack = require('webpack');
-var webpackConfig = require('../webpack.config');
-app.use(webpackMiddleware(webpack(webpackConfig), {
-  stats: { colors: true}
-}));
-app.use(loopback.static(path.resolve(__dirname, '../client')));
+if (process.env.NODE_ENV !== 'production') {
+  const webpackMiddleware = require('webpack-dev-middleware');
+  const webpack = require('webpack');
+  const webpackConfig = require('../webpack.config.js');
+  const opts = {stats: { colors: true}};
+  app.use(webpackMiddleware(webpack(webpackConfig), opts));
+} else {
+  app.use(loopback.static('dist'));
+}
+
+app.use(loopback.static('public'));
 
 app.start = function() {
   // start the web server
