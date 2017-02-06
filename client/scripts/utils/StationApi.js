@@ -1,5 +1,4 @@
 import 'isomorphic-fetch';
-import async from 'async';
 import debug from 'debug';
 
 let log = debug('bifrost:StationApi');

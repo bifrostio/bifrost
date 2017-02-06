@@ -1,30 +1,18 @@
-import $ from 'jquery';
+import 'isomorphic-fetch';
 import Papa from 'papaparse';
-import async from 'async';
 
 export default class AidSyncApi {
 
   static getOfficialStations(cb) {
-    async.parallel([
-      function(done) {
-        var url = 'https://raw.githubusercontent.com/g0v-data/aid-sync/gh-pages/aid.csv';
-        $.get(url)
-        .done(function(result) {
-          var json = Papa.parse(result);
-          done(null, json);
-        })
-        .fail(done);
-      },
-      function(done) {
-        $.get('/places.json')
-        .done(function(result) {
-          done(null, result);
-        })
-        .fail(done);
-      }
-    ], function(err, results) {
-      var stations = results[1];
-      var provisions = results[0].data;
+    const promises = [
+      fetch('https://raw.githubusercontent.com/g0v-data/aid-sync/gh-pages/aid.csv'),
+      fetch('/places.json')
+    ];
+
+    Promise.all(promises)
+    .then(values => Promise.all([values[0].text(), values[1].json()]))
+    .then(([csv, stations]) => {
+      let provisions = Papa.parse(csv).data;
 
       provisions.forEach((p, i) => {
         if (i === 0 || (!p[0] && !p[1])) {
@@ -59,8 +47,9 @@ export default class AidSyncApi {
         window.localStorage.setItem('stations', JSON.stringify(stations));
       }
 
-      cb(err, stations);
-    });
+      cb(null, stations);
+    })
+    .catch(err => cb(err));
   }
 
   static findById(key, cb) {
