@@ -1,4 +1,5 @@
 import 'isomorphic-fetch';
+import {fetchJSON} from '../utils';
 import debug from 'debug';
 
 let log = debug('bifrost:StationModel');
@@ -12,12 +13,11 @@ export default class StationModel {
     filter = encodeURIComponent(JSON.stringify(filter));
 
     let promises = [
-      fetch(`/api/stations/${id}`),
-      fetch(`/api/provisionRequirements?filter=${filter}`)
+      fetchJSON(`/api/stations/${id}`),
+      fetchJSON(`/api/provisionRequirements?filter=${filter}`)
     ];
 
     Promise.all(promises)
-    .then(values => Promise.all(values.map(val => val.json())))
     .then(([station, provisionRequirements]) => {
       provisionRequirements.forEach(requirement => {
         let shipped = 0;
@@ -50,8 +50,7 @@ export default class StationModel {
     filter.include = {'provisionRequirements': 'provisionActivities'};
     filter = encodeURIComponent(JSON.stringify(filter));
 
-    fetch(`/api/stations?filter=${filter}`)
-    .then(res => res.json())
+    fetchJSON(`/api/stations?filter=${filter}`)
     .then((stations) => {
       stations.forEach(station => {
         station.provisionRequirements.forEach(req => {
@@ -75,8 +74,7 @@ export default class StationModel {
   }
 
   static remove(id, cb) {
-    fetch(`/api/stations/${id}`, {method: 'DELETE'})
-    .then(res => res.json())
+    fetchJSON(`/api/stations/${id}`, {method: 'DELETE'})
     .then(json => cb(null, json))
     .catch(err => cb(err));
   }
@@ -104,12 +102,11 @@ export default class StationModel {
     };
 
     let promises = [
-      fetch(`/api/stations/${id}`, stationOptions),
-      fetch(`/api/stations/${id}/contacts/${contactId}`, contactOptions)
+      fetchJSON(`/api/stations/${id}`, stationOptions),
+      fetchJSON(`/api/stations/${id}/contacts/${contactId}`, contactOptions)
     ];
 
     Promise.all(promises)
-    .then(values => Promise.all(values.map(val => val.json())))
     .then(results => {
       cb(null, results);
     })

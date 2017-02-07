@@ -1,16 +1,15 @@
-import 'isomorphic-fetch';
 import Papa from 'papaparse';
+import {fetchJSON, fetchText} from '../utils';
 
 export default class AidSyncModel {
 
   static getOfficialStations(cb) {
     const promises = [
-      fetch('https://raw.githubusercontent.com/g0v-data/aid-sync/gh-pages/aid.csv'),
-      fetch('/places.json')
+      fetchText('https://raw.githubusercontent.com/g0v-data/aid-sync/gh-pages/aid.csv'),
+      fetchJSON('/places.json')
     ];
 
     Promise.all(promises)
-    .then(values => Promise.all([values[0].text(), values[1].json()]))
     .then(([csv, stations]) => {
       let provisions = Papa.parse(csv).data;
 
