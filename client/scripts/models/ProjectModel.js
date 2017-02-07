@@ -1,7 +1,6 @@
 import $ from 'jquery';
-import async from 'async';
 
-export default class ProjectApi {
+export default class ProjectModel {
   static getProjects(doneCallback, failCallback) {
     const token = sessionStorage.getItem('token');
 

@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import async from 'async';
 
-export default class UserApi {
+export default class UserModel {
   static login(body, doneCallback, failCallback) {
 
     $.post('/api/users/login', body)
@@ -40,7 +40,6 @@ export default class UserApi {
     const token = sessionStorage.getItem('token');
 
     if (!token) {
-      failCallback(401);
       return;
     }
 

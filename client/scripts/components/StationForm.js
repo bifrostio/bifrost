@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Label, Input, Row, Grid, Col} from 'react-bootstrap';
+import {Label, Input, Row, Col} from 'react-bootstrap';
 import validator from 'validator';
 
 export default class StationForm extends Component {
@@ -53,7 +53,7 @@ export default class StationForm extends Component {
 
     let values = this.getFormValue();
     this.setState(state);
-    values[field] = value
+    values[field] = value;
     this.props.onChange(values);
   }
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Jumbotron, Button, Input} from 'react-bootstrap';
 import Project from './Project';
-import ProjectApi from '../utils/ProjectApi';
+import ProjectModel from '../models/ProjectModel';
 import Titlebar from './Titlebar';
 
 export default class ProjectList extends Component {
@@ -20,7 +20,7 @@ export default class ProjectList extends Component {
     this.handleCreateFail = this.handleCreateFail.bind(this);
   }
   componentWillMount() {
-    ProjectApi.getProjects(this.handleSuccess, this.handleFail);
+    ProjectModel.getProjects(this.handleSuccess, this.handleFail);
   }
 
   handleSuccess(projects) {
@@ -36,7 +36,7 @@ export default class ProjectList extends Component {
     const name = this.refs.projectName.getValue();
     const project = {name: name};
 
-    ProjectApi.createProject(project, this.handleCreateSuccess, this.handleCreateFail);
+    ProjectModel.createProject(project, this.handleCreateSuccess, this.handleCreateFail);
   }
 
   handleCreateSuccess(data) {
@@ -59,7 +59,7 @@ export default class ProjectList extends Component {
     let projectList;
 
     if (!this.state.projects.length) {
-        projectList = (<div className="empty-project-list">目前尚無任何專案！</div>);
+      projectList = (<div className="empty-project-list">目前尚無任何專案！</div>);
     } else {
       projectList = this.state.projects.map(project => {
         return (
@@ -97,4 +97,4 @@ export default class ProjectList extends Component {
 Project.defaultProps = {
   projects: [],
   editMode: false
-}
+};

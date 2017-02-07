@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import {FormControls, Button, Input, Panel, Modal, Alert} from 'react-bootstrap';
+import {FormControls, Button, Modal, Alert} from 'react-bootstrap';
 import { Link } from 'react-router';
 import validator from 'validator';
-import ProjectApi from '../utils/ProjectApi';
-import StationApi from '../utils/StationApi';
-import StationList from './StationList';
+import ProjectModel from '../models/ProjectModel';
+import StationModel from '../models/StationModel';
 import StationForm from './StationForm';
-import UserApi from '../utils/UserApi';
+import UserModel from '../models/UserModel';
 import GoogleMapsLoader from 'google-maps/lib/Google.min';
 import Titlebar from './Titlebar';
 import ManagementButtons from './ManagementButtons';
@@ -40,15 +39,15 @@ export default class ProjectContent extends Component {
   }
   componentWillMount() {
     const id = this.props.params.id;
-    ProjectApi.getProjectInfo(id, this.handleSuccess, this.handleFail);
-    ProjectApi.getStationsOfProject(id, this.handleGetStationsSuccess, this.handleGetStationsFail);
+    ProjectModel.getProjectInfo(id, this.handleSuccess, this.handleFail);
+    ProjectModel.getStationsOfProject(id, this.handleGetStationsSuccess, this.handleGetStationsFail);
   }
 
   componentDidMount() {
     GoogleMapsLoader.LIBRARIES = ['places'];
     GoogleMapsLoader.LANGUAGE = 'zh-tw';
     GoogleMapsLoader.load();
-  };
+  }
 
   handleSuccess(project) {
     this.setState({
@@ -101,7 +100,7 @@ export default class ProjectContent extends Component {
         }
       };
 
-      UserApi.addStation(body, contacts, (err, station) => {
+      UserModel.addStation(body, contacts, (err, station) => {
         if (err) {
           this.setState({
             showAlert: true,
@@ -143,10 +142,10 @@ export default class ProjectContent extends Component {
         }
       }
     };
-    StationApi.update(station, () => {
+    StationModel.update(station, () => {
       self.hideStationForm();
       let id = this.state.editStationInfo.projectId;
-      ProjectApi.getStationsOfProject(id,
+      ProjectModel.getStationsOfProject(id,
         self.handleGetStationsSuccess, self.handleGetStationsFail);
     });
   }
@@ -188,8 +187,8 @@ export default class ProjectContent extends Component {
 
   deleteStation(station) {
     let self = this;
-    StationApi.remove(station.id, function() {
-      ProjectApi.getStationsOfProject(self.props.params.id,
+    StationModel.remove(station.id, function() {
+      ProjectModel.getStationsOfProject(self.props.params.id,
         self.handleGetStationsSuccess, self.handleGetStationsFail);
     });
   }
@@ -348,11 +347,7 @@ export default class ProjectContent extends Component {
   }
 
   render() {
-    let stationList;
-    const { name: projectName, _contacts: contacts } = this.state.project;
-    const userName = contacts && contacts.name;
-    const email = contacts && contacts.email;
-    const phone = contacts && contacts.phone;
+    const { name: projectName } = this.state.project;
 
     return (
       <div>
@@ -377,4 +372,4 @@ export default class ProjectContent extends Component {
 
 ProjectContent.defaultProps = {
   stations: []
-}
+};

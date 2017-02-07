@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
-import { ButtonGroup, Alert, Grid, Row, Col, Button} from 'react-bootstrap';
+import { Grid, Row, Col} from 'react-bootstrap';
 
 import StationContact from './StationContact';
-import Provision from './Provision';
 import Titlebar from './Titlebar';
-import UserApi from '../utils/UserApi';
-import RequirementApi from '../utils/ProvisionRequirementApi';
+import UserModel from '../models/UserModel';
+import RequirementModel from '../models/ProvisionRequirementModel';
 
 export default class StationManager extends Component {
   constructor(props) {
@@ -22,32 +21,32 @@ export default class StationManager extends Component {
   }
 
   componentWillMount() {
-    UserApi.getStationInfo(this.props.params.id, this.handleReqSuccess, this.handleReqFail);
+    UserModel.getStationInfo(this.props.params.id, this.handleReqSuccess, this.handleReqFail);
   }
 
   addProvision(req) {
     req.stationId = this.state.station.id;
-    RequirementApi.create(req, (err) => {
+    RequirementModel.create(req, (err) => {
       if (!err) {
-        UserApi.getStationInfo(this.props.params.id,
+        UserModel.getStationInfo(this.props.params.id,
           this.handleReqSuccess, this.handleReqFail);
       }
     });
   }
 
   removeProvision(id) {
-    RequirementApi.remove(id, (err) => {
+    RequirementModel.remove(id, (err) => {
       if (!err) {
-        UserApi.getStationInfo(this.props.params.id,
+        UserModel.getStationInfo(this.props.params.id,
           this.handleReqSuccess, this.handleReqFail);
       }
     });
   }
 
   saveProvision(p) {
-    RequirementApi.update(p, err => {
+    RequirementModel.update(p, err => {
       if (!err) {
-        UserApi.getStationInfo(this.props.params.id,
+        UserModel.getStationInfo(this.props.params.id,
           this.handleReqSuccess, this.handleReqFail);
       }
     });
@@ -75,15 +74,14 @@ export default class StationManager extends Component {
     });
 
     this.setState({
-        station: {id: data.id, name: data.name, _contacts: data._contacts},
-        provisionRequirements: provisionRequirements,
-        batches: batches
+      station: {id: data.id, name: data.name, _contacts: data._contacts},
+      provisionRequirements: provisionRequirements,
+      batches: batches
     });
 
   }
 
-  handleReqFail(statue) {
-  }
+  handleReqFail() {}
 
   render() {
     const station = this.state.station;

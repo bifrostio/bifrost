@@ -1,9 +1,9 @@
 import 'isomorphic-fetch';
 import debug from 'debug';
 
-let log = debug('bifrost:StationApi');
+let log = debug('bifrost:StationModel');
 
-export default class Station {
+export default class StationModel {
   static findById(id, done) {
     let filter = {
       where: {stationId: id},

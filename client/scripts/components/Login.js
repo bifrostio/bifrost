@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Panel, Button, Input} from 'react-bootstrap';
-import UserApi from '../utils/UserApi';
+import UserModel from '../models/UserModel';
 import Titlebar from './Titlebar';
 
 export default class Login extends Component {
@@ -8,9 +8,9 @@ export default class Login extends Component {
     super(props, context);
 
     this.state = {
-        error: '',
-        emailError: '',
-        passwordError: ''
+      error: '',
+      emailError: '',
+      passwordError: ''
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -24,9 +24,9 @@ export default class Login extends Component {
 
     if (!email) {
       this.setState({
-          error: '',
-          emailError: '請輸入帳號',
-          passwordError: ''
+        error: '',
+        emailError: '請輸入帳號',
+        passwordError: ''
       });
 
       return;
@@ -34,20 +34,20 @@ export default class Login extends Component {
 
     if (!password) {
       this.setState({
-          error: '',
-          emailError: '',
-          passwordError: '請輸入密碼'
+        error: '',
+        emailError: '',
+        passwordError: '請輸入密碼'
       });
 
       return;
     }
 
     const body = {email: email, password: password};
-    UserApi.login(body, this.handleLoginSuccess, this.handleLoginFail);
+    UserModel.login(body, this.handleLoginSuccess, this.handleLoginFail);
   }
 
   handleLoginSuccess(id) {
-    sessionStorage.setItem("token", id);
+    sessionStorage.setItem('token', id);
     this.context.router.push('projects');
   }
 
@@ -55,11 +55,10 @@ export default class Login extends Component {
     if (statusCode === 401) {
       // show auth error message
       this.setState({
-          error: '你輸入的帳號和密碼不符。',
-          emailError: '',
-          passwordError: ''
+        error: '你輸入的帳號和密碼不符。',
+        emailError: '',
+        passwordError: ''
       });
-    } else {
     }
   }
 

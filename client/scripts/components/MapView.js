@@ -3,9 +3,8 @@ import {Link} from 'react-router';
 import StationMap from './StationMap';
 import ReactDOM from 'react-dom';
 import StationList from './StationList';
-import StationApi from '../utils/StationApi';
-import AidSyncApi from '../utils/AidSyncApi';
-import { Button } from 'react-bootstrap';
+import StationModel from '../models/StationModel';
+import AidSyncModel from '../models/AidSyncModel';
 import debug from 'debug';
 
 let log = debug('bifrost:MapView');
@@ -23,10 +22,10 @@ export default class MapView extends Component {
 
   componentDidMount() {
     let self = this;
-    StationApi.find((err, stations) => {
+    StationModel.find((err, stations) => {
       self.setState({ stations: stations});
     });
-    AidSyncApi.getOfficialStations((err, officialStations) => {
+    AidSyncModel.getOfficialStations((err, officialStations) => {
       let stationsList = Object.keys(officialStations).map(name => {
         return officialStations[name];
       });

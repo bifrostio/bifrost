@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import BatchApi from '../utils/BatchApi';
+import BatchModel from '../models/BatchModel';
 import { Button, Panel, FormControls } from 'react-bootstrap';
 import ProvisionInformation from './ProvisionInformation';
 
@@ -14,7 +14,7 @@ export default class BatchView extends Component {
 
   componentDidMount() {
     let self = this;
-    BatchApi.findById(this.props.params.id, (err, batch) => {
+    BatchModel.findById(this.props.params.id, (err, batch) => {
       console.log(batch);
       self.setState({batch: batch});
     });

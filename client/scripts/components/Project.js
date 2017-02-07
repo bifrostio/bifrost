@@ -25,4 +25,4 @@ export default class Project extends Component {
 Project.defaultProps = {
   isEditable: false,
   isClose: false
-}
+};

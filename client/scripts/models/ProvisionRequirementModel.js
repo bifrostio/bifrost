@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export default class ProvisionRequirementApi {
+export default class ProvisionRequirementModel {
   static create(req, cb) {
     $.post('/api/provisionRequirements', req)
     .done(data => {

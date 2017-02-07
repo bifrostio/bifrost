@@ -5,9 +5,9 @@ import Provision from './Provision';
 import Confirmation from './Confirmation';
 import { ButtonGroup, Alert, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Map, Marker, TileLayer } from 'react-leaflet';
-import StationApi from '../utils/StationApi';
-import BatchApi from '../utils/BatchApi';
-import AidSyncApi from '../utils/AidSyncApi';
+import StationModel from '../models/StationModel';
+import BatchModel from '../models/BatchModel';
+import AidSyncModel from '../models/AidSyncModel';
 import validator from 'validator';
 
 export default class Station extends Component {
@@ -25,7 +25,7 @@ export default class Station extends Component {
   componentDidMount() {
     let self = this;
     if (this.props.route.path.indexOf('officialStations') !== -1) {
-      AidSyncApi.findById(this.props.params.id, (err, station) => {
+      AidSyncModel.findById(this.props.params.id, (err, station) => {
         station.longitude = station.geometry.location.lng;
         station.latitude = station.geometry.location.lat;
         station.name = station.key;
@@ -39,7 +39,7 @@ export default class Station extends Component {
       });
     }
     else {
-      StationApi.findById(this.props.params.id, (err, station) => {
+      StationModel.findById(this.props.params.id, (err, station) => {
         station.provisionRequirements.forEach(req => req.volume = 0);
         self.setState({station: station});
       });
@@ -96,7 +96,7 @@ export default class Station extends Component {
         promised: promised
       };
     });
-    BatchApi.create(batch, activities, (err, data) => {
+    BatchModel.create(batch, activities, (err, data) => {
       if (!err) {
         window.location = `/#/batches/${data.id}`;
       }

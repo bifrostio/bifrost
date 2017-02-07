@@ -18,7 +18,12 @@
             2,
             "always"
         ],
-        "no-unused-vars": [2, {"vars": "all", "varsIgnorePattern": "React"}]
+        "no-unused-vars": [
+            2,
+            {"vars": "all", "varsIgnorePattern": "React"}
+        ],
+        "react/jsx-uses-react": [1],
+        "react/jsx-uses-vars": [1]
     },
     "env": {
         "es6": true,

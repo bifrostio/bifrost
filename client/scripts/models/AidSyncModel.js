@@ -1,7 +1,7 @@
 import 'isomorphic-fetch';
 import Papa from 'papaparse';
 
-export default class AidSyncApi {
+export default class AidSyncModel {
 
   static getOfficialStations(cb) {
     const promises = [
@@ -66,7 +66,7 @@ export default class AidSyncApi {
       cb(null, stations[key]);
     }
     else {
-      AidSyncApi.getOfficialStations((err, stations) => {
+      AidSyncModel.getOfficialStations((err, stations) => {
         cb(err, stations[key]);
       });
     }

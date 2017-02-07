@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {ProgressBar, Alert, Button, Modal, FormControls, Input, Label} from 'react-bootstrap';
-import UserApi from '../utils/UserApi';
+import UserModel from '../models/UserModel';
 
 export default class ProvisionActivity extends Component {
   constructor(props) {
@@ -81,7 +81,7 @@ export default class ProvisionActivity extends Component {
       body.push(obj);
     });
 
-    UserApi.updateProvisionAvtivity(body, this.handleUpdateSuccess, this.handleUpdateFail);
+    UserModel.updateProvisionAvtivity(body, this.handleUpdateSuccess, this.handleUpdateFail);
 
     this.handleCloseModal();
   }
@@ -155,7 +155,7 @@ export default class ProvisionActivity extends Component {
     }
   }
 
-  checkValidate(e) {
+  checkValidate() {
     const inputNum = Object.keys(this.props.provisionRequirements).length;
     let isValid = false;
 
@@ -213,8 +213,8 @@ export default class ProvisionActivity extends Component {
 
       if (reqCount[pId]) {
         reqCount[pId] = {
-            shipped: reqCount[pId].shipped + shipped,
-            promised: reqCount[pId].promised + promised
+          shipped: reqCount[pId].shipped + shipped,
+          promised: reqCount[pId].promised + promised
         };
       } else {
         reqCount[pId] = {shipped: shipped, promised: promised};
