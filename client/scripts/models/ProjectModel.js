@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import {fetchJSON, postJSON} from '../utils';
 
 export default class ProjectModel {
   static getProjects(doneCallback, failCallback) {
@@ -9,15 +9,9 @@ export default class ProjectModel {
       return;
     }
 
-    const path = `/api/projects?access_token=${token}`;
-
-    $.get(path)
-    .done(function(result) {
-      doneCallback(result);
-    })
-    .fail(function(e) {
-      failCallback(e.status);
-    });
+    fetchJSON(`/api/projects?access_token=${token}`)
+      .then(doneCallback)
+      .catch(failCallback);
   }
 
   static getProjectInfo(id, doneCallback, failCallback) {
@@ -28,15 +22,9 @@ export default class ProjectModel {
       return;
     }
 
-    const path = `/api/projects/${id}?access_token=${token}`;
-
-    $.get(path)
-    .done(function(result) {
-      doneCallback(result);
-    })
-    .fail(function(e) {
-      failCallback(e.status);
-    });
+    fetchJSON(`/api/projects/${id}?access_token=${token}`)
+      .then(doneCallback)
+      .catch(failCallback);
   }
 
   static getStationsOfProject(id, doneCallback, failCallback) {
@@ -47,15 +35,9 @@ export default class ProjectModel {
       return;
     }
 
-    const path = `/api/projects/${id}/stations?access_token=${token}`;
-
-    $.get(path)
-    .done(function(result) {
-      doneCallback(result);
-    })
-    .fail(function(e) {
-      failCallback(e.status);
-    });
+    fetchJSON(`/api/projects/${id}/stations?access_token=${token}`)
+      .then(doneCallback)
+      .catch(failCallback);
   }
 
   static createProject(body, doneCallback, failCallback) {
@@ -66,14 +48,8 @@ export default class ProjectModel {
       return;
     }
 
-    const path = `/api/projects?access_token=${token}`;
-
-    $.post(path, body)
-    .done(function(result) {
-      doneCallback(result);
-    })
-    .fail(function(e) {
-      failCallback(e.status);
-    });
+    postJSON(`/api/projects?access_token=${token}`, body)
+      .then(doneCallback)
+      .catch(failCallback);
   }
 }
