@@ -1,34 +1,27 @@
-import $ from 'jquery';
+import {fetchJSON, postJSON} from '../utils';
 
 export default class ProvisionRequirementModel {
   static create(req, cb) {
-    $.post('/api/provisionRequirements', req)
-    .done(data => {
-      cb(null, data);
-    })
-    .fail(cb);
+    postJSON('/api/provisionRequirements', req)
+    .then(json => cb(null, json))
+    .catch(err => cb(err));
   }
 
   static remove(id, cb) {
-    $.ajax({
-      url: `/api/provisionRequirements/${id}`,
-      type: 'DELETE'
-    })
-    .done(data => cb(null, data))
-    .fail(cb);
+    fetchJSON(`/api/provisionRequirements/${id}`, { method: 'DELETE' })
+    .then(json => cb(null, json))
+    .catch(err => cb(err));
   }
 
   static update(p, cb) {
     let id = p.id;
     delete p.id;
-    $.ajax({
-      url: `/api/provisionRequirements/${id}`,
-      type: 'PUT',
-      data: JSON.stringify(p),
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json'
+    fetchJSON(`/api/provisionRequirements/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(p),
+      headers: { 'Content-Type': 'application/json; charset=utf-8' }
     })
-    .done(data => cb(null, data))
-    .fail(cb);
+    .then(json => cb(null, json))
+    .catch(err => cb(err));
   }
 }
