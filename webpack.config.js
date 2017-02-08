@@ -26,8 +26,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'client/index.html'
     })
-  ],
-  externals: {
-    jquery: 'jQuery'
-  }
+  ]
 };
