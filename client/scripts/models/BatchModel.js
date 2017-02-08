@@ -1,5 +1,5 @@
-import $ from 'jquery';
-import async from 'async';
+import 'isomorphic-fetch';
+import {fetchJSON, postJSON, post} from '../utils';
 
 export default class Batch {
   static generateTrackingNumber() {
@@ -15,38 +15,18 @@ export default class Batch {
 
   static create(batch, activities, cb) {
     batch.trackingNumber = Batch.generateTrackingNumber();
-    async.series([
-      callback => {
-        $.post('/api/batches', batch)
-        .done(data => {
-          batch = data;
-          callback();
-        })
-        .fail(callback);
-      },
-      callback => {
-        activities.forEach(a => a.batchId = batch.id);
-        $.ajax({
-          url: '/api/provisionActivities',
-          type: 'POST',
-          data: JSON.stringify(activities),
-          contentType: 'application/json; charset=utf-8',
-          dataType: 'json'
-        })
-        .done(data => {
-          batch.provisionActivities = data;
-          callback();
-        })
-        .fail(callback);
-      },
-      callback => {
-        $.post('/api/batches/notify', { batchId: batch.id })
-        .done(() => callback())
-        .fail(callback);
-      }
-    ], err => {
-      cb(err, batch);
-    });
+    postJSON('/api/batches', batch)
+    .then(json => batch = json)
+    .then(() => {
+      activities.forEach(a => a.batchId = batch.id);
+      return postJSON('/api/provisionActivities', activities);
+    })
+    .then(json => {
+      batch.provisionActivities = json;
+    })
+    .then(() => post('/api/batches/notify', { batchId: batch.id }))
+    .then(() => cb(null, batch))
+    .catch(err => cb(err));
   }
 
   static findById(id, cb) {
@@ -57,8 +37,8 @@ export default class Batch {
       ]
     };
     filter = encodeURIComponent(JSON.stringify(filter));
-    $.get(`/api/batches/${id}?filter=${filter}`)
-    .done(data => cb(null, data))
-    .fail(cb);
+    fetchJSON(`/api/batches/${id}?filter=${filter}`)
+    .then(json => cb(null, json))
+    .catch(err => cb(err));
   }
 }
