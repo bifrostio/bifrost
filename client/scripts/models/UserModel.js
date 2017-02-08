@@ -1,15 +1,19 @@
-import $ from 'jquery';
-import async from 'async';
+import { fetchJSON, postJSON} from '../utils';
 
 export default class UserModel {
   static login(body, doneCallback, failCallback) {
 
-    $.post('/api/users/login', body)
-    .done(function(result) {
-      doneCallback(result.id);
+    postJSON('/api/users/login', body)
+    .then(json => {
+      if (json.error) {
+        return failCallback(json.error.status);
+      }
+      else {
+        return doneCallback(json.id);
+      }
     })
-    .fail(function(e) {
-      failCallback(e.status);
+    .catch(err => {
+      failCallback(err);
     });
   }
 
@@ -21,19 +25,9 @@ export default class UserModel {
       return;
     }
 
-    $.ajax({
-      url: `/api/provisionActivities?access_token=${token}`,
-      type: 'POST',
-      data: JSON.stringify(body),
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json'
-    })
-    .done(function(result) {
-      doneCallback(result);
-    })
-    .fail(function(e) {
-      failCallback(e.status);
-    });
+    postJSON(`/api/provisionActivities?access_token=${token}`, body)
+    .then(doneCallback)
+    .catch(failCallback);
   }
 
   static addStation(station, contact, cb) {
@@ -43,33 +37,16 @@ export default class UserModel {
       return;
     }
 
-    async.series([
-      callback => {
-        $.post(`/api/stations?access_token=${token}`, station)
-        .done(data => {
-          station = data;
-          callback();
-        })
-        .fail(callback);
-      },
-      callback => {
-        contact.id = station.id;
-        $.ajax({
-          url: `/api/stations/${station.id}/contacts?access_token=${token}`,
-          type: 'POST',
-          data: JSON.stringify(contact),
-          contentType: 'application/json; charset=utf-8',
-          dataType: 'json'
-        })
-        .done(data => {
-          station._contacts.push(data);
-          callback();
-        })
-        .fail(callback);
-      }
-    ], err => {
-      cb(err, station);
-    });
+    postJSON(`/api/stations?access_token=${token}`, station)
+    .then(json => station = json)
+    .then(() => {
+      const url = `/api/stations/${station.id}/contacts?access_token=${token}`;
+      contact.id = station.id;
+      return postJSON(url, contact);
+    })
+    .then(json => station._contacts.push(json))
+    .then(() => cb(null, station))
+    .catch(err => cb(err));
   }
 
   static getStationInfo(id, doneCallback, failCallback) {
@@ -90,13 +67,9 @@ export default class UserModel {
 
     const path = `/api/stations/${id}?filter=${filter}&access_token=${token}`;
 
-    $.get(path)
-    .done(function(result) {
-      doneCallback(result);
-    })
-    .fail(function(e) {
-      failCallback(e.status);
-    });
+    fetchJSON(path)
+    .then(doneCallback)
+    .catch(failCallback);
   }
 
   static getStationBatches(id, doneCallback, failCallback) {
@@ -109,12 +82,8 @@ export default class UserModel {
 
     const path = `/api/stations/${id}/batches?access_token=${token}`;
 
-    $.get(path)
-    .done(function(result) {
-      doneCallback(result);
-    })
-    .fail(function(e) {
-      failCallback(e.status);
-    });
+    fetchJSON(path)
+    .then(doneCallback)
+    .catch(failCallback);
   }
 }
