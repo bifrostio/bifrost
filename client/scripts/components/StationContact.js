@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import { Glyphicon } from 'react-bootstrap';
 
 export default class StationContact extends Component {
+  renderRow(icon, text) {
+    if (text) {
+      return <li><Glyphicon glyph={icon} /> {text}</li>;
+    }
+  }
+
   render() {
     let address = this.props.contact._address;
 
@@ -11,26 +17,10 @@ export default class StationContact extends Component {
 
     return (
       <ul className="contact">
-        {
-          this.props.contact.name ?
-          <li><Glyphicon glyph="user" /> {this.props.contact.name}</li> :
-          null
-        }
-        {
-          this.props.contact.phone ?
-          <li><Glyphicon glyph="earphone" /> {this.props.contact.phone}</li> :
-          null
-        }
-        {
-          this.props.contact.email ?
-          <li><Glyphicon glyph="envelope" /> {this.props.contact.email}</li> :
-          null
-        }
-        {
-          address ?
-          <li><Glyphicon glyph="home" /> {address}</li> :
-          null
-        }
+        {this.renderRow('user', this.props.contact.name)}
+        {this.renderRow('earphone', this.props.contact.phone)}
+        {this.renderRow('envelope', this.props.contact.email)}
+        {this.renderRow('home', address)}
       </ul>
     );
   }

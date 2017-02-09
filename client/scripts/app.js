@@ -14,11 +14,7 @@ import ProvisionActivity from './components/ProvisionActivity';
 
 export default class Bifrost extends Component {
   render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
+    return <div>{this.props.children}</div>;
   }
 }
 

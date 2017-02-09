@@ -5,13 +5,14 @@ import Range from 'react-range';
 
 class Progress extends Component {
   render() {
+    const shipped = this.props.shipped / this.props.total * 100;
+    const promised = (this.props.promised - this.props.shipped) /
+                     this.props.total*100;
     return (
       <div className="progress">
         <ProgressBar>
-          <ProgressBar bsStyle="success"
-                       now={this.props.shipped/this.props.total*100} />
-          <ProgressBar bsStyle="warning" active
-                       now={(this.props.promised-this.props.shipped)/this.props.total*100} />
+          <ProgressBar bsStyle="success" now={shipped} />
+          <ProgressBar bsStyle="warning" active now={promised} />
         </ProgressBar>
       </div>
     );
@@ -41,8 +42,10 @@ class VolumeInputBox extends Component {
 
   render() {
     return (
-      <Input onChange={this.handleChange.bind(this)} value={this.props.volume}
-             type="text" ref="input" label="捐贈數量" />
+      <Input
+        onChange={this.handleChange.bind(this)}
+        value={this.props.volume}
+        type="text" ref="input" label="捐贈數量" />
     );
   }
 }
@@ -60,9 +63,44 @@ export default class Provision extends Component {
     this.props.updateVolume(this.props.index, vol);
   }
 
+  renderOfficial() {
+    let date;
+
+    let closeExpired, expired;
+
+    if (this.props.expired) {
+      let d = new Date(this.props.expired);
+      let today = new Date();
+      date = `${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
+
+      today.setDate(1);
+      today.setMonth(today.getMonth() + 6);
+      closeExpired = today > d ? 'expired-warning' : '';
+    }
+
+    if (date) {
+      expired = (
+        <div className="expired">
+          期限：<span className={closeExpired}>{date}</span>
+        </div>
+      );
+    }
+
+    let status = (
+      <div className="status">
+        數量： <span className="official-total">{this.props.total} {this.props.unit}</span>
+        {expired}
+        <div className="category">分類：{this.props.category}</div>
+      </div>
+    );
+
+    return status;
+  }
+
   render() {
     let secondPane, editPane, status;
 
+    /* Conditional rendering for edit mode */
     if (this.props.edit) {
       secondPane = <Volume
                       {...this.props}
@@ -77,6 +115,7 @@ export default class Provision extends Component {
       secondPane = <Progress {...this.props} />;
     }
 
+    /* Status rendering */
     if (!this.props.official) {
       status = (
         <div className="status">
@@ -87,36 +126,11 @@ export default class Provision extends Component {
       );
     }
     else {
-      let date;
-
-      let closeExpired;
-
-      if (this.props.expired) {
-        let d = new Date(this.props.expired);
-        let today = new Date();
-        date = `${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
-
-        today.setDate(1);
-        today.setMonth(today.getMonth() + 6);
-        closeExpired = today > d ? 'expired-warning' : '';
-      }
-
-      status = (
-        <div className="status">
-          數量： <span className="official-total">{this.props.total} {this.props.unit}</span>
-          {
-            date ?
-            <div className="expired">期限：<span className={closeExpired}>{date}</span></div> :
-            null
-          }
-          <div className="category">分類：{this.props.category}</div>
-        </div>
-      );
+      status = this.renderOfficial();
       secondPane = null;
     }
 
-
-
+    /* Name and description rendering */
     let name;
     if (this.props.description) {
       let tip = (
