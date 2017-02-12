@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col} from 'react-bootstrap';
 
-import StationContact from './StationContact';
-import Titlebar from './Titlebar';
+import StationContact from '../components/StationContact';
+import Titlebar from '../components/Titlebar';
 import UserModel from '../models/UserModel';
 import RequirementModel from '../models/ProvisionRequirementModel';
 

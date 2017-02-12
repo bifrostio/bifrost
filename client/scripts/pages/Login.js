@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Panel, Button, Input} from 'react-bootstrap';
+import Titlebar from '../components/Titlebar';
 import UserModel from '../models/UserModel';
-import Titlebar from './Titlebar';
 
 export default class Login extends Component {
   constructor(props, context) {

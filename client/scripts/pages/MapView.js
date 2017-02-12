@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import StationMap from './StationMap';
 import ReactDOM from 'react-dom';
-import StationList from './StationList';
+import debug from 'debug';
+import StationMap from '../components/StationMap';
+import StationList from '../components/StationList';
 import StationModel from '../models/StationModel';
 import AidSyncModel from '../models/AidSyncModel';
-import debug from 'debug';
 
 let log = debug('bifrost:MapView');
 

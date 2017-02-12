@@ -1,14 +1,17 @@
+/* global google */
+
 import React, {Component} from 'react';
 import {FormControls, Button, Modal, Alert} from 'react-bootstrap';
 import { Link } from 'react-router';
 import validator from 'validator';
+import GoogleMapsLoader from 'google-maps/lib/Google.min';
+import StationForm from '../components/StationForm';
+import Titlebar from '../components/Titlebar';
+import ManagementButtons from '../components/ManagementButtons';
 import ProjectModel from '../models/ProjectModel';
 import StationModel from '../models/StationModel';
-import StationForm from './StationForm';
 import UserModel from '../models/UserModel';
-import GoogleMapsLoader from 'google-maps/lib/Google.min';
-import Titlebar from './Titlebar';
-import ManagementButtons from './ManagementButtons';
+
 
 export default class ProjectContent extends Component {
   constructor(props) {

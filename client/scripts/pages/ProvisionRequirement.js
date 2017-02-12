@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'react-bootstrap';
-import ProvisionForm from './ProvisionForm';
-import ManagementButtons from './ManagementButtons';
+import ProvisionForm from '../components/ProvisionForm';
+import ManagementButtons from '../components/ManagementButtons';
 
 export default class ProvisionRequirement extends Component {
   constructor(props) {

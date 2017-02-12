@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import StationContact from './StationContact';
-import ContactForm from './ContactForm';
-import Provision from './Provision';
-import Confirmation from './Confirmation';
 import { ButtonGroup, Alert, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Map, Marker, TileLayer } from 'react-leaflet';
+import validator from 'validator';
+import StationContact from '../components/StationContact';
+import ContactForm from '../components/ContactForm';
+import Provision from '../components/Provision';
+import Confirmation from '../components/Confirmation';
 import StationModel from '../models/StationModel';
 import BatchModel from '../models/BatchModel';
 import AidSyncModel from '../models/AidSyncModel';
-import validator from 'validator';
 
 export default class Station extends Component {
   constructor(props) {

@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexRedirect, hashHistory } from 'react-router';
 
-import Station from './components/Station';
-import StationManager from './components/StationManager';
-import MapView from './components/MapView';
-import BatchView from './components/BatchView';
-import Login from './components/Login';
-import ProjectList from './components/ProjectList';
-import ProjectContent from './components/ProjectContent';
-import ProvisionRequirement from './components/ProvisionRequirement';
-import ProvisionActivity from './components/ProvisionActivity';
+import Station from './pages/Station';
+import StationManager from './pages/StationManager';
+import MapView from './pages/MapView';
+import BatchView from './pages/BatchView';
+import Login from './pages/Login';
+import ProjectList from './pages/ProjectList';
+import ProjectContent from './pages/ProjectContent';
+import ProvisionRequirement from './pages/ProvisionRequirement';
+import ProvisionActivity from './pages/ProvisionActivity';
 
 export default class Bifrost extends Component {
   render() {
