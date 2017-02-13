@@ -1,4 +1,4 @@
-import { fetchJSON, postJSON} from '../utils';
+import { fetchJSON, postJSON, post} from '../utils';
 
 export default class UserModel {
   static login(body, doneCallback, failCallback) {
@@ -19,14 +19,27 @@ export default class UserModel {
 
   static updateProvisionAvtivity(body, doneCallback, failCallback) {
     const token = sessionStorage.getItem('token');
+    let result;
 
     if (!token) {
       failCallback(401);
       return;
     }
 
+    let batchIds = [];
+    body.forEach(activity => {
+      if (batchIds.indexOf(activity.batchId) === -1) {
+        batchIds.push(activity.batchId);
+      }
+    });
+
     postJSON(`/api/provisionActivities?access_token=${token}`, body)
-    .then(doneCallback)
+    .then(json => result = json)
+    .then(() => {
+      const type = 'shipped';
+      return Promise.all(batchIds.map(batchId => post('/api/batches/notify', {batchId, type})));
+    })
+    .then(() => doneCallback(result))
     .catch(failCallback);
   }
 

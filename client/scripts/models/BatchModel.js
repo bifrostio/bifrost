@@ -24,7 +24,7 @@ export default class Batch {
     .then(json => {
       batch.provisionActivities = json;
     })
-    .then(() => post('/api/batches/notify', { batchId: batch.id }))
+    .then(() => post('/api/batches/notify', { batchId: batch.id, type: 'promised' }))
     .then(() => cb(null, batch))
     .catch(err => cb(err));
   }

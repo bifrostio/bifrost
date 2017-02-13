@@ -24,4 +24,12 @@ function post(url, json) {
   });
 }
 
-export {fetchJSON, fetchText, postJSON, post};
+function postForm(url, formData) {
+  let data = new FormData();
+  Object.keys(formData)
+    .forEach(key => data.append(key, formData[key]));
+
+  return fetch(url, { method: 'POST', body: data });
+}
+
+export {fetchJSON, fetchText, postJSON, post, postForm};
