@@ -179,7 +179,7 @@ export default class Station extends Component {
               <Map center={position} zoom={13}>
                 <TileLayer
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  url='//{s}.tile.osm.org/{z}/{x}/{y}.png'
+                  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                   subdomains='abc'
                 />
                 <Marker position={position}>
