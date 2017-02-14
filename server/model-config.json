@@ -45,10 +45,6 @@
     "dataSource": "db",
     "public": true
   },
-  "alert": {
-    "dataSource": null,
-    "public": true
-  },
   "user": {
     "dataSource": "db",
     "public": true
