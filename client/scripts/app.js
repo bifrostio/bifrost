@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexRedirect, hashHistory } from 'react-router';
 
 import Station from './pages/Station';
+import Landing from './pages/Landing';
 import StationManager from './pages/StationManager';
 import MapView from './pages/MapView';
 import BatchView from './pages/BatchView';
@@ -21,7 +22,8 @@ export default class Bifrost extends Component {
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path='/' component={Bifrost}>
-      <IndexRoute component={MapView}/>
+      <IndexRoute component={Landing}/>
+      <Route path='map' component={MapView} />
       <Route path='stations/:id' component={Station} />
       <Route path='officialStations/:id' component={Station} />
       <Route path='manager/station/:id' component={StationManager} >
@@ -33,6 +35,7 @@ ReactDOM.render((
       <Route path='projects' component={ProjectList} />
       <Route path='projects/:id' component={ProjectContent} />
       <Route path='batches/:id' component={BatchView} />
+      <Route path='*' component={Landing} />
     </Route>
   </Router>
 ), document.getElementById('bifrost'));
