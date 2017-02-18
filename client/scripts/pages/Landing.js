@@ -1,7 +1,22 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
+import StationModel from '../models/StationModel';
 
 export default class Landing extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      gettingStartedLink: 'map'
+    };
+  }
+
+  componentWillMount() {
+    StationModel.find((err, result) => {
+      const gettingStartedLink = result.length === 1 ? `stations/${result[0].id}` : 'map';
+      this.setState({gettingStartedLink});
+    });
+  }
 
   render() {
     return (
@@ -48,7 +63,7 @@ export default class Landing extends Component {
                             <hr className="intro-divider" />
                             <ul className="list-inline intro-social-buttons">
                                 <li>
-                                  <Link to="map" className="btn btn-default btn-lg">
+                                  <Link to={this.state.gettingStartedLink} className="btn btn-default btn-lg">
                                     <i className="fa fa-ambulance fa-fw"></i>
                                     <span className="network-name">Getting Started</span>
                                   </Link>
