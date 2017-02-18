@@ -6,16 +6,32 @@ export default class Landing extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      gettingStartedLink: 'map'
-    };
+    this.state = { stations: [] };
   }
 
   componentWillMount() {
-    StationModel.find((err, result) => {
-      const gettingStartedLink = result.length === 1 ? `stations/${result[0].id}` : 'map';
-      this.setState({gettingStartedLink});
+    StationModel.find((err, stations) => {
+      this.setState({stations});
     });
+  }
+
+  renderButtons() {
+    let items = [{icon: 'fa fa-map', to: 'map', text: '瀏覽地圖'}];
+    if (this.state.stations.length === 1) {
+      items.push({
+        icon: 'fa fa-ambulance fa-fw',
+        to: `stations/${this.state.stations[0].id}`,
+        text: '前往捐贈頁面'
+      });
+    }
+    return items.map((item, i) =>(
+      <li key={i}>
+        <Link to={item.to} className="btn btn-default btn-lg">
+          <i className={item.icon}></i>
+          <span className="network-name">{item.text}</span>
+        </Link>
+      </li>
+    ));
   }
 
   render() {
@@ -62,12 +78,7 @@ export default class Landing extends Component {
                             <h3>物資管理系統</h3>
                             <hr className="intro-divider" />
                             <ul className="list-inline intro-social-buttons">
-                                <li>
-                                  <Link to={this.state.gettingStartedLink} className="btn btn-default btn-lg">
-                                    <i className="fa fa-ambulance fa-fw"></i>
-                                    <span className="network-name">Getting Started</span>
-                                  </Link>
-                                </li>
+                                {this.renderButtons()}
                             </ul>
                         </div>
                     </div>
