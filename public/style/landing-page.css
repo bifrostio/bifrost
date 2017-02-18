@@ -42,7 +42,25 @@ h6 {
 .intro-message {
     position: relative;
     padding-top: 20%;
-    padding-bottom: 20%;
+    padding-bottom: 5%;
+}
+
+.intro-bottom .fa {
+    animation-duration: 2s;
+    animation-name: arrow-down;
+    animation-iteration-count: infinite;
+}
+
+@keyframes arrow-down {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(20px);
+        opacity: 0;
+    }
 }
 
 .intro-message > h1 {

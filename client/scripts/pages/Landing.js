@@ -83,6 +83,10 @@ export default class Landing extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="intro-bottom">
+                  <p>向下捲動查看更多資訊</p>
+                  <i className="fa fa-chevron-down" aria-hidden="true"></i>
+                </div>
             </div>
         </div>
 
