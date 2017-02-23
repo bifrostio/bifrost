@@ -293,8 +293,13 @@ cursor: pointer;
 
 .provision-item .name {
   font-weight: bold;
+  font-size: 1.2em;
 }
 
 .provision-items-row {
   margin-top: 20px;
+}
+
+.remain {
+  font-weight: bold;
 }

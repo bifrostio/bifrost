@@ -107,7 +107,7 @@ export default class Station extends Component {
     let self = this;
     let createProvision = (provision, index) => {
       return (
-        <Col key={index} xs={6} md={4}>
+        <Col key={index} xs={6} md={6}>
           <Provision
             index={index}
             official={self.state.official}

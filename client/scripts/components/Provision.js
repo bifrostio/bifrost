@@ -99,6 +99,7 @@ export default class Provision extends Component {
 
   render() {
     let secondPane, editPane, status;
+    let remain = this.props.total - this.props.shipped - this.props.promised;
 
     /* Conditional rendering for edit mode */
     if (this.props.edit) {
@@ -119,6 +120,7 @@ export default class Provision extends Component {
     if (!this.props.official) {
       status = (
         <div className="status">
+          <div className="remain">仍需要：{remain} {this.props.unit}</div>
           <div className="total">總需：{this.props.total} {this.props.unit}</div>
           <div className="shipped">已收到：{this.props.shipped}</div>
           <div className="promised">已認領：{this.props.promised}</div>

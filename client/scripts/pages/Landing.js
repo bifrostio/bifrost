@@ -36,7 +36,7 @@ export default class Landing extends Component {
 
   render() {
     return (
-      <div>
+      <div className="landing">
         <nav className="navbar navbar-default navbar-fixed-top topnav" role="navigation">
             <div className="container topnav">
                 <div className="navbar-header">
