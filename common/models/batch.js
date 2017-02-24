@@ -29,7 +29,7 @@ module.exports = function(Batch) {
       }
 
       const domain = Batch.app.models.Email.getDataSource().settings.domain;
-      const from = `No reply <no-reply@${domain}>`;
+      const from = `物資地圖 <bifrost@${domain}>`;
       const to = instance._contact.email;
 
       Batch.app.models.Email.send({ to, from, subject, text })
