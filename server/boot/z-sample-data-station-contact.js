@@ -17,10 +17,15 @@ module.exports = function(app, done) {
     }
   ];
 
-  app.models.Station.find((err, stations) => {
-    var tasks = stations.map((station, i) => function(callback) {
-      station.contacts.create(contacts[i], callback);
+  if (process.env.NODE_ENV !== 'production') {
+    app.models.Station.find((err, stations) => {
+      var tasks = stations.map((station, i) => function(callback) {
+        station.contacts.create(contacts[i], callback);
+      });
+      async.series(tasks, done);
     });
-    async.series(tasks, done);
-  });
+  }
+  else {
+    done();
+  }
 };

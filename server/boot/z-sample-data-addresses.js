@@ -18,11 +18,16 @@ module.exports = function(app, done) {
     }
   ];
 
-  app.models.Contact.find((err, contacts) => {
-    log(err, contacts);
-    var tasks = contacts.map((c, i) => function(callback) {
-      c.address.create(addresses[i], callback);
+  if (process.env.NODE_ENV !== 'production') {
+    app.models.Contact.find((err, contacts) => {
+      log(err, contacts);
+      var tasks = contacts.map((c, i) => function(callback) {
+        c.address.create(addresses[i], callback);
+      });
+      async.series(tasks, done);
     });
-    async.series(tasks, done);
-  });
+  }
+  else {
+    done();
+  }
 };

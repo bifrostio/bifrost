@@ -41,17 +41,30 @@ module.exports = function(app, done) {
     { name: '泡麵', unit: '箱', total: 50}
   ];
 
-  app.dataSources.db.automigrate(function() {
-    var tasks = [
-      callback => app.models.Contact.create(contacts, callback),
-      callback => app.models.User.create(users, callback),
-      callback => app.models.Project.create(projects, callback),
-      callback => app.models.Batch.create(batches, callback),
-      callback => app.models.ProvisionRequirement.create(provisions, callback)
-    ];
+  if (process.env.NODE_ENV !== 'production') {
+    app.dataSources.db.automigrate(function() {
+      var tasks = [
+        callback => app.models.Contact.create(contacts, callback),
+        callback => app.models.User.create(users, callback),
+        callback => app.models.Project.create(projects, callback),
+        callback => app.models.Batch.create(batches, callback),
+        callback => app.models.ProvisionRequirement.create(provisions, callback)
+      ];
 
-    async.series(tasks, done);
-  });
-
-
+      async.series(tasks, done);
+    });
+  }
+  else {
+    var emails = users.map(user => {
+      return {email: user.email};
+    });
+    app.models.User.find({where: {or: emails}}, (err, result) => {
+      if (result.length === 0) {
+        app.models.User.create(users, done);
+      }
+      else {
+        done();
+      }
+    });
+  }
 };
