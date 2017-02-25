@@ -4,5 +4,10 @@
   },
   "exclude": [
       "node_modules", "dist"
-  ]
+  ],
+  "typeAcquisition": {
+      "include": [
+          "react"
+      ]
+  }
 }
