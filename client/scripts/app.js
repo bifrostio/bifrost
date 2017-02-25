@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexRedirect, hashHistory } from 'react-router';
 
+import Stations from './pages/Stations';
 import Station from './pages/Station';
 import Landing from './pages/Landing';
 import StationManager from './pages/StationManager';
@@ -24,6 +25,7 @@ ReactDOM.render((
     <Route path='/' component={Bifrost}>
       <IndexRoute component={Landing}/>
       <Route path='map' component={MapView} />
+      <Route path='stations' component={Stations} />
       <Route path='stations/:id' component={Station} />
       <Route path='officialStations/:id' component={Station} />
       <Route path='manager/station/:id' component={StationManager} >
