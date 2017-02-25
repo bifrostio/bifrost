@@ -59,7 +59,6 @@
   },
   "description": "bifrost",
   "engines": {
-    "node": "4.2.6",
-    "npm": "3.8.2"
+    "node": "6.x"
   }
 }
