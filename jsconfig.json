@@ -3,11 +3,11 @@
     "target": "ES6"
   },
   "exclude": [
-      "node_modules", "dist"
+    "node_modules", "dist"
   ],
   "typeAcquisition": {
-      "include": [
-          "react"
-      ]
+    "include": [
+      "react"
+    ]
   }
 }

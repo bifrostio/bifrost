@@ -8,3 +8,6 @@ html-report
 lcov.info
 dist
 .vscode
+.env
+cSpell.json
+typings
