@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
-export default class Titlebar extends Component {
+export default class TitleBar extends Component {
   render() {
     let adminLink;
     if (this.props.path !== 'login') {

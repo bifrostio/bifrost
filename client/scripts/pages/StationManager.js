@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Grid, Row, Col} from 'react-bootstrap';
 
 import StationContact from '../components/StationContact';
-import Titlebar from '../components/Titlebar';
+import TitleBar from '../components/TitleBar';
 import UserModel from '../models/UserModel';
 import RequirementModel from '../models/ProvisionRequirementModel';
 
@@ -89,7 +89,7 @@ export default class StationManager extends Component {
 
     return (
       <div>
-        <Titlebar />
+        <TitleBar />
         <div className="container">
           <Grid className="station-page">
             <Row>

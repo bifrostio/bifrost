@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Jumbotron, Button, Input} from 'react-bootstrap';
 import Project from '../components/Project';
-import Titlebar from '../components/Titlebar';
+import TitleBar from '../components/TitleBar';
 import ProjectModel from '../models/ProjectModel';
 
 export default class ProjectList extends Component {
@@ -51,7 +51,7 @@ export default class ProjectList extends Component {
 
   handleCreateFail() {
     this.setState({
-      createErrorMsg: 'Opps! Try again!'
+      createErrorMsg: 'Oops! Try again!'
     });
   }
 
@@ -72,7 +72,7 @@ export default class ProjectList extends Component {
 
     return (
       <div>
-        <Titlebar />
+        <TitleBar />
         <div className="container project-list">
           <h1>專案列表</h1>
           <Jumbotron>
