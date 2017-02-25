@@ -18,27 +18,23 @@ export default class Login extends Component {
     this.handleLoginFail = this.handleLoginFail.bind(this);
   }
 
-  handleLogin() {
+  handleLogin(event) {
     const email = this.refs.email.getValue();
     const password = this.refs.password.getValue();
+    let error = {};
 
     if (!email) {
-      this.setState({
-        error: '',
-        emailError: '請輸入帳號',
-        passwordError: ''
-      });
-
-      return;
+      error.emailError = '請輸入帳號';
     }
 
     if (!password) {
-      this.setState({
-        error: '',
-        emailError: '',
-        passwordError: '請輸入密碼'
-      });
+      error.passwordError = '請輸入密碼';
+    }
 
+    if (Object.keys(error).length > 0) {
+      this.setState(error);
+
+      event.preventDefault();
       return;
     }
 
@@ -68,21 +64,23 @@ export default class Login extends Component {
         <Titlebar path={this.props.route.path} />
         <div className="container">
           <Panel className="login-wrap" header="Login">
-            <Input type="email"
-              ref="email"
-              label="Email Address"
-              placeholder="test@gmail.com"
-              help={this.state.emailError} />
-            <Input type="password"
-              ref="password"
-              label="Password"
-              placeholder="Enter password"
-              help={this.state.passwordError} />
-            <div className="login-warning">{this.state.error}</div>
-            <div className="btn-wrap">
-              <a href="">忘記密碼?</a>
-              <Button bsStyle="primary" onClick={this.handleLogin}>登入</Button>
-            </div>
+            <form>
+              <Input type="email"
+                ref="email"
+                label="Email Address"
+                placeholder="test@gmail.com"
+                help={this.state.emailError} />
+              <Input type="password"
+                ref="password"
+                label="Password"
+                placeholder="Enter password"
+                help={this.state.passwordError} />
+              <div className="login-warning">{this.state.error}</div>
+              <div className="btn-wrap">
+                <a href="">忘記密碼?</a>
+                <Button type="submit" bsStyle="primary" onClick={this.handleLogin}>登入</Button>
+              </div>
+            </form>
           </Panel>
         </div>
       </div>
