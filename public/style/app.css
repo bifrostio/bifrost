@@ -313,3 +313,31 @@ cursor: pointer;
 .remain {
   font-weight: bold;
 }
+
+.diagram-description {
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+.diagram-description span {
+  margin: 5px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.diagram-description i {
+  font-size: 1.7em;
+  vertical-align: middle;
+}
+
+.diagram-description .shipped {
+  color: #5cb85c;
+}
+
+.diagram-description .promised {
+  color: #f0ad4e;
+}

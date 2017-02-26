@@ -189,6 +189,12 @@ export default class Station extends Component {
               </Map>
             </Col>
           </Row>
+          <Row>
+            <div className="diagram-description">
+              <span><i className="shipped fa fa-circle" aria-hidden="true"></i> 已經收到的物資比例</span>
+              <span><i className="promised fa fa-circle" aria-hidden="true"></i> 已認領但尚未收到的物資比例</span>
+            </div>
+          </Row>
           {editDescription}
           <Row className="provision-items-row">
             {provisions.map(createProvision)}
