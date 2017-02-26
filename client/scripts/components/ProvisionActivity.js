@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {ProgressBar, Alert, Button, Modal, FormControls, Input, Label} from 'react-bootstrap';
-import TitleBar from '../components/TitleBar';
 import UserModel from '../models/UserModel';
 
 export default class ProvisionActivity extends Component {
@@ -265,7 +264,6 @@ export default class ProvisionActivity extends Component {
 
     return (
       <div>
-        <TitleBar />
         <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
           <Modal.Header closeButton>
             <Modal.Title>點收物資</Modal.Title>

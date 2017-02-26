@@ -11,8 +11,8 @@ import BatchView from './pages/BatchView';
 import Login from './pages/Login';
 import ProjectList from './pages/ProjectList';
 import ProjectContent from './pages/ProjectContent';
-import ProvisionRequirement from './pages/ProvisionRequirement';
-import ProvisionActivity from './pages/ProvisionActivity';
+import ProvisionRequirement from './components/ProvisionRequirement';
+import ProvisionActivity from './components/ProvisionActivity';
 
 export default class Bifrost extends Component {
   render() {
