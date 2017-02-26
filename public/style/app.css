@@ -36,11 +36,15 @@ input[type=number]::-webkit-outer-spin-button {
 
 .leaflet-container {
   position: absolute;
-  top: 50px;
+  top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   z-index: 1;
+}
+
+.map-view .leaflet-container {
+  top: 50px;
 }
 
 /* Layers end */
