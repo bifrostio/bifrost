@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'react-bootstrap';
+import TitleBar from '../components/TitleBar';
 import ProvisionForm from '../components/ProvisionForm';
 import ManagementButtons from '../components/ManagementButtons';
 
@@ -118,6 +119,7 @@ export default class ProvisionRequirement extends Component {
 
     return (
       <div className="pro-requirement">
+        <TitleBar />
         {addButton}
         {addProvisionPanel}
         <table className="table">

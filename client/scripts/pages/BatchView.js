@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Panel, FormControls } from 'react-bootstrap';
+import TitleBar from '../components/TitleBar';
 import ProvisionInformation from '../components/ProvisionInformation';
 import BatchModel from '../models/BatchModel';
 
@@ -44,6 +45,7 @@ export default class BatchView extends Component {
     }
     return (
       <div className="batch-page container">
+        <TitleBar />
         <p>您欲捐贈的物資已經登記，請記下物資寄送的資訊，並且將物資寄送於此：</p>
         <Panel header="寄送資訊" bsStyle="primary">
           <form className="form-horizontal">

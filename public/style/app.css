@@ -25,12 +25,18 @@ input[type=number]::-webkit-outer-spin-button {
   background: white;
   width: 400px;
   left: 50px;
-  top: 10px;
+  top: 60px;
+}
+
+.map-view .title-bar {
+  z-index: 3;
+  position: absolute;
+  width: 100%;
 }
 
 .leaflet-container {
   position: absolute;
-  top: 0;
+  top: 50px;
   left: 0;
   height: 100%;
   width: 100%;

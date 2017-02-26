@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
+import TitleBar from '../components/TitleBar';
 import StationMap from '../components/StationMap';
 import StationList from '../components/StationList';
 import StationModel from '../models/StationModel';
@@ -77,7 +78,8 @@ export default class MapView extends Component {
     }
 
     return (
-      <div>
+      <div className="map-view">
+        <TitleBar />
         <StationList
           showOfficialStations={this.state.showOfficialStations}
           stations={stations}
@@ -85,7 +87,6 @@ export default class MapView extends Component {
           officialStations={this.state.officialStations}
           onHover={this.handleHover} />
         <StationMap markers={markers} selected={this.state.selected} />
-        <Link to="login" className="btn btn-primary login-btn">登入</Link>
       </div>
     );
   }

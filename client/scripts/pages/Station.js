@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { ButtonGroup, Alert, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import validator from 'validator';
+import TitleBar from '../components/TitleBar';
 import StationContact from '../components/StationContact';
 import ContactForm from '../components/ContactForm';
 import Provision from '../components/Provision';
@@ -167,6 +168,7 @@ export default class Station extends Component {
 
     return (
       <div>
+        <TitleBar />
         <Grid className="station-page">
           <Row>
             <Col xs={12} md={6}>
