@@ -32,8 +32,12 @@ export default class ProjectList extends Component {
   handleFail() {
   }
 
-  handleCreateProject() {
+  handleCreateProject(event) {
+    event.preventDefault();
     const name = this.refs.projectName.getValue();
+    if (!name) {
+      return;
+    }
     const project = {name: name};
 
     ProjectModel.createProject(project, this.handleCreateSuccess, this.handleCreateFail);
@@ -77,14 +81,18 @@ export default class ProjectList extends Component {
           <h1>專案列表</h1>
           <Jumbotron>
             <p>由此開始建立新專案</p>
-            <div>
+            <form onSubmit={this.handleCreateProject}>
               <Input type="text"
                 ref="projectName"
                 className="input-project-name"
                 help={this.state.createErrorMsg}
                 placeholder="請輸入專案名稱" />
-              <Button bsStyle="primary" className="start-create-project" onClick={this.handleCreateProject}>建立</Button>
-            </div>
+              <Button type="submit" 
+                bsStyle="primary"
+                className="start-create-project">
+                建立
+              </Button>
+            </form>
 
           </Jumbotron>
           {projectList}
