@@ -41,4 +41,14 @@ export default class Batch {
     .then(json => cb(null, json))
     .catch(err => cb(err));
   }
+
+  static searchByTrackingNumber(number) {
+    let filter = {
+      where: {trackingNumber: number},
+      include: ['provisionActivities']
+    };
+    filter = encodeURIComponent(JSON.stringify(filter));
+
+    return fetchJSON(`/api/batches?filter=${filter}`);
+  }
 }

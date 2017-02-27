@@ -62,9 +62,6 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 10%;
 }
 
-.project-list {
-}
-
 .project-list .jumbotron {
   margin-top: 60px;
 }
@@ -230,15 +227,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .provision-form .container {
-max-width: 860px;
+  max-width: 860px;
 }
 
 .provision-form {
-max-width: 860px;
+  max-width: 860px;
 }
 
 .batches-item {
-cursor: pointer;
+  cursor: pointer;
 }
 
 .batches-item:hover {
@@ -341,3 +338,16 @@ cursor: pointer;
 .diagram-description .promised {
   color: #f0ad4e;
 }
+
+.search-toolbar {
+  float: right;
+  margin-bottom: 32px;
+  padding: 0;  
+}
+
+.not-received {
+  margin-right: 8px;
+  font-size: 16px;
+  font-weight: bold;
+} 
+

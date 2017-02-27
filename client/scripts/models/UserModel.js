@@ -17,7 +17,7 @@ export default class UserModel {
     });
   }
 
-  static updateProvisionAvtivity(body, doneCallback, failCallback) {
+  static updateProvisionActivity(body, doneCallback, failCallback) {
     const token = sessionStorage.getItem('token');
     let result;
 

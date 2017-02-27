@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {ProgressBar, Alert, Button, Modal, FormControls, Input, Label} from 'react-bootstrap';
+import {ProgressBar, Alert, Button, Modal, Input, Label} from 'react-bootstrap';
 import UserModel from '../models/UserModel';
+import BatchModel from '../models/BatchModel';
 
 export default class ProvisionActivity extends Component {
   constructor(props) {
@@ -9,15 +10,18 @@ export default class ProvisionActivity extends Component {
     this.state = {
       stationId: parseInt(this.props.params.id),
       batchId: 0,
-      batches: [],
+      searchKey: '',
+      batches: props.batches,
       curBatchActivities: [],
       showAlert: false,
       showSuccessAlert: false,
+      showSearchNoResultAlert: false,
       showModal: false,
       isFormValidate: false
     };
 
     this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
+    this.handleSearchNoResultAlertDismiss = this.handleSearchNoResultAlertDismiss.bind(this);
     this.handleSuccessAlertDismiss = this.handleSuccessAlertDismiss.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleClickBatch = this.handleClickBatch.bind(this);
@@ -26,6 +30,47 @@ export default class ProvisionActivity extends Component {
     this.handleUpdateFail = this.handleUpdateFail.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.checkValidate = this.checkValidate.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSearchKeyChange = this.handleSearchKeyChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({batches: nextProps.batches});
+  }
+
+  handleSearch(event) {
+    const {searchKey} = this.state;
+
+    BatchModel.searchByTrackingNumber(searchKey)
+      .then((data) => {
+        if (data && data.length > 0) {
+          const batch = data[0];
+
+          this.setState({
+            batchId: batch.id,
+            curBatchActivities: batch.provisionActivities,
+            showModal: true
+          });
+        } else {
+          // did not find any match batch
+          this.setState({showSearchNoResultAlert: true});
+        }
+      })
+      .catch(() => {
+        this.setState({showAlert: true});
+      });
+
+    event.preventDefault();
+  }
+
+  handleSearchKeyChange(event) {
+    this.setState({searchKey: event.target.value});
+  }
+
+  handleSearchNoResultAlertDismiss() {
+    this.setState({
+      showSearchNoResultAlert: false
+    });
   }
 
   handleAlertDismiss() {
@@ -47,7 +92,7 @@ export default class ProvisionActivity extends Component {
   }
 
   handleClickBatch(id) {
-    const batch = this.props.batches[id];
+    const batch = this.state.batches[id];
 
     if (!batch || !batch.provisionActivities) {
       return;
@@ -71,25 +116,46 @@ export default class ProvisionActivity extends Component {
     })
     .forEach( key => {
       const shipped = parseInt(this.refs[`act${key}`].getValue()) || 0;
-      const obj = {
-        shipped: shipped,
-        provisionRequirementId: key,
-        batchId: this.state.batchId,
-        stationId: this.state.stationId
-      };
 
-      body.push(obj);
+      if (shipped > 0) {
+        const obj = {
+          shipped: shipped,
+          provisionRequirementId: key,
+          batchId: this.state.batchId,
+          stationId: this.state.stationId
+        };
+
+        body.push(obj);
+      }
     });
 
-    UserModel.updateProvisionAvtivity(body, this.handleUpdateSuccess, this.handleUpdateFail);
+    if (body.length <= 0) {
+      this.handleCloseModal();
+      return;
+    }
+
+    UserModel.updateProvisionActivity(body, this.handleUpdateSuccess, this.handleUpdateFail);
 
     this.handleCloseModal();
   }
 
-  handleUpdateSuccess() {
-    window.location.reload();
+  handleUpdateSuccess(newProvisionActivities) {
+    if (!newProvisionActivities || newProvisionActivities.length <= 0) {
+      return;
+    }
+
+    const {batchId} = newProvisionActivities[0];
+    let newBatches = {...this.state.batches};
+
+    let newBatch = newBatches[batchId];
+
+    newProvisionActivities.forEach((provisionActivity) => {
+      newBatch.provisionActivities.push(provisionActivity);
+    });
+
     this.setState({
-      showSuccessAlert: true
+      showSuccessAlert: true,
+      batches: newBatches
     });
   }
 
@@ -100,8 +166,9 @@ export default class ProvisionActivity extends Component {
   }
 
   renderBatches() {
-    const batches = this.props.batches;
+    const {batches} = this.state;
     let batchesTable = Object.keys(batches).map(key => {
+
       const item = batches[key];
       const contact = item._contact;
       let requirements = {};
@@ -170,14 +237,26 @@ export default class ProvisionActivity extends Component {
     this.setState({isFormValidate: isValid});
   }
 
-  renderAlert() {
+  renderSearchNoResultAlert() {
+    if (!this.state.showSearchNoResultAlert) {
+      return;
+    }
+
+    return (
+      <Alert bsStyle="danger" onDismiss={this.handleSearchNoResultAlertDismiss}>
+        <h4>{`沒有找到追蹤編號 ${this.state.searchKey} 的資料`}</h4>
+      </Alert>
+    );
+  }
+
+  renderErrorAlert() {
     if (!this.state.showAlert) {
       return;
     }
 
     return (
       <Alert bsStyle="danger" onDismiss={this.handleAlertDismiss}>
-        <h4>Oh snap! You got an error!</h4>
+        <h4>Oops! You got an error!</h4>
         <p>Please wait a moment, and try again!</p>
       </Alert>
     );
@@ -233,16 +312,19 @@ export default class ProvisionActivity extends Component {
       const remain = (promised - shipped) < 0 ? 0 : promised - shipped;
 
       return (
-        <FormControls.Static
-          key={key}
-          labelClassName={labelCol}
-          wrapperClassName={inputCol}
-          label={requirement && requirement.name}
-          value={`預計捐贈：${promised}，已收到：${shipped}，尚未收到：${remain}`} />
+        <div key={key}>
+          <label className={`form-control-static ${labelCol}`}>
+            <span>{requirement && requirement.name}</span>
+          </label>
+          <div className={`form-control-static ${inputCol}`}>
+            <span className="not-received">{`尚未收到：${remain}`}</span>
+            <span><small>{`(預計捐贈：${promised}，已收到：${shipped})`}</small></span>
+          </div>
+        </div>
       );
     });
 
-    const comfirmForm = Object.keys(requirements)
+    const confirmForm = Object.keys(requirements)
     .filter(key => {
       const promised = reqCount[key] && reqCount[key].promised || 0;
       return promised > 0;
@@ -275,7 +357,7 @@ export default class ProvisionActivity extends Component {
 
             <h4><Label bsStyle="success">實際收到物資數量</Label></h4>
             <form className="form-horizontal">
-              {comfirmForm}
+              {confirmForm}
             </form>
           </Modal.Body>
           <Modal.Footer>
@@ -290,8 +372,24 @@ export default class ProvisionActivity extends Component {
   render() {
     return (
       <div className="pro-activity">
-        {this.renderAlert()}
+        {this.renderErrorAlert()}
         {this.renderSuccessAlert()}
+        {this.renderSearchNoResultAlert()}
+        <div className="search-toolbar col-lg-3">
+          <form onSubmit={this.handleSearch}>
+            <div className="input-group">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="搜尋追蹤編號..."
+                value={this.state.searchKey}
+                onChange={this.handleSearchKeyChange} />
+              <span className="input-group-btn">
+                <button type="submit" className="btn btn-info">搜尋</button>
+              </span>
+            </div>
+          </form>
+        </div>
         <table className="table">
          <thead>
            <tr>
