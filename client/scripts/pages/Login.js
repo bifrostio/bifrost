@@ -23,6 +23,8 @@ export default class Login extends Component {
     const password = this.refs.password.getValue();
     let error = {};
 
+    event.preventDefault();
+
     if (!email) {
       error.emailError = '請輸入帳號';
     }
@@ -33,13 +35,10 @@ export default class Login extends Component {
 
     if (Object.keys(error).length > 0) {
       this.setState(error);
-
-      event.preventDefault();
-      return;
+    } else {
+      const body = {email: email, password: password};
+      UserModel.login(body, this.handleLoginSuccess, this.handleLoginFail);
     }
-
-    const body = {email: email, password: password};
-    UserModel.login(body, this.handleLoginSuccess, this.handleLoginFail);
   }
 
   handleLoginSuccess(id) {
@@ -64,7 +63,7 @@ export default class Login extends Component {
         <TitleBar path={this.props.route.path} />
         <div className="container">
           <Panel className="login-wrap" header="Login">
-            <form>
+            <form onSubmit={this.handleLogin}>
               <Input type="email"
                 ref="email"
                 label="Email Address"
@@ -78,7 +77,7 @@ export default class Login extends Component {
               <div className="login-warning">{this.state.error}</div>
               <div className="btn-wrap">
                 <a href="">忘記密碼?</a>
-                <Button type="submit" bsStyle="primary" onClick={this.handleLogin}>登入</Button>
+                <Button type="submit" bsStyle="primary">登入</Button>
               </div>
             </form>
           </Panel>
