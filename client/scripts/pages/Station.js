@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
-import { ButtonGroup, Alert, Grid, Row, Col, Button } from 'react-bootstrap';
-import { Map, Marker, TileLayer } from 'react-leaflet';
-import validator from 'validator';
+import { Grid, Row, Col } from 'react-bootstrap';
+import {Link} from 'react-router';
 import TitleBar from '../components/TitleBar';
-import StationContact from '../components/StationContact';
-import ContactForm from '../components/ContactForm';
+import StationInformation from '../components/StationInformation';
 import Provision from '../components/Provision';
-import Confirmation from '../components/Confirmation';
 import StationModel from '../models/StationModel';
-import BatchModel from '../models/BatchModel';
 import AidSyncModel from '../models/AidSyncModel';
 
 export default class Station extends Component {
@@ -47,73 +43,26 @@ export default class Station extends Component {
     }
   }
 
-  toggleEditMode() {
-    this.setState({edit: !this.state.edit});
-  }
-
-  toggleConfirmation() {
-    this.setState({showConfirmation: !this.state.showConfirmation});
-  }
-
-  disableNext() {
-    let donor = this.state.donor;
-    if (!donor.name || !donor.phone || !donor.email) {
-      return true;
-    }
-
-    if (!validator.isEmail(donor.email)) {
-      return true;
-    }
-
-    if (!validator.isNumeric(donor.phone)) {
-      return true;
-    }
-
-    return false;
-  }
-
-  updateDonor(donor) {
-    this.setState({donor: donor});
-  }
-
-  updateVolume(index, volume) {
-    this.state.station.provisionRequirements[index].volume = volume;
-  }
-
-  createBatch() {
-    const stationId = this.state.station.id;
-    this.toggleConfirmation();
-    let batch = {
-      createdDate: Date(),
-      updatedDate: Date(),
-      stationId: this.state.station.id,
-      note: this.state.donor.note,
-      _contact: this.state.donor
-    };
-    let activities = this.state.station.provisionRequirements.map(req => {
-      let promised = req.volume;
-      return {
-        stationId: this.state.station.id,
-        provisionRequirementId: req.id,
-        promised: promised
-      };
-    });
-    BatchModel.create(batch, activities, (err, data) => {
-      if (!err) {
-        window.location = `/#/stations/${stationId}/success/${data.trackingNumber}`;
-      }
-    });
-  }
-
-  render() {
-    let self = this;
-    let createProvision = (provision, index) => {
+  renderDiagramDescription() {
+    if (!this.state.official) {
       return (
-        <Col key={index} xs={6} md={6}>
+        <Row>
+          <div className="diagram-description">
+            <span><i className="shipped fa fa-circle" aria-hidden="true"></i> 已經收到的物資比例</span>
+            <span><i className="promised fa fa-circle" aria-hidden="true"></i> 已認領但尚未收到的物資比例</span>
+          </div>
+        </Row>
+      );
+    }
+  }
+
+  createProvision(provision, index) {
+    if (!this.state.official) {
+      return (
+        <Col key={index} xs={6} md={4}>
           <Provision
             index={index}
-            official={self.state.official}
-            edit={self.state.edit}
+            edit={this.state.edit}
             name={provision.name}
             description={provision.description}
             category={provision.category}
@@ -123,39 +72,78 @@ export default class Station extends Component {
             shipped={provision.shipped}
             promised={provision.promised}
             unit={provision.unit}
-            updateVolume={this.updateVolume.bind(this)}
           />
         </Col>
       );
-    };
+    }
+    else {
+      let closeExpired, expired;
+      if (provision.expired) {
+        let d = new Date(provision.expired);
+        let today = new Date();
+        expired = `${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
 
-    let contacts = this.state.station._contacts || [];
-    let provisions = this.state.station.provisionRequirements || [];
-    let position;
-
-    position = this.state.station.latitude ?
-       [this.state.station.latitude, this.state.station.longitude] :
-       [0, 0];
-    let buttons, editDescription, contactForm;
-
-    if (this.state.edit) {
-      editDescription = <Alert className="station-edit-desc" bsStyle="info">請填寫您所要捐贈的物資數量與您的聯絡資訊並按下一步 </Alert>;
-      buttons = (
-        <ButtonGroup bsSize="large">
-          <Button bsStyle="default" onClick={this.toggleEditMode.bind(this)}>取消</Button>
-          <Button disabled={this.disableNext()} bsStyle="primary" onClick={this.toggleConfirmation.bind(this)}>下一步</Button>
-        </ButtonGroup>
+        today.setDate(1);
+        today.setMonth(today.getMonth() + 6);
+        closeExpired = today > d ? 'danger' : '';
+      }
+      else {
+        expired = '無期限資訊';
+      }
+      return (
+        <tr key={index} className={closeExpired}>
+          <td>{provision.name}</td>
+          <td>{provision.total}</td>
+          <td>{expired}</td>
+          <td>{provision.category}</td>
+        </tr>
       );
-      contactForm = (
-        <Row>
-          <ContactForm contact={this.state.donor}
-                       updateContact={this.updateDonor.bind(this)}></ContactForm>
+    }
+  }
+
+  renderProvisions() {
+    let provisions = this.state.station.provisionRequirements || [];
+    if (!this.state.official) {
+      return (
+        <Row className="provision-items-row">
+          {provisions.map(this.createProvision.bind(this))}
         </Row>
       );
     }
-    else if (!this.state.official) {
-      buttons = (
-        <Button bsSize="large" bsStyle="primary" onClick={this.toggleEditMode.bind(this)}>捐贈</Button>
+    else {
+      return (
+        <Row className="provision-items-row">
+          <div className="alert alert-info" role="alert">
+            標示紅色為六個月內即將過期
+          </div>
+          <table className="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>名稱</th>
+                <th>數量</th>
+                <th>期限</th>
+                <th>分類</th>
+              </tr>
+            </thead>
+            <tbody>
+              {provisions.map(this.createProvision.bind(this))}
+            </tbody>
+          </table>
+        </Row>
+      );
+    }
+  }
+
+  render() {
+    let button;
+
+    if (!this.state.official) {
+      button = (
+        <Link
+          to={`/stations/${this.state.station.id}/donation`}
+          className="btn-lg btn btn-primary">
+          捐贈
+        </Link>
       );
     }
 
@@ -163,48 +151,15 @@ export default class Station extends Component {
       <div>
         <TitleBar />
         <Grid className="station-page">
-          <Row>
-            <Col xs={12} md={6}>
-              <h1>{this.state.station.name}</h1>
-              {contacts.map((c, index) => {
-                return (<StationContact key={index} contact={c} />);
-              })}
-            </Col>
-            <Col xs={12} md={6} className="minimap">
-              <Map center={position} zoom={13}>
-                <TileLayer
-                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                  subdomains='abc'
-                />
-                <Marker position={position}>
-                </Marker>
-              </Map>
-            </Col>
-          </Row>
-          <Row>
-            <div className="diagram-description">
-              <span><i className="shipped fa fa-circle" aria-hidden="true"></i> 已經收到的物資比例</span>
-              <span><i className="promised fa fa-circle" aria-hidden="true"></i> 已認領但尚未收到的物資比例</span>
-            </div>
-          </Row>
-          {editDescription}
-          <Row className="provision-items-row">
-            {provisions.map(createProvision)}
-          </Row>
-          {contactForm}
+          <StationInformation station={this.state.station} />
+
+          {this.renderDiagramDescription()}
+          {this.renderProvisions()}
+
           <Row className="text-right station-buttons">
-            {buttons}
+            {button}
           </Row>
         </Grid>
-
-        <Confirmation
-          contact={this.state.donor}
-          provisions={this.state.station.provisionRequirements}
-          submit={this.createBatch.bind(this)}
-          hide={this.toggleConfirmation.bind(this)}
-          show={this.state.showConfirmation} />
-
       </div>
     );
   }

@@ -1,30 +1,38 @@
 import React, {Component} from 'react';
-import { Modal, Button } from 'react-bootstrap';
 import ProvisionInformation from './ProvisionInformation';
+import WizardButtons from './WizardButtons';
 
 export default class Confirmation extends Component {
-  render() {
-    let disabled;
-    if (this.props.provisions) {
-      disabled = this.props.provisions.every(p => p.volume === 0);
-    }
-    return (
-      <Modal show={this.props.show} onHide={this.props.hide.bind(this)}>
-        <Modal.Header closeButton>
-          <Modal.Title>捐贈資訊</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>請確認以下的資訊無誤，按下送出後將會記錄此筆捐贈資訊。</p>
+  constructor(props) {
+    super(props);
+    this.submit = this.submit.bind(this);
+    this.state = {submitting: false};
+  }
 
-          <hr />
-          <ProvisionInformation {...this.props} />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button disabled={disabled}
-                  bsStyle="primary" onClick={this.props.submit}>送出</Button>
-          <Button onClick={this.props.hide.bind(this)}>關閉</Button>
-        </Modal.Footer>
-      </Modal>
+  submit() {
+    this.setState({submitting: true});
+    this.props.submit();
+  }
+
+  render() {
+    return (
+      <div className="confirmation">
+        <p>請確認以下的資訊無誤，按下送出後將會記錄此筆捐贈資訊。</p>
+
+        <hr />
+        <div className="panel panel-info">
+          <div className="panel-heading">確認資訊</div>
+          <div className="panel-body">
+            <ProvisionInformation {...this.props} />
+          </div>
+        </div>
+
+        <WizardButtons
+          submitting={this.state.submitting}
+          submit={this.submit}
+          back={this.props.back}
+        />
+      </div>
     );
   }
 }

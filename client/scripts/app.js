@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexRedirect, hashHistory } from 'react-router';
 
 import Stations from './pages/Stations';
+import DonationWizard from './pages/DonationWizard';
 import Station from './pages/Station';
-import Success from './pages/Success';
 import Landing from './pages/Landing';
 import StationManager from './pages/StationManager';
 import MapView from './pages/MapView';
@@ -27,7 +27,7 @@ ReactDOM.render((
       <Route path='map' component={MapView} />
       <Route path='stations' component={Stations} />
       <Route path='stations/:id' component={Station} />
-      <Route path='stations/:id/success/:trackingnumber' component={Success} />
+      <Route path='stations/:id/donation' component={DonationWizard} />
       <Route path='officialStations/:id' component={Station} />
       <Route path='manager/station/:id' component={StationManager} >
         <IndexRedirect to='requirement' />

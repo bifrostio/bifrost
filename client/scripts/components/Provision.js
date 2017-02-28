@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import { Glyphicon, ProgressBar } from 'react-bootstrap';
-import { Input, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import Range from 'react-range';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 class Progress extends Component {
   render() {
     const shipped = this.props.shipped / this.props.total * 100;
-    const promised = (this.props.promised - this.props.shipped) /
-                     this.props.total*100;
+    const promised = (this.props.promised) / this.props.total*100;
     return (
       <div className="progress">
         <ProgressBar>
@@ -19,118 +17,29 @@ class Progress extends Component {
   }
 }
 
-class Volume extends Component {
-  handleChange(e) {
-    this.props.updateVolume(e.target.value);
-  }
-
-  render() {
-    let max = this.props.total - this.props.promised;
-    return (
-      <div className="volume">
-        <Range value={this.props.volume} max={max}
-               onChange={this.handleChange.bind(this)} />
-      </div>
-    );
-  }
-}
-
-class VolumeInputBox extends Component {
-  handleChange() {
-    this.props.updateVolume(this.refs.input.getValue());
-  }
-
-  render() {
-    return (
-      <Input
-        onChange={this.handleChange.bind(this)}
-        value={this.props.volume}
-        type="text" ref="input" label="捐贈數量" />
-    );
-  }
-}
-
 export default class Provision extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      volume: 0
-    };
+
+    this.state = {hover: false};
   }
 
-  updateVolume(vol) {
-    this.setState({volume: vol});
-    this.props.updateVolume(this.props.index, vol);
-  }
-
-  renderOfficial() {
-    let date;
-
-    let closeExpired, expired;
-
-    if (this.props.expired) {
-      let d = new Date(this.props.expired);
-      let today = new Date();
-      date = `${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
-
-      today.setDate(1);
-      today.setMonth(today.getMonth() + 6);
-      closeExpired = today > d ? 'expired-warning' : '';
-    }
-
-    if (date) {
-      expired = (
-        <div className="expired">
-          期限：<span className={closeExpired}>{date}</span>
-        </div>
-      );
-    }
-
-    let status = (
-      <div className="status">
-        數量： <span className="official-total">{this.props.total} {this.props.unit}</span>
-        {expired}
-        <div className="category">分類：{this.props.category}</div>
-      </div>
-    );
-
-    return status;
+  touch() {
+    this.setState({hover: !this.state.hover});
   }
 
   render() {
-    let secondPane, editPane, status;
+    let status;
     let remain = this.props.total - this.props.shipped - this.props.promised;
 
-    /* Conditional rendering for edit mode */
-    if (this.props.edit) {
-      secondPane = <Volume
-                      {...this.props}
-                       volume={this.state.volume}
-                       updateVolume={this.updateVolume.bind(this)} />;
-
-      editPane = <VolumeInputBox
-                    volume={this.state.volume}
-                    updateVolume={this.updateVolume.bind(this)} />;
-    }
-    else {
-      secondPane = <Progress {...this.props} />;
-    }
-
     /* Status rendering */
-    if (!this.props.official) {
-      status = (
-        <div className="status">
-          <div className="remain">仍需要：{remain} {this.props.unit}</div>
-          <div className="total">總需：{this.props.total} {this.props.unit}</div>
-          <div className="shipped">已收到：{this.props.shipped}</div>
-          <div className="promised">已認領：{this.props.promised}</div>
-        </div>
-      );
-    }
-    else {
-      status = this.renderOfficial();
-      secondPane = null;
-    }
+    status = (
+      <div className="status">
+        <div className="total">總需：{this.props.total} {this.props.unit}</div>
+        <div className="shipped">已收到：{this.props.shipped}</div>
+        <div className="promised">已認領：{this.props.promised}</div>
+      </div>
+    );
 
     /* Name and description rendering */
     let name;
@@ -148,21 +57,22 @@ export default class Provision extends Component {
       name = (<span className="name">{this.props.name}</span>);
     }
 
+    const className = 'row provision-item' + (this.state.hover ? ' hover' : '');
 
     return (
-      <div className="row provision-item">
-        <div className="col-xs-2">
-          <Glyphicon className="icon" glyph="briefcase" />
-        </div>
-        <div className="progress-status col-xs-6">
-          <div className="status">
-            { name }
-            { status }
-            { secondPane }
+      <div className={className} onTouchStart={this.touch}>
+        <div className="flipper">
+          <div className="front">
+            <Progress {...this.props} />
+            {name}
+            <div className="remain">
+              仍需要 <span className="number">{remain}</span> {this.props.unit}
+            </div>
+            <Glyphicon className="icon" glyph="briefcase" />
           </div>
-        </div>
-        <div className="edit col-xs-4">
-          { editPane }
+          <div className="back">
+            {status}
+          </div>
         </div>
       </div>
     );
