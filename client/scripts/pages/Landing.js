@@ -91,6 +91,34 @@ export default class Landing extends Component {
         </div>
 
         <a  name="introduction"></a>
+          <div>
+              <div className="container">
+                  <div className="row">
+                      <div className="col-lg-6 col-sm-6">
+                          <hr className="section-heading-spacer" />
+                          <div className="clearfix"></div>
+                          <h2 className="section-heading">北市社會局「捐物地圖專案」係蝦米?</h2>
+                          <div className="lead">
+                            <ul>
+                                <li><strong>大家相揪一起防災作公益</strong>：測試捐物地圖平台 &amp; 協助勵馨基金會募集物資幫助弱勢</li>
+                                <li><strong>順便配合年度大型演習</strong>：106 年民安3號暨臺北世界大學運動會災害防救演習辦的演練</li>
+                                <li><strong>誰來加入演習</strong>：公民參與的力量，讓災害防救準備工作，更加貼近真實狀況。</li>
+                                <li><strong>如何參加</strong>：線上認領欲捐贈品項及數量 → 依操作指示寄出或親送物資到指定地點 → 收貨人員進行點收確認 → 捐物收據以 E-MAIL 方式寄送到捐物者當初登錄的電子信箱。</li>
+                                <li><strong>寄東西給我們的期間</strong>：3 月 1 日至 3 月 10 日</li>
+                            </ul>
+                          </div>
+                          <p className="lead">
+                            P.S. 所有物資將於演習當日運送至大量物資集散中心進行演練，演習結束後，所有物資將交由勵馨基金會新北物資中心，轉贈給最需要的人，讓大家的愛心，達到雙倍的效益。
+                          </p>
+                      </div>
+                      <div className="col-lg-5 col-lg-offset-1 col-sm-6">
+                          <img className="img-responsive" src="images/taipei-logo.jpg" alt="" />
+                      </div>
+                  </div>
+
+              </div>
+
+          </div>
           <div className="content-section-a">
               <div className="container">
                   <div className="row">
@@ -109,11 +137,8 @@ export default class Landing extends Component {
                           <img className="img-responsive" src="images/bifrost-in-mac.png" alt="" />
                       </div>
                   </div>
-
               </div>
-
           </div>
-
           <div className="content-section-b">
               <div className="container">
                   <div className="row">
