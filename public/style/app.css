@@ -64,15 +64,13 @@ input[type=number]::-webkit-outer-spin-button {
 
 .project-list .jumbotron {
   margin-top: 60px;
+  height: 220px;
 }
 
 .start-create-project {
   width: 100px;
 }
 
-.input-project-name {
-  width: 35%
-}
 
 .project-wrap input[type="checkbox"] {
   margin-right: 2em;

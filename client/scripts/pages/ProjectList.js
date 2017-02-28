@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Jumbotron, Button, Input} from 'react-bootstrap';
 import Project from '../components/Project';
 import TitleBar from '../components/TitleBar';
 import ProjectModel from '../models/ProjectModel';
@@ -9,6 +8,7 @@ export default class ProjectList extends Component {
     super(props);
     this.state = {
       projects: [],
+      projectName: '',
       createErrorMsg: '',
       openCreateProject: false
     };
@@ -18,9 +18,15 @@ export default class ProjectList extends Component {
     this.handleCreateProject = this.handleCreateProject.bind(this);
     this.handleCreateSuccess = this.handleCreateSuccess.bind(this);
     this.handleCreateFail = this.handleCreateFail.bind(this);
+    this.handleInputProjectNameChange = this.handleInputProjectNameChange.bind(this);
   }
+
   componentWillMount() {
     ProjectModel.getProjects(this.handleSuccess, this.handleFail);
+  }
+
+  handleInputProjectNameChange(event) {
+    this.setState({projectName: event.target.value});
   }
 
   handleSuccess(projects) {
@@ -34,11 +40,14 @@ export default class ProjectList extends Component {
 
   handleCreateProject(event) {
     event.preventDefault();
-    const name = this.refs.projectName.getValue();
-    if (!name) {
+
+    const {projectName} = this.state;
+
+    if (!projectName) {
       return;
     }
-    const project = {name: name};
+
+    const project = {name: projectName};
 
     ProjectModel.createProject(project, this.handleCreateSuccess, this.handleCreateFail);
   }
@@ -49,6 +58,7 @@ export default class ProjectList extends Component {
 
     this.setState({
       projects: projects,
+      projectName: '',
       createErrorMsg: ''
     });
   }
@@ -79,22 +89,25 @@ export default class ProjectList extends Component {
         <TitleBar />
         <div className="container project-list">
           <h1>專案列表</h1>
-          <Jumbotron>
-            <p>由此開始建立新專案</p>
-            <form onSubmit={this.handleCreateProject}>
-              <Input type="text"
-                ref="projectName"
-                className="input-project-name"
-                help={this.state.createErrorMsg}
-                placeholder="請輸入專案名稱" />
-              <Button type="submit" 
-                bsStyle="primary"
-                className="start-create-project">
-                建立
-              </Button>
-            </form>
+          <div className="jumbotron">
+            <div className="col-md-4">
+              <p>由此開始建立新專案</p>
+              <form onSubmit={this.handleCreateProject}>
+                <div className="form-group">
+                  <input type="text"
+                    className="form-control"
+                    placeholder="請輸入專案名稱"
+                    value={this.state.projectName}
+                    onChange={this.handleInputProjectNameChange} />
+                </div>
+                <button type="submit"
+                  className="start-create-project btn btn-primary">
+                  建立
+                </button>
 
-          </Jumbotron>
+              </form>
+            </div>
+          </div>
           {projectList}
         </div>
       </div>
