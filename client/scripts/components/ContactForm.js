@@ -60,6 +60,8 @@ export default class ContactForm extends Component {
           value={this.props.contact.note}
           onChange={this.handleChange.bind(this)}
           id="note" type="textarea" label="備註" />
+
+        <div className="alert alert-info" role="alert">若需要開立紙本捐物收據，請於備註欄位填寫您的地址。（如欲抵稅須同時檢具收據及原始採購或進貨單據）</div>
       </form>
     );
   }
