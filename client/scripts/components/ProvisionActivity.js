@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from 'moment';
 import {ProgressBar, Alert, Button, Modal, Input, Label} from 'react-bootstrap';
 import UserModel from '../models/UserModel';
 import BatchModel from '../models/BatchModel';
@@ -32,6 +33,8 @@ export default class ProvisionActivity extends Component {
     this.checkValidate = this.checkValidate.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSearchKeyChange = this.handleSearchKeyChange.bind(this);
+
+    moment.locale(window.navigator.language);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -206,7 +209,7 @@ export default class ProvisionActivity extends Component {
           <td>{contact.name}</td>
           <td>{contact.email}</td>
           <td>{contact.phone}</td>
-          <td>{item.createdDate}</td>
+          <td>{moment(item.createdDate).format('LLL')}</td>
           <td>{item.note}</td>
           <td><ProgressBar now={percent} /></td>
         </tr>
