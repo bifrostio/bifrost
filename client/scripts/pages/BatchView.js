@@ -63,14 +63,8 @@ export default class BatchView extends Component {
           </Panel>
 
           <p>
-            您也可以 <Button onClick={this.toggle.bind(this)}>按此</Button> 查看您送出的物資資訊，或 <Button href={stationUrl}>回到物資站頁面</Button>。
+            您的捐贈與寄送資訊稍後也會寄送一封電子郵件至您的信箱。
           </p>
-          <Panel collapsible expanded={this.state.showInformation}>
-            <ProvisionInformation
-              contact={donor}
-              provisions={provisions}
-            />
-          </Panel>
         </div>
       </div>
     );
