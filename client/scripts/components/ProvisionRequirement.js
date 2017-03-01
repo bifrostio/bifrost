@@ -111,8 +111,12 @@ export default class ProvisionRequirement extends Component {
     }
     else {
       addButton = (
-        <Button bsStyle="primary"
-                onClick={this.toggleAddProvisionPanel.bind(this)}>新增物資</Button>
+        <div className="add-provision-wrap">
+          <button className="btn btn-primary"
+            onClick={this.toggleAddProvisionPanel.bind(this)}>
+            新增物資
+          </button>
+        </div>
       );
     }
 

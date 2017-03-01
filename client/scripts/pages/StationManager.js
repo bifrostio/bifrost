@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
-import { Grid, Row, Col} from 'react-bootstrap';
 
 import StationContact from '../components/StationContact';
 import TitleBar from '../components/TitleBar';
@@ -91,17 +90,14 @@ export default class StationManager extends Component {
       <div>
         <TitleBar />
         <div className="container">
-          <Grid className="station-page">
-            <Row>
-              <Col xs={12} md={12}>
-                <h1>{station.name}</h1>
-                {contacts.map((c, index) => {
-                  return (<StationContact key={index} contact={c} />);
-                })}
-              </Col>
-            </Row>
-          </Grid>
-
+          <div>
+            <h1>{station.name}</h1>
+            {
+              contacts.map((c, index) => {
+                return (<StationContact key={index} contact={c} />);
+              })
+            }
+          </div>
           <ul className="nav nav-tabs">
             <li>
               <Link to={`/manager/station/${station.id}/requirement`} activeClassName="active">需求物資清單</Link>

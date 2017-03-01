@@ -198,8 +198,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .pro-requirement table {
-  width: 80%;
   margin: 32px 0;
+}
+
+.add-provision-wrap {
+  text-align: right;
 }
 
 .nav-tabs {
