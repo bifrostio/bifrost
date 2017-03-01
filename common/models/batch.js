@@ -26,11 +26,10 @@ module.exports = function(Batch) {
           '',
           '▼ 以下為寄件資訊：',
           `※ 地址：${address}`,
-          `※ 收件人：${contact.name}`,
+          `※ 收件人：${contact.name} (編號：${instance.trackingNumber})`,
           `※ 聯絡電話：${contact.phone}`,
-          `※ 寄件人：${instance._contact.name} (編號：${instance.trackingNumber})`,
           '',
-          '寄送物資時請務必在寄件人處標注上您的編號來加速處理速度！'
+          '寄送物資時請務必在收件人後標注上您的編號來加速處理速度！'
         ].join('\n');
       }
       else {
