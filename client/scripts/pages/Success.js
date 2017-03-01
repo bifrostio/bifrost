@@ -38,10 +38,10 @@ export default class Success extends Component {
             <form className="form-horizontal">
               <FormControls.Static label="地址"
                 labelClassName="col-xs-2" wrapperClassName="col-xs-10"
-                value={address} />
+                value={`${address} (編號：${this.props.params.trackingnumber})`} />
               <FormControls.Static label="收件人"
                 labelClassName="col-xs-2" wrapperClassName="col-xs-10"
-                value={`${contact.name} (編號：${this.props.params.trackingnumber})`} />
+                value={`${contact.name}`} />
               <FormControls.Static label="聯絡電話"
                 labelClassName="col-xs-2" wrapperClassName="col-xs-10"
                 value={`${contact.phone}`} />
