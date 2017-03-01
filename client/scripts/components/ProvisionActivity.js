@@ -207,6 +207,7 @@ export default class ProvisionActivity extends Component {
           <td>{contact.email}</td>
           <td>{contact.phone}</td>
           <td>{item.createdDate}</td>
+          <td>{item.note}</td>
           <td><ProgressBar now={percent} /></td>
         </tr>
       );
@@ -398,6 +399,7 @@ export default class ProvisionActivity extends Component {
              <th>信箱</th>
              <th>電話</th>
              <th>日期</th>
+             <th>備註</th>
              <th>寄送進度</th>
            </tr>
          </thead>
