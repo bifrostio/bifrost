@@ -170,7 +170,7 @@ export default class ProvisionActivity extends Component {
     let batchesTable = Object.keys(batches).map(key => {
 
       const item = batches[key];
-      const contact = item._contact;
+      const contact = item._contact || {};
       let requirements = {};
 
       item.provisionActivities.forEach(activity => {

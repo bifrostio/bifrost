@@ -36,6 +36,7 @@
       "property": "contact"
     }
   },
+  "hidden": ["_contact"],
   "acls": [
     {
       "accessType": "WRITE",

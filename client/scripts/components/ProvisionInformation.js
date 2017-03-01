@@ -5,6 +5,7 @@ export default class ProvisionInformation extends Component {
   render() {
     let labelCol = 'col-xs-2';
     let inputCol = 'col-xs-10';
+    let contact = this.props.contact || {};
 
     let createProvisionFormItem = (p, index) => {
       return (
@@ -40,22 +41,22 @@ export default class ProvisionInformation extends Component {
           label="姓名"
           labelClassName={labelCol}
           wrapperClassName={inputCol}
-          value={this.props.contact.name} />
+          value={contact.name} />
         <FormControls.Static
           label="電子郵件"
           labelClassName={labelCol}
           wrapperClassName={inputCol}
-          value={this.props.contact.email} />
+          value={contact.email} />
         <FormControls.Static
           label="電話"
           labelClassName={labelCol}
           wrapperClassName={inputCol}
-          value={this.props.contact.phone} />
+          value={contact.phone} />
         <FormControls.Static
           label="註記"
           labelClassName={labelCol}
           wrapperClassName={inputCol}
-          value={this.props.contact.note} />
+          value={contact.note} />
       </form>
     );
   }
