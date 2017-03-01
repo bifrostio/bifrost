@@ -152,17 +152,9 @@ export default class Station extends Component {
         </Row>
       );
     }
-    else if (this.state.official) {
+    else if (!this.state.official) {
       buttons = (
-        <Button bsSize="large" href='#/map'>返回地圖瀏覽</Button>
-      );
-    }
-    else {
-      buttons = (
-        <ButtonGroup bsSize="large">
-          <Button href='#/map'>返回地圖瀏覽</Button>
-          <Button bsStyle="primary" onClick={this.toggleEditMode.bind(this)}>捐贈</Button>
-        </ButtonGroup>
+        <Button bsSize="large" bsStyle="primary" onClick={this.toggleEditMode.bind(this)}>捐贈</Button>
       );
     }
 
