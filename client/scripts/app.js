@@ -4,10 +4,10 @@ import { Router, Route, IndexRoute, IndexRedirect, hashHistory } from 'react-rou
 
 import Stations from './pages/Stations';
 import Station from './pages/Station';
+import Success from './pages/Success';
 import Landing from './pages/Landing';
 import StationManager from './pages/StationManager';
 import MapView from './pages/MapView';
-import BatchView from './pages/BatchView';
 import Login from './pages/Login';
 import ProjectList from './pages/ProjectList';
 import ProjectContent from './pages/ProjectContent';
@@ -27,6 +27,7 @@ ReactDOM.render((
       <Route path='map' component={MapView} />
       <Route path='stations' component={Stations} />
       <Route path='stations/:id' component={Station} />
+      <Route path='stations/:id/success/:trackingnumber' component={Success} />
       <Route path='officialStations/:id' component={Station} />
       <Route path='manager/station/:id' component={StationManager} >
         <IndexRedirect to='requirement' />
@@ -36,7 +37,6 @@ ReactDOM.render((
       <Route path='login' component={Login} />
       <Route path='projects' component={ProjectList} />
       <Route path='projects/:id' component={ProjectContent} />
-      <Route path='batches/:id' component={BatchView} />
       <Route path='*' component={Landing} />
     </Route>
   </Router>

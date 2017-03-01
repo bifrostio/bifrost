@@ -81,6 +81,7 @@ export default class Station extends Component {
   }
 
   createBatch() {
+    const stationId = this.state.station.id;
     this.toggleConfirmation();
     let batch = {
       createdDate: Date(),
@@ -99,7 +100,7 @@ export default class Station extends Component {
     });
     BatchModel.create(batch, activities, (err, data) => {
       if (!err) {
-        window.location = `/#/batches/${data.id}`;
+        window.location = `/#/stations/${stationId}/success/${data.trackingNumber}`;
       }
     });
   }

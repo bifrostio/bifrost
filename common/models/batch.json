@@ -36,13 +36,24 @@
       "property": "contact"
     }
   },
-  "hidden": ["_contact"],
   "acls": [
     {
       "accessType": "WRITE",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
     },
     {
       "accessType": "EXECUTE",
