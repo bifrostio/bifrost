@@ -43,12 +43,14 @@ export default class Batch {
   }
 
   static searchByTrackingNumber(number) {
+    const token = sessionStorage.getItem('token');
+
     let filter = {
       where: {trackingNumber: number},
       include: ['provisionActivities']
     };
     filter = encodeURIComponent(JSON.stringify(filter));
 
-    return fetchJSON(`/api/batches?filter=${filter}`);
+    return fetchJSON(`/api/batches?filter=${filter}&access_token=${token}`);
   }
 }
