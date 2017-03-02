@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && webpack -p",
-    "prestart": "node bin/prestart.js",
+    "postinstall": "node bin/postinstall.js",
     "start": "node --harmony ."
   },
   "dependencies": {
