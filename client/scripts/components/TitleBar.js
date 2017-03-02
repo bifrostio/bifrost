@@ -15,6 +15,7 @@ export default class TitleBar extends Component {
   }
 
   render() {
+    const feedback = 'https://docs.google.com/forms/d/e/1FAIpQLSencOao29NfIs4lXG9Ik5w_XY7ubcbDbZwpcTQn6nAZgNXO8A/viewform';
     const token = sessionStorage.getItem('token');
     const adminLink = token ? '/#/projects' : '/#/login';
     const stationLink = this.state.stations.length === 1 ?
@@ -32,11 +33,14 @@ export default class TitleBar extends Component {
           <Navbar.Collapse>
             <Nav>
               <NavItem eventKey={1} href="/#/">首頁</NavItem>
-              <NavItem eventKey={1} href="/#/map">地圖</NavItem>
-              <NavItem eventKey={1} href={stationLink}>物資站</NavItem>
+              <NavItem eventKey={2} href="/#/map">地圖</NavItem>
+              <NavItem eventKey={3} href={stationLink}>物資站</NavItem>
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={1} href={adminLink}>管理</NavItem>
+              <NavItem eventKey={1} target="_blank" href={feedback}>
+                <i className="fa fa-commenting" aria-hidden="true"></i> 意見回饋
+              </NavItem>
+              <NavItem eventKey={2} href={adminLink}>管理</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
