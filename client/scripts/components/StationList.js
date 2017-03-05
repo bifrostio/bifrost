@@ -32,8 +32,15 @@ export default class StationList extends Component {
     });
 
     let officialStations;
+    let officialStationsDescription;
 
     if (this.props.showOfficialStations) {
+      officialStationsDescription = (
+          <div className="alert alert-info" role="alert">
+            庫存物資站為市政府在災害未發生前儲存物資的地方，僅提供庫存物資資訊，並不接受物資捐贈。
+          </div>
+      );
+
       officialStations = this.props.officialStations.map((station, i) => {
         return (
           <div className="station" key={i}
@@ -57,6 +64,7 @@ export default class StationList extends Component {
               onChange={this.handleCheckbox.bind(this)}/>
           </form>
           <div className="official-stations">
+            {officialStationsDescription}
             {officialStations}
           </div>
         </div>
