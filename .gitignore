@@ -11,3 +11,4 @@ dist
 .env
 cSpell.json
 typings
+npm-debug.log.*

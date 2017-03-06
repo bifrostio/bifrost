@@ -10,7 +10,7 @@ var VENDOR_LIBS = [
 
 module.exports = {
   entry: {
-    bundle: './client/scripts/app.js',
+    bundle: './client/app.js',
     vendor: VENDOR_LIBS
   },
   output: {
