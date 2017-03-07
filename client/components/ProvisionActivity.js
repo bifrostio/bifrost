@@ -324,7 +324,7 @@ export default class ProvisionActivity extends Component {
           key={key}
           type="number"
           ref={`act${key}`}
-          labelClassName={labelCol}
+          labelClassName={`${labelCol} align-left`}
           wrapperClassName={inputCol}
           label={requirement && requirement.name}
           onKeyPress={this.handleKeyPress}/>
