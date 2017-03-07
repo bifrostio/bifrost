@@ -102,7 +102,7 @@ export default class Landing extends Component {
                                 <li><strong>順便配合年度大型演習</strong>：106 年民安3號暨臺北世界大學運動會災害防救演習辦的演練</li>
                                 <li><strong>誰來加入演習</strong>：公民參與的力量，讓災害防救準備工作，更加貼近真實狀況。</li>
                                 <li><strong>如何參加</strong>：線上認領欲捐贈品項及數量 → 依操作指示寄出或親送物資到指定地點 → 收貨人員進行點收確認 → 捐物收據以 E-MAIL 方式寄送到捐物者當初登錄的電子信箱。</li>
-                                <li><strong>寄東西給我們的期間</strong>：3 月 1 日至 3 月 10 日</li>
+                                <li><strong>寄東西給我們的期間</strong>：3 月 1 日至 3 月 14 日</li>
                             </ul>
                           </div>
                           <p className="lead">
