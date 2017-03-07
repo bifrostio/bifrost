@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import {Link} from 'react-router';
 import StationModel from '../models/StationModel';
 
 export default class TitleBar extends Component {
@@ -16,33 +16,45 @@ export default class TitleBar extends Component {
   render() {
     const feedback = 'https://docs.google.com/forms/d/e/1FAIpQLSencOao29NfIs4lXG9Ik5w_XY7ubcbDbZwpcTQn6nAZgNXO8A/viewform';
     const token = sessionStorage.getItem('token');
-    const adminLink = token ? '/#/projects' : '/#/login';
+    const adminLink = token ? '/projects' : '/login';
     const stationLink = this.state.stations.length === 1 ?
-                        `/#/stations/${this.state.stations[0].id}` :
-                        '/#/stations';
+                        `/stations/${this.state.stations[0].id}` :
+                        '/stations';
 
     return (
       <div className="title-bar">
-        <Navbar inverse>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="/#/">物資捐贈地圖</a>
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={1} href="/#/">首頁</NavItem>
-              <NavItem eventKey={2} href="/#/map">地圖</NavItem>
-              <NavItem eventKey={3} href={stationLink}>物資站</NavItem>
-            </Nav>
-            <Nav pullRight>
-              <NavItem eventKey={1} target="_blank" href={feedback}>
-                <i className="fa fa-commenting" aria-hidden="true"></i> 意見回饋
-              </NavItem>
-              <NavItem eventKey={2} href={adminLink}>管理</NavItem>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+        <nav className="navbar navbar-inverse">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <button type="button"
+                      className="navbar-toggle collapsed"
+                      data-toggle="collapse"
+                      data-target="#bifrost-navbar-collapse"
+                      aria-expanded="false">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
+              <Link className="navbar-brand" to="/">物資捐贈地圖</Link>
+            </div>
+            <div className="collapse navbar-collapse" id="bifrost-navbar-collapse">
+              <ul className="nav navbar-nav">
+                <li><Link to="/">首頁</Link></li>
+                <li><Link to="/map">地圖</Link></li>
+                <li><Link to={stationLink}>物資站</Link></li>
+              </ul>
+              <ul className="nav navbar-nav navbar-right">
+                <li>
+                  <a href={feedback} target="_blank">
+                    <i className="fa fa-commenting" aria-hidden="true"></i> 意見回饋
+                  </a>
+                </li>
+                <li><Link to={adminLink}>管理</Link></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
       </div>
     );
   }
