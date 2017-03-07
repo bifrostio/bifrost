@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
-import { Button, Panel, FormControls } from 'react-bootstrap';
+import { Panel, FormControls } from 'react-bootstrap';
 import TitleBar from '../components/TitleBar';
-import ProvisionInformation from '../components/ProvisionInformation';
 import BatchModel from '../models/BatchModel';
 
 export default class BatchView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      batch: {},
-      showInformation: false
-    };
-  }
+  state = {
+    batch: {},
+    showInformation: false
+  };
 
   componentDidMount() {
     let self = this;

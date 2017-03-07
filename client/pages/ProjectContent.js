@@ -14,32 +14,18 @@ import UserModel from '../models/UserModel';
 
 
 export default class ProjectContent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      project: {},
-      stations: [],
-      editStationInfo: null,
-      latestStation: {},
-      showStationForm: false,
-      showAlert: false,
-      showSuccessAlert: false,
-      isFormValidate: false,
-      isEdit: false
-    };
+  state = {
+    project: {},
+    stations: [],
+    editStationInfo: null,
+    latestStation: {},
+    showStationForm: false,
+    showAlert: false,
+    showSuccessAlert: false,
+    isFormValidate: false,
+    isEdit: false
+  };
 
-    this.handleSuccess = this.handleSuccess.bind(this);
-    this.handleFail = this.handleFail.bind(this);
-    this.handleGetStationsSuccess = this.handleGetStationsSuccess.bind(this);
-    this.handleGetStationsFail = this.handleGetStationsFail.bind(this);
-    this.handleAddStation = this.handleAddStation.bind(this);
-    this.handleEditStation = this.handleEditStation.bind(this);
-    this.showStationForm = this.showStationForm.bind(this);
-    this.hideStationForm = this.hideStationForm.bind(this);
-    this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
-    this.handleSuccessAlertDismiss = this.handleSuccessAlertDismiss.bind(this);
-    this.checkValidate = this.checkValidate.bind(this);
-  }
   componentWillMount() {
     const id = this.props.params.id;
     ProjectModel.getProjectInfo(id, this.handleSuccess, this.handleFail);
@@ -52,25 +38,25 @@ export default class ProjectContent extends Component {
     GoogleMapsLoader.load();
   }
 
-  handleSuccess(project) {
+  handleSuccess = (project) => {
     this.setState({
       project: project
     });
   }
 
-  handleFail() {
+  handleFail = () => {
   }
 
-  handleGetStationsSuccess(stations) {
+  handleGetStationsSuccess = (stations) => {
     this.setState({
       stations: stations
     });
   }
 
-  handleGetStationsFail() {
+  handleGetStationsFail = () => {
   }
 
-  handleAddStation() {
+  handleAddStation = () => {
     let station = this.refs.stationForm.getFormValue();
     let latitude = 0;
     let longitude = 0;
@@ -126,7 +112,7 @@ export default class ProjectContent extends Component {
 
   }
 
-  handleEditStation() {
+  handleEditStation = () => {
     let self = this;
     let input = this.refs.stationForm.getFormValue();
     let station = {
@@ -153,7 +139,7 @@ export default class ProjectContent extends Component {
     });
   }
 
-  showStationForm() {
+  showStationForm = () => {
     this.setState({
       showStationForm: true,
       editStationInfo: null,
@@ -161,19 +147,19 @@ export default class ProjectContent extends Component {
     });
   }
 
-  hideStationForm() {
+  hideStationForm = () => {
     this.setState({
       showStationForm: false
     });
   }
 
-  handleAlertDismiss() {
+  handleAlertDismiss = () => {
     this.setState({
       showAlert: false
     });
   }
 
-  handleSuccessAlertDismiss() {
+  handleSuccessAlertDismiss = () => {
     this.setState({
       showSuccessAlert: false
     });
@@ -196,7 +182,7 @@ export default class ProjectContent extends Component {
     });
   }
 
-  checkValidate(data) {
+  checkValidate = (data) => {
     if (!this.refs.stationForm) {
       return false;
     }

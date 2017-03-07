@@ -7,18 +7,12 @@ import UserModel from '../models/UserModel';
 import RequirementModel from '../models/ProvisionRequirementModel';
 
 export default class StationManager extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      station: {},
-      provisionRequirements: {},
-      batches: []
-    };
-
-    this.handleReqSuccess = this.handleReqSuccess.bind(this);
-    this.handleReqFail = this.handleReqFail.bind(this);
-  }
-
+  state = {
+    station: {},
+    provisionRequirements: {},
+    batches: []
+  };
+  
   componentWillMount() {
     UserModel.getStationInfo(this.props.params.id, this.handleReqSuccess, this.handleReqFail);
   }
@@ -51,7 +45,7 @@ export default class StationManager extends Component {
     });
   }
 
-  handleReqSuccess(data) {
+  handleReqSuccess = (data) => {
     const provisionRequirements = {};
     const batches = {};
 
@@ -80,7 +74,7 @@ export default class StationManager extends Component {
 
   }
 
-  handleReqFail() {}
+  handleReqFail= () => {}
 
   render() {
     const station = this.state.station;

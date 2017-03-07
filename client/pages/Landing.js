@@ -3,11 +3,9 @@ import {Link} from 'react-router';
 import StationModel from '../models/StationModel';
 
 export default class Landing extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { stations: [] };
-  }
+  state = {
+    stations: []
+  };
 
   componentWillMount() {
     StationModel.find((err, stations) => {

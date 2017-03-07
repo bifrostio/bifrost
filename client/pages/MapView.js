@@ -11,15 +11,12 @@ import AidSyncModel from '../models/AidSyncModel';
 let log = debug('bifrost:MapView');
 
 export default class MapView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stations: [],
-      officialStations: [],
-      selected: null,
-      showOfficialStations: false
-    };
-  }
+  state = {
+    stations: [],
+    officialStations: [],
+    selected: null,
+    showOfficialStations: false
+  };
 
   componentDidMount() {
     let self = this;

@@ -4,44 +4,27 @@ import {ProgressBar, Alert, Button, Modal, Input, Label} from 'react-bootstrap';
 import UserModel from '../models/UserModel';
 import BatchModel from '../models/BatchModel';
 
+moment.locale(window.navigator.language);
+
 export default class ProvisionActivity extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      stationId: parseInt(this.props.params.id),
-      batchId: 0,
-      searchKey: '',
-      batches: props.batches,
-      curBatchActivities: [],
-      showAlert: false,
-      showSuccessAlert: false,
-      showSearchNoResultAlert: false,
-      showModal: false,
-      isFormValidate: false
-    };
-
-    this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
-    this.handleSearchNoResultAlertDismiss = this.handleSearchNoResultAlertDismiss.bind(this);
-    this.handleSuccessAlertDismiss = this.handleSuccessAlertDismiss.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleClickBatch = this.handleClickBatch.bind(this);
-    this.handleUpdateCount = this.handleUpdateCount.bind(this);
-    this.handleUpdateSuccess = this.handleUpdateSuccess.bind(this);
-    this.handleUpdateFail = this.handleUpdateFail.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.checkValidate = this.checkValidate.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleSearchKeyChange = this.handleSearchKeyChange.bind(this);
-
-    moment.locale(window.navigator.language);
-  }
+  state = {
+    stationId: parseInt(this.props.params.id),
+    batchId: 0,
+    searchKey: '',
+    batches: this.props.batches,
+    curBatchActivities: [],
+    showAlert: false,
+    showSuccessAlert: false,
+    showSearchNoResultAlert: false,
+    showModal: false,
+    isFormValidate: false
+  };
 
   componentWillReceiveProps(nextProps) {
     this.setState({batches: nextProps.batches});
   }
 
-  handleSearch(event) {
+  handleSearch = (event) => {
     const {searchKey} = this.state;
 
     BatchModel.searchByTrackingNumber(searchKey)
@@ -66,35 +49,35 @@ export default class ProvisionActivity extends Component {
     event.preventDefault();
   }
 
-  handleSearchKeyChange(event) {
+  handleSearchKeyChange = (event) => {
     this.setState({searchKey: event.target.value});
   }
 
-  handleSearchNoResultAlertDismiss() {
+  handleSearchNoResultAlertDismiss = () => {
     this.setState({
       showSearchNoResultAlert: false
     });
   }
 
-  handleAlertDismiss() {
+  handleAlertDismiss = () => {
     this.setState({
       showAlert: false
     });
   }
 
-  handleSuccessAlertDismiss() {
+  handleSuccessAlertDismiss = () => {
     this.setState({
       showSuccessAlert: false
     });
   }
 
-  handleCloseModal() {
+  handleCloseModal = () => {
     this.setState({
       showModal: false
     });
   }
 
-  handleClickBatch(id) {
+  handleClickBatch = (id) => {
     const batch = this.state.batches[id];
 
     if (!batch || !batch.provisionActivities) {
@@ -110,7 +93,7 @@ export default class ProvisionActivity extends Component {
     });
   }
 
-  handleUpdateCount() {
+  handleUpdateCount = () => {
     let body = [];
 
     Object.keys(this.props.provisionRequirements)
@@ -142,7 +125,7 @@ export default class ProvisionActivity extends Component {
     this.handleCloseModal();
   }
 
-  handleUpdateSuccess(newProvisionActivities) {
+  handleUpdateSuccess = (newProvisionActivities) => {
     if (!newProvisionActivities || newProvisionActivities.length <= 0) {
       return;
     }
@@ -162,7 +145,7 @@ export default class ProvisionActivity extends Component {
     });
   }
 
-  handleUpdateFail() {
+  handleUpdateFail = () => {
     this.setState({
       showAlert: true
     });
@@ -219,14 +202,14 @@ export default class ProvisionActivity extends Component {
     return batchesTable;
   }
 
-  handleKeyPress(e) {
+  handleKeyPress = (e) => {
     const key = e.which;
     if (key === 101 || key === 45) {
       e.preventDefault();
     }
   }
 
-  checkValidate() {
+  checkValidate = () => {
     const inputNum = Object.keys(this.props.provisionRequirements).length;
     let isValid = false;
 

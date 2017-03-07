@@ -3,12 +3,9 @@ import ReactDOM from 'react-dom';
 import {Overlay, Popover} from 'react-bootstrap';
 
 export default class ManagementButtons extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showRemovePopover: false
-    };
-  }
+  state = {
+    showRemovePopover: false
+  };
 
   toggleRemovePopover() {
     this.setState({showRemovePopover: !this.state.showRemovePopover});

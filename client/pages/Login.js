@@ -4,21 +4,13 @@ import TitleBar from '../components/TitleBar';
 import UserModel from '../models/UserModel';
 
 export default class Login extends Component {
-  constructor(props, context) {
-    super(props, context);
+  state = {
+    error: '',
+    emailError: '',
+    passwordError: ''
+  };
 
-    this.state = {
-      error: '',
-      emailError: '',
-      passwordError: ''
-    };
-
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLoginSuccess = this.handleLoginSuccess.bind(this);
-    this.handleLoginFail = this.handleLoginFail.bind(this);
-  }
-
-  handleLogin(event) {
+  handleLogin = (event) => {
     const email = this.refs.email.getValue();
     const password = this.refs.password.getValue();
     let error = {};
@@ -41,12 +33,12 @@ export default class Login extends Component {
     }
   }
 
-  handleLoginSuccess(id) {
+  handleLoginSuccess = (id) => {
     sessionStorage.setItem('token', id);
     this.context.router.push('projects');
   }
 
-  handleLoginFail(statusCode) {
+  handleLoginFail = (statusCode) => {
     if (statusCode === 401) {
       // show auth error message
       this.setState({

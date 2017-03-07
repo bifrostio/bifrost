@@ -4,41 +4,31 @@ import TitleBar from '../components/TitleBar';
 import ProjectModel from '../models/ProjectModel';
 
 export default class ProjectList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      projects: [],
-      projectName: '',
-      createErrorMsg: '',
-      openCreateProject: false
-    };
-
-    this.handleSuccess = this.handleSuccess.bind(this);
-    this.handleFail = this.handleFail.bind(this);
-    this.handleCreateProject = this.handleCreateProject.bind(this);
-    this.handleCreateSuccess = this.handleCreateSuccess.bind(this);
-    this.handleCreateFail = this.handleCreateFail.bind(this);
-    this.handleInputProjectNameChange = this.handleInputProjectNameChange.bind(this);
-  }
+  state = {
+    projects: [],
+    projectName: '',
+    createErrorMsg: '',
+    openCreateProject: false
+  };
 
   componentWillMount() {
     ProjectModel.getProjects(this.handleSuccess, this.handleFail);
   }
 
-  handleInputProjectNameChange(event) {
+  handleInputProjectNameChange = (event) => {
     this.setState({projectName: event.target.value});
   }
 
-  handleSuccess(projects) {
+  handleSuccess = (projects) => {
     this.setState({
       projects: projects
     });
   }
 
-  handleFail() {
+  handleFail = () => {
   }
 
-  handleCreateProject(event) {
+  handleCreateProject = (event) => {
     event.preventDefault();
 
     const {projectName} = this.state;
@@ -52,7 +42,7 @@ export default class ProjectList extends Component {
     ProjectModel.createProject(project, this.handleCreateSuccess, this.handleCreateFail);
   }
 
-  handleCreateSuccess(data) {
+  handleCreateSuccess = (data) => {
     let projects = this.state.projects;
     projects.unshift(data);
 
@@ -63,7 +53,7 @@ export default class ProjectList extends Component {
     });
   }
 
-  handleCreateFail() {
+  handleCreateFail = () => {
     this.setState({
       createErrorMsg: 'Oops! Try again!'
     });

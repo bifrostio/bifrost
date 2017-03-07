@@ -4,12 +4,9 @@ import TitleBar from '../components/TitleBar';
 import StationModel from '../models/StationModel';
 
 export default class Stations extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stations: []
-    };
-  }
+  state = {
+    stations: []
+  };
 
   componentDidMount() {
     let self = this;

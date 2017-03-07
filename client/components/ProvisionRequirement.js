@@ -4,15 +4,12 @@ import ProvisionForm from '../components/ProvisionForm';
 import ManagementButtons from '../components/ManagementButtons';
 
 export default class ProvisionRequirement extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showAddProvisionPanel: false,
-      showEditModal: false,
-      editingProvision: null,
-      newProvision: {total: 0}
-    };
-  }
+  state = {
+    showAddProvisionPanel: false,
+    showEditModal: false,
+    editingProvision: null,
+    newProvision: {total: 0}
+  };
 
   toggleAddProvisionPanel() {
     this.setState({

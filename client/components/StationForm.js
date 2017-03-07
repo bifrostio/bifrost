@@ -3,22 +3,16 @@ import {Label, Input, Row, Col} from 'react-bootstrap';
 import validator from 'validator';
 
 export default class StationForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      stationName: this.props.stationName,
-      name: this.props.name,
-      email: this.props.email,
-      phone: this.props.phone,
-      zipCode: this.props.zipCode,
-      city: this.props.city,
-      district: this.props.district,
-      detail: this.props.detail
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
+  state = {
+    stationName: this.props.stationName,
+    name: this.props.name,
+    email: this.props.email,
+    phone: this.props.phone,
+    zipCode: this.props.zipCode,
+    city: this.props.city,
+    district: this.props.district,
+    detail: this.props.detail
+  };
 
   getFormValue() {
     return Object.assign({}, this.state);
@@ -44,7 +38,7 @@ export default class StationForm extends Component {
     }
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     const field = e.target.id;
     const value = e.target.value;
     const state = {};

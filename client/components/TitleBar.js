@@ -3,11 +3,10 @@ import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import StationModel from '../models/StationModel';
 
 export default class TitleBar extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    stations: []
+  };
 
-    this.state = { stations: []};
-  }
   componentWillMount() {
     StationModel.find((err, stations) => {
       this.setState({stations});
