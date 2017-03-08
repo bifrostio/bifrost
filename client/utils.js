@@ -32,4 +32,12 @@ function postForm(url, formData) {
   return fetch(url, { method: 'POST', body: data });
 }
 
-export {fetchJSON, fetchText, postJSON, post, postForm};
+function putJSON(url, json) {
+  return fetchJSON(url, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    body: JSON.stringify(json)
+  });
+}
+
+export {fetchJSON, fetchText, postJSON, post, postForm, putJSON};

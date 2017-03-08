@@ -1,4 +1,4 @@
-import { fetchJSON, postJSON, post} from '../utils';
+import { fetchJSON, postJSON, post, putJSON} from '../utils';
 
 export default class UserModel {
   static login(body, doneCallback, failCallback) {
@@ -60,6 +60,20 @@ export default class UserModel {
     .then(json => station._contacts.push(json))
     .then(() => cb(null, station))
     .catch(err => cb(err));
+  }
+
+  static updateStationInfo(id, properties, done, fail) {
+    const token = sessionStorage.getItem('token');
+
+    if (!token) {
+      fail(401);
+      return;
+    }
+
+    const path = `/api/stations/${id}?access_token=${token}`;
+    return putJSON(path, properties)
+    .then(res => done(res))
+    .catch(err => fail(err));
   }
 
   static getStationInfo(id, doneCallback, failCallback) {

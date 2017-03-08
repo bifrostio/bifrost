@@ -138,12 +138,30 @@ export default class Station extends Component {
     let button;
 
     if (!this.state.official) {
-      button = (
-        <Link
-          to={`/stations/${this.state.station.id}/donation`}
-          className="btn-lg btn btn-primary">
-          捐贈
-        </Link>
+      if (this.state.station.closed) {
+        button = (
+          <button className="btn-lg btn btn-primary" disabled="disabled">
+            已結束
+          </button>
+        );
+      }
+      else {
+        button = (
+          <Link
+            to={`/stations/${this.state.station.id}/donation`}
+            className="btn-lg btn btn-primary">
+            捐贈
+          </Link>
+        );
+      }
+    }
+
+    let closedNotice;
+    if (this.state.station.closed) {
+      closedNotice = (
+        <div className="closed-notice alert alert-info" role="alert">
+          本物資站的物資募集活動已結束。
+        </div>
       );
     }
 
@@ -153,6 +171,7 @@ export default class Station extends Component {
         <Grid className="station-page">
           <StationInformation station={this.state.station} />
 
+          {closedNotice}
           {this.renderDiagramDescription()}
           {this.renderProvisions()}
 

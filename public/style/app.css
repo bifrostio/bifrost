@@ -469,3 +469,7 @@ input[type=number]::-webkit-outer-spin-button {
 .control-label.align-left {
   text-align: left;
 }
+
+.closed-notice {
+  margin-top: 20px;
+}

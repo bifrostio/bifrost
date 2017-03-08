@@ -15,6 +15,10 @@
     },
     "longitude": {
       "type": "number"
+    },
+    "closed": {
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],
