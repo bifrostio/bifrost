@@ -4,8 +4,9 @@ import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 class Progress extends Component {
   render() {
-    const shipped = this.props.shipped / this.props.total * 100;
-    const promised = (this.props.promised) / this.props.total*100;
+    const shipped = (this.props.shipped) / this.props.total * 100;
+    const promised = (this.props.promised - this.props.shipped) /
+                      this.props.total*100;
     return (
       <div className="progress">
         <ProgressBar>
@@ -30,7 +31,7 @@ export default class Provision extends Component {
 
   render() {
     let status;
-    let remain = this.props.total - this.props.shipped - this.props.promised;
+    let remain = this.props.total - this.props.promised;
 
     /* Status rendering */
     status = (

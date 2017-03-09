@@ -11,7 +11,7 @@ export default class ProvisionListForm extends Component {
 
   onChange(evt, i) {
     let provision = this.state.provisions[i];
-    const max = provision.total - provision.promised - provision.shipped;
+    const max = provision.total - provision.promised;
     let vol = parseInt(evt.target.value);
     if (isNaN(vol)) {
       vol = 0;
@@ -34,7 +34,7 @@ export default class ProvisionListForm extends Component {
 
   renderProvisions() {
     let provisions = this.state.provisions.map((provision, index) => {
-      const max = provision.total - provision.promised - provision.shipped;
+      const max = provision.total - provision.promised;
       return (
         <div key={index} className="form-group">
           <label htmlFor={`provision-${index}`}
