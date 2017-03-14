@@ -42,6 +42,18 @@ export default class Batch {
     .catch(err => cb(err));
   }
 
+  static find() {
+    const token = sessionStorage.getItem('token');
+    let filter = {
+      include: [
+        { provisionActivities: 'provisionRequirement' },
+        { station: 'provisionRequirements' }
+      ]
+    };
+    filter = encodeURIComponent(JSON.stringify(filter));
+    return fetchJSON(`/api/batches?filter=${filter}&access_token=${token}`);
+  }
+
   static searchByTrackingNumber(number) {
     const token = sessionStorage.getItem('token');
 

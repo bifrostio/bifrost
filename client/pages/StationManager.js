@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
+import FileSaver from 'file-saver';
 
 import StationContact from '../components/StationContact';
 import TitleBar from '../components/TitleBar';
 import UserModel from '../models/UserModel';
+import BatchModel from '../models/BatchModel';
 import RequirementModel from '../models/ProvisionRequirementModel';
+import {getCSV} from '../utils'
 
 export default class StationManager extends Component {
   state = {
@@ -85,6 +88,15 @@ export default class StationManager extends Component {
 
   handleReqFail= () => {}
 
+  downloadCSV = () => {
+    BatchModel.find()
+    .then(batches => {
+      const csv = getCSV(batches);
+      const blob = new Blob([csv], {type: 'text/plain;charset=utf-8'});
+      FileSaver.saveAs(blob, 'export.csv');
+    });
+  }
+
   render() {
     const station = this.state.station;
     let contacts = this.state.station._contacts || [];
@@ -110,7 +122,9 @@ export default class StationManager extends Component {
                 return (<StationContact key={index} contact={c} />);
               })
             }
+
             {closedToggleButton}
+            <button className="btn btn-default btn-export" onClick={this.downloadCSV}>匯出 CSV</button>
           </div>
           <ul className="nav nav-tabs">
             <li>
