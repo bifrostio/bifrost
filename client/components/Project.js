@@ -11,7 +11,7 @@ export default class Project extends Component {
         <div className="project-item">
           {isClose && <div className="project-close">已結案</div>}
           <div className="project-name">
-            <Link to={`/projects/${this.props.projectId}`}>{projectName}</Link>
+            <Link to={`/manager/projects/${this.props.projectId}`}>{projectName}</Link>
           </div>
           <div className="project-time">
             {/*開設時間：{projectTime}*/}

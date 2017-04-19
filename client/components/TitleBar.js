@@ -16,7 +16,7 @@ export default class TitleBar extends Component {
   render() {
     const feedback = 'https://docs.google.com/forms/d/e/1FAIpQLSencOao29NfIs4lXG9Ik5w_XY7ubcbDbZwpcTQn6nAZgNXO8A/viewform';
     const token = sessionStorage.getItem('token');
-    const adminLink = token ? '/projects' : '/login';
+    const adminLink = token ? '/manager/projects' : '/login';
     const stationLink = this.state.stations.length === 1 ?
                         `/stations/${this.state.stations[0].id}` :
                         '/stations';

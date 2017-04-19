@@ -35,7 +35,7 @@ export default class Login extends Component {
 
   handleLoginSuccess = (id) => {
     sessionStorage.setItem('token', id);
-    this.context.router.push('projects');
+    this.context.router.push('/manager/projects');
   }
 
   handleLoginFail = (statusCode) => {
