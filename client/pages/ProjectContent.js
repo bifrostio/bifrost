@@ -6,7 +6,6 @@ import { Link } from 'react-router';
 import validator from 'validator';
 import GoogleMapsLoader from 'google-maps/lib/Google.min';
 import StationForm from '../components/StationForm';
-import TitleBar from '../components/TitleBar';
 import ManagementButtons from '../components/ManagementButtons';
 import ProjectModel from '../models/ProjectModel';
 import StationModel from '../models/StationModel';
@@ -340,7 +339,6 @@ export default class ProjectContent extends Component {
 
     return (
       <div>
-        <TitleBar />
         <div className="container project-content">
           <div className="page-header">
             <h1>{projectName}</h1>

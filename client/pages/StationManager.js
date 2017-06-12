@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import FileSaver from 'file-saver';
 
 import StationContact from '../components/StationContact';
-import TitleBar from '../components/TitleBar';
 import UserModel from '../models/UserModel';
 import BatchModel from '../models/BatchModel';
 import RequirementModel from '../models/ProvisionRequirementModel';
@@ -113,7 +112,6 @@ export default class StationManager extends Component {
 
     return (
       <div>
-        <TitleBar />
         <div className="container">
           <div>
             <h1>{station.name} {titleLabel}</h1>

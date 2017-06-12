@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Project from '../components/Project';
-import TitleBar from '../components/TitleBar';
 import ProjectModel from '../models/ProjectModel';
 
 export default class ProjectList extends Component {
@@ -76,7 +75,6 @@ export default class ProjectList extends Component {
 
     return (
       <div>
-        <TitleBar />
         <div className="container project-list">
           <h1>專案列表</h1>
           <div className="jumbotron">

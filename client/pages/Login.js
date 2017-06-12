@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Panel, Button, Input} from 'react-bootstrap';
-import TitleBar from '../components/TitleBar';
 import UserModel from '../models/UserModel';
 
 export default class Login extends Component {
@@ -52,7 +51,6 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <TitleBar path={this.props.route.path} />
         <div className="container">
           <Panel className="login-wrap" header="Login">
             <form onSubmit={this.handleLogin}>

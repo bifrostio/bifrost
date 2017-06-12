@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import {Link} from 'react-router';
-import TitleBar from '../components/TitleBar';
 import StationInformation from '../components/StationInformation';
 import Provision from '../components/Provision';
 import StationModel from '../models/StationModel';
@@ -167,7 +166,6 @@ export default class Station extends Component {
 
     return (
       <div>
-        <TitleBar />
         <Grid className="station-page">
           <StationInformation station={this.state.station} />
 

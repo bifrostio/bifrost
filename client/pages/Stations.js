@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import TitleBar from '../components/TitleBar';
 import StationModel from '../models/StationModel';
 
 export default class Stations extends Component {
@@ -32,7 +31,6 @@ export default class Stations extends Component {
 
     return (
       <div>
-        <TitleBar />
         <div className="container">
           <h1>物資站列表</h1>
           <table className="table table-striped table-hover">

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Grid } from 'react-bootstrap';
 
-import TitleBar from '../components/TitleBar';
 import Steps from '../components/Steps';
 import ProvisionListForm from '../components/ProvisionListForm';
 import ContactForm from '../components/ContactForm';
@@ -118,7 +117,6 @@ export default class DonationWizard extends Component {
     const steps = [ '選擇捐贈物', '填寫捐贈人資訊', '確認並送出資訊', '完成'];
     return (
       <div>
-        <TitleBar />
         <Grid className="station-page">
           <StationInformation station={this.state.station} />
           <Steps currentStep={this.state.step} steps={steps}  />

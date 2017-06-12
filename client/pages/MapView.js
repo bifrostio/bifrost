@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
-import TitleBar from '../components/TitleBar';
 import StationMap from '../components/StationMap';
 import StationList from '../components/StationList';
 import StationModel from '../models/StationModel';
@@ -76,7 +74,6 @@ export default class MapView extends Component {
 
     return (
       <div className="map-view">
-        <TitleBar />
         <StationList
           showOfficialStations={this.state.showOfficialStations}
           stations={stations}

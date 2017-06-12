@@ -13,11 +13,17 @@ import ProjectList from './pages/ProjectList';
 import ProjectContent from './pages/ProjectContent';
 import ProvisionRequirement from './components/ProvisionRequirement';
 import ProvisionActivity from './components/ProvisionActivity';
+import Header from './components/Header';
 import CheckAuth from './container/CheckAuth';
 
 export default class Bifrost extends Component {
   render() {
-    return <div>{this.props.children}</div>;
+    return (
+      <div>
+        <Header />
+        {this.props.children}
+      </div>
+    );
   }
 }
 

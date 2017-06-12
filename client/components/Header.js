@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import StationModel from '../models/StationModel';
 
-export default class TitleBar extends Component {
+export default class Header extends Component {
   state = {
     stations: []
   };
