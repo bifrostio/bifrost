@@ -29,7 +29,7 @@ export default class AidSyncModel {
         if (p[8].trim()) {
           let d = p[8].trim();
           let year = 1911 + parseInt(d.substr(0, 3));
-          let month = parseInt(d.substr(3, 2));
+          let month = parseInt(d.substr(3, 2)) - 1;
           let day = parseInt(d.substr(5, 2));
           provision.expired = new Date(year, month, day).toString();
         }

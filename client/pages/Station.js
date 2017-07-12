@@ -80,7 +80,7 @@ export default class Station extends Component {
       if (provision.expired) {
         let d = new Date(provision.expired);
         let today = new Date();
-        expired = `${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
+        expired = `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`;
 
         today.setDate(1);
         today.setMonth(today.getMonth() + 6);
