@@ -5,6 +5,9 @@ Hackpad: https://g0v.hackpad.com/Bifrost--C8AgQKHhreC
 
 Bifrost 希望建立一個雙向的物資管理平台，讓受贈者與捐贈者可以在同一個平台上，知道目前捐贈的狀況以及哪邊需要什麼種類的物資。
 
+## 現況
+目前這個專案沒有太積極地開發，如果你仍對這個專案有興趣開發，請在 Facebook 或 Twitter 聯絡 @yurenju。
+
 ## Getting started
 Bifrost 採用 Node.js 開發，前端採用 React，後端採用 Loopback (node.js)，在非 production 環境時，資料僅會儲存在記憶體，所以開發時不需要安裝任何資料庫。
 
