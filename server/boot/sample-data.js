@@ -18,11 +18,11 @@ module.exports = function(app, done) {
 
   var users = [
     {
-      email: 'chialin.shr@gmail.com',
+      email: 'admin@example.com',
       password: '1234'
     },
     {
-      email: 'yurenju@gmail.com',
+      email: 'admin2@example.com',
       password: '1234'
     }
   ];
