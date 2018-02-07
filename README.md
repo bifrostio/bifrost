@@ -20,7 +20,7 @@ Bifrost 希望建立一個雙向的物資管理平台，讓受贈者與捐贈者
 ![Map page screenshot](/assets/screenshot-map.png)
 ![Station page screenshot](/assets/screenshot-station.png)
 
-在物資站的頁面瀏覽物資後，在畫面的最底端是捐贈按鈕，點擊後會來到捐贈物品的頁面。選擇捐贈數量、填寫完聯絡資訊送出後，則會出現寄送資訊，其中寄送資訊會提示在地址欄可以填寫編號，可以快速的讓收貨人員點收此筆物資是由哪位捐贈人所捐贈。
+在物資站的頁面瀏覽物資後，在畫面的最底端是捐贈按鈕，點擊後會來到捐贈物品的頁面。選擇捐贈數量、填寫完聯絡資訊送出後，則會出現寄送資訊，其中寄送資訊會提示在地址欄可以填寫編號，可以快速的讓收貨人員點收此筆物資是由哪位捐贈人所捐贈。
 
 ![Donation 1 screenshot](/assets/screenshot-donation-1.png)
 ![Donation 2 screenshot](/assets/screenshot-donation-2.png)
@@ -40,7 +40,7 @@ Bifrost 希望建立一個雙向的物資管理平台，讓受贈者與捐贈者
 ![Admin 2 screenshot](/assets/screenshot-admin-2.png)
 
 ## 開發
-Bifrost 採用 Node.js 開發，前端採用 React，後端採用 Loopback (node.js)，在非 production 環境時，資料僅會儲存在記憶體，所以開發時不需要安裝任何資料庫。
+Bifrost 採用 Node.js 6.x 系列開發，前端採用 React，後端採用 Loopback (node.js)，在非 production 環境時，資料僅會儲存在記憶體，所以開發時不需要安裝任何資料庫。
 
 執行 bifrost 僅需兩個步驟：
 
@@ -50,6 +50,33 @@ $ npm start
 ```
 
 第一行指令將會安裝所需相依套件，第二行指令則用於執行本地 web server，啟動後開啟瀏覽器至 http://0.0.0.0:3000/ 即可看到專案列表
+
+### 設定檔
+
+所有的伺服器設定都在 `/server` 目錄底下，其中結尾有 `production` 的設定檔案是在 `NODE_ENV=production` 時才會啟用，比如說資料庫的基礎設定在 `datastores.json`，其中是使用 memory database，伺服器停止或重開後後所有資料都會消失。但是在 `datasources.production.js` 則用 mongodb 資料庫，所有資料都會儲存在資料庫中。
+
+另外在開發模式可以用 http://0.0.0.0:3000/explorer/ 進入 API explorer，可以直接用 API 呼叫 bifrost 所提供的所有功能，但此功能只有在開發模式才可以使用，`production` 模式並沒有開放 API explorer。
+
+![API explorer](/assets/screenshot-api-explorer.png)
+
+### 資料庫表格
+
+系統裡所有的資料庫表格都放在 `/common/models/` 裡面的 JSON 檔案，簡介如下：
+
+* address: 內部用的地址表格
+* batch: 一個捐贈批次，其中可能包含多項物資以及捐贈者聯繫資訊
+* contact: 內部用的聯絡人表格
+* project: 專案，一個專案內會有許多個物資站。當初表格設計時是可以容納多個專案，但是目前通常都只有一個專案。
+* provision-activity: 物資動態，當每次有物資接收時，會產生一筆物資動態，紀錄本次物資接收時的物資數量
+* provision-requirement: 物資需求，開設一個物資站時會填寫有多少物資需求會登記在此表格
+* station: 物資站
+* user: 使用者
+
+每個表格之間的關係，也都可以在這些 JSON 檔案裡面的 relations 欄位找到。權限控管也都在 JSON 當中。
+
+### 預設資料
+
+在開發模式啟動伺服器時，系統將會自動建立一組測試用的資料集，包含了一個展示用的物資站、所需物資、管理者帳號等等，所有展示用的資料都會在 `/server/boot` 裡面定義。
 
 ## Contribution
 
